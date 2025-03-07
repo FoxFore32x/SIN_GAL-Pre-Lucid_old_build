@@ -1,4 +1,4 @@
-# SINGAL's Archive - Inconsistent Illusions
+# SIN_GAL: De-Lusional
 
 Inconsistent Illusions is a ficticious Arcade style Platformer/Beat em Up videogame made by an also ficticious company called "SINGAL". The objective is to uncover the story of company while you play the incomplete version of the Arcade game.
 
