@@ -9,43 +9,62 @@
 #include <asndlib.h>
 #include <gctypes.h>
 #include <gccore.h>
+#include "Extensions/oggplayer.h"
 
-#include "all_gfx.h"
-#include "room.h"
-#include "bgm_testcotton_mp3.h"
+#include "Sprites/Sprites.h"
+#include "Objects/objects.h"
+#include "Scripts/SystemGML/scr_gml.h"
+#include "Rooms/room.h"
 #include "fot_ttf.h"
+#include "Scripts/Input/input.h"
+#include "Scripts/Video/scr_video.h"
 
-#define SCREEN_WIDTH 640 // Set your screen width
-#define SCREEN_HEIGHT 480 // Set your screen height
-
-int main() {
+int main(int argc, char **argv) {
     // Initialization code for GRRLIB, WPAD, etc.
     GRRLIB_Init();
     WPAD_Init();
     PAD_Init();
+    ASND_Init();
+    MP3Player_Init();
+    //fatInitDefault();
+    InitVideo();
 
     GRRLIB_ttfFont *myFont = GRRLIB_LoadTTF(fot_ttf, fot_ttf_size);
 
     GRRLIB_Settings.antialias = false;
 
+    GRRLIB_2dMode();
+
     // Game loop
     while (1) {
-        WPAD_ScanPads();
-        PAD_ScanPads();
+        scr_getInput();
 
-        u32 Btndown = WPAD_ButtonsDown(0);//Variable de control
-        u16 BtndownGC = PAD_ButtonsDown(0);//Variable de control
+        room_background(TITLEBGTEST);
+
+        obj_camera(scrnWidth, 480, &obj_player2);
         
-        GRRLIB_PrintfTTF(100, 100, myFont, "Haha peepee poopoo", 24, GRRLIB_WHITE); // X=100, Y=100, Size=24, White color
-        GRRLIB_PrintfTTF(100, 200, myFont, "SINGAL's Archive", 50, GRRLIB_WHITE); // X=100, Y=100, Size=24, White color
+        //GRRLIB_PrintfTTF(100, 100, myFont, "Haha peepeea poopoo", 24, GRRLIB_WHITE); // X=100, Y=100, Size=24, White color
+        //GRRLIB_PrintfTTF(100, 200, myFont, "SINGAL's Archive", 50, GRRLIB_WHITE); // X=100, Y=100, Size=24, White color
+        GRRLIB_PrintfTTF(40, -20, myFont, "I", 270, GRRLIB_BLACK); // X=100, Y=100, Size=24, White color
+        GRRLIB_PrintfTTF(150, 120, myFont, "NCONSISTENT", 58, GRRLIB_BLACK); // X=100, Y=100, Size=24, White color
+        GRRLIB_PrintfTTF(150, 194, myFont, "LLUSIONS", 58, GRRLIB_BLACK); // X=100, Y=100, Size=24, White color
+        GRRLIB_PrintfTTF(400, 444, myFont, "Feltree Forestk Soft.", 16, GRRLIB_RED); // X=100, Y=100, Size=24, White color
 
-        if ((Btndown & WPAD_BUTTON_PLUS) || (BtndownGC & PAD_BUTTON_START)) {
-            RoomChanged = 1;
-            TEST0();
+        if (key.start) {
+
+            room_goto(room_debug_select);
+        }
+
+        if ((key.exit2)) {
+            exit(0); // Exit from the game loop
         }
 
         GRRLIB_Render();
     }
+
+    GRRLIB_FreeTTF(myFont);
+
+    VIDEO_WaitVSync();
 
     // Cleanup code and return
     return 0;
