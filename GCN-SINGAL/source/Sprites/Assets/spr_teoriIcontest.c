@@ -57,9 +57,9 @@ SpriteWithCollision sprite_teoriIcontest = {
     .right = 1,
     .top = 31,
     .bottom = 31,
-    .originX = 0,
-    .originY = 0,
 	.GenWidth = 32,
     .GenHeight = 32,
+    .originX = 0,
+    .originY = 0,
 	.Type = RECTANGLE
 };

@@ -2,7 +2,7 @@
 #define OBJ_WARP_H
 
 typedef struct {
-    GameObject base; // Inherit from GameObject
+    void *base; // Inherit from GameObject
     float newX;
     float newY;
     int newRoom;

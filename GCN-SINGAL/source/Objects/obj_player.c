@@ -93,8 +93,6 @@ void obj_player_Step() {
 
             currentObject->x = x;
             currentObject->y = y;
-            currentObject->width = 32;
-            currentObject->height = 32;
             //=================================================================================================================================
 
             scr_getInput();
@@ -331,10 +329,9 @@ void obj_player_Step() {
             if (hsp != 0){
                 image_xscale = sign(hsp);
             }
-
             if (key_test)
             {
-                instance_create(&obj_solid, 20, 20, 2*32, 2*32, &spr_solid, LAYER_SOLID, false, NULL);
+                instance_create(&obj_solid, 20, 20, 2, 2, &spr_solid, LAYER_SOLID, false, NULL);
             }
             //Animation
             if (!place_meeting(x, y + 1, &obj_solid))
@@ -433,15 +430,6 @@ void obj_player_Draw()
     //show_hud();
 
     currentObject->collision_mask = sprite_index;
-
-    currentObject->collision_mask.spriteData = sprite_index.spriteData;
-    currentObject->collision_mask.spriteSize = sprite_index.spriteSize;
-    currentObject->collision_mask.top = sprite_index.top;
-    currentObject->collision_mask.bottom = sprite_index.bottom;
-    currentObject->collision_mask.left = sprite_index.left;
-    currentObject->collision_mask.right = sprite_index.right;
-    currentObject->collision_mask.originX = sprite_index.originX;
-    currentObject->collision_mask.originY = sprite_index.originY;
 
     draw_objects(&obj_player2, &currentObject->collision_mask, image_xscale, 1);
 }

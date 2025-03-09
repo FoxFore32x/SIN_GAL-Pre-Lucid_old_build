@@ -33,6 +33,8 @@ int currentRoom;
 
 int RoomChanged;
 
+ObjectList* RmObjLst[1000];
+
 extern GRRLIB_drawSettings GRRLIB_Settings;
 extern Mtx                 GXmodelView2D;
 
@@ -207,6 +209,7 @@ void obj_init(ObjectList *obj_list) {
     for (int i = 0; i < MAX_OBJECTS; ++i) {
         obj_list->objects[i] = NULL;
         CurrObjLst = obj_list;
+        obj_list->initialized = true;
     }
 }
 
@@ -218,8 +221,6 @@ void obj_add(ObjectList *obj_list, float x, float y, float width, float height, 
         if (newObject != NULL) {
             newObject->x = x;
             newObject->y = y;
-            newObject->width = width;
-            newObject->height = height;
             newObject->layer = layer;
             if (parent != NULL) {
                 for (int i = 0; i < parent->numObjects; ++i) {
@@ -227,6 +228,8 @@ void obj_add(ObjectList *obj_list, float x, float y, float width, float height, 
                     descObject.Parent = parent;
                 }
             }
+
+            newObject->texture = GRRLIB_LoadTexture(sprite->spriteData);
             newObject->collision_mask.left = sprite->left;
             newObject->collision_mask.right = sprite->right;
             newObject->collision_mask.top = sprite->top;
@@ -236,6 +239,9 @@ void obj_add(ObjectList *obj_list, float x, float y, float width, float height, 
             newObject->collision_mask.GenWidth = sprite->GenWidth;
             newObject->collision_mask.GenHeight = sprite->GenHeight;
             newObject->collision_mask.Type = sprite->Type;
+
+            newObject->width = width * sprite->GenWidth;
+            newObject->height = height * sprite->GenHeight;
             
             obj_list->objects[obj_list->numObjects++] = newObject;
         }
@@ -332,12 +338,10 @@ void draw_objects(ObjectList* obj_list, SpriteWithCollision* funnySprite, int im
             float screenX = (currentObject->x - currentObject->collision_mask.originX - view_camera[0].CamX);
             float screenY = (currentObject->y - currentObject->collision_mask.originY - view_camera[0].CamY);
             float Layer = currentObject->layer;
-            float objectWidth = (currentObject->width * imageXScale) * 0.03125f;
-            float objectHeight = (currentObject->height * imageYScale) * 0.03125f;
+            float objectWidth = (currentObject->width * imageXScale) / funnySprite->GenWidth;
+            float objectHeight = (currentObject->height * imageYScale) / funnySprite->GenHeight;
 
             GRRLIB_SetHandle(texture, currentObject->collision_mask.originX, currentObject->collision_mask.originY);
-            
-            currentObject->texture = texture;
 
             // Draw the object
             drawing2(screenX, screenY, Layer, texture, 0, objectWidth, objectHeight, GRRLIB_WHITE);
@@ -386,61 +390,103 @@ void RmClean() {
 
 // Function to free memory for objects
 void obj_cleanup(ObjectList *obj_list) {
-    int newCount = 0;
-    for (int i = 0; i < obj_list->numObjects; ++i) {
-        if (obj_list->objects[i]->persistent) {
-            obj_list->objects[newCount++] = obj_list->objects[i];
-        } else {
-            free(obj_list->objects[i]);
-            obj_list->objects[i] = NULL;
-        }
+    if (obj_list == NULL || obj_list->numObjects == 0) {
+        return;  // Nothing to clean
     }
-    obj_list->numObjects = newCount;
+
+    int newCount = 0;  // New count for persistent objects
+
+    for (int i = 0; i < obj_list->numObjects; ++i) {
+        if (obj_list->objects[i]->persistent == false) {
+            obj_list->numObjects = 0;
+            free(obj_list->objects[i]);  // Free non-persistent object
+            obj_list->objects[i] = NULL;
+            obj_list->initialized = false;
+        }/* else {
+            obj_list->objects[newCount++] = obj_list->objects[i];  // Keep persistent objects
+        }*/
+    }
+
+    obj_list->numObjects = newCount;  // Only keep persistent objects
 }
 
+bool instance_exists(ObjectList *obj_list) {
+    // Check if the object list contains any objects
+    if (obj_list->numObjects > 0) {
+        return true;
+    }
+    return false;
+    //return obj_list->initialized;
+}
 
-GameObject* instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent) {
-    // Initialize the object list if it's not already initialized
-
-    if (obj_list->numObjects == 0) {
-        obj_init(obj_list);
+void instance_destroy(ObjectList *obj_list) {
+    if (currentObject == NULL || obj_list->numObjects == 0) {
+        return;
     }
 
+    // Find the currentObject in the object list
+    for (int i = 0; i < obj_list->numObjects; ++i) {
+        if (obj_list->objects[i] == currentObject) {
+            // Free the memory allocated for the currentObject
+            free(currentObject);
+            
+            // Shift the remaining objects in the list to fill the gap
+            for (int j = i; j < obj_list->numObjects - 1; ++j) {
+                obj_list->objects[j] = obj_list->objects[j + 1];
+            }
+            
+            // Decrease the object count and nullify the last entry
+            obj_list->numObjects--;
+            obj_list->objects[obj_list->numObjects] = NULL;
+            
+            // Reset currentObject to prevent using a dangling pointer
+            currentObject = NULL;
+            break;
+        }
+    }
+}
+
+void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent) {
     if (obj_list->numObjects < MAX_OBJECTS) {
-        // Allocate memory for the new object
         GameObject* newObject = (GameObject*)malloc(sizeof(GameObject));
-        
         if (newObject != NULL) {
-
-            // Set up collision mask and texture
-            newObject->collision_mask = *sprite; // Assuming sprite holds collision info
-            newObject->texture = GRRLIB_LoadTexture(sprite->spriteData);
-
-            newObject->currentWidth = width;
-            newObject->currentHeight = height;
-
-            float NewWidth = newObject->currentWidth * sprite->GenWidth;
-            float NewHeight = newObject->currentHeight * sprite->GenHeight;
-
-            // Initialize the object
             newObject->x = x;
             newObject->y = y;
-            newObject->width = NewWidth - sprite->right - sprite->left;
-            newObject->height = NewHeight - sprite->bottom - sprite->top;
             newObject->layer = layer;
-            newObject->persistent = persistent;  // Set persistence
+            if (parent != NULL) {
+                for (int i = 0; i < parent->numObjects; ++i) {
+                    descObject.Descen = obj_list;
+                    descObject.Parent = parent;
+                }
+            }
 
-            // Add the object to the list
-            obj_add(obj_list, x, y, NewWidth, NewHeight, sprite, layer, parent);
+            newObject->texture = GRRLIB_LoadTexture(sprite->spriteData);
+            newObject->collision_mask.left = sprite->left;
+            newObject->collision_mask.right = sprite->right;
+            newObject->collision_mask.top = sprite->top;
+            newObject->collision_mask.bottom = sprite->bottom;
+            newObject->collision_mask.originX = sprite->originX;
+            newObject->collision_mask.originY = sprite->originY;
+            newObject->collision_mask.GenWidth = sprite->GenWidth;
+            newObject->collision_mask.GenHeight = sprite->GenHeight;
+            newObject->collision_mask.Type = sprite->Type;
 
-            return newObject;
+            newObject->width = width * sprite->GenWidth;
+            newObject->height = height * sprite->GenHeight;
+            newObject->persistent = persistent;
+            
+            obj_list->objects[obj_list->numObjects++] = newObject;
+            
+            return newObject;  // Return the new object pointer
         }
     }
+    obj_list->initialized = true;
 
-    // If creation failed, clean up to prevent memory leaks
     obj_cleanup(obj_list);
-    return NULL;
+    
+    return NULL;  // Return NULL if no object was created
 }
+
 
 // Function to get the length of the array of var variables
 int array_length(var variables[], int maxVariables) {
@@ -532,10 +578,10 @@ bool place_meeting(float x, float y, ObjectList *obj_list) {
     SpriteWithCollision *currentSprite = &currentObject->collision_mask;
 
     // Calculate the current object's boundaries based on the given position
-    float objLeft = x + currentSprite->left - currentSprite->originX;
-    float objRight = x + currentObject->width + currentSprite->right - currentSprite->originX;
-    float objTop = y + currentSprite->top - currentSprite->originY;
-    float objBottom = y + currentObject->height + currentSprite->bottom - currentSprite->originY;
+    float objLeft   = x + currentSprite->left - currentSprite->originX;
+    float objRight  = x + currentSprite->right - currentSprite->originX;
+    float objTop    = y + currentSprite->top - currentSprite->originY;
+    float objBottom = y + currentSprite->bottom - currentSprite->originY;    
 
     // Iterate through the target object list
     for (int i = 0; i < obj_list->numObjects; ++i) {
@@ -547,10 +593,10 @@ bool place_meeting(float x, float y, ObjectList *obj_list) {
         SpriteWithCollision *otherSprite = &otherObject->collision_mask;
 
         // Calculate the other object's boundaries
-        float otherLeft = otherObject->x + otherSprite->left - otherSprite->originX;
-        float otherRight = otherObject->x + otherObject->width + otherSprite->right - otherSprite->originX;
-        float otherTop = otherObject->y + otherSprite->top - otherSprite->originY;
-        float otherBottom = otherObject->y + otherObject->height + otherSprite->bottom - otherSprite->originY;
+        float otherLeft     = otherObject->x + otherSprite->left - otherSprite->originX;
+        float otherRight    = otherObject->x + otherSprite->right - otherSprite->originX;
+        float otherTop      = otherObject->y + otherSprite->top - otherSprite->originY;
+        float otherBottom   = otherObject->y + otherSprite->bottom - otherSprite->originY;
 
         bool isColliding = (objRight >= otherLeft && objLeft <= otherRight && objBottom >= otherTop && objTop <= otherBottom);
 
@@ -693,43 +739,6 @@ int sign(float x) {
     }
 }
 
-bool instance_exists(ObjectList *obj_list) {
-    // Check if the object list contains any objects
-    if (obj_list->numObjects > 0) {
-        return true;
-    }
-    return false;
-}
-
-void instance_destroy(ObjectList *obj_list) {
-    if (currentObject == NULL || obj_list->numObjects == 0) {
-        return;
-    }
-
-    // Find the currentObject in the object list
-    for (int i = 0; i < obj_list->numObjects; ++i) {
-        if (obj_list->objects[i] == currentObject) {
-            // Free the memory allocated for the currentObject
-            free(currentObject);
-            
-            // Shift the remaining objects in the list to fill the gap
-            for (int j = i; j < obj_list->numObjects - 1; ++j) {
-                obj_list->objects[j] = obj_list->objects[j + 1];
-            }
-            
-            // Decrease the object count and nullify the last entry
-            obj_list->numObjects--;
-            obj_list->objects[obj_list->numObjects] = NULL;
-            
-            // Reset currentObject to prevent using a dangling pointer
-            currentObject = NULL;
-            break;
-        }
-    }
-}
-
-ObjectList* object_list;  // Array to hold pointers to GameObjects
-
 void room_goto(int selRoom) {
     // Perform any necessary cleanup before switching rooms
     RoomChanged = 0;
@@ -774,6 +783,7 @@ void room_goto(int selRoom) {
         }
     }
     RoomChanged = 1;
+
     // Update the current room
     currentRoom = selRoom;
 }

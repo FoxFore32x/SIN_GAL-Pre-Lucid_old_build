@@ -119,9 +119,9 @@ SpriteWithCollision sprite_ball2 = {
     .right = 4,
     .top = 61,
     .bottom = 60,
-    .originX = 0,
-    .originY = 0,
 	.GenWidth = 64,
     .GenHeight = 64,
+    .originX = 0,
+    .originY = 0,
 	.Type = RECTANGLE
 };

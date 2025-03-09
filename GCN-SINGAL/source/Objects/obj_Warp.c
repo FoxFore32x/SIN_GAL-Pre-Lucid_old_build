@@ -34,7 +34,7 @@ void obj_Warp_Step(int xPosition, int yPosition, int roomName){
             // Check collision with obj_player
             if (place_meeting(Wx, Wy, &obj_player2)) {
                 // Create the warp instance
-                warp.base = *instance_create(&obj_WarpController, 0, 0, 32, 32, &sprite_ball2, LAYER_BACKGROUND, false, NULL); // Assuming 32x32 size and sprite_Warp
+                warp.base = instance_create(&obj_WarpController, 0, 0, 1, 1, &sprite_ball2, LAYER_BACKGROUND, false, NULL);
                 // Set additional properties like newX, newY, and newRoom
                 warp.newX = xPosition;
                 warp.newY = yPosition;

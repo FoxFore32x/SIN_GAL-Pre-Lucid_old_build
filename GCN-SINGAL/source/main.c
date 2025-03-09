@@ -1,5 +1,6 @@
 #include <grrlib.h>
 #include <ogc/video.h>
+#include <ogcsys.h>
 #include <stdlib.h>
 #include <math.h>
 #include <malloc.h>
@@ -26,9 +27,11 @@ int main(int argc, char *argv[]) {
     PAD_Init();
     ASND_Init();
     //MP3Player_Init();
-    InitVideo();
+    //InitVideo();
 
     //fatMountSimple("sd:/", &__io_gcsda);
+
+    Initialise1();
 
     int popo = 0;
 

@@ -21,6 +21,8 @@ void drawing2(const f32 xpos, const f32 ypos, const f32 zpos, const GRRLIB_texIm
 
 void CalculateFPS();
 void DrawFPS();
+void DrawDEBUG(int x, int y, const char *format, ...);
+void DrawDEBUGSimple(int x, int y, const char *format);
 
 int abs_int(int value);
 float abs_float(float value);
@@ -37,7 +39,7 @@ void CaptureScreenToTexture();
 void DrawCapturedScreen();
 void sort_objects_by_depth(ObjectList *obj_list);
 void draw_objects(ObjectList* obj_list, SpriteWithCollision* defaultSprite, int image_xscale, int image_yscale);
-GameObject* instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent);
+void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent);
 void draw_sprite(SpriteWithCollision sprite_index, int image_index, float x, float y);
 void obj_cleanup(ObjectList *obj_list);
 void RmClean();

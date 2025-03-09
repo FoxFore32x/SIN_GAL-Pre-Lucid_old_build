@@ -16,52 +16,72 @@
 #include "../Objects/objects.h"
 #include "../Extensions/Extensions.h"
 
+enum ObjectNames {
+    oSolid,
+    oSlope,          // Assign unique values to each room
+    oBGWall,
+    oWarp,
+    oWarpController,
+    NUM_OBJS // This will keep track of the total number of rooms
+};
+
 void rm_train2()
 {
     while (RoomChanged == 0)
     {
+        ObjectList* RmObjLst[20] = {
+            &obj_solid,
+            &obj_slope,
+            &obj_BGWall,
+            &obj_Warp,
+        }; // Now it's an array
 
-        instance_create(&obj_solid, -256, 384, 14, 20, &spr_solid, LAYER_SOLID, false, NULL);
+        for(int i = 0; i < 20; i++){
+            if (RmObjLst[i] != NULL) {
+                obj_init(RmObjLst[i]);
+            }
+        }
 
-        instance_create(&obj_solid, 192, 864, 15, 5, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], -256, 384, 14, 20, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 672, 960, 22, 2, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 192, 864, 15, 5, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 1312, 416, 2, 17, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 672, 960, 22, 2, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 928, 0, 6, 16, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 1312, 416, 2, 17, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 3264, 288, 4, 1, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 928, 0, 6, 16, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 2816, 0, 37, 1, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3264, 288, 4, 1, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 3968, 32, 1, 37, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 2816, 0, 37, 1, &spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(&obj_solid, 3392, 288, 6, 29, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3968, 32, 1, 37, &spr_solid, LAYER_SOLID, false, NULL);
+
+        instance_create(RmObjLst[oSolid], 3392, 288, 6, 29, &spr_solid, LAYER_SOLID, false, NULL);
 
         //obj_add(&obj_solid_list, x, x, *32, *32);
 
-        instance_create(&obj_BGWall, 1632, 384, 15, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
+        instance_create(RmObjLst[oBGWall], 1632, 384, 15, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
 
-        instance_create(&obj_BGWall, 2400, 384, 14, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
+        instance_create(RmObjLst[oBGWall], 2400, 384, 14, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
 
-        instance_create(&obj_Warp, 3584, 1120, 12, 2, &spr_Warp, LAYER_PLAYER, false, NULL);
+        instance_create(RmObjLst[oWarp], 3584, 1120, 12, 2, &spr_Warp, LAYER_PLAYER, false, NULL);
 
         //obj_add(&obj_player2, 96, 800, 1, 1, &spr_teoriIdle, LAYER_PLAYER);
 
         //audio_play_sound(bgm_concept_lights_are_on, true);
 
-        oCamera_RoomStart(640, 528, 4000, 1024, &obj_player2);
+        oCamera_RoomStart(640, 480, 4000, 1024, &obj_player2);
 
         GRRLIB_FillScreen(GRRLIB_BLACK); // Clear the screen
 
         while (1)
         {
-            //scr_getInput();
 
             room_background(bg_temp);
             
-            obj_camera(640, 528, &obj_player2, 0, 4000, 1024);
+            obj_camera(640, 480, &obj_player2, 0, 4000, 1024);
 
             obj_Warp_Step(3968, 319, room_train1);
 

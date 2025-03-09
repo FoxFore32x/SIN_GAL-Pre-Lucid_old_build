@@ -26,19 +26,23 @@ enum ObjectNames {
     NUM_OBJS // This will keep track of the total number of rooms
 };
 
-ObjectList* RmObjLst[1000] = {
-    &obj_player2,
-    &obj_solid,
-    &obj_slope,
-    &obj_BGWall,
-    &obj_Warp,
-    &obj_WarpController
-}; // Now it's an array
-
 void rm_train1()
 {
     while (RoomChanged == 0)
     {
+        ObjectList* RmObjLst[20] = {
+            &obj_player2,
+            &obj_solid,
+            &obj_slope,
+            &obj_BGWall,
+            &obj_Warp,
+        }; // Now it's an array
+
+        for(int i = 0; i < 20; i++){
+            if (RmObjLst[i] != NULL) {
+                obj_init(RmObjLst[i]);
+            }
+        }
 
         instance_create(RmObjLst[oSolid], 0, 0, 1, 28, &spr_solid, LAYER_SOLID, false, NULL);
 
@@ -74,12 +78,9 @@ void rm_train1()
 
         instance_create(RmObjLst[oWarp], 4096, 0, 3, 12, &spr_Warp, LAYER_PLAYER, false, NULL);
 
-        if (instance_exists(RmObjLst[oPlayer]) == false)
-        {
-            instance_create(RmObjLst[oPlayer], 200, 800, 1, 1, &spr_teoriIdle, LAYER_PLAYER, false, NULL);
-        }
+        instance_create(RmObjLst[oPlayer], 200, 800, 1, 1, &spr_teoriIdle, LAYER_PLAYER, true, NULL);
 
-        oCamera_RoomStart(640, 528, 6144, 2048, RmObjLst[oPlayer]);
+        oCamera_RoomStart(640, 480, 6144, 2048, RmObjLst[oPlayer]);
 
         audio_play_sound(bgm_concept_lights_are_on, true);
 
@@ -91,7 +92,11 @@ void rm_train1()
         {
             //scr_getInput();
 
-            obj_camera(640, 528, RmObjLst[oPlayer], 0, 6144, 2048);
+            obj_pointer_draw();
+
+            obj_spot_draw();
+
+            obj_camera(640, 480, RmObjLst[oPlayer], 0, 6144, 2048);
 
             room_background(bg_temp);
 
@@ -126,11 +131,9 @@ void rm_train1()
             GRRLIB_Render();
         }
         RmClean();
-        // Clean up objects
         obj_cleanup(&obj_solid);
         obj_cleanup(&obj_BGWall);
         obj_cleanup(&obj_player2);
-        obj_cleanup(&obj_slope);
         obj_cleanup(&obj_Warp);
 
         GRRLIB_Exit(); // Be a good boy, clear the memory allocated by GRRLIB

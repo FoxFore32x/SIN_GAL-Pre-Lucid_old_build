@@ -25,44 +25,42 @@ void GRRLIB_Widescreen(bool wd_on) {
 	else {
 		rmode->viWidth = 640; 
 		rmode->viXOrigin = (VI_MAX_WIDTH_PAL - 640) / 2;
+        rmode->viHeight = 528;
 	}
 
     VIDEO_Configure (rmode);
 }
 
-void InitVideo() {
-    // Initialize video subsystem
-    VIDEO_Init();
+void * Initialise1() {
+	void *framebuffer;
 
-    // Get preferred video mode
-    GXRModeObj *rmode = VIDEO_GetPreferredMode(NULL);
+	VIDEO_Init();
 
-    rmode->viWidth = 640;
-    scrnWidth = 640;
+	// Get the default video mode first
+	rmode = VIDEO_GetPreferredMode(NULL);
 
-    // Adjust for 16:9 aspect ratio
-    /*if(CONF_GetAspectRatio() == CONF_ASPECT_16_9) {
-        rmode->viWidth = 711;
-        scrnWidth = 854;
-    }*/
+	// Force 4:3 aspect ratio (centered)
+	rmode->viXOrigin = (VI_MAX_WIDTH_NTSC - 640) / 2;
+	rmode->viYOrigin = (VI_MAX_HEIGHT_NTSC - 480) / 2;
 
-    // Allocate framebuffers
-    void *frameBuffer[2];
-    for (int i = 0; i < 2; ++i) {
-        frameBuffer[i] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
-    }
+    // Set correct resolution
+	rmode->viWidth = 704;
+	rmode->viHeight = 480;
+	rmode->fbWidth = 640;
+    rmode->xfbHeight = 480;
+	rmode->efbHeight = 480;
 
-    // Set double buffering
-    VIDEO_SetNextFramebuffer(frameBuffer[0]);
-    VIDEO_Configure(rmode);
-    VIDEO_SetBlack(FALSE);
-    VIDEO_Flush();
+	// Allocate framebuffer
+	framebuffer = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
+	console_init(framebuffer, 20, 20, rmode->fbWidth, rmode->xfbHeight, rmode->fbWidth * VI_DISPLAY_PIX_SZ);
 
-    // Enable vertical sync
-    VIDEO_WaitVSync();
+	// Apply video settings
+	VIDEO_Configure(rmode);
+	VIDEO_SetNextFramebuffer(framebuffer);
+	VIDEO_SetBlack(FALSE);
+	VIDEO_Flush();
+	VIDEO_WaitVSync();
+	if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
 
-    // Swap buffers
-    VIDEO_SetNextFramebuffer(frameBuffer[1]);
-    VIDEO_Flush();
-    VIDEO_WaitVSync();
+	return framebuffer;
 }

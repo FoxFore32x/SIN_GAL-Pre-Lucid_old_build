@@ -100,7 +100,7 @@ extern ObjectList obj_spot;
 extern ObjectList obj_Warp;
 extern ObjectList obj_WarpController;
 
-extern ObjectList* RmObjLst[1000]; // Now it's an array
+extern ObjectList* RmObjLst[1000];
 
 typedef struct{
     float CamX;
