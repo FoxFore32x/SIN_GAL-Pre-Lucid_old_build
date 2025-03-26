@@ -60,7 +60,6 @@ void rm_title()
             GRRLIB_Render();
             GRRLIB_FreeTTF(myFont);
         }
-        RmClean();
 
         GRRLIB_Exit(); // Be a good boy, clear the memory allocated by GRRLIB
     }

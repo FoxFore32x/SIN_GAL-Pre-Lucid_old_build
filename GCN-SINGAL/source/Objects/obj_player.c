@@ -15,7 +15,6 @@
 #include "objects.h"
 #include "../Extensions/Extensions.h"
 
-SpriteWithCollision sprite_index;
 ObjectList obj_player2;
 ObjectList obj_solid;
 GameObject *currentObject = NULL;
@@ -91,8 +90,11 @@ void obj_player_Step() {
                 y = InitY;
             }
 
+            currentObject->image_xscale = image_xscale;
+
             currentObject->x = x;
             currentObject->y = y;
+            SpriteWithCollision sprite_index;
             //=================================================================================================================================
 
             scr_getInput();
@@ -331,7 +333,7 @@ void obj_player_Step() {
             }
             if (key_test)
             {
-                instance_create(&obj_solid, 20, 20, 2, 2, &spr_solid, LAYER_SOLID, false, NULL);
+                instance_create(&obj_solid, 20, 20, 2, 2, 0, spr_solid, LAYER_SOLID, false, NULL);
             }
             //Animation
             if (!place_meeting(x, y + 1, &obj_solid))
@@ -398,6 +400,10 @@ void obj_player_Step() {
                 //sprite_index = teoriSlide;
                 sprite_index = spr_teoriSlide;
             }
+
+            //============== NO TOUCHIE, GRRLIB SYSTEM CODE! ================================================================================================
+            currentObject->collision_mask = sprite_index;
+            //===============================================================================================================================================
         }
     }
 }
@@ -429,7 +435,5 @@ void obj_player_Draw()
 
     //show_hud();
 
-    currentObject->collision_mask = sprite_index;
-
-    draw_objects(&obj_player2, &currentObject->collision_mask, image_xscale, 1);
+    draw_objects(&obj_player2);
 }

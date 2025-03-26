@@ -12,7 +12,7 @@ void GRRLIB_Widescreen(bool wd_on);
 // scr_video.c
 void InitVideo();
 
-void * Initialise1();
+void Initialise1();
 
 //scr_videoplayer.h
 

@@ -32,14 +32,15 @@ int max(int count, ...);
 
 //bool place_meeting(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
 void obj_init(ObjectList *obj_list);
+void init_objs();
 void obj_add(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, ObjectList *parent);
 int clamp(int value, int min, int max);
 void InitializeScreenCapture();
 void CaptureScreenToTexture();
 void DrawCapturedScreen();
 void sort_objects_by_depth(ObjectList *obj_list);
-void draw_objects(ObjectList* obj_list, SpriteWithCollision* defaultSprite, int image_xscale, int image_yscale);
-void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent);
+void draw_objects(ObjectList* obj_list);
+void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, float rotation, SpriteWithCollision sprite, Layer layer, bool persistent, ObjectList *parent);
 void draw_sprite(SpriteWithCollision sprite_index, int image_index, float x, float y);
 void obj_cleanup(ObjectList *obj_list);
 void RmClean();

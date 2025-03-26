@@ -27,11 +27,11 @@ int main(int argc, char *argv[]) {
     PAD_Init();
     ASND_Init();
     //MP3Player_Init();
-    //InitVideo();
+    InitVideo();
 
     //fatMountSimple("sd:/", &__io_gcsda);
 
-    Initialise1();
+    //Initialise1();
 
     int popo = 0;
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     // Game loop
     while (1) {
 
-        GRRLIB_DrawImg(100, 0, intro, 0, 1, 1, GRRLIB_WHITE);
+        GRRLIB_DrawImg(96, 0, intro, 0, 1, 1, GRRLIB_WHITE);
 
         popo++;
 

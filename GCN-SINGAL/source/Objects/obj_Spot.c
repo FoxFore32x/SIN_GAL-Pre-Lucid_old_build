@@ -19,19 +19,12 @@
 ObjectList obj_spot;
 
 void obj_spot_draw() {
-
-    const u8* sprite_index = spr_ball2;
-
-    GRRLIB_texImg *tex_ball2 = GRRLIB_LoadTexturePNG(sprite_index); // Load your texture (replace 'solid' with your actual texture)
-
     for (int i = 0; i < obj_spot.numObjects; ++i) {
         GameObject* currentObject = obj_spot.objects[i];
         if (currentObject != NULL) {
-            currentObject->texture = tex_ball2;
+            currentObject->collision_mask = sprite_ball2;
         }
     }
 
-    draw_objects(&obj_spot, &sprite_ball2, 1, 1);
-
-    GRRLIB_FreeTexture(tex_ball2);
+    draw_objects(&obj_spot);
 }

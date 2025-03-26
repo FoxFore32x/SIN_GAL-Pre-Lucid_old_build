@@ -54,5 +54,5 @@ void obj_WarpController_Draw()
     draw_set_color(GRRLIB_BLACK);            // Set the color to black
     draw_set_alpha(fadeLevel);               // Set the alpha transparency level
     draw_rectangle(0, 0, ROOM_WIDTH, ROOM_HEIGHT, true); // Draw a filled rectangle covering the room
-    draw_set_alpha(1.0f);   
+    draw_set_alpha(1.0f);
 }

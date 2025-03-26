@@ -20,14 +20,15 @@ ObjectList obj_slope;
 
 void obj_slope_draw(bool showCollisions) {
 
-    /*for (int i = 0; i < obj_slope.numObjects; ++i) {
+    for (int i = 0; i < obj_slope.numObjects; ++i) {
         GameObject* currentObject = obj_slope.objects[i];
         if (currentObject != NULL) {
+            currentObject->collision_mask = sprite_slope;
         }
-    }*/
+    }
 
     /*if (showCollisions == true)
     {*/
-        draw_objects(&obj_slope, &sprite_slope, 1, 1);
+        draw_objects(&obj_slope);
     //}
 }

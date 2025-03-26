@@ -4,11 +4,15 @@ Visit http://www.devkitpro.org
 */
 
 //---------------------------------------------------------------------------------
-#ifndef _quispe_h_
-#define _quispe_h_
+#ifndef _spr_insSolid_h_
+#define _spr_insSolid_h_
 //---------------------------------------------------------------------------------
-extern const unsigned char quispe[];
-extern const int quispe_size;
+extern const unsigned char spr_insSolid[];
+extern const int spr_insSolid_size;
+
+#include "../Sprites.h"
+
+extern SpriteWithCollision sp_insSolid;
 //---------------------------------------------------------------------------------
-#endif //_quispe_h_
+#endif //_spr_insSolid_h_
 //---------------------------------------------------------------------------------

@@ -35,6 +35,12 @@ int RoomChanged;
 
 ObjectList* RmObjLst[1000];
 
+// Define number of threads
+#define NUM_THREADS 10
+
+// Mutex for synchronizing texture loading
+lwp_t threads[NUM_THREADS];
+
 extern GRRLIB_drawSettings GRRLIB_Settings;
 extern Mtx                 GXmodelView2D;
 
@@ -209,8 +215,21 @@ void obj_init(ObjectList *obj_list) {
     for (int i = 0; i < MAX_OBJECTS; ++i) {
         obj_list->objects[i] = NULL;
         CurrObjLst = obj_list;
-        obj_list->initialized = true;
     }
+}
+
+bool initedObjs = false;
+
+void init_objs(){
+    if (initedObjs == false){
+        for(int i = 0; i < 20; i++){
+            if (RmObjLst[i] != NULL) {
+                obj_init(RmObjLst[i]);
+            }
+        }
+        initedObjs = true;
+    }
+
 }
 
 ParObj descObject;
@@ -222,13 +241,6 @@ void obj_add(ObjectList *obj_list, float x, float y, float width, float height, 
             newObject->x = x;
             newObject->y = y;
             newObject->layer = layer;
-            if (parent != NULL) {
-                for (int i = 0; i < parent->numObjects; ++i) {
-                    descObject.Descen = obj_list;
-                    descObject.Parent = parent;
-                }
-            }
-
             newObject->texture = GRRLIB_LoadTexture(sprite->spriteData);
             newObject->collision_mask.left = sprite->left;
             newObject->collision_mask.right = sprite->right;
@@ -242,6 +254,13 @@ void obj_add(ObjectList *obj_list, float x, float y, float width, float height, 
 
             newObject->width = width * sprite->GenWidth;
             newObject->height = height * sprite->GenHeight;
+
+            if (parent != NULL) {
+                for (int i = 0; i < parent->numObjects; ++i) {
+                    descObject.Descen = obj_list;
+                    descObject.Parent = parent;
+                }
+            }
             
             obj_list->objects[obj_list->numObjects++] = newObject;
         }
@@ -270,7 +289,7 @@ void sort_objects_by_layer(ObjectList *obj_list) {
     qsort(obj_list->objects, obj_list->numObjects, sizeof(GameObject*), compareLayers);
 }*/
 
-void sort_objects_by_depth(ObjectList *obj_list) {
+/*void sort_objects_by_depth(ObjectList *obj_list) {
     for (int i = 0; i < obj_list->numObjects - 1; ++i) {
         for (int j = 0; j < obj_list->numObjects - i - 1; ++j) {
             if (obj_list->objects[j]->depth > obj_list->objects[j + 1]->depth) {
@@ -280,7 +299,7 @@ void sort_objects_by_depth(ObjectList *obj_list) {
             }
         }
     }
-}
+}*/
 
 // Global or outside the main loop
 GRRLIB_texImg *screenTexture = NULL;
@@ -300,52 +319,38 @@ void DrawCapturedScreen() {
     drawing2(0, 0, LAYER_SCREEN, screenTexture, 0, 1, 1, GRRLIB_WHITE);
 }
 
-// Define number of threads
-#define NUM_THREADS 10
+void draw_objects(ObjectList* obj_list) {
+    if (!obj_list || obj_list->numObjects == 0) return;
 
-// Mutex for synchronizing texture loading
-lwp_t threads[NUM_THREADS];
-static GRRLIB_texImg* texture = NULL;
-static const unsigned char* lastSpriteData = NULL;
-static SpriteWithCollision* globalSprite;
-int imageXScale, imageYScale;
-float ZLayer;
-static ObjectList* globalObjectList;
+    for (int i = 0; i < obj_list->numObjects; ++i) {
+        GameObject* currentObject = obj_list->objects[i];
+        if (!currentObject) continue;
 
-void draw_objects(ObjectList* obj_list, SpriteWithCollision* funnySprite, int image_xscale, int image_yscale) {
-    // Set global for consistency
-    globalSprite = funnySprite;
-    globalObjectList = obj_list;
-    imageXScale = image_xscale;
-    imageYScale = image_yscale;
+        // Load new texture if necessary
+        GRRLIB_texImg* newTexture = NULL;
 
-    // Ensure the texture is loaded
-    if (lastSpriteData != globalSprite->spriteData) {
-        if (texture != NULL) {
-            GRRLIB_FreeTexture(texture);
+        if (!currentObject->texture || currentObject->texture->data != currentObject->collision_mask.spriteData) {
+            if(newTexture == NULL) newTexture = GRRLIB_LoadTexturePNG(currentObject->collision_mask.spriteData);
+
+            // Free old texture before assigning a new one
+            if (currentObject->texture) {
+                GRRLIB_FreeTexture(currentObject->texture);
+            }
+
+            currentObject->texture = newTexture;
         }
-        texture = GRRLIB_LoadTexturePNG(globalSprite->spriteData);
-        lastSpriteData = globalSprite->spriteData;
-    }
 
-    // Sort objects by depth
-    sort_objects_by_depth(obj_list);
+        // Compute draw position
+        float screenX = (currentObject->x - currentObject->collision_mask.originX - view_camera[0].CamX);
+        float screenY = (currentObject->y - currentObject->collision_mask.originY - view_camera[0].CamY);
+        float Layer = currentObject->layer;
+        float objectWidth = (currentObject->currentWidth * currentObject->image_xscale);
+        float objectHeight = (currentObject->currentHeight * currentObject->image_yscale);
 
-    // Draw all objects sequentially
-    for (int i = 0; i < globalObjectList->numObjects; ++i) {
-        currentObject = globalObjectList->objects[i];
-        if (currentObject != NULL) {
-            float screenX = (currentObject->x - currentObject->collision_mask.originX - view_camera[0].CamX);
-            float screenY = (currentObject->y - currentObject->collision_mask.originY - view_camera[0].CamY);
-            float Layer = currentObject->layer;
-            float objectWidth = (currentObject->width * imageXScale) / funnySprite->GenWidth;
-            float objectHeight = (currentObject->height * imageYScale) / funnySprite->GenHeight;
+        GRRLIB_SetHandle(currentObject->texture, currentObject->collision_mask.originX, currentObject->collision_mask.originY);
 
-            GRRLIB_SetHandle(texture, currentObject->collision_mask.originX, currentObject->collision_mask.originY);
-
-            // Draw the object
-            drawing2(screenX, screenY, Layer, texture, 0, objectWidth, objectHeight, GRRLIB_WHITE);
-        }
+        // Draw the object
+        drawing2(screenX, screenY, Layer, currentObject->texture, currentObject->rotation, objectWidth, objectHeight, GRRLIB_WHITE);
     }
 }
 
@@ -381,10 +386,9 @@ void draw_sprite(SpriteWithCollision sprite_index, int image_index, float x, flo
 
 void RmClean() {
     rm_loop_bg_clean();
-    if (texture != NULL) {
-        GRRLIB_FreeTexture(texture);
-        texture = NULL;
-        lastSpriteData = NULL;
+    if (currentObject->texture != NULL) {
+        GRRLIB_FreeTexture(currentObject->texture);
+        currentObject->texture = NULL;
     }
 }
 
@@ -401,7 +405,6 @@ void obj_cleanup(ObjectList *obj_list) {
             obj_list->numObjects = 0;
             free(obj_list->objects[i]);  // Free non-persistent object
             obj_list->objects[i] = NULL;
-            obj_list->initialized = false;
         }/* else {
             obj_list->objects[newCount++] = obj_list->objects[i];  // Keep persistent objects
         }*/
@@ -416,7 +419,6 @@ bool instance_exists(ObjectList *obj_list) {
         return true;
     }
     return false;
-    //return obj_list->initialized;
 }
 
 void instance_destroy(ObjectList *obj_list) {
@@ -446,12 +448,13 @@ void instance_destroy(ObjectList *obj_list) {
     }
 }
 
-void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, SpriteWithCollision *sprite, Layer layer, bool persistent, ObjectList *parent) {
+void *instance_create(ObjectList *obj_list, float x, float y, float width, float height, float rotation, SpriteWithCollision sprite, Layer layer, bool persistent, ObjectList *parent) {
     if (obj_list->numObjects < MAX_OBJECTS) {
         GameObject* newObject = (GameObject*)malloc(sizeof(GameObject));
         if (newObject != NULL) {
             newObject->x = x;
             newObject->y = y;
+
             newObject->layer = layer;
             if (parent != NULL) {
                 for (int i = 0; i < parent->numObjects; ++i) {
@@ -460,19 +463,22 @@ void *instance_create(ObjectList *obj_list, float x, float y, float width, float
                 }
             }
 
-            newObject->texture = GRRLIB_LoadTexture(sprite->spriteData);
-            newObject->collision_mask.left = sprite->left;
-            newObject->collision_mask.right = sprite->right;
-            newObject->collision_mask.top = sprite->top;
-            newObject->collision_mask.bottom = sprite->bottom;
-            newObject->collision_mask.originX = sprite->originX;
-            newObject->collision_mask.originY = sprite->originY;
-            newObject->collision_mask.GenWidth = sprite->GenWidth;
-            newObject->collision_mask.GenHeight = sprite->GenHeight;
-            newObject->collision_mask.Type = sprite->Type;
+            newObject->texture = NULL;
 
-            newObject->width = width * sprite->GenWidth;
-            newObject->height = height * sprite->GenHeight;
+            newObject->currentWidth = width;
+            newObject->currentHeight = height;
+
+            newObject->rotation = rotation;
+
+            newObject->width = width * sprite.GenWidth;
+            newObject->height = height * sprite.GenHeight;
+
+            /*newObject->width = width * newObject->collision_mask.GenWidth;
+            newObject->height = height * newObject->collision_mask.GenHeight;*/
+
+            newObject->image_xscale = 1;
+            newObject->image_yscale = 1;
+
             newObject->persistent = persistent;
             
             obj_list->objects[obj_list->numObjects++] = newObject;
@@ -480,7 +486,6 @@ void *instance_create(ObjectList *obj_list, float x, float y, float width, float
             return newObject;  // Return the new object pointer
         }
     }
-    obj_list->initialized = true;
 
     obj_cleanup(obj_list);
     
@@ -506,190 +511,145 @@ int array_length(var variables[], int maxVariables) {
 #define btoa(x) ((x)?"true":"false")
 
 bool CheckRectangleVsPrecise(float ALeft, float ATop, float ARight, float ABottom, 
-                            const ObjectList *obj_list) {
+    const ObjectList *obj_list) {
 
-    if (!obj_list){
-        DrawDEBUGSimple(40, 15, "No we.");
+    if (!obj_list || obj_list->numObjects == 0) {
         return false;
     }
-
-    if (obj_list->numObjects == 0) {
-        return false;
-    }
-
-    u32 TexW, TexH;
 
     bool collisionFound = false;
 
     for (int i = 0; i < obj_list->numObjects; ++i) {
         GameObject *PrecObj = obj_list->objects[i];
-        // Get texture width and height
-        TexW = (PrecObj->width);
-        TexH = (PrecObj->height);
 
-        float BLeft = (PrecObj->x + PrecObj->collision_mask.left - PrecObj->collision_mask.originX);
-        float BTop = (PrecObj->y + PrecObj->collision_mask.top - PrecObj->collision_mask.originY);
-        float BRight = (PrecObj->x + PrecObj->collision_mask.right - PrecObj->collision_mask.originX);
-        float BBottom = (PrecObj->y + PrecObj->collision_mask.bottom - PrecObj->collision_mask.originY);
+        // Compute B's bounding box in world space
+        float BLeft = PrecObj->x - PrecObj->collision_mask.originX;
+        float BRight = BLeft + PrecObj->width;
+        float BTop = PrecObj->y - PrecObj->collision_mask.originY;
+        float BBottom = BTop + PrecObj->height;
 
-        // Calculate the overlapping region in texture space
-        int startX = MAX(0, ALeft - BLeft); // Left
-        int startY = MAX(0, ATop - BTop);  // Top
-        int endX = MIN(ARight - BRight, TexW); // Right
-        int endY = MIN(ABottom - BBottom, TexH); // Bottom
+        // Calculate the overlapping region
+        int startX = MAX(ALeft, BLeft);
+        int startY = MAX(ATop, BTop);
+        int endX = MIN(ARight, BRight);
+        int endY = MIN(ABottom, BBottom);
 
-        if (ARight >= BLeft && ALeft <= BRight && ABottom >= BTop && ATop <= BBottom){
-            return false;
+        // If there is no overlap, continue to next object
+        if (startX >= endX || startY >= endY) {
+            continue;
         }
 
         // Iterate over the overlapping area
         for (int y = startY; y < endY; ++y) {
             for (int x = startX; x < endX; ++x) {
-                const u32 color = GRRLIB_GetPixelFromtexImg(x, y, PrecObj->texture);
+                const u32 color = GRRLIB_GetPixelFromtexImg(x - BLeft, y - BTop, PrecObj->texture);
                 int Alp = A(color);
 
-                //DrawDEBUG(40, 15, "Alpha = %.2i", Alp);
-                //DrawDEBUG (40, 65, "collisionFound = %.2s", btoa(collisionFound));
-
-                // Check if the alpha is greater than zero
-                if(Alp > 0 && Alp != 0){
+                // Check if alpha is greater than zero
+                if (Alp >= 1) {
                     collisionFound = true;
-                    break; // Break the inner loop once a collision is found
                 } else {
                     collisionFound = false;
-                    break;
                 }
             }
-            if (collisionFound) { break; } // Break the outer loop as well
         }
     }
 
-    // Return whether a collision was found
     return collisionFound;
 }
 
-SpriteWithCollision *currentSprite;
 
 bool place_meeting(float x, float y, ObjectList *obj_list) {
-    if (currentObject == NULL || obj_list == NULL) {
-        return false; // No collision possible without valid input
-    }
+    if (!currentObject || !obj_list) return false;
 
     SpriteWithCollision *currentSprite = &currentObject->collision_mask;
 
-    // Calculate the current object's boundaries based on the given position
-    float objLeft   = x + currentSprite->left - currentSprite->originX;
-    float objRight  = x + currentSprite->right - currentSprite->originX;
-    float objTop    = y + currentSprite->top - currentSprite->originY;
-    float objBottom = y + currentSprite->bottom - currentSprite->originY;    
+    // Calculate object boundaries considering position, origin, and scaling
+    float objLeft   = x + (currentSprite->left * currentObject->currentWidth) - currentSprite->originX;
+    float objRight  = x + (currentSprite->right * currentObject->currentWidth) - currentSprite->originX;
+    float objTop    = y + (currentSprite->top * currentObject->currentHeight) - currentSprite->originY;
+    float objBottom = y + (currentSprite->bottom * currentObject->currentHeight) - currentSprite->originY;
 
-    // Iterate through the target object list
     for (int i = 0; i < obj_list->numObjects; ++i) {
         GameObject *otherObject = obj_list->objects[i];
-        if (otherObject == NULL || otherObject == currentObject) {
-            continue; // Skip null or self-collision
-        }
+        if (!otherObject || otherObject == currentObject) continue;
 
         SpriteWithCollision *otherSprite = &otherObject->collision_mask;
 
-        // Calculate the other object's boundaries
-        float otherLeft     = otherObject->x + otherSprite->left - otherSprite->originX;
-        float otherRight    = otherObject->x + otherSprite->right - otherSprite->originX;
-        float otherTop      = otherObject->y + otherSprite->top - otherSprite->originY;
-        float otherBottom   = otherObject->y + otherSprite->bottom - otherSprite->originY;
+        // Calculate other object boundaries with correct scaling & positioning
+        float otherLeft   = otherObject->x + (otherSprite->left * otherObject->currentWidth) - otherSprite->originX;
+        float otherRight  = otherObject->x + (otherSprite->right * otherObject->currentWidth) - otherSprite->originX;
+        float otherTop    = otherObject->y + (otherSprite->top * otherObject->currentHeight) - otherSprite->originY;
+        float otherBottom = otherObject->y + (otherSprite->bottom * otherObject->currentHeight) - otherSprite->originY;
 
-        bool isColliding = (objRight >= otherLeft && objLeft <= otherRight && objBottom >= otherTop && objTop <= otherBottom);
+        bool isColliding = (objRight >= otherLeft && objLeft <= otherRight &&
+                            objBottom >= otherTop && objTop <= otherBottom);
 
-        // Handle collision types
-        if (currentSprite->Type == RECTANGLE && otherSprite->Type == RECTANGLE) {
-            if (isColliding){ return true; } // Simple bounding box collision
-        }
-
-        if (currentSprite->Type == RECTANGLE && otherSprite->Type == PRECISE){
-                    // Determine RECTANGLE and PRECISE objects
-            if(isColliding){
-
+        if (isColliding) {
+            if (currentSprite->Type == RECTANGLE && otherSprite->Type == RECTANGLE) {
+                return true; 
+            }
+            if (currentSprite->Type == RECTANGLE && otherSprite->Type == PRECISE) {
                 if (CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, obj_list)) {
                     return true;
                 }
-
-            } //else { break; }// else { break; }
-        }
-        if (currentSprite->Type == PRECISE && otherSprite->Type == RECTANGLE) {
-            // Determine RECTANGLE and PRECISE objects
-            if(isColliding){
-
-                if (CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, CurrObjLst)) {
+            }
+            if (currentSprite->Type == PRECISE && otherSprite->Type == RECTANGLE) {
+                if (CheckRectangleVsPrecise(otherLeft, otherTop, otherRight, otherBottom, CurrObjLst)) {
                     return true;
                 }
-
+            }
+            if (currentSprite->Type == PRECISE && otherSprite->Type == PRECISE) {
+                return CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, obj_list);
             }
         }
 
-        if (currentSprite->Type == PRECISE && otherSprite->Type == PRECISE) {
-            if (isColliding){ return true; } // Simple bounding box collision
-        }
-
-        //Descendant OBJ
         if (otherObject->descendant != NULL) {
             ObjectList *DESC = descObject.Descen;
                 // Iterate through the target object list
 
-            if (DESC->numObjects == 0) {
-                free(DESC); // Free the list if empty
-                otherObject->descendant = NULL;
-            }
-
             for (int i = 0; i < DESC->numObjects; ++i) {
-                GameObject *otherObject = DESC->objects[i];
-                if (otherObject == NULL || otherObject == currentObject) {
+                GameObject *dObject = DESC->objects[i];
+                if (dObject == NULL || dObject == currentObject) {
                     continue; // Skip null or self-collision
                 }
 
-                SpriteWithCollision *otherSprite = &otherObject->collision_mask;
+                SpriteWithCollision *descSprite = &dObject->collision_mask;
 
                 // Calculate the other object's boundaries
-                float otherLeft = otherObject->x + otherSprite->left - otherSprite->originX;
-                float otherRight = otherObject->x + otherObject->width + otherSprite->right - otherSprite->originX;
-                float otherTop = otherObject->y + otherSprite->top - otherSprite->originY;
-                float otherBottom = otherObject->y + otherObject->height + otherSprite->bottom - otherSprite->originY;
+                float descLeft   = dObject->x + descSprite->left - descSprite->originX;
+                float descRight  = dObject->x + (descSprite->right * dObject->currentWidth) - descSprite->originX;
+                float descTop    = dObject->y + descSprite->top - descSprite->originY;
+                float descBottom = dObject->y + (descSprite->bottom * dObject->currentHeight) - descSprite->originY;
+                
+                bool isColliding1 = (objRight >= descLeft && objLeft <= descRight &&
+                    objBottom >= descTop && objTop <= descBottom);
 
-                bool isColliding = (objRight >= otherLeft && objLeft <= otherRight && objBottom >= otherTop && objTop <= otherBottom);
-
-                // Handle collision types
-                if (currentSprite->Type == RECTANGLE && otherSprite->Type == RECTANGLE) {
-                    if (isColliding){ return true; }
-                }
-
-                if (currentSprite->Type == RECTANGLE && otherSprite->Type == PRECISE){
-                    // Determine RECTANGLE and PRECISE objects
-                    if(isColliding){
-
+                if (isColliding1) {
+                    if (currentSprite->Type == RECTANGLE && descSprite->Type == RECTANGLE) {
+                        return true; 
+                    }
+                    if (currentSprite->Type == RECTANGLE && descSprite->Type == PRECISE) {
                         if (CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, DESC)) {
                             return true;
                         }
-
-                    } //else { break; }// else { break; }
-                }
-                if (currentSprite->Type == PRECISE && otherSprite->Type == RECTANGLE) {
-                    // Determine RECTANGLE and PRECISE objects
-                    if(isColliding){
-
-                        if (CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, CurrObjLst)) {
+                    }
+                    if (currentSprite->Type == PRECISE && descSprite->Type == RECTANGLE) {
+                        if (CheckRectangleVsPrecise(descLeft, descTop, descRight, descBottom, CurrObjLst)) {
                             return true;
                         }
-
-                    } //else { break; }// else { break; }
-                }
-                if (currentSprite->Type == PRECISE && otherSprite->Type == PRECISE) {
-                    if (isColliding){ return true; } // Simple bounding box collision
+                    }
+                    /*if (currentSprite->Type == PRECISE && descSprite->Type == PRECISE) {
+                        return CheckRectangleVsPrecise(objLeft, objTop, objRight, objBottom, obj_list);
+                    }*/
                 }
             }
+
         }
+
     }
 
-    return false; // No collision detected
-
+    return false;
 }
 
 bool move_and_collide(float *x, float *y, float dx, float dy, ObjectList *obj_list) {
@@ -742,6 +702,7 @@ int sign(float x) {
 void room_goto(int selRoom) {
     // Perform any necessary cleanup before switching rooms
     RoomChanged = 0;
+    initedObjs = false;
 
     if (RoomChanged == 0){
         room_background_cleanup();
@@ -782,6 +743,7 @@ void room_goto(int selRoom) {
                 break;
         }
     }
+    RmClean();
     RoomChanged = 1;
 
     // Update the current room
@@ -791,6 +753,7 @@ void room_goto(int selRoom) {
 void room_goto_next() {
     // Perform any necessary cleanup before switching rooms
     selRoom++;
+    initedObjs = false;
 
     room_background_cleanup();
 
@@ -825,6 +788,7 @@ void room_goto_next() {
             // Handle invalid room identifier
             break;
     }
+    RmClean();
     RoomChanged = 1;
     
     // Update the current room

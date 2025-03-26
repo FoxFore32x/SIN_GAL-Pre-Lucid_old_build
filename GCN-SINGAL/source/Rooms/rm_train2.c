@@ -21,7 +21,7 @@ enum ObjectNames {
     oSlope,          // Assign unique values to each room
     oBGWall,
     oWarp,
-    oWarpController,
+    oinsSolid,
     NUM_OBJS // This will keep track of the total number of rooms
 };
 
@@ -34,6 +34,7 @@ void rm_train2()
             &obj_slope,
             &obj_BGWall,
             &obj_Warp,
+            &obj_insSolid
         }; // Now it's an array
 
         for(int i = 0; i < 20; i++){
@@ -42,31 +43,33 @@ void rm_train2()
             }
         }
 
-        instance_create(RmObjLst[oSolid], -256, 384, 14, 20, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], -256, 384, 14, 20, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 192, 864, 15, 5, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 192, 864, 15, 5, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 672, 960, 22, 2, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 672, 960, 22, 2, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 1312, 416, 2, 17, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 1312, 416, 2, 17, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 928, 0, 6, 16, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 928, 0, 6, 16, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 3264, 288, 4, 1, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3264, 288, 4, 1, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 2816, 0, 37, 1, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 2816, 0, 37, 1, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 3968, 32, 1, 37, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3968, 32, 1, 37, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 3392, 288, 6, 29, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3392, 288, 6, 29, 0, spr_solid, LAYER_SOLID, false, NULL);
 
         //obj_add(&obj_solid_list, x, x, *32, *32);
 
-        instance_create(RmObjLst[oBGWall], 1632, 384, 15, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
+        instance_create(RmObjLst[oBGWall], 1632, 384, 15, 25, 0, spr_BGwall, LAYER_BG_WALL, false, NULL);
 
-        instance_create(RmObjLst[oBGWall], 2400, 384, 14, 25, &spr_BGwall, LAYER_BG_WALL, false, NULL);
+        instance_create(RmObjLst[oBGWall], 2400, 384, 14, 25, 0, spr_BGwall, LAYER_BG_WALL, false, NULL);
 
-        instance_create(RmObjLst[oWarp], 3584, 1120, 12, 2, &spr_Warp, LAYER_PLAYER, false, NULL);
+        instance_create(RmObjLst[oWarp], 3584, 1120, 12, 2, 0, spr_Warp, LAYER_PLAYER, false, NULL);
+
+        instance_create(RmObjLst[oinsSolid], 352, 64, 14, 14, 0, sp_insSolid, LAYER_SOLID, false, &obj_solid);
 
         //obj_add(&obj_player2, 96, 800, 1, 1, &spr_teoriIdle, LAYER_PLAYER);
 
@@ -89,6 +92,8 @@ void rm_train2()
 
             obj_solid_draw(true);
 
+            obj_insSolid_draw(true);
+
             //obj_slope_draw(true);
             
             if (instance_exists(&obj_player2))
@@ -107,7 +112,6 @@ void rm_train2()
 
             GRRLIB_Render();
         }
-        RmClean();
         // Clean up objects
         obj_cleanup(&obj_solid);
         obj_cleanup(&obj_BGWall);

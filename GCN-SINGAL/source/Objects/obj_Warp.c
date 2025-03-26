@@ -28,13 +28,15 @@ void obj_Warp_Step(int xPosition, int yPosition, int roomName){
         if (currentObject != NULL) {
             //code goes here
 
+            currentObject->collision_mask = spr_Warp;
+
             float Wx = currentObject->x;
             float Wy = currentObject->y;
 
             // Check collision with obj_player
             if (place_meeting(Wx, Wy, &obj_player2)) {
                 // Create the warp instance
-                warp.base = instance_create(&obj_WarpController, 0, 0, 1, 1, &sprite_ball2, LAYER_BACKGROUND, false, NULL);
+                warp.base = instance_create(&obj_WarpController, 0, 0, 1, 1, 0, sprite_ball2, LAYER_BACKGROUND, false, NULL);
                 // Set additional properties like newX, newY, and newRoom
                 warp.newX = xPosition;
                 warp.newY = yPosition;
@@ -48,6 +50,6 @@ void obj_Warp_Step(int xPosition, int yPosition, int roomName){
             }
         }
 
-        draw_objects(&obj_Warp, &spr_Warp, 1, 1);
+        draw_objects(&obj_Warp);
     }
 }

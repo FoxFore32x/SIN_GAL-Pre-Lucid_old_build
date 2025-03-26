@@ -61,6 +61,7 @@ typedef struct {
     float y;
     int width;
     int height;
+    float rotation;
     float currentWidth;
     float currentHeight;
     int depth;  // New depth field for draw order
@@ -70,8 +71,15 @@ typedef struct {
     bool persistent;
     //struct GameList* parent;
     struct ObjectList* descendant; //User doesn't change it's value, it's the program who does the dirty work
+    float image_xscale;
+    float image_yscale;
 
-    void *Create;
+    void *EvCreate;
+    void *EvDestroy;
+    void *EvCleanUp;
+    void *EvStep;
+    void *EvBeginStep;
+    void *EvEndStep;
 } GameObject;
 
 extern GameObject* currentObject; // Pointer to an array of GameObject pointers
@@ -80,6 +88,8 @@ typedef struct {
     GameObject* objects[MAX_OBJECTS];
     int numObjects;
     bool initialized;  // New flag to track initialization status
+    bool visible;
+    SpriteWithCollision sprite_index;
 } ObjectList;
 
 typedef struct {
@@ -94,6 +104,7 @@ extern ObjectList Background;
 extern ObjectList obj_player2;
 extern ObjectList obj_solid;
 extern ObjectList obj_slope;
+extern ObjectList obj_insSolid;
 extern ObjectList obj_BGWall;
 extern ObjectList obj_pointer;
 extern ObjectList obj_spot;
@@ -131,6 +142,8 @@ void obj_slope_draw(bool showCollisions);
 void obj_pointer_draw();
 
 void obj_spot_draw();
+
+void obj_insSolid_draw(bool showCollisions);
 
 void oCamera_RoomStart(int Wth, int Hgt, int RmWth, int RmHgt, ObjectList *obj_list);
 void obj_camera(int Wth, int Hgt, ObjectList *obj_list, int view_id, int RmWth, int RmHgt);

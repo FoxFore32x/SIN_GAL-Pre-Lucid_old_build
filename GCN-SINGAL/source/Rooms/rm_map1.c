@@ -38,11 +38,11 @@ void rm_map1()
             }
         }
 
-        instance_create(RmObjLst[oPointer], 128, 160, 2, 2, &sprite_teoriIcontest, LAYER_PLAYER, false, NULL);
+        instance_create(RmObjLst[oPointer], 128, 160, 2, 2, 0, sprite_teoriIcontest, LAYER_PLAYER, false, NULL);
 
-        instance_create(RmObjLst[oSpot], 416, 224, 1, 1, &sprite_ball2 ,LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSpot], 416, 224, 1, 1, 0, sprite_ball2 ,LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSpot], 128, 224, 1, 1, &sprite_ball2, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSpot], 128, 224, 1, 1, 0, sprite_ball2, LAYER_SOLID, false, NULL);
 
         audio_play_sound("BGM_CONCEPT_UPANISHADS", true);
 

@@ -20,14 +20,15 @@ ObjectList obj_BGWall;
 
 void obj_BGWall_draw(bool showCollisions) {
 
-    /*for (int i = 0; i < obj_BGWall.numObjects; ++i) {
+    for (int i = 0; i < obj_BGWall.numObjects; ++i) {
         GameObject* currentObject = obj_BGWall.objects[i];
         if (currentObject != NULL) {
+            currentObject->collision_mask = spr_BGwall;
         }
-    }*/
+    }
 
     /*if (showCollisions == true)
     {*/
-        draw_objects(&obj_BGWall, &spr_BGwall, 1, 1);
+        draw_objects(&obj_BGWall);
     //}
 }

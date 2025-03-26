@@ -44,41 +44,41 @@ void rm_train1()
             }
         }
 
-        instance_create(RmObjLst[oSolid], 0, 0, 1, 28, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 0, 0, 1, 28, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 32, 448, 14, 5, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 32, 448, 14, 5, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 0, 896, 10, 4, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 0, 896, 10, 4, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 320, 832, 13, 6, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 320, 832, 13, 6, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 736, 448, 13, 18, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 736, 448, 13, 18, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 864, 0, 9, 11, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 864, 0, 9, 11, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 1344, 0, 5, 24, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 1344, 0, 5, 24, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 1280, 960, 15, 2, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 1280, 960, 15, 2, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 1760, 608, 12, 13, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 1760, 608, 12, 13, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 2496, 320, 8, 22, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 2496, 320, 8, 22, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 3328, 384, 11, 1, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3328, 384, 11, 1, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 3680, 384, 27, 20, &spr_solid, LAYER_SOLID, false, NULL);
+        instance_create(RmObjLst[oSolid], 3680, 384, 27, 20, 0, spr_solid, LAYER_SOLID, false, NULL);
 
-        instance_create(RmObjLst[oSolid], 1600, 800, 5, 5, &sprite_slope, LAYER_SOLID, false, &obj_solid);
+        instance_create(RmObjLst[oSlope], 1600, 800, 5, 5, 0, sprite_slope, LAYER_SOLID, false, &obj_solid);
 
-        instance_create(RmObjLst[oSolid], 100, 300, 8, 5, &sprite_slope, LAYER_SOLID, false, &obj_solid);
+        instance_create(RmObjLst[oSlope], 100, 300, 8, 5, 0, sprite_slope, LAYER_SOLID, false, &obj_solid);
 
         //obj_add(&obj_solid_list, x, x, *32, *32);
 
-        instance_create(RmObjLst[oBGWall], 2048, 320, 15, 22, &spr_BGwall, LAYER_BG_WALL, false, NULL);
+        instance_create(RmObjLst[oBGWall], 2048, 320, 15, 22, 0, spr_BGwall, LAYER_BG_WALL, false, NULL);
 
-        instance_create(RmObjLst[oWarp], 4096, 0, 3, 12, &spr_Warp, LAYER_PLAYER, false, NULL);
+        instance_create(RmObjLst[oWarp], 4096, 0, 3, 12, 0, spr_Warp, LAYER_PLAYER, false, NULL);
 
-        instance_create(RmObjLst[oPlayer], 200, 800, 1, 1, &spr_teoriIdle, LAYER_PLAYER, true, NULL);
+        instance_create(RmObjLst[oPlayer], 200, 800, 1, 1, 0, RmObjLst[oPlayer]->sprite_index, LAYER_PLAYER, true, NULL);
 
         oCamera_RoomStart(640, 480, 6144, 2048, RmObjLst[oPlayer]);
 
@@ -92,9 +92,9 @@ void rm_train1()
         {
             //scr_getInput();
 
-            obj_pointer_draw();
+            /*obj_pointer_draw();
 
-            obj_spot_draw();
+            obj_spot_draw();*/
 
             obj_camera(640, 480, RmObjLst[oPlayer], 0, 6144, 2048);
 
@@ -102,7 +102,7 @@ void rm_train1()
 
             //obj_Warp_Step(32, 319, room_train2);
 
-            obj_Warp_Step(32, 200, room_train2);
+            obj_Warp_Step(576, 224, room_train2);
 
             obj_BGWall_draw(true);
 
@@ -130,7 +130,6 @@ void rm_train1()
 
             GRRLIB_Render();
         }
-        RmClean();
         obj_cleanup(&obj_solid);
         obj_cleanup(&obj_BGWall);
         obj_cleanup(&obj_player2);

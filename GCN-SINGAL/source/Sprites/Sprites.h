@@ -27,13 +27,14 @@
 
 //Collision Mask's Types
 
-#define RECTANGLE 0
-#define RECTANGLE_WITH_ROTATION 1
-#define ELIPSE 2
-#define DIAMOND 3
-#define PRECISE 4
-#define PRECISE_BY_FRAME 5
-#define SPINE_COLLISION_MESH 6
+enum CollisionTypes {
+    RECTANGLE,
+    RECTANGLE_WITH_ROTATION,
+    ELIPSE,          // Assign unique values to each room
+    PRECISE,
+    PRECISE_BY_FRAME,
+    SPINE_COLLISION_MESH
+};
 
 typedef struct {
     const unsigned char *spriteData;
@@ -70,6 +71,7 @@ typedef struct {
 //Technical
 #include "Collision/solid.h"
 #include "Collision/spr_slope.h"
+#include "Collision/spr_insSolid.h"
 #include "Collision/tex_BGwall.h"
 #include "Collision/tex_Warp.h"
 #include "Assets/spr_teoriIcontest.h"

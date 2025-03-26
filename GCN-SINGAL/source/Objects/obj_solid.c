@@ -18,14 +18,15 @@
 
 void obj_solid_draw(bool showCollisions) {
 
-    /*for (int i = 0; i < obj_solid.numObjects; ++i) {
+    for (int i = 0; i < obj_solid.numObjects; ++i) {
         GameObject* currentObject = obj_solid.objects[i];
         if (currentObject != NULL) {
+            currentObject->collision_mask = spr_solid;
         }
-    }*/
+    }
 
     /*if (showCollisions == true)
     {*/
-        draw_objects(&obj_solid, &spr_solid, 1, 1);
+        draw_objects(&obj_solid);
     //}
 }

@@ -19,19 +19,18 @@ int scrnWidth;
 void GRRLIB_Widescreen(bool wd_on) {
 	// This is meant to fix widescreen TVs
 	if (wd_on) {
-		rmode->viWidth = 678; 
-		rmode->viXOrigin = (VI_MAX_WIDTH_PAL - 678) / 2;
+		rmode->viWidth = 854; 
+		rmode->viXOrigin = (VI_MAX_WIDTH_PAL - 854) / 2;
 	}
 	else {
-		rmode->viWidth = 640; 
-		rmode->viXOrigin = (VI_MAX_WIDTH_PAL - 640) / 2;
-        rmode->viHeight = 528;
+		rmode->viWidth = 704; 
+		rmode->viXOrigin = (VI_MAX_WIDTH_PAL - 704) / 2;
 	}
 
     VIDEO_Configure (rmode);
 }
 
-void * Initialise1() {
+void Initialise1() {
 	void *framebuffer;
 
 	VIDEO_Init();
@@ -61,6 +60,44 @@ void * Initialise1() {
 	VIDEO_Flush();
 	VIDEO_WaitVSync();
 	if (rmode->viTVMode & VI_NON_INTERLACE) VIDEO_WaitVSync();
+}
 
-	return framebuffer;
+
+void InitVideo() {
+    // Initialize video subsystem
+    VIDEO_Init();
+
+    // Get preferred video mode
+    GXRModeObj *rmode = VIDEO_GetPreferredMode(NULL);
+
+	// Force 4:3 aspect ratio (centered)
+	rmode->viXOrigin = (VI_MAX_WIDTH_NTSC - 640) / 2;
+	rmode->viYOrigin = (VI_MAX_HEIGHT_NTSC - 480) / 2;
+
+    // Set correct resolution
+	rmode->viWidth = 704;
+	rmode->viHeight = 480;
+	rmode->fbWidth = 640;
+    rmode->xfbHeight = 480;
+	rmode->efbHeight = 480;
+
+    // Allocate framebuffers
+    void *frameBuffer[2];
+    for (int i = 0; i < 2; ++i) {
+        frameBuffer[i] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
+    }
+
+    // Set double buffering
+    VIDEO_SetNextFramebuffer(frameBuffer[0]);
+    VIDEO_Configure(rmode);
+    VIDEO_SetBlack(FALSE);
+    VIDEO_Flush();
+
+    // Enable vertical sync
+    VIDEO_WaitVSync();
+
+    // Swap buffers
+    VIDEO_SetNextFramebuffer(frameBuffer[1]);
+    VIDEO_Flush();
+    VIDEO_WaitVSync();
 }
