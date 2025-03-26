@@ -12,7 +12,7 @@ It's being made for the Wii (mainly), Gamecube, Switch, Android and PC platforms
 
 ### Current progress
 
-5% - Still making the engine for it
+20% - Still making the engine for it, Designs fully sketched
 
 #### Things currently inplemented
 
