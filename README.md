@@ -1,6 +1,6 @@
-# SIN_GAL: De-Lusional
+# SIN_GAL: Pre-Lucid
 
-Inconsistent Illusions is a ficticious Arcade style Platformer/Beat em Up videogame made by an also ficticious company called "SINGAL". The objective is to uncover the story of company while you play the incomplete version of the Arcade game.
+This is a ficticious Arcade style Platformer/Beat em Up videogame made by an also ficticious company called "SINGAL". The objective is to uncover the story of company while you play the incomplete version of the Arcade game.
 
 It's being made for the Wii (mainly), Gamecube, Switch, Android and PC platforms by the use of different engines.
 
