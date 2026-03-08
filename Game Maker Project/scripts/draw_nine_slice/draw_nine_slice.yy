@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"draw_nine_slice",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"draw_nine_slice",
+  "parent":{
+    "name":"GMS2",
+    "path":"folders/Scripts/GMS2.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

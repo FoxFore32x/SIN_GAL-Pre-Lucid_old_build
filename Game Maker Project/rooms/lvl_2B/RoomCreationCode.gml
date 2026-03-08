@@ -1,0 +1,1 @@
+createEnemie(2, 32, 80);

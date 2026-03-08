@@ -1,0 +1,161 @@
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\is_blocking\is_blocking.gml
+Converted description /// @description  is_blocking(inst)/// @param inst
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\state_change\state_change.gml
+Converted description /// @description state_change(state);/// @param state
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\squash_stretch\squash_stretch.gml
+Converted description /// @description squash_stretch( xScale, yScale );/// @param  xScale
+/// @param  yScale
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\frame_check\frame_check.gml
+Converted description /// @description frame_check(currentFrame, frameCounter);/// @param currentFrame
+/// @param  frameCounter
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\hitbox_create\hitbox_create.gml
+Converted description /// @description hitbox_create( xOffset, yOffset, xScale, yScale, duration, xhit, yhit, hit stun, damage);/// @param  xOffset
+/// @param  yOffset
+/// @param  xScale
+/// @param  yScale
+/// @param  duration
+/// @param  xhit
+/// @param  yhit
+/// @param  hit stun
+/// @param  damage
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\hurtbox_create\hurtbox_create.gml
+Converted description /// @description hurtbox_create(xOffset, yOffset, xScale, yScale);/// @param xOffset
+/// @param  yOffset
+/// @param  xScale
+/// @param  yScale
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\approach\approach.gml
+Converted description /// @description  Approach(start, end, shift);/// @param start
+/// @param  end
+/// @param  shift
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\animation_set\animation_set.gml
+Converted description /// @description animation_set ( frameData, sprite, loop );/// @param  frameData
+/// @param  sprite
+/// @param  loop
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\frame_factory\frame_factory.gml
+Converted description /// @description frame_factory(1,1,1...);/// @param 1
+/// @param 1
+/// @param 1...
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\string_hash_to_newline\string_hash_to_newline.gml
+Converted description /// @description  string_hash_to_newline(str)/// @param str
+String not found: ConversionLog_ConvertedString 4 "\n" "\\n"
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\draw_nine_slice\draw_nine_slice.gml
+Converted description /// @description  draw_nine_slice(sprite, x, y, width, height, border, selected, invert)/// @param sprite
+/// @param  x
+/// @param  y
+/// @param  width
+/// @param  height
+/// @param  border
+/// @param  selected
+/// @param  invert
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\array_length\array_length.gml
+Converted description /// @description  array_length(array)/// @param array
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\play_sfx\play_sfx.gml
+Converted description /// @description  play_sfx(sfx, priority, loop)/// @param sfx
+/// @param  priority
+/// @param  loop
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\createEnemie\createEnemie.gml
+Converted description /// @description  createEnemie(quantity, dist, y)/// @param quantity
+/// @param  dist
+/// @param  y
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\scripts\createPlayer\createPlayer.gml
+Converted description /// @description  createPlayer(my penis hurts)/// @param my penis hurts
+
+GameMaker Studio 1 font texture has been backed up at C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\fonts\FONT_builtin\FONT_builtin.gms1.png
+GameMaker Studio 1 font texture has been backed up at C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\fonts\FOT\FOT.gms1.png
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oCamera\Step_0.gml
+Converted builtin - line 46: view_xview[0] = finalCamX -> __view_set( e__VW.XView, 0, finalCamX )
+Converted builtin - line 47: view_yview[0] = finalCamY -> __view_set( e__VW.YView, 0, finalCamY )
+Converted builtin - line 31: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 32: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oCamera\Other_4.gml
+Converted builtin - line 41: view_xview[0] = finalCamX -> __view_set( e__VW.XView, 0, finalCamX )
+Converted builtin - line 42: view_yview[0] = finalCamY -> __view_set( e__VW.YView, 0, finalCamY )
+Converted builtin - line 32: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 35: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 17: view_wview[0] = view_w -> __view_set( e__VW.WView, 0, view_w )
+Converted builtin - line 33: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 36: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted builtin - line 18: view_hview[0] = view_h -> __view_set( e__VW.HView, 0, view_h )
+Converted builtin - line 14: view_visible[0] = true -> __view_set( e__VW.Visible, 0, true )
+Converted builtin - line 23: view_xport[0] = 0 -> __view_set( e__VW.XPort, 0, 0 )
+Converted builtin - line 24: view_yport[0] = 0 -> __view_set( e__VW.YPort, 0, 0 )
+Converted builtin - line 21: view_wport[0] = 640 -> __view_set( e__VW.WPort, 0, 640 )
+Converted builtin - line 22: view_hport[0] = 480 -> __view_set( e__VW.HPort, 0, 480 )
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\god\Step_2.gml
+Converted builtin - line 15: view_xview -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 11: view_xview += choose(-shakeForce,shakeForce) -> __view_set( e__VW.XView, 0, __view_get( e__VW.XView, 0 ) + (choose(-shakeForce,shakeForce)) )
+Converted builtin - line 16: view_yview -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 12: view_yview += choose(-shakeForce,shakeForce) -> __view_set( e__VW.YView, 0, __view_get( e__VW.YView, 0 ) + (choose(-shakeForce,shakeForce)) )
+Converted builtin - line 17: view_angle -> __view_get( e__VW.Angle, 0 )
+Converted builtin - line 13: view_angle += choose(-shakeForce * 0.5,shakeForce * 0.5) -> __view_set( e__VW.Angle, 0, __view_get( e__VW.Angle, 0 ) + (choose(-shakeForce * 0.5,shakeForce * 0.5)) )
+Converted description /// @description camera
+Converted builtin - line 15: view_xview = approach(__view_get( e__VW.XView, 0 ),0,0.3) -> __view_set( e__VW.XView, 0, approach(__view_get( e__VW.XView, 0 ),0,0.3) )
+Converted builtin - line 16: view_yview = approach(__view_get( e__VW.YView, 0 ),0,0.3) -> __view_set( e__VW.YView, 0, approach(__view_get( e__VW.YView, 0 ),0,0.3) )
+Converted builtin - line 17: view_angle = approach(__view_get( e__VW.Angle, 0 ),0,0.5) -> __view_set( e__VW.Angle, 0, approach(__view_get( e__VW.Angle, 0 ),0,0.5) )
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\god\Step_0.gml
+Converted description /// @description  @description debug
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\parentPhysics\Step_2.gml
+Converted description /// @description grounded and gravity
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\parentPhysics\Step_1.gml
+Converted description /// @description collision
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oWarpController\Create_0.gml
+Converted description /// @description  @description Inserte aquí la descripción
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oWarpController\Step_0.gml
+Converted description /// @description  @description Inserte aquí la descripción
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oWarpController\Draw_0.gml
+Converted description /// @description  @description Inserte aquí la descripción
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oHitbox\Draw_0.gml
+Converted description /// @description draw hitbox
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oHurtbox\Draw_0.gml
+Converted description /// @description draw hurtbox
+
+Converting GML script: C:\Users\dgarc\AppData\Local\GameMakerStudio2\GMS2TEMP\ProjectTool\SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1_1642035258_gmz\mvc\objects\oTitle\Draw_0.gml
+Converted builtin - line 42: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 43: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 42: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 43: view_hview[0] -> __view_get( e__VW.HView, 0 )
+
+Missing audiogroup for sound: 'sndTest' - setting to default audio group
+Missing audiogroup for sound: 'sndMenu' - setting to default audio group
+Missing audiogroup for sound: 'sndWinScreen' - setting to default audio group
+Missing audiogroup for sound: 'sfxPnch1' - setting to default audio group
+Missing audiogroup for sound: 'sfxPnch1low' - setting to default audio group
+Missing audiogroup for sound: 'sfxSwoosh' - setting to default audio group
+Missing audiogroup for sound: 'sfxDash' - setting to default audio group
+Missing audiogroup for sound: 'sfxJump' - setting to default audio group
+Missing audiogroup for sound: 'sfxParry' - setting to default audio group
+Missing audiogroup for sound: 'sndLevel' - setting to default audio group
+Missing audiogroup for sound: 'sndTutorial' - setting to default audio group
+Game speed set to 30
+Added compatibility script 'instance\instance_create.gml'
+Added compatibility script 'object\object_get_depth.gml'
+Added compatibility script 'view\__view_get.gml'
+Added compatibility script 'view\__view_set.gml'
+Added compatibility script 'view\__view_set_internal.gml'
+Added compatibility script 'view\__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'

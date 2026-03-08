@@ -1,0 +1,223 @@
+function pl_normalState() {
+	//move left and right
+	
+	if(!god.isPaused){
+		if(left){
+		    xSpeed = approach(xSpeed,-mSpeed,aSpeed * god.gameSpeed);
+		}else if(right){
+		    xSpeed = approach(xSpeed,mSpeed,aSpeed * god.gameSpeed);
+		}else{
+		    xSpeed = approach(xSpeed,0,aSpeed * god.gameSpeed);
+		}
+
+		if(down) isCrouching = true;
+		else isCrouching = false;
+
+		passTrough = false;
+		hasTumbled = false;
+		halfCombo = false;
+		strongAt = false;
+
+		if(parryKeyBuffered && parryActive == false){
+		    parryKeyBuffered = 0;
+		    parryKeyBufferTimer = 0;
+		    parryDur = parryDurMax;
+		    //currentState = states.parry;
+    
+		    parryActive = true;
+		}
+
+		if (parryDur > 0) parryDur -= 1 * god.gameSpeed;
+		else {
+		    canPlay = true;
+		    parryActive = false;
+		    parried = false;
+		}
+
+		if (
+		    place_meeting(x, y, parentWall)
+		    && wallKeyBuffered
+		    && canWallGrab
+		    && wallGrabLock <= 0
+		    && ySpeed > 0   // ← evita agarrarse justo al subir
+		) {
+		    if (!isWallGrabbing && !onGround) {
+		        if (wallGrabTimer == -1) wallGrabTimer = wallGrabMax;
+		        isWallGrabbing = true;
+		    }
+		}
+		 else if (!place_meeting(x, y, parentWall)){
+		    canWallGrab = true;
+		    isWallGrabbing = false;
+		    wallGrabTimer = -1;
+		} else if (!itemHold){
+		    isWallGrabbing = false;
+		    wallGrabTimer = -1;
+		}
+
+		// Handle wall grab behavior
+		if (isWallGrabbing) {
+		    if(wallGrabTimer != -1){
+		        wallGrabTimer -= 1 * god.gameSpeed;
+		    }
+    
+		    wallGrabLock = 8;      // frames de bloqueo (ajusta)
+		    canWallGrab = false;
+		    wallSlJmp = true;
+		    isJump = false;
+		    canJump = true;
+		    airDash = false;
+
+		    if (wallGrabTimer <= 0 && jumpHold) {
+		        isWallGrabbing = false;
+		    }
+
+		    if(ySpeed >= -0.5){
+		        //ySpeed = approach(ySpeed, 1, 0.3 * god.gameSpeed);
+		        tSpeed = 1.7 * (global.sprScale);
+		    }
+    
+		    mSpeed = 4 * (global.sprScale);
+		}
+
+		if(wallGrabTimer == 0){
+		    canWallGrab = false;
+		    isWallGrabbing = false;
+		}
+
+		if (wallGrabLock > 0) {
+		    wallGrabLock -= 1 * god.gameSpeed;
+		}
+
+
+		if(!isWallGrabbing){
+		    tSpeed = 10 * (global.sprScale);
+		    mSpeed = mSpeedDefault;
+		}
+
+		if(place_meeting( x, y+1, parentJumpthru) && down && jumpKeyBuffered) passTrough = true;
+
+		if (jumpKeyBuffered && canJump && !passTrough) {
+		    jumpKeyBuffered = 0;
+		    jumpKeyBufferTimer = 0;
+		    canWallGrab = false;
+		    isWallGrabbing = false;
+		    ySpeed = jPower;
+		    squash_stretch(0.7,1.3);
+		    canJump = false;
+		    if(isJump == false) play_sfx(sfxJump, 1, 0);
+		    isJump = true;
+		}
+
+		//jump if you are on the ground and not holding the jump button
+
+		//jump code
+		jump_control();
+
+		if((up || down) && (jabCnt > (jabLimit - 3))) halfCombo = true;
+
+		//attack
+		//change to the attack state and relevant subState based on direction and attack
+		if(lattKeyBuffered || hattKeyBuffered){
+
+		    play_sfx(sfxSwoosh, 1, 0);
+
+		    if(lattKeyBuffered){
+		        weapon = weapons.dagger;
+		        lattKeyBuffered = 0;
+		        lattKeyBufferTimer = 0;
+		    } else if(hattKeyBuffered){
+		        weapon = weapons.sword;
+		        hattKeyBuffered = 0;
+		        hattKeyBufferTimer = 0;
+		    }
+    
+		    weapon_stats();
+    
+		    //grounded attacks
+
+		    if(onGround){
+		        if(up){
+		            subState = attacks.up_ground;
+		            squash_stretch(0.7,1.3);
+		            cxHit = upAtX;
+		            cyHit = upAtY;
+		            chitTimer = upAtT;
+		        }else if(down){
+		            subState = attacks.down_ground;
+		            squash_stretch(0.7,1.3);
+		            cxHit = downAtX;
+		            cyHit = downAtY;
+		            chitTimer = downAtT;
+		        }else{
+		            subState = attacks.side_ground;
+		            squash_stretch(1.3,0.7);
+		            cxHit = sideAtX;
+		            cyHit = sideAtY;
+		            chitTimer = sideAtT;
+		        }
+		    }else{
+		        //air attacks
+		        if(up){
+		            subState = attacks.up_air;
+		            squash_stretch(0.7,1.3);
+		            cxHit = upAtX;
+		            cyHit = upAtY;
+		            chitTimer = upAtT;
+		        }else if(down){
+		            subState = attacks.down_air;
+		            squash_stretch(0.7,1.3);
+		            cxHit = downAtX;
+		            cyHit = downAtY;
+		            chitTimer = downAtT;
+		        }else{
+		            subState = attacks.side_air;
+		            squash_stretch(1.3,0.7);
+		            cxHit = sideAtX;
+		            cyHit = sideAtY;
+		            chitTimer = sideAtT;
+		        }
+		    }
+		    currentState = states.attack;
+
+		    frame_reset();
+		}
+
+		if(comboCnt >= 1 && comboTimer > 0){
+		    isCombing = true;
+		    comboTimer -= 1 * god.gameSpeed;
+		} else {
+		    isCombing = false;
+		    comboCnt = 0;
+		    jabCnt = 0;
+		}
+
+		//dash
+
+		if(dashKeyBuffered){
+
+		    dashKeyBuffered = 0;
+		    dashKeyBufferTimer = 0;
+		    //air dash. only dash in the air if airDash is false
+		    //set airDash to true if you have dashed in the air
+		    isDash = true;
+		    if(!onGround){
+		        if(!airDash){
+		            dashDur = dashDurMax;
+		            squash_stretch(1.3,0.7);
+		            currentState = states.dash;
+		            canWallGrab = true;
+		        }
+		    //ground dash
+		    }else if(onGround && !down){
+		        dashDur = dashDurMax;
+		        squash_stretch(1.3,0.7);
+		        currentState = states.dash;
+		    }
+		}
+	}
+
+
+
+
+}

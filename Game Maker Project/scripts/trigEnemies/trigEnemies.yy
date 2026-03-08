@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"trigEnemies",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"trigEnemies",
+  "parent":{
+    "name":"Triggers",
+    "path":"folders/Scripts/Triggers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
