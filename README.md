@@ -6,7 +6,7 @@ It's being made for the PC and Dreamcast platforms by the use of different engin
 
 ### Engines/Libraries Used
 
-[Game Maker Studio 2]([https://gamemaker.io/en]) - A Famous game engine focused on 2D game development
+[Game Maker Studio 2](https://gamemaker.io/en) - A Famous game engine focused on 2D game development
 
 ### Current progress
 
