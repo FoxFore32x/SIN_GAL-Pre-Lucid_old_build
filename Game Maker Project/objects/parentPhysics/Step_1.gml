@@ -31,7 +31,7 @@ repeat(abs(h)) {
     if(inst == noone || !is_blocking(inst)){
         x += sign(h) * god.gameSpeed;
     }else{
-        if(xSpeed >= 2 || xSpeed <= -2){
+        if((xSpeed >= 2 || xSpeed <= -2) && hitStun > 0){
             xSpeed = (abs(xSpeed) / (1.5 * facing));
             if(xSpeed >= 4){
                 xSpeed = 4;

@@ -1,6 +1,6 @@
 var _pl = instance_place(x, y, oPlayer)
 
-if(_pl != noone && _pl.player >= 0){
+if(_pl != noone){
     warp = instance_create(x, y, oWarpController);
     warp.pitBool = pit;
     warp.newX = xPosition;

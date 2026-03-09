@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"setOnGround",
   "parent":{
-    "name":"player",
-    "path":"folders/Scripts/player.yy",
+    "name":"collision",
+    "path":"folders/Scripts/collision.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

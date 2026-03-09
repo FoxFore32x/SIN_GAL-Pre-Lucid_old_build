@@ -1,7 +1,7 @@
 /// @description  @description debug
 window_set_caption(string(fps));
 
-if(keyboard_check_pressed(ord("Z"))/* || gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start)*/){
+if(keyboard_check_pressed(ord("Z")) && room != title/* || gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start)*/){
     audio_stop_all();
     instance_destroy(oHurtbox);
     instance_destroy(oHitbox);
@@ -88,7 +88,7 @@ if(room != results && room != title && room != init ){
     
 	}
 
-	if ((global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || timer <= 0 || realPlayerDead) {
+	if ((global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || (global.opTimer && timer <= 0) || realPlayerDead) {
 	    audio_stop_all();
 	    instance_destroy(oHurtbox);
 	    instance_destroy(oHitbox);

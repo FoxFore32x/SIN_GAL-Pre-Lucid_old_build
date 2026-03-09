@@ -227,6 +227,8 @@ function pl_create() {
 	hitBy = noone; //Obsolete
 	oHitBy = noone; //hitBy.owner for other funcs.
 	hitQueue = ds_list_create();
+	
+	prevBgWall = noone;
 
 	plId = 0;
 

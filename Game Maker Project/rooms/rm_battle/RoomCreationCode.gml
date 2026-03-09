@@ -1,5 +1,9 @@
 if(global.opMusic == true){ audio_play_sound(sndTest, 0, 1); }
 
+global.opHp = false;
+global.opTimer = false;
+global.arcadeMode = false;
+
 var dist = 16
 
 var ids = 0;
@@ -16,18 +20,8 @@ if(global.players > 0){
     }
 }
 
-if(global.cpus > 0){
-
-    for (var i = 0; i < global.cpus; i++) {
-    
-        p1[i] = instance_create(dist, 80, oPlayer);
-        p1[i].player = (i + 1); // -1, -2, -3, -4
-        p1[i].plId = ids;
-        global.playerId[ids] = p1[i];
-		
-
-        dist += 64;
-        ids++;
-        
-    }
-}
+p1 = instance_create(dist, 80, oPlayer);
+p1.player = 1;
+p1.plId = ids;
+global.playerId[ids] = p1;
+ids++;

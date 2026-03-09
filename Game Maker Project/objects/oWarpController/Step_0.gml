@@ -1,6 +1,11 @@
 /// @description  @description Inserte aquí la descripción
 // Puede escribir su código en este editor
 
+if(currentPlayer.player < 0 && !pitBool){
+	instance_destroy();
+	exit;
+}
+
 if (room != newRoom) {
     fadeLevel += 0.050;
     if (fadeLevel >= 1) {

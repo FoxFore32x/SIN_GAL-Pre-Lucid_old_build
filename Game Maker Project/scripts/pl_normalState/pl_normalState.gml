@@ -10,7 +10,7 @@ function pl_normalState() {
 		    xSpeed = approach(xSpeed,0,aSpeed * god.gameSpeed);
 		}
 
-		if(down) isCrouching = true;
+		if(down && (!left && !right)) isCrouching = true;
 		else isCrouching = false;
 
 		passTrough = false;
@@ -33,9 +33,11 @@ function pl_normalState() {
 		    parryActive = false;
 		    parried = false;
 		}
+		
+		var _bgwall = instance_place(x, y, parentWall);
 
 		if (
-		    place_meeting(x, y, parentWall)
+		    _bgwall != noone
 		    && wallKeyBuffered
 		    && canWallGrab
 		    && wallGrabLock <= 0
@@ -46,14 +48,15 @@ function pl_normalState() {
 		        isWallGrabbing = true;
 		    }
 		}
-		 else if (!place_meeting(x, y, parentWall)){
+		 else if (_bgwall == noone || _bgwall != prevBgWall || (wallGrabTimer <= 0 && item && !itemHold)){
 		    canWallGrab = true;
 		    isWallGrabbing = false;
-		    wallGrabTimer = -1;
+			if (_bgwall != prevBgWall || _bgwall == noone) wallGrabTimer = -1;
 		} else if (!itemHold){
 		    isWallGrabbing = false;
-		    wallGrabTimer = -1;
 		}
+		
+		prevBgWall = _bgwall;
 
 		// Handle wall grab behavior
 		if (isWallGrabbing) {
