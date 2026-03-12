@@ -1,4 +1,7 @@
-if(global.opMusic == true){ audio_play_sound(sndTest, 0, 1); }
+global.currentMusic = sndTest;
+if(global.opMusic == true){
+	audio_play_sound(global.currentMusic, 0, 1);
+}
 
 var dist = 16
 

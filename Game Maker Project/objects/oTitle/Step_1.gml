@@ -113,6 +113,8 @@
     
     jumpHold = jump;
     jump = keyboard_check(ord("O")) || gamepad_button_check(0, gp_face1);
+	
+	jump2 = keyboard_check_pressed(ord("O")) || gamepad_button_check_pressed(0, gp_face1);
     
     if (jump && !jumpHold){
         jumpKeyBufferTimer = bufferTime;

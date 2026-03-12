@@ -11,7 +11,7 @@ if (pos < 0)
     pos = op_length-1;
 }
 
-var btnJump = (jump && !jumpHold);
+var btnJump = (jump2);
 
 var _sml = menu_level;
 

@@ -19,3 +19,4 @@ global.buttPress = false;
 global.hasKey = false;
 global.arPlWon = false;
 global.plPause = 0;
+global.currentMusic = noone;

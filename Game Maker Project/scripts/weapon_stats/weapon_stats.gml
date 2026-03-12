@@ -37,12 +37,12 @@ function weapon_stats() {
 	        sideAtY = -1.7;
 	        downAtY = 3.2;
         
-	        upAtSX = 3.5;
-	        sideAtSX = 4.5;
-	        downAtSX = 3.5;
-	        upAtSY = -6.5;
-	        sideAtSY = -4.5;
-	        downAtSY = 4.5;
+	        upAtSX = 2.5;
+	        sideAtSX = 3.5;
+	        downAtSX = 2.5;
+	        upAtSY = -5.5;
+	        sideAtSY = -3.5;
+	        downAtSY = 3.5;
         
 	        //Attack timers
 	        upAtT = 20;
@@ -89,12 +89,12 @@ function weapon_stats() {
 	        sideAtY = -1;
 	        downAtY = 2;
         
-	        upAtSX = 3;
-	        sideAtSX = 4;
-	        downAtSX = 3;
-	        upAtSY = -6;
-	        sideAtSY = -4;
-	        downAtSY = 4;
+	        upAtSX = 2;
+	        sideAtSX = 3;
+	        downAtSX = 2;
+	        upAtSY = -5;
+	        sideAtSY = -3;
+	        downAtSY = 3;
         
 	        //Attack timers
 	        upAtT = 10;
