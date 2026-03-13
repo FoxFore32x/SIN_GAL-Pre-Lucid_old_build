@@ -161,6 +161,7 @@ function pl_endStep() {
         
 	        if((hb.owner.jabCnt > hb.owner.jabLimit) 
 	        || (hb.owner.hJabCnt > hb.owner.hJabLimit)
+			|| (hb.owner.hJabCnt > 0 && hb.owner.jabCnt > 0 && hb.owner.weapon == weapons.sword)
 	        || halfCombo == true){
 	            switch(hb.owner.subState){
 	                case attacks.up_ground:

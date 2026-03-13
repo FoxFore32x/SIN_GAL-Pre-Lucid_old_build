@@ -1,7 +1,7 @@
 function pl_normalState() {
 	//move left and right
 	
-	if(!god.isPaused){
+	if (god.isPaused) exit;
 		if(left){
 		    xSpeed = approach(xSpeed,-mSpeed,aSpeed * god.gameSpeed);
 		}else if(right){
@@ -218,7 +218,6 @@ function pl_normalState() {
 		        currentState = states.dash;
 		    }
 		}
-	}
 
 
 
