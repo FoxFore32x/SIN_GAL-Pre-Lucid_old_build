@@ -88,8 +88,10 @@ settVal[0] = global.players;
 settVal[1] = global.cpus;
 settVal[2] = global.opHp;
 settVal[3] = global.opTimer;
-settVal[4] = global.opMusic;
-settVal[5] = global.opSfx;
+settVal[4] = global.volMusic;
+settVal[5] = global.volSfx;
+
+global.arPlWon = false;
 
 op_length = array_length(option);
 val_length = array_length(settVal);
@@ -97,5 +99,7 @@ menu_level = 0;
 
 showCtrl = false;
 
-if(global.opMusic == true) { audio_play_sound(sndMenu, 0, 1); }
+global.currentMusic = sndMenu;
+
+if(global.opMusic == true) { audio_play_sound(global.currentMusic, 0, 1, global.volMusic); }
 else audio_stop_all();

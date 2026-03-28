@@ -95,22 +95,35 @@ switch(menu_level){
             // MUSIC SETTING
             case 4:
                 if (change != 0) {
-                    if (settVal[4] == false) {
-                        settVal[4] = true;
-                        audio_play_sound(sndMenu, 0, 1);
+					settVal[4] += (change * 0.1);
+					if(settVal[4] > 0){
+						global.opMusic = true;
+					}
+					else global.opMusic = false;
+					
+					if (settVal[4] < 0) settVal[4] = 0;
+					if (settVal[4] > global.maxVolMusic) settVal[4] = global.maxVolMusic;
+					
+					audio_sound_gain(global.currentMusic, settVal[4]);
+					
+                    if (global.opMusic == true && !audio_is_playing(global.currentMusic)) {
+                        audio_play_sound(global.currentMusic, 0, 1);
                     }
-                    else {
-                        settVal[4] = false;
-                        audio_stop_sound(sndMenu);
+                    else if (global.opMusic == false && audio_is_playing(global.currentMusic)) {
+                        audio_stop_sound(global.currentMusic);
                     }
                 }
             break;
             
             // SFX SETTING
             case 5:
-                if (change != 0) {
-                    if (settVal[5] == false) settVal[5] = true;
-                    else settVal[5] = false;
+				if (change != 0) {
+					settVal[5] += (change * 0.1);
+					if(settVal[5] > 0) global.opSfx = true;
+					else global.opSfx = false;
+					
+					if (settVal[5] < 0) settVal[5] = 0;
+					if (settVal[5] > global.maxVolSfx) settVal[5] = global.maxVolSfx;
                 }
             break;
 
@@ -121,8 +134,8 @@ switch(menu_level){
                     global.cpus = settVal[1];
                     global.opHp = settVal[2];
                     global.opTimer = settVal[3];
-                    global.opMusic = settVal[4];
-                    global.opSfx = settVal[5];
+                    global.volMusic = settVal[4];
+                    global.volSfx = settVal[5];
                     menu_level = 0;
                 }
             break;
@@ -136,12 +149,12 @@ switch(menu_level){
 
 // Proper back handling
 if (menu_level == 1 && lowAt && !lowAtHold){
-    global.players = settVal[0];
-    global.cpus   = settVal[1];
-    global.opHp   = settVal[2];
-    global.opTimer= settVal[3];
-    global.opMusic= settVal[4];
-    global.opSfx  = settVal[5];
+    global.players	= settVal[0];
+    global.cpus		= settVal[1];
+    global.opHp		= settVal[2];
+    global.opTimer	= settVal[3];
+    global.volMusic	= settVal[4];
+    global.volSfx	= settVal[5];
 
     menu_level = 0;
     pos = 0;

@@ -14,7 +14,7 @@ change = 0;
 //Pause Menu
 option[0, 0] = "Continue";
 option[0, 1] = "Settings";
-option[0, 2] = "Return to da Menu (pussy)";
+option[0, 2] = "Menu";
 
 //Settings Menu
 option[1, 0] = "Health";
@@ -25,8 +25,8 @@ option[1, 4] = "Back";
 
 settVal[0] = global.opHp;
 settVal[1] = global.opTimer;
-settVal[2] = global.opMusic;
-settVal[3] = global.opSfx;
+settVal[2] = global.volMusic;
+settVal[3] = global.volSfx;
 
 op_length = array_length(option);
 val_length = array_length(settVal);

@@ -28,6 +28,11 @@ function enum_init() {
 	    spear,
 	    axe
 	}
+	
+	enum characters{
+		teori,
+		lamb
+	}
 
 
 

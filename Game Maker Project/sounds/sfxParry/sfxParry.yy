@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.76575,
   "exportDir":"",
   "name":"sfxParry",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sfxParry",
-  "volume":0.6,
+  "volume":0.7,
 }

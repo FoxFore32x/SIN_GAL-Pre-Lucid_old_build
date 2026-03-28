@@ -21,4 +21,5 @@ jabCnt = 0;
 invFrames = 0;
 isDash = 0;
 hitStun = 0;
-
+dashed = 0;
+shield = 0;

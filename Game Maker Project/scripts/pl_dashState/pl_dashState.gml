@@ -10,21 +10,21 @@ function pl_dashState() {
 	        // Horizontal movement
 	        if (movingHoriz || idle) {
 	            xSpeed = dashHSpeed * facing;
-	            cxHit = 3 * facing;
+	            dashHitX = 4 * facing;
 	        } else {
-	            cxHit = 0;
+	            dashHitX = 0;
 	        }
 
 	        // Vertical movement
 	        if (up) {
 	            ySpeed = -dashYSpeed;
-	            cyHit = -3.5;
+	            dashHitY = -3.5;
 	        } else if (down && !onGround) {
 	            ySpeed = dashYSpeed;
-	            cyHit = 3.5;
+	            dashHitY = 3.5;
 	        } else {
 	            ySpeed = 0;
-	            cyHit = -2.5;
+	            dashHitY = -2.5;
 	        }
 
 	        if(airDash == false) play_sfx(sfxDash, 1, 0);
@@ -44,7 +44,7 @@ function pl_dashState() {
 	    // Hitbox creation timing
 	    if (dashDur >= dashDurMax){
 	        invFrames = 6;
-	        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, cxHit*(global.sprScale), cyHit*(global.sprScale), 15, 3);
+	        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3);
 	    }
 
 	    // Reset temporary speed near end
@@ -53,14 +53,14 @@ function pl_dashState() {
 
 	    // Countdown and reset state
 	    dashDur -= 1 * god.gameSpeed;
-	    if (dashDur <= 0 || (jumpKeyBuffered || lattKeyBuffered || hattKeyBuffered)) {
-	        xSpeed /= 1.3;
-	        ySpeed /= 1.3;
+	    if (dashDur <= 0 || (lattKeyBuffered || hattKeyBuffered)) {
+			if((lattKeyBuffered || hattKeyBuffered)) dashCanCldn = dashCanCldnMax;
+	        xSpeed /= 1.5;
+	        ySpeed /= 1.5;
 	        dashDur = 0;
 	        dashAnt = dashAntLimit;
 	        willDash = false;
 	        tSpeed = 10 * (global.sprScale);
-	        isDash = false;
 	        state_reset();
 	    }
 	}

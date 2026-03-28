@@ -16,6 +16,7 @@ function pl_create() {
 	hasTumbled = false;
 
 	onSideWall = 0;
+	alrWS = false;
 
 	maxVelInit = 6;
 	maxVel = 6;
@@ -110,9 +111,13 @@ function pl_create() {
 	isJump = false;
 	canJump = false;
 	passTrough = false;
+	
 
 	isDash = false;
+	dashed = false;
 	isMoving = false;
+	dashCanCldnMax = 20;
+	dashCanCldn = 0;
 
 	gSpeedDefault = gSpeed;
 
@@ -136,7 +141,6 @@ function pl_create() {
 	dashJCool = 0;
 	invFrames = 10;
 	atFloatTim = 0;
-	wallGrabLock = 0;
 
 	//Coyote Time
 	//Hang Time
@@ -148,7 +152,6 @@ function pl_create() {
 	coyoteJumpTimer = 0;
 
 	isWallGrabbing = false;
-	wallSlJmp = false;
 	canWallGrab = false;
 	parried = false;
 	parryActive = false;
@@ -159,17 +162,19 @@ function pl_create() {
 	strongAt = false;
 
 	//Combo
-	jabLimit= 3;
+	jabLimit= 2;
 	jabCnt= 0;
 	hJabLimit = 1;
 	hJabCnt = 0;
 	comboCnt= 0;
-	comboTimerLimit = 100;
-	comboTimer= 100;
+	comboTimerLimit = 60;
+	comboTimer= 60;
 	isCombing= false;
 	cxHit= 0;
 	cyHit= 0;
 	chitTimer= 0;
+	dashHitX = 0;
+	dashHitY = 0;
 
 	//Attack Stats
 	upperAtt = 0;
@@ -203,6 +208,9 @@ function pl_create() {
 	upAtST = 0;
 	sideAtST = 0;
 	downAtT = 0;
+	
+	shieldMax = 100;
+	shield = 0;
 
 	//fighting
 	//hit and hurtboxes
@@ -241,6 +249,8 @@ function pl_create() {
 	//weapons
 	weapon = weapons.sword;
 	weapon_stats();
+	
+	character = characters.teori;
 
 	stored = false;
 

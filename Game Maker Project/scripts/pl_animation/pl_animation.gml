@@ -1,4 +1,7 @@
 function pl_animation() {
+	
+	if (god.isPaused) return;
+	
 	//x and y position of the sprite
 	xPos = x;
 	yPos = y;
@@ -59,11 +62,11 @@ function pl_animation() {
         
 	        //change facing direction based on left/right. 
 	        //facing flips the sprite to the left and right.
-	        if(left){
-	            facing = -1;
-	        }else if(right){
-	            facing = 1;
-	        }
+			if(left){
+				facing = -1;
+			}else if(right){
+				facing = 1;
+			}
 	    break;
     
 	    case states.dash:

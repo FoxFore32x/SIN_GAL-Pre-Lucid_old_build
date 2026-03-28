@@ -64,7 +64,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"SIN_GAL - Pre-Lucid Prot 21-2-2026 - 1",
   "resources":[
@@ -112,6 +112,7 @@
     {"id":{"name":"title","path":"rooms/title/title.yy",},},
     {"id":{"name":"training","path":"rooms/training/training.yy",},},
     {"id":{"name":"ts_1","path":"rooms/ts_1/ts_1.yy",},},
+    {"id":{"name":"ts_2","path":"rooms/ts_2/ts_2.yy",},},
     {"id":{"name":"__global_object_depths","path":"scripts/__global_object_depths/__global_object_depths.yy",},},
     {"id":{"name":"__init_global","path":"scripts/__init_global/__init_global.yy",},},
     {"id":{"name":"__init_view","path":"scripts/__init_view/__init_view.yy",},},
@@ -154,6 +155,7 @@
     {"id":{"name":"pl_animation","path":"scripts/pl_animation/pl_animation.yy",},},
     {"id":{"name":"pl_attackState","path":"scripts/pl_attackState/pl_attackState.yy",},},
     {"id":{"name":"pl_beginStep","path":"scripts/pl_beginStep/pl_beginStep.yy",},},
+    {"id":{"name":"pl_characters","path":"scripts/pl_characters/pl_characters.yy",},},
     {"id":{"name":"pl_controller","path":"scripts/pl_controller/pl_controller.yy",},},
     {"id":{"name":"pl_cpu","path":"scripts/pl_cpu/pl_cpu.yy",},},
     {"id":{"name":"pl_create","path":"scripts/pl_create/pl_create.yy",},},
@@ -166,6 +168,7 @@
     {"id":{"name":"pl_invFrames","path":"scripts/pl_invFrames/pl_invFrames.yy",},},
     {"id":{"name":"pl_normalState","path":"scripts/pl_normalState/pl_normalState.yy",},},
     {"id":{"name":"pl_recoveryState","path":"scripts/pl_recoveryState/pl_recoveryState.yy",},},
+    {"id":{"name":"pl_timers","path":"scripts/pl_timers/pl_timers.yy",},},
     {"id":{"name":"pl_tumbleState","path":"scripts/pl_tumbleState/pl_tumbleState.yy",},},
     {"id":{"name":"play_sfx","path":"scripts/play_sfx/play_sfx.yy",},},
     {"id":{"name":"recovery_set","path":"scripts/recovery_set/recovery_set.yy",},},
@@ -277,6 +280,7 @@
     {"roomId":{"name":"rm_battle","path":"rooms/rm_battle/rm_battle.yy",},},
     {"roomId":{"name":"ts_1","path":"rooms/ts_1/ts_1.yy",},},
     {"roomId":{"name":"rm_battle_1","path":"rooms/rm_battle_1/rm_battle_1.yy",},},
+    {"roomId":{"name":"ts_2","path":"rooms/ts_2/ts_2.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[

@@ -31,8 +31,8 @@ function pl_cpu() {
 	if (parryPause > 0) parryPause -= 1 * god.gameSpeed;
 
 	// Determine how long to hold jump depending on how far above the player is
-	var heightDiff = y - p.y;
-	var widthDiff = abs(p.x - x);
+	var heightDiff = y - p.y * global.sprScale;
+	var widthDiff = abs(p.x - x) * global.sprScale;
 
 	if (walkPause <= 0) {
 	    var dist = sign(p.x - x);
@@ -49,28 +49,28 @@ function pl_cpu() {
 	    }
 
 	    // Occasionally decide to pause for a bit
-	    if (irandom_range(0, 100) < 5 && !(widthDiff <= 30)) { // 30% chance to stop for a moment
+	    if (irandom_range(0, 100) < 5 && !(widthDiff <= 30 * global.sprScale)) { // 30% chance to stop for a moment
 	        walkPause = irandom_range(10, 20); // pause 10–20 frames
 	        left = false;
 	        right = false;
 	    }
 	}
 
-	if(irandom_range(0, 100) < 30 || (irandom_range(0, 100) < 50 && (p.isCrouching
-	|| -heightDiff > 10))){
+	if(irandom_range(0, 100) < 2 || (irandom_range(0, 100) < 50 && (p.isCrouching
+	|| -heightDiff > 10 * global.sprScale))){
 	    down = true;
 	} else down = false;
 
-	if(heightDiff >= 15 && irandom_range(0, 100) < 20){
+	if(heightDiff >= 15 * global.sprScale && irandom_range(0, 100) < 20){
 	    up = true;
 	} else up = false;
 
 	// --- Jump if player is above ---
-	if (widthDiff <= 40 && heightDiff >= 15 && (irandom_range(0, 100) < 60) && canJump
+	if (widthDiff <= 40 * global.sprScale && heightDiff >= 15 * global.sprScale && (irandom_range(0, 100) < 60) && canJump
 	    && hitStun <= 0) {
 	    jumpKeyBuffered = 1;
 
-	    if (heightDiff > 30) {
+	    if (heightDiff > 30 * global.sprScale) {
 	        jump = true;   // hold longer for high platforms
 	    } else {
 	        jump = false;  // small tap for short hops
@@ -80,7 +80,7 @@ function pl_cpu() {
 	//STAGE OBJECT COLLISIONS:
 
 	//JumpThru
-	if(-heightDiff > 10 && place_meeting( x, y+1, parentJumpthru) && irandom_range(0, 100) < 20){
+	if(-heightDiff > 10 * global.sprScale && place_meeting( x, y+1, parentJumpthru) && irandom_range(0, 100) < 20){
 	    passTrough = true;
 	}
 
@@ -92,7 +92,7 @@ function pl_cpu() {
 	// Attack
 	if (attackCooldown > 0) attackCooldown -= 1 * god.gameSpeed; // count down each frame
 
-	if (widthDiff <= 8 && attackCooldown <= 0 && hitStun <= 0) {
+	if (widthDiff <= 8 * global.sprScale && (-heightDiff > 3 * global.sprScale || heightDiff > 3 * global.sprScale ) && attackCooldown <= 0 && hitStun <= 0) {
 	    // randomly pick light or heavy attack
 	    if (irandom_range(0, 100) < 30) {
 	        if (irandom(1) == 0) {
@@ -121,7 +121,7 @@ function pl_cpu() {
 	}
 
 	// Dash
-	if ((widthDiff >= 80 || heightDiff >= 80) && (irandom_range(0, 100) < 20)) {
+	if ((widthDiff >= 30 * global.sprScale || heightDiff >= 140 * global.sprScale) && (irandom_range(0, 100) < 20)) {
 	    dashKeyBuffered = 1;
 	}
 

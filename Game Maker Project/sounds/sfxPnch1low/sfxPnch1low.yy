@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.238125,
   "exportDir":"",
   "name":"sfxPnch1low",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sfxPnch1low",
-  "volume":0.6,
+  "volume":0.7,
 }

@@ -85,11 +85,13 @@ function pl_endStep() {
 	        }
         
 	        if(global.opHp){
-	            if(hb.owner.weapon == weapons.sword){
-	                hp -= 30;
-	            } else {
-	                hp -= 15;
-	            }
+				if(!shield){
+					if(hb.owner.weapon == weapons.sword){
+		                hp -= 30;
+		            } else {
+		                hp -= 15;
+		            }
+				}
 	            if (hp <= 0){
 	                if(dead == false){
 	                    global.existentPl -= 1;
@@ -123,8 +125,10 @@ function pl_endStep() {
 	        if (!hb.comboGranted) {
 	            hb.comboGranted = true;
         
-	            if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
-	            else hb.owner.jabCnt++;
+				if(!hb.owner.isDash){
+					if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
+		            else hb.owner.jabCnt++;
+				}
             
 	            hb.owner.comboCnt++;
 	            hb.owner.comboTimer = hb.owner.comboTimerLimit;
@@ -218,18 +222,27 @@ function pl_endStep() {
 	        if (hb.owner.xSpeed == 0 && !hb.owner.onGround){
 	            hb.owner.xSpeed = 1 * hb.owner.facing;
 	        }
-    
-	        y --;
-	        xSpeed = hb.xHit;
+			
+			if(shield){
+				xSpeed = hb.xHit / 3;
         
-	        if(!downGroundHit) ySpeed = hb.yHit;
-	        else ySpeed = -4;
+		        facing = hb.owner.facing * -1;
+		        depth = hb.depth;
+				
+			} else {
+				y --;
+				
+				xSpeed = hb.xHit;
         
-	        facing = hb.owner.facing * -1;
-	        depth = hb.depth;
-	        hitStun = hb.hitStun;
+		        if(!downGroundHit) ySpeed = hb.yHit;
+		        else ySpeed = -4;
         
-	        currentState = states.tumble;
+		        facing = hb.owner.facing * -1;
+		        depth = hb.depth;
+		        hitStun = hb.hitStun;
+        
+		        currentState = states.tumble;
+			}
     
 	        downGroundHit = false;
 	        halfCombo = false;

@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":290.82666,
   "exportDir":"",
   "name":"sndWinScreen",
   "parent":{

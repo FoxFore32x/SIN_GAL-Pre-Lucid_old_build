@@ -50,5 +50,7 @@ itemHold = false;
 
 win_length = array_length(global.winId);
 
-if(global.opMusic == true) { audio_play_sound(sndWinScreen, 0, 1); }
+global.currentMusic = sndWinScreen;
+
+if(global.opMusic == true) { audio_play_sound(global.currentMusic, 0, 1, global.volMusic); }
 else audio_stop_all();

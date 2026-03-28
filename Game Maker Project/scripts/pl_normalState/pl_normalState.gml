@@ -1,6 +1,6 @@
 function pl_normalState() {
 	//move left and right
-	
+	isDash = false;
 	if (god.isPaused) exit;
 		if(left){
 		    xSpeed = approach(xSpeed,-mSpeed,aSpeed * god.gameSpeed);
@@ -24,14 +24,18 @@ function pl_normalState() {
 		    parryDur = parryDurMax;
 		    //currentState = states.parry;
     
+			if(onGround && shield <= 0) shield = shieldMax;
 		    parryActive = true;
 		}
-
-		if (parryDur > 0) parryDur -= 1 * god.gameSpeed;
-		else {
-		    canPlay = true;
-		    parryActive = false;
-		    parried = false;
+		
+		if(wallKeyBuffered && onGround){
+			
+			if(shield > 0){
+				shield -= 1 * god.gameSpeed;
+				xSpeed = 0;
+			}
+		} else if(!itemHold || !onGround){
+			shield = 0;
 		}
 		
 		var _bgwall = instance_place(x, y, parentWall);
@@ -40,7 +44,6 @@ function pl_normalState() {
 		    _bgwall != noone
 		    && wallKeyBuffered
 		    && canWallGrab
-		    && wallGrabLock <= 0
 		    && ySpeed > 0   // ← evita agarrarse justo al subir
 		) {
 		    if (!isWallGrabbing && !onGround) {
@@ -48,52 +51,54 @@ function pl_normalState() {
 		        isWallGrabbing = true;
 		    }
 		}
-		 else if (_bgwall == noone || _bgwall != prevBgWall || (wallGrabTimer <= 0 && item && !itemHold)){
+		 else if (_bgwall == noone || _bgwall != prevBgWall || (wallGrabTimer <= 0 && item && !itemHold) || (wallGrabTimer <= 0 && itemHold)){
 		    canWallGrab = true;
 		    isWallGrabbing = false;
-			if (_bgwall != prevBgWall || _bgwall == noone) wallGrabTimer = -1;
+			if (_bgwall != prevBgWall || _bgwall == noone){
+				wallGrabLock = -1;
+				wallGrabTimer = -1;
+			}
 		} else if (!itemHold){
 		    isWallGrabbing = false;
 		}
 		
-		prevBgWall = _bgwall;
+		if(dashed && _bgwall == noone) dashed = false;
 
 		// Handle wall grab behavior
 		if (isWallGrabbing) {
-		    if(wallGrabTimer != -1){
-		        wallGrabTimer -= 1 * god.gameSpeed;
-		    }
-    
-		    wallGrabLock = 8;      // frames de bloqueo (ajusta)
+			if(!dashed)airDash = false;
+			
 		    canWallGrab = false;
-		    wallSlJmp = true;
-		    isJump = false;
-		    canJump = true;
-		    airDash = false;
+			
+			canJump = true;
 
 		    if (wallGrabTimer <= 0 && jumpHold) {
 		        isWallGrabbing = false;
 		    }
+			
+			if(ySpeed >= -0.5){
+			    //ySpeed = approach(ySpeed, 1, 0.3 * god.gameSpeed);
+				tSpeed = 1.2 * (global.sprScale);
+			}
 
-		    if(ySpeed >= -0.5){
-		        //ySpeed = approach(ySpeed, 1, 0.3 * god.gameSpeed);
-		        tSpeed = 1.7 * (global.sprScale);
-		    }
     
 		    mSpeed = 4 * (global.sprScale);
 		}
+		
+		prevBgWall = _bgwall;
 
 		if(wallGrabTimer == 0){
+			if(dashed){
+				dashed = false;
+				airDash = false;
+			}
 		    canWallGrab = false;
 		    isWallGrabbing = false;
 		}
 
-		if (wallGrabLock > 0) {
-		    wallGrabLock -= 1 * god.gameSpeed;
-		}
-
 
 		if(!isWallGrabbing){
+			alrWS = false;
 		    tSpeed = 10 * (global.sprScale);
 		    mSpeed = mSpeedDefault;
 		}
@@ -186,24 +191,16 @@ function pl_normalState() {
 		    frame_reset();
 		}
 
-		if(comboCnt >= 1 && comboTimer > 0){
-		    isCombing = true;
-		    comboTimer -= 1 * god.gameSpeed;
-		} else {
-		    isCombing = false;
-		    comboCnt = 0;
-		    jabCnt = 0;
-		}
-
 		//dash
 
-		if(dashKeyBuffered){
+		if(dashKeyBuffered && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
 		    //air dash. only dash in the air if airDash is false
 		    //set airDash to true if you have dashed in the air
 		    isDash = true;
+			dashed = true;
 		    if(!onGround){
 		        if(!airDash){
 		            dashDur = dashDurMax;

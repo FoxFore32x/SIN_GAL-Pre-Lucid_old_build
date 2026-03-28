@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":220.77333,
   "exportDir":"",
   "name":"sndTest",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sndTest",
-  "volume":0.4,
+  "volume":0.7,
 }

@@ -142,13 +142,20 @@ if(room != results && room != title && room != init ){
             
 		            // MUSIC SETTING
 		            case 2:
-		                if (change != 0) {
-		                    if (settVal[2] == false) {
-		                        settVal[2] = true;
+						if (change != 0) {
+							settVal[2] += (change * 0.1);
+							if(settVal[2] > 0) global.opMusic = true;
+							else global.opMusic = false;
+					
+							if (settVal[2] < 0) settVal[2] = 0;
+							if (settVal[2] > global.maxVolMusic) settVal[2] = global.maxVolMusic;
+					
+							audio_sound_gain(global.currentMusic, settVal[2]);
+					
+		                    if (global.opMusic == true && !audio_is_playing(global.currentMusic)) {
 		                        audio_play_sound(global.currentMusic, 0, 1);
 		                    }
-		                    else {
-		                        settVal[2] = false;
+		                    else if (global.opMusic == false && audio_is_playing(global.currentMusic)) {
 		                        audio_stop_sound(global.currentMusic);
 		                    }
 		                }
@@ -157,8 +164,12 @@ if(room != results && room != title && room != init ){
 		            // SFX SETTING
 		            case 3:
 		                if (change != 0) {
-		                    if (settVal[3] == false) settVal[3] = true;
-		                    else settVal[3] = false;
+							settVal[3] += (change * 0.1);
+							if(settVal[3] > 0) global.opSfx = true;
+							else global.opSfx = false;
+					
+							if (settVal[3] < 0) settVal[3] = 0;
+							if (settVal[3] > global.maxVolSfx) settVal[3] = global.maxVolSfx;
 		                }
 		            break;
 
@@ -167,8 +178,8 @@ if(room != results && room != title && room != init ){
 		                if (btnJump){
 		                    global.opHp = settVal[0];
 		                    global.opTimer = settVal[1];
-		                    global.opMusic = settVal[2];
-		                    global.opSfx = settVal[3];
+		                    global.volMusic = settVal[2];
+		                    global.volSfx = settVal[3];
 		                    menu_level = 0;
 		                }
 		            break;
@@ -179,10 +190,10 @@ if(room != results && room != title && room != init ){
 
 		// Proper back handling
 		if (menu_level == 1 && btnBack){
-		    global.opHp   = settVal[0];
-		    global.opTimer= settVal[1];
-		    global.opMusic= settVal[2];
-		    global.opSfx  = settVal[3];
+		    global.opHp		= settVal[0];
+		    global.opTimer	= settVal[1];
+		    global.volMusic	= settVal[2];
+		    global.volSfx	= settVal[3];
 
 		    menu_level = 0;
 		    pos = 0;

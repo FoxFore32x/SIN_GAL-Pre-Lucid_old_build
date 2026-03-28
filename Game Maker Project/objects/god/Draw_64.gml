@@ -93,6 +93,8 @@ if(room != results && room != title && room != init ){
 	    draw_text_colour(450,160,string_hash_to_newline("isDash = " + string(parentPhysics.isDash)), _c1, _c1, _c1, _c1, 1);
 	    draw_text_colour(450,176,string_hash_to_newline("currentPlayers = " + string(global.existentPl)), _c1, _c1, _c1, _c1, 1);
 	    draw_text_colour(450,192,string_hash_to_newline("coyoteHangTimer = " + string(parentPhysics.coyoteHangTimer)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,208,string_hash_to_newline("dashed = " + string(parentPhysics.dashed)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,224,string_hash_to_newline("shield = " + string(parentPhysics.shield)), _c1, _c1, _c1, _c1, 1);
 	}
 
 }
