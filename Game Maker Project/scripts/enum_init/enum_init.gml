@@ -31,7 +31,8 @@ function enum_init() {
 	
 	enum characters{
 		teori,
-		lamb
+		lamb,
+		test
 	}
 
 

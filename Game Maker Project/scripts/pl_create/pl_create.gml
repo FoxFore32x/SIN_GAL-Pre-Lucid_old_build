@@ -211,10 +211,19 @@ function pl_create() {
 	
 	shieldMax = 100;
 	shield = 0;
+	
+	attDirX = noone;
+	attDirY = noone;
 
 	//fighting
 	//hit and hurtboxes
 	hbox_init();
+	
+	hitOffX = 0;
+	hitOffY = 0;
+	hitWidth = 0;
+	hitHeight = 0;
+	hitDur = 0;
 
 	hpMax = 1000;
 	hp    = hpMax;

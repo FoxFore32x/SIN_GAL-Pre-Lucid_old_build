@@ -4,12 +4,17 @@ function pl_attackState() {
 	//invFrames = 3;
 
 	loop = false;
+	
+	if(attDirX != noone) xSpeed = attDirX;
+	if(attDirY != noone) ySpeed = attDirY;
 
 	if(onGround){
 	    xSpeed = approach(xSpeed,0.8 * facing,aSpeed * god.gameSpeed);
 	}else{
 	    xSpeed = approach(xSpeed,0,0.1 * god.gameSpeed);
 	}
+	
+	//ySpeed = approach(ySpeed,0.8,1 * god.gameSpeed);
 
 	//code for each weapon type, and each attack for that weapon
 	switch(weapon){    

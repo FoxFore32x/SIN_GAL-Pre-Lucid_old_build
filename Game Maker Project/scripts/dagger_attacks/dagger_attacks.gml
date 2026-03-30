@@ -6,7 +6,7 @@ function dagger_attacks() {
 	    case attacks.side_air:
 	        if(frame_check(1,1)){
 	            invFrames = 2;
-	            hitbox_create(0*facing*(global.sprScale),-21*(global.sprScale),25*facing*(global.sprScale),10*(global.sprScale),3,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),80,10);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),80,10);
 	        }
 	    break;
     
@@ -14,7 +14,7 @@ function dagger_attacks() {
 	    case attacks.up_air:
 	        if(frame_check(1,1)){
 	            invFrames = 2;
-	            hitbox_create(-8*facing*(global.sprScale),-40*(global.sprScale),18*facing*(global.sprScale),25*(global.sprScale),3,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),60,10);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),60,10);
 	        }        
 	    break;
     
@@ -22,7 +22,7 @@ function dagger_attacks() {
 	    case attacks.down_air:
 	        if(frame_check(1,1)){
 	            invFrames = 2;
-	            hitbox_create(5*facing*(global.sprScale),-11*(global.sprScale),17*facing*(global.sprScale),23*(global.sprScale),3,(cxHit+1)*facing*(global.sprScale),cyHit*(global.sprScale),60,10);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,(cxHit+1)*facing*(global.sprScale),cyHit*(global.sprScale),60,10);
 	        }  
 	    break;
 	}
