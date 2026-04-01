@@ -54,6 +54,7 @@ function pl_attackState() {
 	//reset to normal state when the attack animation ends
 	if(/*animation_end() ||*/ chitTimer == 0){
 	    canPlay = true;
+		attOnGround = false;
 	    state_reset();
 	}
 

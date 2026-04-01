@@ -118,6 +118,7 @@ function pl_create() {
 	isMoving = false;
 	dashCanCldnMax = 20;
 	dashCanCldn = 0;
+	custDash = false;
 
 	gSpeedDefault = gSpeed;
 
@@ -230,6 +231,8 @@ function pl_create() {
 	deathFrames = 5;
 	dead = false;
 	loop = true;
+	
+	attOnGround = false;
 
 	stunDur = 0;
 	knockBack = false;

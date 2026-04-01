@@ -4,16 +4,68 @@ function pl_characters(){
 	switch (character){
 	
 		case characters.teori:
+		
+		switch(currentState){
+			
+			case states.dash:
+				custDash = true;
+			
+				if (!willDash) {
+				    dashAnt -= 1 * god.gameSpeed;
+
+				    if (dashAnt <= 0) {
+				        var movingHoriz = (left || right);
+				        var idle = (!up && !down && !movingHoriz);
+						var dXPos = x;
+						var dYPos = y;
+
+				        // Horizontal movement
+				        if (movingHoriz || idle) {
+				            x = dXPos + (60 * global.sprScale * facing);
+				            dashHitX = 4 * facing;
+				        } else {
+				            dashHitX = 0;
+				        }
+
+				        // Vertical movement
+						ySpeed = -5;
+				        if (up) {
+							y = (dYPos - 60 * global.sprScale);
+				            dashHitY = -3.5;
+				        } else if (down && !onGround) {
+							y = (dYPos + 60 * global.sprScale);
+				            dashHitY = 3.5;
+				        } else {
+							y = dYPos;
+				            dashHitY = -2.5;
+				        }
+
+				        if(airDash == false) play_sfx(sfxDash, 1, 0);
+				        airDash = true;
+				        willDash = true;
+				    }
+
+				}
+			break;
+		}
 			
 			switch(weapon){    
 			    case weapons.sword:
-					if(!down) attDirX = 5 * global.sprScale * facing;
+					
+					if(!down /*&& onGround*/) {
+						if(onGround) attOnGround = true;
+						else attOnGround = false;
+						attDirX = 4 * global.sprScale * facing;
+					}
 					else attDirX = noone;
 					if(onGround){
 						if(up) attDirY = -3 * global.sprScale;
 						else attDirY = -1.51 * global.sprScale;
 					}
-					else attDirY = noone;
+					else {
+						/*if(!attOnGround) attDirY = 0;
+						else*/ attDirY = noone;
+					}
 					
 					//Attack Stats
 			        upperAtt = 0;

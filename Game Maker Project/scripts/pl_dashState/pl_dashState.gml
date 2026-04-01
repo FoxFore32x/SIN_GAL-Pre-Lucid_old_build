@@ -1,36 +1,38 @@
 function pl_dashState() {
 	// Zero out ySpeed and gradually slow down xSpeed
 	if (!willDash) {
-	    dashAnt -= 1 * god.gameSpeed;
+		if(!custDash){
+			 dashAnt -= 1 * god.gameSpeed;
 
-	    if (dashAnt <= 0) {
-	        var movingHoriz = (left || right);
-	        var idle = (!up && !down && !movingHoriz);
+		    if (dashAnt <= 0) {
+		        var movingHoriz = (left || right);
+		        var idle = (!up && !down && !movingHoriz);
 
-	        // Horizontal movement
-	        if (movingHoriz || idle) {
-	            xSpeed = dashHSpeed * facing;
-	            dashHitX = 4 * facing;
-	        } else {
-	            dashHitX = 0;
-	        }
+		        // Horizontal movement
+		        if (movingHoriz || idle) {
+		            xSpeed = dashHSpeed * facing;
+		            dashHitX = 4 * facing;
+		        } else {
+		            dashHitX = 0;
+		        }
 
-	        // Vertical movement
-	        if (up) {
-	            ySpeed = -dashYSpeed;
-	            dashHitY = -3.5;
-	        } else if (down && !onGround) {
-	            ySpeed = dashYSpeed;
-	            dashHitY = 3.5;
-	        } else {
-	            ySpeed = 0;
-	            dashHitY = -2.5;
-	        }
+		        // Vertical movement
+		        if (up) {
+		            ySpeed = -dashYSpeed;
+		            dashHitY = -3.5;
+		        } else if (down && !onGround) {
+		            ySpeed = dashYSpeed;
+		            dashHitY = 3.5;
+		        } else {
+		            ySpeed = 0;
+		            dashHitY = -2.5;
+		        }
 
-	        if(airDash == false) play_sfx(sfxDash, 1, 0);
-	        airDash = true;
-	        willDash = true;
-	    }
+		        if(airDash == false) play_sfx(sfxDash, 1, 0);
+		        airDash = true;
+		        willDash = true;
+		    }
+		}
 
 	} else {
 	    // Gradually approach zero velocity
