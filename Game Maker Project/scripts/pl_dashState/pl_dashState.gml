@@ -1,7 +1,6 @@
 function pl_dashState() {
 	// Zero out ySpeed and gradually slow down xSpeed
 	if (!willDash) {
-		if(!custDash){
 			 dashAnt -= 1 * god.gameSpeed;
 
 		    if (dashAnt <= 0) {
@@ -32,39 +31,40 @@ function pl_dashState() {
 		        airDash = true;
 		        willDash = true;
 		    }
-		}
 
 	} else {
 	    // Gradually approach zero velocity
-	    ySpeed = approach(ySpeed, 0, 0.5 * god.gameSpeed);
+	    if(!custDash){
+			ySpeed = approach(ySpeed, 0, 0.5 * god.gameSpeed);
 
-	    // Simplified xSpeed slowdown
-	    if (abs(xSpeed) >= 1 || (xSpeed == 0 && (!up || !down))) {
-	        xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
-	    }
+		    // Simplified xSpeed slowdown
+		    if (abs(xSpeed) >= 1 || (xSpeed == 0 && (!up || !down))) {
+		        xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
+		    }
 
-	    // Hitbox creation timing
-	    if (dashDur >= dashDurMax){
-	        invFrames = 6;
-	        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3);
-	    }
+		    // Hitbox creation timing
+		    if (dashDur >= dashDurMax){
+		        invFrames = 6;
+		        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3);
+		    }
 
-	    // Reset temporary speed near end
-	    if (dashDur <= 2)
-	        tSpeed = 0;
+		    // Reset temporary speed near end
+		    if (dashDur <= 2)
+		        tSpeed = 0;
 
-	    // Countdown and reset state
-	    dashDur -= 1 * god.gameSpeed;
-	    if (dashDur <= 0 || (lattKeyBuffered || hattKeyBuffered)) {
-			if((lattKeyBuffered || hattKeyBuffered)) dashCanCldn = dashCanCldnMax;
-	        xSpeed /= 1.5;
-	        ySpeed /= 1.5;
-	        dashDur = 0;
-	        dashAnt = dashAntLimit;
-	        willDash = false;
-	        tSpeed = 10 * (global.sprScale);
-	        state_reset();
-	    }
+		    // Countdown and reset state
+		    dashDur -= 1 * god.gameSpeed;
+		    if (dashDur <= 0 || (lattKeyBuffered || hattKeyBuffered)) {
+				if((lattKeyBuffered || hattKeyBuffered)) dashCanCldn = dashCanCldnMax;
+		        xSpeed /= 1.5;
+		        ySpeed /= 1.5;
+		        dashDur = 0;
+		        dashAnt = dashAntLimit;
+		        willDash = false;
+		        tSpeed = 10 * (global.sprScale);
+		        state_reset();
+		    }
+		}
 	}
 
 

@@ -4,50 +4,6 @@ function pl_characters(){
 	switch (character){
 	
 		case characters.teori:
-		
-		switch(currentState){
-			
-			case states.dash:
-				custDash = true;
-			
-				if (!willDash) {
-				    dashAnt -= 1 * god.gameSpeed;
-
-				    if (dashAnt <= 0) {
-				        var movingHoriz = (left || right);
-				        var idle = (!up && !down && !movingHoriz);
-						var dXPos = x;
-						var dYPos = y;
-
-				        // Horizontal movement
-				        if (movingHoriz || idle) {
-				            x = dXPos + (60 * global.sprScale * facing);
-				            dashHitX = 4 * facing;
-				        } else {
-				            dashHitX = 0;
-				        }
-
-				        // Vertical movement
-						ySpeed = -5;
-				        if (up) {
-							y = (dYPos - 60 * global.sprScale);
-				            dashHitY = -3.5;
-				        } else if (down && !onGround) {
-							y = (dYPos + 60 * global.sprScale);
-				            dashHitY = 3.5;
-				        } else {
-							y = dYPos;
-				            dashHitY = -2.5;
-				        }
-
-				        if(airDash == false) play_sfx(sfxDash, 1, 0);
-				        airDash = true;
-				        willDash = true;
-				    }
-
-				}
-			break;
-		}
 			
 			switch(weapon){    
 			    case weapons.sword:
@@ -106,7 +62,7 @@ function pl_characters(){
 							hitOffX = -8;
 							hitOffY = -28;
 							hitWidth = 40;
-							hitHeight = 17;
+							hitHeight = 25;
 							hitDur = 6;
 						break;
 						
@@ -207,6 +163,52 @@ function pl_characters(){
 		break;
 		
 		case characters.lamb:
+			
+			/*dashHSpeed = 6.5 * global.sprScale;
+			dashYSpeed = 6.5 * global.sprScale;*/
+		
+			switch(currentState){
+			
+				case states.dash:
+					custDash = true;
+			
+					if (willDash) {
+					    // Gradually approach zero velocity
+					    ySpeed = approach(ySpeed * 1.10, 0, 0.5 * god.gameSpeed);
+
+						// Simplified xSpeed slowdown
+					    if (abs(xSpeed) >= 1 || (xSpeed == 0 && (!up || !down))) {
+					        xSpeed = approach(xSpeed * 1.10, 0, 0.5 * god.gameSpeed);
+					    }
+
+						// Hitbox creation timing
+					    if (dashDur >= dashDurMax){
+					        invFrames = 6;
+					        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3);
+					    }
+						
+						// Reset temporary speed near end
+					    if (dashDur <= 2){
+							xSpeed /= 2;
+					        ySpeed /= 2;
+					        tSpeed = 0;
+						}
+
+					    // Countdown and reset state
+					    dashDur -= 1 * god.gameSpeed;
+					    if (dashDur <= 0 || (jumpKeyBuffered || lattKeyBuffered || hattKeyBuffered)) {
+							if((jumpKeyBuffered || lattKeyBuffered || hattKeyBuffered)) dashCanCldn = dashCanCldnMax;
+					        xSpeed /= 1.5;
+					        ySpeed /= 1.5;
+					        dashDur = 0;
+					        dashAnt = dashAntLimit;
+					        willDash = false;
+					        tSpeed = 10 * (global.sprScale);
+					        state_reset();
+					    }
+					}
+				break;
+			}
 						
 			switch(weapon){    
 			    case weapons.sword:
