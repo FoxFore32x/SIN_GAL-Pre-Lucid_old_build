@@ -113,6 +113,7 @@
     {"id":{"name":"training","path":"rooms/training/training.yy",},},
     {"id":{"name":"ts_1","path":"rooms/ts_1/ts_1.yy",},},
     {"id":{"name":"ts_2","path":"rooms/ts_2/ts_2.yy",},},
+    {"id":{"name":"ts_3","path":"rooms/ts_3/ts_3.yy",},},
     {"id":{"name":"__global_object_depths","path":"scripts/__global_object_depths/__global_object_depths.yy",},},
     {"id":{"name":"__init_global","path":"scripts/__init_global/__init_global.yy",},},
     {"id":{"name":"__init_view","path":"scripts/__init_view/__init_view.yy",},},
@@ -281,6 +282,7 @@
     {"roomId":{"name":"ts_1","path":"rooms/ts_1/ts_1.yy",},},
     {"roomId":{"name":"rm_battle_1","path":"rooms/rm_battle_1/rm_battle_1.yy",},},
     {"roomId":{"name":"ts_2","path":"rooms/ts_2/ts_2.yy",},},
+    {"roomId":{"name":"ts_3","path":"rooms/ts_3/ts_3.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
