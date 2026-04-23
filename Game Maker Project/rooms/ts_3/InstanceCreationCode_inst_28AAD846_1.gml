@@ -1,3 +1,3 @@
-xPosition = 896;
-yPosition = 192;
-roomName = ts_1;
+xPosition = 352;
+yPosition = 544;
+roomName = ts_4;
