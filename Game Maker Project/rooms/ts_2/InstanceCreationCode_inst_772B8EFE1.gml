@@ -1,3 +1,3 @@
-xPosition = 896;
+xPosition = 480;
 yPosition = 192;
 roomName = ts_1;

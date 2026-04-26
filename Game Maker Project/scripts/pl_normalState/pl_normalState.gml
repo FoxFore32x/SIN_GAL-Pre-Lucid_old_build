@@ -12,8 +12,13 @@ function pl_normalState() {
 
 		if(down && (!left && !right)) isCrouching = true;
 		else isCrouching = false;
+		
+		if(passTrough){
+			if(instance_place( x, y+1, parentJumpthru )) jumpThru = noone;
+			if(instance_place( x, y, parentJumpthru )) thruPlat = noone;
+			else passTrough = false;
+		}
 
-		passTrough = false;
 		hasTumbled = false;
 		halfCombo = false;
 		strongAt = false;

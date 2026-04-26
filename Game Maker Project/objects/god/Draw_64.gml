@@ -77,6 +77,17 @@ if(room != results && room != title && room != init ){
 		    }
 		}
 	}
+	
+	var var1 = 6;
+	var var2 = 7;
+	var var3 = "lol";
+	var var4 = "el pepe";
+	var res1 = 10;
+	var res2 = "aloooo";
+	
+	res1 = var1 + var2;
+	
+	res1 = "alooo";
     
 	if(showBox){
 	    _c1 = c_red;
@@ -95,6 +106,8 @@ if(room != results && room != title && room != init ){
 	    draw_text_colour(450,192,string_hash_to_newline("coyoteHangTimer = " + string(parentPhysics.coyoteHangTimer)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,208,string_hash_to_newline("dashed = " + string(parentPhysics.dashed)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,224,string_hash_to_newline("shield = " + string(parentPhysics.shield)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,240,string_hash_to_newline("var = " + string(res1)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,256,string_hash_to_newline("ySpeed = " + string(parentPhysics.ySpeed)), _c1, _c1, _c1, _c1, 1);
 	}
 
 }

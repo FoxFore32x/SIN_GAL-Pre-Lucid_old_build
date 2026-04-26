@@ -1,3 +1,4 @@
+audio_stop_sound(global.currentMusic);
 global.currentMusic = sndLevel;
 audio_sound_gain(global.currentMusic, global.volMusic);
 if(global.opMusic == true && !audio_is_playing(global.currentMusic)){

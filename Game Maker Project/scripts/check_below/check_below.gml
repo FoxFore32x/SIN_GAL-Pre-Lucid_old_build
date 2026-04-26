@@ -8,9 +8,16 @@ function check_below() {
 	// 2.   a. there is an parentJumpthru directly below it
 	//          AND
 	//      b. there is not an parentJumpthru inside it
+	
+	jumpThru = instance_place( x, y+1, parentJumpthru );
+	thruPlat = instance_place( x, y, parentJumpthru );
+	
+	if(thruPlat && !passTrough){
+		y -= 10;
+	}
 
 	return place_meeting( x, y+1, parentBlocker ) 
-	    || (!passTrough && place_meeting( x, y+1, parentJumpthru ) && !place_meeting( x, y, parentJumpthru ) && sign(ySpeed) != -1);
+	    || (!passTrough && jumpThru && !thruPlat && sign(ySpeed) != -1);
 
 
 

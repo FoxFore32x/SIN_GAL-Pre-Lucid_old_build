@@ -105,13 +105,15 @@ function pl_create() {
 	cSpeedDefault = cSpeed;
 	tSpeed = 10 * (global.sprScale);
 	tSpeedDefault = tSpeed;
-	jPower = -4.5 * (global.sprScale);
+	jPower = -5 * (global.sprScale);
 	facing = 1;
 
 	isJump = false;
 	canJump = false;
 	passTrough = false;
-	
+	jumpThru = noone;
+	thruPlat = noone;
+	movePlat = noone;
 
 	isDash = false;
 	dashed = false;
