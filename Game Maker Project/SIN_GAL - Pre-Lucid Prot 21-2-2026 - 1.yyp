@@ -264,6 +264,7 @@
     {"id":{"name":"sprTutButtons","path":"sprites/sprTutButtons/sprTutButtons.yy",},},
     {"id":{"name":"sprTutDashPar","path":"sprites/sprTutDashPar/sprTutDashPar.yy",},},
     {"id":{"name":"sprTutJmpMov","path":"sprites/sprTutJmpMov/sprTutJmpMov.yy",},},
+    {"id":{"name":"sprTutJmpMovDash","path":"sprites/sprTutJmpMovDash/sprTutJmpMovDash.yy",},},
     {"id":{"name":"sprTutWASD","path":"sprites/sprTutWASD/sprTutWASD.yy",},},
     {"id":{"name":"sprWarp","path":"sprites/sprWarp/sprWarp.yy",},},
     {"id":{"name":"sprWarpGoal","path":"sprites/sprWarpGoal/sprWarpGoal.yy",},},

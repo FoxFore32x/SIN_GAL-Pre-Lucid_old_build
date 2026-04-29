@@ -1,3 +1,14 @@
+function action_up_down(p, heightDiff){
+	if(irandom_range(0, 100) < 2 || (irandom_range(0, 100) < 20 && (p.isCrouching
+	|| -heightDiff >= 10 * global.sprScale))){
+	    down = true;
+	} else down = false;
+
+	if(heightDiff >= 10 * global.sprScale && irandom_range(0, 100) < 20){
+	    up = true;
+	} else up = false;
+}
+
 function pl_cpu() {
 	// --- Basic CPU controller ---
 	if (player >= 0 || immobile) exit; //player < 0 = CPUS, >= 0 Players
@@ -31,7 +42,7 @@ function pl_cpu() {
 	if (parryPause > 0) parryPause -= 1 * god.gameSpeed;
 
 	// Determine how long to hold jump depending on how far above the player is
-	var heightDiff = y - p.y * global.sprScale;
+	var heightDiff = abs(p.y - y) * global.sprScale;
 	var widthDiff = abs(p.x - x) * global.sprScale;
 
 	if (walkPause <= 0) {
@@ -56,14 +67,7 @@ function pl_cpu() {
 	    }
 	}
 
-	if(irandom_range(0, 100) < 2 || (irandom_range(0, 100) < 50 && (p.isCrouching
-	|| -heightDiff > 10 * global.sprScale))){
-	    down = true;
-	} else down = false;
-
-	if(heightDiff >= 15 * global.sprScale && irandom_range(0, 100) < 20){
-	    up = true;
-	} else up = false;
+	action_up_down(p, heightDiff);
 
 	// --- Jump if player is above ---
 	if (widthDiff <= 40 * global.sprScale && heightDiff >= 15 * global.sprScale && (irandom_range(0, 100) < 60) && canJump
@@ -121,10 +125,9 @@ function pl_cpu() {
 	}
 
 	// Dash
-	if ((widthDiff >= 30 * global.sprScale || heightDiff >= 140 * global.sprScale) && (irandom_range(0, 100) < 20)) {
-	    dashKeyBuffered = 1;
+	if ((widthDiff >= 30 * global.sprScale || heightDiff >= 140 * global.sprScale) && (irandom_range(0, 100) < 3)) {
+	    action_up_down(p, heightDiff);
+		dashKeyBuffered = 1;
 	}
-
-
 
 }

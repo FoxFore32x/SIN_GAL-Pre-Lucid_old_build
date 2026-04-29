@@ -23,6 +23,8 @@ switch(menu_level){
 					audio_stop_sound(sndMenu);
 					god.timer = 400 * room_speed;  // 3 seconds
 					global.arcadeMode = true;
+					global.opHp = true;
+					global.opTimer = true;
 					room_goto(ts_1);
 				break;
                 case 1:
