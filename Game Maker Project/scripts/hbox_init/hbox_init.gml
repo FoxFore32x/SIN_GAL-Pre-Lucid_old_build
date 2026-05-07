@@ -1,6 +1,6 @@
 function hbox_init() {
 	//initialize a bunch of hitbox and hurtbox info
-	hurtbox = hurtbox_create(-6 * facing*(global.sprScale),-22*(global.sprScale),12*(global.sprScale),22*(global.sprScale)); //create and store hurtbox
+	hurtbox = hurtbox_create(-6*(global.sprScale),-22*(global.sprScale),12*(global.sprScale),22*(global.sprScale)); //create and store hurtbox
 	hitbox  = -1; //default hitbox variable
 
 	dur     = 0; //number of frames the hitbox is active

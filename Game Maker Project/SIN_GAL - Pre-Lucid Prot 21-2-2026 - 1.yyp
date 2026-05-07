@@ -92,6 +92,7 @@
     {"id":{"name":"oWarpController","path":"objects/oWarpController/oWarpController.yy",},},
     {"id":{"name":"parentBlocker","path":"objects/parentBlocker/parentBlocker.yy",},},
     {"id":{"name":"parentJumpthru","path":"objects/parentJumpthru/parentJumpthru.yy",},},
+    {"id":{"name":"parentObstacle","path":"objects/parentObstacle/parentObstacle.yy",},},
     {"id":{"name":"parentPhysics","path":"objects/parentPhysics/parentPhysics.yy",},},
     {"id":{"name":"parentTrigger","path":"objects/parentTrigger/parentTrigger.yy",},},
     {"id":{"name":"parentWall","path":"objects/parentWall/parentWall.yy",},},
