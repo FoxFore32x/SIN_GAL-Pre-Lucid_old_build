@@ -6,6 +6,7 @@ function hitbox_init() {
 	damage  = 0; //damage dealt
 	angle   = 0; //rotation of hitbox
 	comboGranted = false; //it's for tracking a single hit when hitting all players
+	obstacle = false; //Hazards
 
 	destroy = false; //used when deleting/destroying the hitbox object
 

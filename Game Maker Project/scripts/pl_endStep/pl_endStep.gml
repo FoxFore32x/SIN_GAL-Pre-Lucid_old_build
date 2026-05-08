@@ -121,108 +121,116 @@ function pl_endStep() {
 	        /*hb.owner.jabCnt++;
 	        hb.owner.comboCnt++;
 	        hb.owner.comboTimer = hb.owner.comboTimerLimit;*/
-        
-	        if (!hb.comboGranted) {
-	            hb.comboGranted = true;
-        
-				if(!hb.owner.isDash){
-					if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
-		            else hb.owner.jabCnt++;
-				}
-            
-	            hb.owner.comboCnt++;
-	            hb.owner.comboTimer = hb.owner.comboTimerLimit;
-            
-	            if(hb.owner.weapon == weapons.sword ||
-	            (hb.owner.jabCnt > hb.owner.jabLimit)
-	            || halfCombo == true) play_sfx(sfxPnch1, 1, 0);
-	            else play_sfx(sfxPnch1low, 1, 0);
-	        }
-    
-	        weaponSprite = sprEmpty;
+			
+			weaponSprite = sprEmpty;
         
 	        pl_hitReset();
-        
-	        if(!hb.owner.onGround && !onGround){
-	            hb.owner.tSpeed = 0;
-	            atFloatTim = hb.owner.chitTimer;
-            
-	        }
-        
-	        if(hb.owner.jabCnt > (hb.owner.jabLimit / 2)){
-	            if ((hb.owner.subState == attacks.down_ground
-	                || hb.owner.subState == attacks.down_air) && onGround){
-	                    halfCombo = true;
-	                    downGroundHit = true;
-	                }
-            
-	            if ((hb.owner.subState == attacks.up_ground
-	                || hb.owner.subState == attacks.up_air)){
-	                    halfCombo = true;
-	                }
-                
-	        }
-        
-	        if((hb.owner.jabCnt > hb.owner.jabLimit) 
-	        || (hb.owner.hJabCnt > hb.owner.hJabLimit)
-			|| (hb.owner.hJabCnt > 0 && hb.owner.jabCnt > 0 && hb.owner.weapon == weapons.sword)
-	        || halfCombo == true){
-	            switch(hb.owner.subState){
-	                case attacks.up_ground:
-	                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.upAtST;
-	                break;
-                    
-	                case attacks.down_ground:
-	                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.downAtST;
-	                break;
-                    
-	                case attacks.side_ground:
-	                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.sideAtST;
-	                break;
-                
-	                case attacks.up_air:
-	                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.upAtST;
-	                break;
-                    
-	                case attacks.down_air:
-	                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.downAtST;
-	                break;
-                    
-	                case attacks.side_air:
-	                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
-	                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
-	                    hb.owner.chitTimer = hb.owner.sideAtST;
-	                break;
-	            }
-	            hb.owner.jabCnt = 0;
-	            hb.owner.hJabCnt = 0;
-	            hb.owner.canWallGrab = true;
-	            hb.owner.wallGrabTimer = hb.owner.wallGrabMax;
-	            freeze = freezeHLim;
-	            hb.owner.freeze = freezeHLim;
-	            hasTumbled = true;
-            
-	            god.shake  = true;
-	            //god.freeze = true;
-	        } else {
-	            freeze = freezeLLim;
-	            hb.owner.freeze = freezeLLim;
-	        }
-        
-	        if (hb.owner.xSpeed == 0 && !hb.owner.onGround){
-	            hb.owner.xSpeed = 1 * hb.owner.facing;
-	        }
 			
+			if(!hb.obstacle){
+        
+		        if (!hb.comboGranted) {
+		            hb.comboGranted = true;
+        
+					if(!hb.owner.isDash){
+						if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
+			            else hb.owner.jabCnt++;
+					}
+            
+		            hb.owner.comboCnt++;
+		            hb.owner.comboTimer = hb.owner.comboTimerLimit;
+            
+		            if(hb.owner.weapon == weapons.sword ||
+		            (hb.owner.jabCnt > hb.owner.jabLimit)
+		            || halfCombo == true) play_sfx(sfxPnch1, 1, 0);
+		            else play_sfx(sfxPnch1low, 1, 0);
+		        }
+        
+		        if(!hb.owner.onGround && !onGround){
+		            hb.owner.tSpeed = 0;
+		            atFloatTim = hb.owner.chitTimer;
+            
+		        }
+        
+		        if(hb.owner.jabCnt > (hb.owner.jabLimit / 2)){
+		            if ((hb.owner.subState == attacks.down_ground
+		                || hb.owner.subState == attacks.down_air) && onGround){
+		                    halfCombo = true;
+		                    downGroundHit = true;
+		                }
+            
+		            if ((hb.owner.subState == attacks.up_ground
+		                || hb.owner.subState == attacks.up_air)){
+		                    halfCombo = true;
+		                }
+                
+		        }
+        
+		        if((hb.owner.jabCnt > hb.owner.jabLimit) 
+		        || (hb.owner.hJabCnt > hb.owner.hJabLimit)
+				|| (hb.owner.hJabCnt > 0 && hb.owner.jabCnt > 0 && hb.owner.weapon == weapons.sword)
+		        || halfCombo == true){
+		            switch(hb.owner.subState){
+		                case attacks.up_ground:
+		                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.upAtST;
+		                break;
+                    
+		                case attacks.down_ground:
+		                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.downAtST;
+		                break;
+                    
+		                case attacks.side_ground:
+		                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.sideAtST;
+		                break;
+                
+		                case attacks.up_air:
+		                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.upAtST;
+		                break;
+                    
+		                case attacks.down_air:
+		                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.downAtST;
+		                break;
+                    
+		                case attacks.side_air:
+		                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
+		                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
+		                    hb.owner.chitTimer = hb.owner.sideAtST;
+		                break;
+		            }
+		            hb.owner.jabCnt = 0;
+		            hb.owner.hJabCnt = 0;
+		            hb.owner.canWallGrab = true;
+		            hb.owner.wallGrabTimer = hb.owner.wallGrabMax;
+		            freeze = freezeHLim;
+		            hb.owner.freeze = freezeHLim;
+		            hasTumbled = true;
+            
+		            god.shake  = true;
+		            //god.freeze = true;
+		        } else {
+		            freeze = freezeLLim;
+		            hb.owner.freeze = freezeLLim;
+		        }
+        
+		        if (hb.owner.xSpeed == 0 && !hb.owner.onGround){
+		            hb.owner.xSpeed = 1 * hb.owner.facing;
+		        }
+			} else {
+				hasTumbled = true;
+		        god.shake  = true;
+				freeze = freezeLLim;
+		        hb.owner.freeze = freezeLLim;
+				play_sfx(sfxPnch1low, 1, 0);
+			}
 			if(shield){
 				xSpeed = hb.xHit / 3;
         

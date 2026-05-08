@@ -6,6 +6,9 @@ dist = distLimit;
 
 parried = false;
 
+initX = x;
+initY = y;
+
 xDir = 0;
 yDir = 0;
 spd = 0;
@@ -19,7 +22,15 @@ hitStun = 0; //hit stun duration
 damage  = 0; //damage dealt
 invincible = false; //what it sounds like
 comboGranted = false; //it's for tracking a single hit when hitting all players
+facing = 0;
 
-hitQueue = ds_list_create();
+isFrozen = false;
+freeze = 0;
+freezeStored = false;
+xSpeed = 0;
+ySpeed = 0;
+tempXSpeed = 0;
+tempYSpeed = 0;
+frameSpeed = 0;
 
-hitbox_create(0, 0, sprite_width, sprite_height, 10000000000000000, 80, 80, 60, 60);
+obstacle = true;

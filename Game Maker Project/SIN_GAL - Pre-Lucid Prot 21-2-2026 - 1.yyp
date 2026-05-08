@@ -175,6 +175,7 @@
     {"id":{"name":"pl_draw","path":"scripts/pl_draw/pl_draw.yy",},},
     {"id":{"name":"pl_endStep","path":"scripts/pl_endStep/pl_endStep.yy",},},
     {"id":{"name":"pl_frameData","path":"scripts/pl_frameData/pl_frameData.yy",},},
+    {"id":{"name":"pl_freeze","path":"scripts/pl_freeze/pl_freeze.yy",},},
     {"id":{"name":"pl_hitReset","path":"scripts/pl_hitReset/pl_hitReset.yy",},},
     {"id":{"name":"pl_invFrames","path":"scripts/pl_invFrames/pl_invFrames.yy",},},
     {"id":{"name":"pl_normalState","path":"scripts/pl_normalState/pl_normalState.yy",},},

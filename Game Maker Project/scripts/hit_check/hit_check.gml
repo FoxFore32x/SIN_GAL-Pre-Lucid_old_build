@@ -12,7 +12,7 @@ function hit_check() {
 		                with(other){
 		                    //check to see if your target is on the ignore list
 		                    //if it is on the ignore list, dont hit it again
-		                    for(i = 0; i < ds_list_size(ignoreList); i ++){
+		                    for(i = 0; i < ds_list_size(ignoreList); i++){
 		                        if(ignoreList[|i] == other.owner){
 		                            ignore = true;
 		                            break;
@@ -32,15 +32,7 @@ function hit_check() {
 		                        ds_list_add(ignoreList,other.owner);
 		                    }
 		                }
-					} /*else if (other.owner == owner){
-						if (instance_exists(other.owner)) {
-							other.owner.hit = true;
-							//other.owner.hitBy = id;
-		                }
-		                if (instance_exists(other.owner)) {
-							ds_list_add(other.owner.hitQueue, id);
-						}
-					}*/
+					}
 	            }
 	        }
 	    }
