@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"get_edge_x",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"get_edge_x",
+  "parent":{
+    "name":"Elements",
+    "path":"folders/Scripts/Elements.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

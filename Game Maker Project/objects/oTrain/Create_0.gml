@@ -13,6 +13,9 @@ xDir = 0;
 yDir = 0;
 spd = 0;
 
+xHit = 15;
+yHit = -15;
+
 hitbox  = -1; //default hitbox variable
 
 dur     = 0; //number of frames the hitbox is active

@@ -178,6 +178,7 @@ function pl_create() {
 	chitTimer= 0;
 	dashHitX = 0;
 	dashHitY = 0;
+	prevDam = 0;
 
 	//Attack Stats
 	upperAtt = 0;

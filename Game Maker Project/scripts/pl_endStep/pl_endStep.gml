@@ -71,26 +71,28 @@ function pl_endStep() {
         
 	        // hit logic
 	        // Now it's safe to check the hitter
-	        var cpu_hitter_in_arcade = false;
+			if(!hb.obstacle){
+		        var cpu_hitter_in_arcade = false;
         
-	        if (global.arcadeMode) {
-	            if (hb.owner.player < 0 && player < 0) {
-	                cpu_hitter_in_arcade = true;
-	            }
-	        }
+		        if (global.arcadeMode) {
+		            if (hb.owner.player < 0 && player < 0) {
+		                cpu_hitter_in_arcade = true;
+		            }
+		        }
         
-	        if (cpu_hitter_in_arcade) {
-	            hit = false;
-	            exit; // Stop hit processing
-	        }
+		        if (cpu_hitter_in_arcade) {
+		            hit = false;
+		            exit; // Stop hit processing
+		        }
+			}
         
 	        if(global.opHp){
 				if(!shield){
-					if(hb.owner.weapon == weapons.sword){
-		                hp -= 30;
-		            } else {
-		                hp -= 15;
-		            }
+					hp -= hb.damage;
+					
+					if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 50;
+					else if ((prevDam != 0) && (prevDam > hb.damage)) hitStun -= 50;
+					prevDam = hb.damage;
 				}
 	            if (hp <= 0){
 	                if(dead == false){
@@ -98,7 +100,7 @@ function pl_endStep() {
 	                    global.winId[global.winnerVar] = plId + 1;
 	                    global.winnerVar++;
                     
-	                    if(global.existentPl <= 1 && instance_exists(oHitBy))
+	                    if(global.existentPl <= 1 && !hb.obstacle && instance_exists(oHitBy))
 	                    global.winId[global.winnerVar] = oHitBy.plId + 1;
 	                }
 	                dead = true;

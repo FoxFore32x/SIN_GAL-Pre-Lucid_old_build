@@ -6,7 +6,7 @@ function sword_attacks() {
 	    case attacks.side_air:
 	        if(frame_check(1,2)){
 	            invFrames = 4;
-	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,10,false);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,30,false);
 	        }
 	    break;
     
@@ -14,7 +14,7 @@ function sword_attacks() {
 	    case attacks.up_air:
 	        if(frame_check(1,2)){
 	            invFrames = 4;
-	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,10,false);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,20,false);
 	        }        
 	    break;
     
@@ -22,7 +22,7 @@ function sword_attacks() {
 	    case attacks.down_air:
 	        if(frame_check(1,2)){
 	            invFrames = 4;
-	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,10,false);
+	            hitbox_create(hitOffX*facing*(global.sprScale),hitOffY*(global.sprScale),hitWidth*facing*(global.sprScale),hitHeight*(global.sprScale),hitDur,cxHit*facing*(global.sprScale),cyHit*(global.sprScale),100,20,false);
 	        }  
 	    break;
 	}
