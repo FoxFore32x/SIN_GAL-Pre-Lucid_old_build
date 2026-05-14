@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"createTrain",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"createTrain",
+  "parent":{
+    "name":"Triggers",
+    "path":"folders/Scripts/Triggers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

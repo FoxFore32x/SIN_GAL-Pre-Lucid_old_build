@@ -1,6 +1,7 @@
 script_execute(god_create,0,0,0,0,0);
 
 isTrapped = false;
+realPlayerDead = false;
 
 op_border = 8;
 op_space = 48;

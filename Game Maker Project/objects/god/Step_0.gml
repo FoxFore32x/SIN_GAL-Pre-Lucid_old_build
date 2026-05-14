@@ -230,22 +230,21 @@ if(room != results && room != title && room != init ){
 
 	if(global.opTimer) timer -= 1 * gameSpeed;
 
-	var realPlayerDead = false;
-
 	with (oPlayer) {
-	    if(hp <= 0){
-	        if (player >= 0) realPlayerDead = true;
+	    if(hp <= 0 && player >= 0){
+			realPlayerDead = true;
 	        instance_destroy(hitbox);
 	        instance_destroy();
 	    }
     
 	}
 
-	if ((global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || (global.opTimer && timer <= 0) || realPlayerDead) {
+	if (!instance_exists(oPlayer) || (global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || (global.opTimer && timer <= 0) || realPlayerDead) {
 	    audio_stop_all();
 	    instance_destroy(oHurtbox);
 	    instance_destroy(oHitbox);
 	    with (oPlayer) instance_destroy();
+		if(human_players_count == 0) global.uLostLmao = true;
 	    room_goto(results);
 	}
 

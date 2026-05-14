@@ -1,5 +1,5 @@
 timeLimit = 700;
-time = timeLimit;
+trainTime = timeLimit;
 
 distLimit = 300;
 dist = distLimit;

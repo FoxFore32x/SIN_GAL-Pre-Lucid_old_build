@@ -6,6 +6,7 @@ global.playerId[2] = 0;
 global.playerId[3] = 0;
 
 global.arPlCreated = false;
+global.uLostLmao = false;
 
 global.room_status_map = ds_map_create();
 global.enemies_created_check = ds_map_create();

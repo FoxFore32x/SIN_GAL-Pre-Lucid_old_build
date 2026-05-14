@@ -1,4 +1,4 @@
-if (time > 0)time -= 1 * god.gameSpeed;
+if (trainTime > 0)trainTime -= 1 * god.gameSpeed;
 else {
 	if(dist > 0){
 		if(dist = distLimit) hitbox_create(0, 0, sprite_width, sprite_height, dist, xHit, yHit, 200, 200,obstacle);
@@ -10,7 +10,7 @@ else {
 		x = initX;
 		y = initY;
 		dist = distLimit;
-		time = timeLimit;
+		trainTime = timeLimit;
 	}
 	
 	x += xSpeed;

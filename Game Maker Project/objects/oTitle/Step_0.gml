@@ -30,14 +30,14 @@ switch(menu_level){
                 case 1:
 					audio_stop_sound(sndMenu);
 					god.timer = 400 * room_speed;  // 3 seconds
-					global.existentPl = global.players + global.cpus;
+					//global.existentPl = global.players + global.cpus;
 					global.arcadeMode = false;
 					room_goto(rm_battle_1);
 				break;
                 case 2: 
 					audio_stop_sound(sndMenu);
 					god.timer = 400 * room_speed;  // 3 seconds
-					global.existentPl = global.players + global.cpus;
+					//global.existentPl = global.players + global.cpus;
 					global.arcadeMode = false;
 					room_goto(rm_battle);
 				break;

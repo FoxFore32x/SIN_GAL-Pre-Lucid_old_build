@@ -89,7 +89,7 @@ if(room != results && room != title && room != init ){
 	
 	res1 = "alooo";
     
-	if(showBox){
+	if(instance_exists(parentPhysics) && showBox){
 	    _c1 = c_red;
 	    draw_set_font(FONT_builtin);
 	    draw_set_color(c_red);

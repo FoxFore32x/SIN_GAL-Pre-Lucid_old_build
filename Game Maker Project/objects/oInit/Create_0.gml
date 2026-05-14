@@ -1,5 +1,7 @@
 global.sprScale = 2.6666666666666666666666666666667;
 
+global.existentPl = 0;
+global.uLostLmao = 0;
 global.playerId[0] = 0;
 global.playerId[1] = 0;
 global.playerId[2] = 0;

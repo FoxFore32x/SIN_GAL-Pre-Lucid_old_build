@@ -3,6 +3,8 @@
 function createPlayer(argument0, argument1) {
 
 	if(global.arPlCreated == true) exit;
+	
+	global.existentPl = global.players;
 
 	var dist = argument0;
 

@@ -33,11 +33,20 @@ if(!global.arcadeMode){
         vSpacing -= 32;
     }
 } else {
-    draw_text_transformed_colour(
-        150, 250, string_hash_to_newline("YOU WON!!"),
-        0.3333, 0.3333, 0,
-        c_white, c_white, c_white, c_white, 1
-    );
+	if(global.uLostLmao) {
+		draw_text_transformed_colour(
+	        150, 250, string_hash_to_newline("YOU LOST LMAAAAAAAOOOOOOOOOOOOOOO"),
+	        0.3333, 0.3333, 0,
+	        c_white, c_white, c_white, c_white, 1
+	    );
+	}
+	else {
+	    draw_text_transformed_colour(
+	        150, 250, string_hash_to_newline("YOU WON!!"),
+	        0.3333, 0.3333, 0,
+	        c_white, c_white, c_white, c_white, 1
+	    );
+	}
 }
 
 

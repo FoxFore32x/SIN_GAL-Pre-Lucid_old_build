@@ -2,7 +2,7 @@ function god_create() {
 	enum_init(); //initialize all of the state, and weapon info
 
 	//player checks
-	global.existentPl = global.players + global.cpus;
+	if(!global.arcadeMode) global.existentPl = global.players + global.cpus;
 
 	//Winner
 	global.winId[0] = 0;
