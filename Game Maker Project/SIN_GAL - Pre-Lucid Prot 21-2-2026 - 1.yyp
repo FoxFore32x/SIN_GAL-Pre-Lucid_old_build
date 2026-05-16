@@ -85,6 +85,7 @@
     {"id":{"name":"oHitbox","path":"objects/oHitbox/oHitbox.yy",},},
     {"id":{"name":"oHurtbox","path":"objects/oHurtbox/oHurtbox.yy",},},
     {"id":{"name":"oInit","path":"objects/oInit/oInit.yy",},},
+    {"id":{"name":"oNXCon","path":"objects/oNXCon/oNXCon.yy",},},
     {"id":{"name":"oOptions","path":"objects/oOptions/oOptions.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"oResults","path":"objects/oResults/oResults.yy",},},
