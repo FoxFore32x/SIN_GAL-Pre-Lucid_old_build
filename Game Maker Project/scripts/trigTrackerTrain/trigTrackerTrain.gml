@@ -20,6 +20,8 @@ function trigTrackerTrain(){
 		var player = nearest;
 		if (player == noone) exit;
 	
-		createTrain(player.x, player.y, 0, 0, 0.5, 0.5, 0, 10, 400, 5, -30, true);
+		createTrain(player.x, player.y - 128, 0, 0, 0.5, 0.5, 0, 60, 400, 5, -30, true);
 	}
+	
+	if(!instance_exists(oTrain)) triggered = false;
 }
