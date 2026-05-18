@@ -1,8 +1,10 @@
-/// @description  createEnemie(quantity, dist, y)
+/// @description  createEnemie(quantity, dist, yPosition, isBoss)
 /// @param quantity
 /// @param  dist
-/// @param  y
-function createEnemie(argument0, argument1, argument2) {
+/// @param  yPosition
+/// @param  isBoss
+
+function createEnemie(argument0, argument1, argument2, argument3) {
 	var is_created = ds_map_find_value(global.enemies_created_check, room_get_name(room));
 	var is_cleared = ds_map_find_value(global.room_status_map, room_get_name(room));
 
@@ -18,7 +20,11 @@ function createEnemie(argument0, argument1, argument2) {
 	        inst.player = -(i + 1); // -1, -2, -3...
 	        inst.plId   = ids;      // unique ID
 	        inst.depth = -40;
-	        inst.hp     = 300;
+			if(argument3 == true){
+				inst.isBoss = true;
+				inst.hp = 1000;
+			}
+			else inst.hp = 300;
     
 	        global.playerId[ids] = inst;
     

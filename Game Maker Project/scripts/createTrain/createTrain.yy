@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"createTrain",
   "parent":{
-    "name":"Triggers",
-    "path":"folders/Scripts/Triggers.yy",
+    "name":"Train",
+    "path":"folders/Scripts/Elements/Obstacles/Train.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

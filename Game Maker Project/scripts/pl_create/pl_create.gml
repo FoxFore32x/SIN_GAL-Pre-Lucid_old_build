@@ -10,6 +10,7 @@ function pl_create() {
 	// >= 0: Human PLayers
 	// < 0: CPU Players
 	player = 0;
+	isBoss = false;
 
 	onGround = 0;
 	isCrouching = false;

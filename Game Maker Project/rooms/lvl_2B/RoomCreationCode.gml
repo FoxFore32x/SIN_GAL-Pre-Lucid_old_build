@@ -1,1 +1,1 @@
-createEnemie(2, 32, 80);
+createEnemie(2, 32, 80, false);

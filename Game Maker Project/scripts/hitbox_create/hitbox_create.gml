@@ -1,4 +1,4 @@
-/// @description hitbox_create( xOffset, yOffset, xScale, yScale, duration, xhit, yhit, hit stun, damage);
+/// @description hitbox_create( xOffset, yOffset, xScale, yScale, duration, xhit, yhit, hit stun, damage, isObstacle);
 /// @param  xOffset
 /// @param  yOffset
 /// @param  xScale
@@ -8,6 +8,7 @@
 /// @param  yhit
 /// @param  hit stun
 /// @param  damage
+/// @param  isObstacle
 function hitbox_create(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9) {
 
 	//create the hitbox object, assign the owner to the creator, set offset and scale

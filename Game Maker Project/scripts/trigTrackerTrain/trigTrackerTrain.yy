@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"trigTrackerTrain",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"trigTrackerTrain",
+  "parent":{
+    "name":"Triggers",
+    "path":"folders/Scripts/Triggers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -116,6 +116,7 @@ function pl_endStep() {
 	                if (instance_exists(hurtbox)) {
 	                    instance_destroy(hurtbox);
 	                }
+					if(isBoss) global.arPlWon = true;
 	            }
 	        }
     

@@ -239,7 +239,7 @@ if(room != results && room != title && room != init ){
     
 	}
 
-	if (!instance_exists(oPlayer) || (global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || (global.opTimer && timer <= 0) || realPlayerDead) {
+	if ((global.existentPl <= 1 && !global.arcadeMode) || global.arPlWon || (global.opTimer && timer <= 0) || realPlayerDead) {
 	    audio_stop_all();
 	    instance_destroy(oHurtbox);
 	    instance_destroy(oHitbox);
