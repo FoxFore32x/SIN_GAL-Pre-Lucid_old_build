@@ -11,7 +11,7 @@ switch (type)
 		for(var i = 0; i < 5; i++){
 			if(global.nxgp[i] == 0){
 				global.nxgp[i] = pad_index;
-				gamepad_set_axis_deadzone(global.nxgp[i],0.27);
+				//gamepad_set_axis_deadzone(global.nxgp[i],0.6);
 				break;
 			}
 		}
