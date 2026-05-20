@@ -1,6 +1,6 @@
 // Los recursos de Script han cambiado para la v2.3.0 Consulta
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para más información
-function trigTrackerTrain(){
+function trigTrackerTrain(xChange, yChange, xPos, yPos){
 	if (!triggered && place_meeting(x, y, oPlayer))
 	{
 	    triggered = true;
@@ -20,7 +20,22 @@ function trigTrackerTrain(){
 		var player = nearest;
 		if (player == noone) exit;
 	
-		createTrain(player.x, player.y - 128, 0, 0, 0.5, 0.5, 0, 60, 400, 5, -30, true);
+		var spawnX;
+		var spawnY;
+
+		// X position
+		if (xChange)
+			spawnX = xPos;
+		else
+			spawnX = player.x;
+
+		// Y position
+		if (yChange)
+			spawnY = yPos;
+		else
+			spawnY = player.y - 128;
+
+		createTrain(spawnX, spawnY, 0, 0, 0.5, 0.5, 0, 60, 400, 5, -30, true);
 	}
 	
 	if(!instance_exists(oTrain)) triggered = false;

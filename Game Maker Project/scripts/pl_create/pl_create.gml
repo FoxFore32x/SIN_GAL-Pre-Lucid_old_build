@@ -107,6 +107,7 @@ function pl_create() {
 	tSpeed = 10 * (global.sprScale);
 	tSpeedDefault = tSpeed;
 	jPower = -5 * (global.sprScale);
+	jPotent = 1;
 	facing = 1;
 
 	isJump = false;

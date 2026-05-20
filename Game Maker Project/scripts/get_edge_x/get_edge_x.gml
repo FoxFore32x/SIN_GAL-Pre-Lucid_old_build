@@ -8,6 +8,13 @@ function get_edge_x(dir) {
     }
 }
 
-function set_targetX(edge, xDirection){
-	return abs(edge - get_edge_x(xDirection) - x);
+function set_target(targetEdge, dir) {
+
+    var currentEdge = get_edge_x(dir);
+
+    // amount needed to align edge perfectly
+    var offset = targetEdge - currentEdge;
+
+    // return corrected x position
+    return x + offset;
 }

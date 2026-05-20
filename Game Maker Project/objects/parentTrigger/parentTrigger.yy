@@ -29,11 +29,11 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"sprTrigger",
     "path":"sprites/sprTrigger/sprTrigger.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

@@ -116,7 +116,7 @@ function pl_normalState() {
 		    jumpKeyBufferTimer = 0;
 		    canWallGrab = false;
 		    isWallGrabbing = false;
-		    ySpeed = jPower;
+		    ySpeed = jPower * jPotent;
 		    squash_stretch(0.7,1.3);
 		    canJump = false;
 		    if(isJump == false) play_sfx(sfxJump, 1, 0);

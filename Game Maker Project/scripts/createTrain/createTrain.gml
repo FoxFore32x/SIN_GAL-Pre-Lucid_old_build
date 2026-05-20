@@ -19,8 +19,8 @@ function createTrain(argument0, argument1, argument2, argument3, argument4, argu
 		inst.image_xscale = argument4;
 		inst.image_yscale = argument5;
 		inst.spd = argument6;
-		if(argument6 != 0) inst.distLimit = ceil(set_targetX(argument7, inst.xDir) / inst.spd);
-		else inst.distLimit = ceil(set_targetX(argument7, inst.xDir));
+		if(argument6 != 0) inst.distLimit = set_target(argument7, argument2) / argument6;
+		else inst.distLimit = set_target(argument7, argument2);
 		inst.dist = inst.distLimit
 		inst.timeLimit = argument8;
 		inst.trainTime = inst.timeLimit;
