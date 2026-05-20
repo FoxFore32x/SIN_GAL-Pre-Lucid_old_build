@@ -3,7 +3,7 @@
     upHold    = up;
     downHold  = down;
     
-    left  = keyboard_check(ord("A")) || (gamepad_axis_value(global.nxgp[0], gp_axislh) < -0.6) || (gamepad_button_check(global.nxgp[0], gp_padl));
+    left  = keyboard_check(ord("A")) || (gamepad_axis_value(global.plInput[0], gp_axislh) < -0.6) || (gamepad_button_check(global.plInput[0], gp_padl));
     
     if (left && !leftHold){
         leftKeyBufferTimer = bufferTime;
@@ -15,7 +15,7 @@
         leftKeyBuffered = 0;
     }
     
-    right = keyboard_check(ord("D")) || (gamepad_axis_value(global.nxgp[0], gp_axislh) > 0.6) || (gamepad_button_check(global.nxgp[0], gp_padr));
+    right = keyboard_check(ord("D")) || (gamepad_axis_value(global.plInput[0], gp_axislh) > 0.6) || (gamepad_button_check(global.plInput[0], gp_padr));
     
     if (right && !rightHold){
         rightKeyBufferTimer = bufferTime;
@@ -27,7 +27,7 @@
         rightKeyBuffered = 0;
     }
     
-    up    = keyboard_check(ord("W")) || (gamepad_axis_value(global.nxgp[0], gp_axislv) < -0.6) || (gamepad_button_check(global.nxgp[0], gp_padu));
+    up    = keyboard_check(ord("W")) || (gamepad_axis_value(global.plInput[0], gp_axislv) < -0.6) || (gamepad_button_check(global.plInput[0], gp_padu));
     
     if (up && !upHold){
         upKeyBufferTimer = bufferTime;
@@ -39,7 +39,7 @@
         upKeyBuffered = 0;
     }
     
-    down  = keyboard_check(ord("S")) || (gamepad_axis_value(global.nxgp[0], gp_axislv) > 0.6) || (gamepad_button_check(global.nxgp[0], gp_padd));
+    down  = keyboard_check(ord("S")) || (gamepad_axis_value(global.plInput[0], gp_axislv) > 0.6) || (gamepad_button_check(global.plInput[0], gp_padd));
     
     if (down && !downHold){
         downKeyBufferTimer = bufferTime;
@@ -112,9 +112,9 @@
     if (dt_down_timer  > 0) dt_down_timer  -= 1;
     
     jumpHold = jump;
-    jump = keyboard_check(ord("O")) || gamepad_button_check(global.nxgp[0], gp_face1);
+    jump = keyboard_check(ord("O")) || gamepad_button_check(global.plInput[0], gp_face1);
 	
-	jump2 = keyboard_check_pressed(ord("O")) || gamepad_button_check_pressed(global.nxgp[0], gp_face1);
+	jump2 = keyboard_check_pressed(ord("O")) || gamepad_button_check_pressed(global.plInput[0], gp_face1);
     
     if (jump && !jumpHold){
         jumpKeyBufferTimer = bufferTime;
@@ -137,7 +137,7 @@
     }
 
     lowAtHold = lowAt;
-    lowAt = keyboard_check(ord("I")) || (gamepad_button_check(global.nxgp[0], gp_face3));
+    lowAt = keyboard_check(ord("I")) || (gamepad_button_check(global.plInput[0], gp_face3));
     
     if (lowAt && !lowAtHold){
         lattKeyBufferTimer = bufferTime;
@@ -150,7 +150,7 @@
     }
     
     hiAtHold = hiAt;
-    hiAt = keyboard_check(ord("K")) || (gamepad_button_check(global.nxgp[0], gp_face4));
+    hiAt = keyboard_check(ord("K")) || (gamepad_button_check(global.plInput[0], gp_face4));
     
     if(hiAt && !hiAtHold){
         hattKeyBufferTimer = bufferTime;
@@ -164,7 +164,7 @@
     }
     
     spBtHold = spBt;
-    spBt = keyboard_check(ord("L")) || (gamepad_button_check(global.nxgp[0], gp_face2));
+    spBt = keyboard_check(ord("L")) || (gamepad_button_check(global.plInput[0], gp_face2));
     
     if(spBt && !spBtHold){
         spKeyBufferTimer = bufferTime;
@@ -178,7 +178,7 @@
     }
     
     dashHold = dash;
-    dash = keyboard_check(ord("P")) || (gamepad_button_check(global.nxgp[0], gp_shoulderr)) || (gamepad_button_check(global.nxgp[0], gp_shoulderrb));
+    dash = keyboard_check(ord("P")) || (gamepad_button_check(global.plInput[0], gp_shoulderr)) || (gamepad_button_check(global.plInput[0], gp_shoulderrb));
     
     if (dash && !dashHold){
         dashKeyBufferTimer = bufferTime;
@@ -191,7 +191,7 @@
     }
 
     parryHold = parry;
-    parry = keyboard_check(vk_shift) || (gamepad_button_check(global.nxgp[0], gp_shoulderl)) || (gamepad_button_check(global.nxgp[0], gp_shoulderlb));
+    parry = keyboard_check(vk_shift) || (gamepad_button_check(global.plInput[0], gp_shoulderl)) || (gamepad_button_check(global.plInput[0], gp_shoulderlb));
     
     if (parry && !parryHold){
         parryKeyBufferTimer = bufferTime;
@@ -204,7 +204,7 @@
     }
     
     itemHold = item;
-    item = keyboard_check(vk_shift) || (gamepad_button_check(global.nxgp[0], gp_shoulderl)) || (gamepad_button_check(global.nxgp[0], gp_shoulderlb));
+    item = keyboard_check(vk_shift) || (gamepad_button_check(global.plInput[0], gp_shoulderl)) || (gamepad_button_check(global.plInput[0], gp_shoulderlb));
     
     if (item){
         wallKeyBufferTimer = bufferTime;

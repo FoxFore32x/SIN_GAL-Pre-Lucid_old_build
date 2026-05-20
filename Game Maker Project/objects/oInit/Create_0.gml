@@ -6,7 +6,7 @@ global.playerId[0] = 0;
 global.playerId[1] = 0;
 global.playerId[2] = 0;
 global.playerId[3] = 0;
-global.nxgp = array_create(5, 0);
+global.plInput = array_create(5, -1);
 
 global.players = 1;
 global.cpus = 1;

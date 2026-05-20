@@ -13,8 +13,4 @@ switch_controller_support_set_defaults();
 switch_controller_support_set_singleplayer_only(false);
 switch_controller_support_show(); //show the applet
 
-if(os_version != os_switch && os_version != os_switch2){
-	for(var i = 0; i < 5; i++){
-		global.nxgp[i] = i;
-	}
-}
+if (!(os_version == os_switch || os_version == os_switch2)) global.nxgp = 0;
