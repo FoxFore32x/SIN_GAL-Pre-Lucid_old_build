@@ -119,6 +119,7 @@
     {"id":{"name":"results","path":"rooms/results/results.yy",},},
     {"id":{"name":"rm_battle_1","path":"rooms/rm_battle_1/rm_battle_1.yy",},},
     {"id":{"name":"rm_battle","path":"rooms/rm_battle/rm_battle.yy",},},
+    {"id":{"name":"rm_charsel","path":"rooms/rm_charsel/rm_charsel.yy",},},
     {"id":{"name":"test","path":"rooms/test/test.yy",},},
     {"id":{"name":"title","path":"rooms/title/title.yy",},},
     {"id":{"name":"training","path":"rooms/training/training.yy",},},
@@ -309,6 +310,7 @@
     {"roomId":{"name":"ts_5","path":"rooms/ts_5/ts_5.yy",},},
     {"roomId":{"name":"ts_6","path":"rooms/ts_6/ts_6.yy",},},
     {"roomId":{"name":"ts_7","path":"rooms/ts_7/ts_7.yy",},},
+    {"roomId":{"name":"rm_charsel","path":"rooms/rm_charsel/rm_charsel.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
