@@ -30,8 +30,8 @@
   ],
   "name":"test",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"scrapped",
+    "path":"folders/Rooms/TEST/scrapped.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

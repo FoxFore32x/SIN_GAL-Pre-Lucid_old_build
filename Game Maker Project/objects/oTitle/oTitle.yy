@@ -11,8 +11,8 @@
   "name":"oTitle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Menu",
+    "path":"folders/Objects/System/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

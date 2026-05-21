@@ -10,8 +10,8 @@
   "name":"oNXCon",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"NintendoSwitch",
+    "path":"folders/Objects/System/NintendoSwitch.yy",
   },
   "parentObjectId":null,
   "persistent":true,

@@ -35,6 +35,11 @@ function enum_init() {
 		test
 	}
 
-
+	enum modes{
+		story,
+		challenge,
+		vs,
+		training
+	}
 
 }
