@@ -1,4 +1,10 @@
-player = -1;
+controlsSetup();
+player = 0;
+
+keybinds = [];
+
+initialize_Keybinds();
+globalKeys();
 
 //buttons
 up    = false;

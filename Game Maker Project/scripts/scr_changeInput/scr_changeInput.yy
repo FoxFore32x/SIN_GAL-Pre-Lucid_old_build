@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_changeInput",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_changeInput",
+  "parent":{
+    "name":"Input",
+    "path":"folders/Scripts/System/Input.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

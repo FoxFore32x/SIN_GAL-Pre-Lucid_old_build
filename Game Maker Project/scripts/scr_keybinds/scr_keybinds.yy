@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BindKB",
+  "%Name":"scr_keybinds",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BindKB",
+  "name":"scr_keybinds",
   "parent":{
     "name":"Input",
     "path":"folders/Scripts/System/Input.yy",

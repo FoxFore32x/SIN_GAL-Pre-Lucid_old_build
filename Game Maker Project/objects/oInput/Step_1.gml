@@ -1,3 +1,6 @@
+inputUpdate();
+globalKeys();
+
 leftHold  = left;
 rightHold = right;
 upHold    = up;
