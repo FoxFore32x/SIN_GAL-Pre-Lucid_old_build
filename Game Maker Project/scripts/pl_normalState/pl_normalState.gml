@@ -1,6 +1,7 @@
 function pl_normalState() {
 	//move left and right
 	isDash = false;
+	hasHit = false;
 	prevDam = 0;
 	if (god.isPaused) exit;
 		if(left){

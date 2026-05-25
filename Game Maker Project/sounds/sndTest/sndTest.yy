@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sndTest",
-  "volume":0.7,
+  "volume":1.0,
 }

@@ -30,7 +30,7 @@
   "origin":7,
   "parent":{
     "name":"dagger",
-    "path":"folders/Sprites/player/dagger.yy",
+    "path":"folders/Sprites/Placeholders/player/dagger.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,4 +1,4 @@
-if(room != results && room != title && room != init ){
+if(room != results && room != title && room != init && room != rm_charsel){
 	if(global.opHp){
 	    draw_set_font(FOT);
 	    var vSpacing = 32;

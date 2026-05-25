@@ -4,7 +4,7 @@ if(global.opMusic == true && !audio_is_playing(global.currentMusic)){
 	audio_play_sound(global.currentMusic, 0, 1);
 }
 
-var dist = 16
+/*var dist = 16
 
 var ids = 0;
 if(global.players > 0){
@@ -33,4 +33,6 @@ if(global.cpus > 0){
         ids++;
         
     }
-}
+}*/
+
+spawnChars(288, 288);

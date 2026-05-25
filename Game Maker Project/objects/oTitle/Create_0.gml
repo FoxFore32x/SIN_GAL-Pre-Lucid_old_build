@@ -8,6 +8,9 @@ global.playerId[3] = 0;
 global.arPlCreated = false;
 global.uLostLmao = false;
 
+global.players = 0;
+global.cpus = 0;
+
 global.room_status_map = ds_map_create();
 global.enemies_created_check = ds_map_create();
 
@@ -59,6 +62,9 @@ parryHold = false;
 item = false;
 itemHold = false;
 
+pause = false;
+pauseHold = false;
+
 width = 256;
 height = 256;
 
@@ -99,6 +105,8 @@ val_length = array_length(settVal);
 menu_level = 0;
 
 showCtrl = false;
+
+player = 0;
 
 global.currentMusic = sndMenu;
 

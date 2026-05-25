@@ -11,12 +11,12 @@ function pl_characters(){
 					if(!down /*&& onGround*/) {
 						if(onGround) attOnGround = true;
 						else attOnGround = false;
-						attDirX = 4 * global.sprScale * facing;
+						attDirX = 3 * global.sprScale * facing;
 					}
 					else attDirX = noone;
 					if(onGround){
-						if(up) attDirY = -3 * global.sprScale;
-						else attDirY = -1.51 * global.sprScale;
+						if(up) attDirY = -1.51 * global.sprScale;
+						else attDirY = -1.3 * global.sprScale;
 					}
 					else {
 						/*if(!attOnGround) attDirY = 0;
@@ -212,14 +212,15 @@ function pl_characters(){
 						
 			switch(weapon){    
 			    case weapons.sword:
-					if(!down) attDirX = 5 * global.sprScale * facing;
-					else attDirX = noone;
-					if(onGround){
-						if(up) attDirY = -3 * global.sprScale;
-						else attDirY = -1.51 * global.sprScale;
+				
+					if(!down /*&& onGround*/) {
+						if(onGround) attOnGround = true;
+						else attOnGround = false;
+						attDirX = 6 * global.sprScale * facing;
 					}
-					else attDirY = noone;
+					else attDirX = noone;
 					
+					if(hasHit) xSpeed = 0;
 					//Attack Stats
 			        upperAtt = 0;
 			        sideAtt = 0;

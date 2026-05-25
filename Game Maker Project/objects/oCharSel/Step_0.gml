@@ -1,172 +1,82 @@
-pos += (down && !downHold) - (up && !upHold);
+/// @description Inserte aquí la descripción
+// Puede escribir su código en este editor
+inputUpdate();
+globalKeys();
 
-op_length = array_length_2d(option, menu_level);
+var used = array_create(5, false);
 
-if (pos >= op_length)
+for (var i = 0; i < 4; i++)
 {
-    pos = 0;
+    // Active if gamepad connected OR pressed a button
+    if (gamepad_is_connected(i) || global.keyAny[i])
+    {
+        isPActive[i] = true;
+    }
+
+    // CPU if inactive
+    isPCPU[i] = !isPActive[i];
 }
-if (pos < 0)
-{
-    pos = op_length-1;
-}
 
-var btnJump = (jump2);
 
-var _sml = menu_level;
+for(var i = 0; i < 4; i++){
+	
+	if(isPActive[i]){
+		
+		pos[i] += global.keyRight2[i] - global.keyLeft2[i];
+	
+		if (pos[i] >= 4) pos[i] = 0;
+		if (pos[i] < 0) pos[i] = 3;
+		
+		if(!isPSelected[pos[i]]){
+			sel[pos[i]] += global.keyDown2[i] - global.keyUp2[i];
 
-switch(menu_level){
-    case 0:
-        if(btnJump){
-            switch(pos){
-                case 0:
-					audio_stop_sound(sndMenu);
-					god.timer = 400 * room_speed;  // 3 seconds
-					global.arcadeMode = true;
-					global.opHp = true;
-					global.opTimer = true;
-					room_goto(ts_1);
-				break;
-                case 1:
-					audio_stop_sound(sndMenu);
-					god.timer = 400 * room_speed;  // 3 seconds
-					//global.existentPl = global.players + global.cpus;
-					global.arcadeMode = false;
-					room_goto(rm_battletest);
-				break;
-                case 2: 
-					audio_stop_sound(sndMenu);
-					god.timer = 400 * room_speed;  // 3 seconds
-					//global.existentPl = global.players + global.cpus;
-					global.arcadeMode = false;
-					room_goto(rm_training);
-				break;
-                case 3: menu_level = 1; break;
-                case 4: game_end(); break;
-            }
-        }
-    break;
-        
-    case 1:
-        var change = (right && !rightHold) - (left && !leftHold);
-        var total = settVal[0] + settVal[1];
-
-        switch (pos) {
-            // PLAYER COUNT
-            case 0:
-                if (change != 0) {
-                    settVal[0] += change;
-                    if (settVal[0] < 0) settVal[0] = 0;
-                    if (settVal[0] > global.maxPlayers) settVal[0] = global.maxPlayers;
-                    
-                    // auto-balance: keep total within maxPlayers
-                    if (settVal[0] + settVal[1] > global.maxPlayers)
-                        settVal[1] = global.maxPlayers - settVal[0];
-                }
-            break;
-            
-            // CPU COUNT
-            case 1:
-                if (change != 0) {
-                    settVal[1] += change;
-                    if (settVal[1] < 0) settVal[1] = 0;
-                    if (settVal[1] > global.maxPlayers) settVal[1] = global.maxPlayers;
-                    
-                    // auto-balance
-                    if (settVal[0] + settVal[1] > global.maxPlayers)
-                        settVal[0] = global.maxPlayers - settVal[1];
-                }
-            break;
-            
-            // HP SETTING
-            case 2:
-                if (change != 0) {
-                    if (settVal[2] == false) settVal[2] = true;
-                    else settVal[2] = false;
-                }
-            break;
-            
-            // TIMER SETTING
-            case 3:
-                if (change != 0) {
-                    if (settVal[3] == false) settVal[3] = true;
-                    else settVal[3] = false;
-                }
-            break;
-            
-            // MUSIC SETTING
-            case 4:
-                if (change != 0) {
-					settVal[4] += (change * 0.1);
-					if(settVal[4] > 0){
-						global.opMusic = true;
+			if (sel[pos[i]] >= 4) sel[pos[i]] = 0;
+			if (sel[pos[i]] < 0) sel[pos[i]] = 3;
+			
+			var oldPos = pos[i];
+			
+			for (var j = 0; j < 4; j++){
+				if(i != j && isPActive[j]){
+					if(pos[i] == pos[j]){
+						pos[i] = oldPos;
+						break;
 					}
-					else global.opMusic = false;
-					
-					if (settVal[4] < 0) settVal[4] = 0;
-					if (settVal[4] > global.maxVolMusic) settVal[4] = global.maxVolMusic;
-					
-					audio_sound_gain(global.currentMusic, settVal[4]);
-					
-                    if (global.opMusic == true && !audio_is_playing(global.currentMusic)) {
-                        audio_play_sound(global.currentMusic, 0, 1);
-                    }
-                    else if (global.opMusic == false && audio_is_playing(global.currentMusic)) {
-                        audio_stop_sound(global.currentMusic);
-                    }
-                }
-            break;
-            
-            // SFX SETTING
-            case 5:
-				if (change != 0) {
-					settVal[5] += (change * 0.1);
-					if(settVal[5] > 0) global.opSfx = true;
-					else global.opSfx = false;
-					
-					if (settVal[5] < 0) settVal[5] = 0;
-					if (settVal[5] > global.maxVolSfx) settVal[5] = global.maxVolSfx;
-                }
-            break;
+				}
+			}
+		}
 
-            // BACK
-            case 6:
-                if (btnJump){
-                    global.players = settVal[0];
-                    global.cpus = settVal[1];
-                    global.opHp = settVal[2];
-                    global.opTimer = settVal[3];
-                    global.volMusic = settVal[4];
-                    global.volSfx = settVal[5];
-                    menu_level = 0;
-                }
-            break;
-        }
+		while (used[pos[i]]){
+			pos[i]++;
+		
+			if(pos[i] >= 4) pos[i] = 0;
+		}
+	
+		used[pos[i]] = true;
 
-        // recompute total at end
-        global.balancer = settVal[0] + settVal[1];
-        
-    break;
+		var _pAccept = global.keyJump2[i];
+		var _pDecline = global.keyLight2[i];
+
+		if (_pAccept){
+			isPSelected[pos[i]] = true;
+			global.playerChar[pos[i]] = sel[pos[i]];
+			if(isPCPU[pos[i]]) global.cpus++;
+			else global.players++;
+		}
+		if (_pDecline){
+			isPSelected[pos[i]] = false;
+			global.playerChar[pos[i]] = 0;
+			if(isPCPU[pos[i]]) global.cpus--;
+			else global.players--;
+		}
+	}
+
+	if(isPSelected[pos[i]]){
+		ready = true;
+		
+		if(global.keyPause[i]){
+			if(global.arcadeMode) global.existentPl = global.players;
+			else global.existentPl = global.players + global.cpus;
+			initInGameMode(global.currentMode);
+		}
+	}
 }
-
-// Proper back handling
-if (menu_level == 1 && lowAt && !lowAtHold){
-    global.players	= settVal[0];
-    global.cpus		= settVal[1];
-    global.opHp		= settVal[2];
-    global.opTimer	= settVal[3];
-    global.volMusic	= settVal[4];
-    global.volSfx	= settVal[5];
-
-    menu_level = 0;
-    pos = 0;
-}
-
-if (pos >= op_length) pos = 0;
-
-if(btnJump){
-    if _sml != menu_level {pos = 0};
-    op_length = array_length(option);
-}
-
-if(keyboard_check_pressed(ord("Z"))) showCtrl = !showCtrl;

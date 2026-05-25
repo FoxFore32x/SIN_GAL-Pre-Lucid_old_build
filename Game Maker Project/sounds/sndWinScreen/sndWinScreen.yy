@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sndWinScreen",
-  "volume":0.6,
+  "volume":1.0,
 }

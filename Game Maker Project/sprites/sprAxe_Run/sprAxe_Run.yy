@@ -30,7 +30,7 @@
   "origin":7,
   "parent":{
     "name":"axe",
-    "path":"folders/Sprites/player/axe.yy",
+    "path":"folders/Sprites/Placeholders/player/axe.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

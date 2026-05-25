@@ -30,6 +30,7 @@ function enum_init() {
 	}
 	
 	enum characters{
+		none,
 		teori,
 		lamb,
 		test

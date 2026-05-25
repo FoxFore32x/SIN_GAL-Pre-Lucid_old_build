@@ -89,10 +89,6 @@ function pl_endStep() {
 	        if(global.opHp){
 				if(!shield){
 					hp -= hb.damage;
-					
-					if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 50;
-					else if ((prevDam != 0) && (prevDam > hb.damage)) hitStun -= 50;
-					prevDam = hb.damage;
 				}
 	            if (hp <= 0){
 	                if(dead == false){
@@ -130,7 +126,7 @@ function pl_endStep() {
 	        pl_hitReset();
 			
 			if(!hb.obstacle){
-        
+				hb.owner.hasHit = true;
 		        if (!hb.comboGranted) {
 		            hb.comboGranted = true;
         
@@ -154,7 +150,7 @@ function pl_endStep() {
             
 		        }
         
-		        if(hb.owner.jabCnt > (hb.owner.jabLimit / 2)){
+		        /*if(hb.owner.jabCnt > (hb.owner.jabLimit / 2)){
 		            if ((hb.owner.subState == attacks.down_ground
 		                || hb.owner.subState == attacks.down_air) && onGround){
 		                    halfCombo = true;
@@ -166,7 +162,7 @@ function pl_endStep() {
 		                    halfCombo = true;
 		                }
                 
-		        }
+		        }*/
         
 		        if((hb.owner.jabCnt > hb.owner.jabLimit) 
 		        || (hb.owner.hJabCnt > hb.owner.hJabLimit)
@@ -250,7 +246,10 @@ function pl_endStep() {
         
 		        facing = hb.owner.facing * -1;
 		        depth = hb.depth;
-		        hitStun = hb.hitStun;
+		        hitStun += hb.hitStun;
+				if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 30;
+				else if ((prevDam != 0) && (prevDam > hb.damage)) hitStun -= 70;
+				prevDam = hb.damage;
         
 		        currentState = states.tumble;
 			}

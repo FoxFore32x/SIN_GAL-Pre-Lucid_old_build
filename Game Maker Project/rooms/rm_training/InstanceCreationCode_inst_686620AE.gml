@@ -1,4 +1,4 @@
 pit = true;
 xPosition = 32;
-yPosition = 0;
+yPosition = 288;
 roomName = room;

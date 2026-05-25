@@ -11,8 +11,8 @@
   "name":"god",
   "overriddenProperties":[],
   "parent":{
-    "name":"group1",
-    "path":"folders/Objects/System/group1.yy",
+    "name":"Player",
+    "path":"folders/Objects/System/Player.yy",
   },
   "parentObjectId":null,
   "persistent":true,

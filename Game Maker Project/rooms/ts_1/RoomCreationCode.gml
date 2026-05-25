@@ -4,4 +4,5 @@ if(global.opMusic == true && !audio_is_playing(global.currentMusic)){
 	audio_play_sound(global.currentMusic, 0, 1);
 }
 
-createPlayer(128, 1344);
+//createPlayer(128, 1344);
+spawnChars(128, 1344);

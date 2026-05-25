@@ -156,6 +156,7 @@ function pl_create() {
 	coyoteJumpFrames = 5;
 	coyoteJumpTimer = 0;
 
+	initedChar = false;
 	isWallGrabbing = false;
 	canWallGrab = false;
 	parried = false;
@@ -247,6 +248,7 @@ function pl_create() {
 
 	//hit
 	hit = false;
+	hasHit = false;
 	halfCombo = false;
 	downGroundHit = false;
 	hitBy = noone; //Obsolete
@@ -273,8 +275,6 @@ function pl_create() {
 
 	//destroy
 	destroy = false;
-
-
 
 
 

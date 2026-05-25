@@ -1,4 +1,7 @@
-if(keyboard_check_pressed(vk_enter) || gamepad_button_check_pressed(global.nxgp, gp_start)){
+inputUpdate();
+globalKeys();
+
+if(global.keyPauseAll){
     audio_stop_all();
     room_goto(title);
 }

@@ -1,75 +1,53 @@
-controlsSetup();
+/// @description Inserte aquí la descripción
+// Puede escribir su código en este editor
 
-global.playerId[0] = 0;
-global.playerId[1] = 0;
-global.playerId[2] = 0;
-global.playerId[3] = 0;
+ready = false;
 
-//buttons
-up    = false;
-down  = false;
-left  = false;
-right = false;
-    
-leftHold  = left;
-rightHold = right;
-upHold    = up;
-downHold  = down;
+//Initial player position
+inPos[0] = 0;
+inPos[1] = 1;
+inPos[2] = 2;
+inPos[3] = 3;
 
-dt_buffer = 0;
+//player color
+pCol[0] = c_red;
+pCol[1] = c_blue;
+pCol[2] = c_yellow;
+pCol[3] = c_green;
+pCol[4] = c_gray;
 
-dt_left_timer  = -1;
-dt_right_timer = -1;
-dt_up_timer    = -1;
-dt_down_timer  = -1;
+//player position
+pos[0] = 0;
+pos[1] = 1;
+pos[2] = 2;
+pos[3] = 3;
 
-leftDouble  = false;
-rightDouble = false;
-upDouble    = false;
-downDouble  = false;
-    
-jump  = false;
-jumpHold = false;
-    
-attack = false;
-attackHold = false;
-    
-//Attack btns
-lowAt = false;
-lowAtHold = false;
-    
-hiAt = false;
-hiAtHold = false;
-    
-spBtHold = false;
-spBt = false;
-    
-dash = false;
-dashHold = false;
-    
-parry = false;
-parryHold = false;
-    
-item = false;
-itemHold = false;
+//Player is active
+isPActive = array_create(5, false);
 
-width = 256;
-height = 256;
+//CPU Checks for each pl
+isPCPU = array_create(5, false);
 
-op_border = 8;
-op_space = 48;
+//Is player selected
+isPSelected = array_create(5, false);
 
-pos = 0;
+//Characters
+char[0] = "  ^\nNone\n  v";
+char[1] = "   ^\nTeori\n   v";
+char[2] = "		^\nLamb Bisquit\n	v";
+char[3] = "		^\nMy uncle Jay,\nhe's so cool :)\n		v";
 
-//Pause Menu
-option[0, 0] = "Teori";
-option[0, 1] = "Lamb Bisquit";
+//Character renders
+charImg[0] = sCharselNobody;
+charImg[1] = sTeoriRender;
+charImg[2] = sLambRender;
+charImg[3] = sJayRender;
 
-//Setting Values
+//Player Selected character
+sel = array_create(5, 0);
 
-settVal[0] = characters.teori;
-settVal[1] = characters.lamb;
+// character assigned to each POSITION
+selPos = array_create(5, 0);
 
-op_length = array_length(option);
-val_length = array_length(settVal);
-menu_level = 0;
+//Player's current selected character
+sel = array_create(5, 0);

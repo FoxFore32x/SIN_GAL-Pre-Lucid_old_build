@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":220.77333,
+  "duration":285.48935,
   "exportDir":"",
   "name":"sndTutorial",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"sndTutorial",
-  "volume":0.7,
+  "volume":1.0,
 }

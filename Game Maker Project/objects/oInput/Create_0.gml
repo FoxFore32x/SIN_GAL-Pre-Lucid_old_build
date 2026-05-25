@@ -53,3 +53,6 @@ parryHold = false;
     
 item = false;
 itemHold = false;
+
+pause = false;
+pauseHold = false;

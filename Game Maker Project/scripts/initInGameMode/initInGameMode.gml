@@ -15,7 +15,7 @@ function initInGameMode(modeId){
 			global.arcadeMode = false;
 			global.opHp = true;
 			global.opTimer = true;
-			room_goto(rm_battletest);
+			room_goto(rm_battle);
 		break;
 		
 		case modes.training:

@@ -30,7 +30,7 @@
   "origin":7,
   "parent":{
     "name":"spear",
-    "path":"folders/Sprites/player/spear.yy",
+    "path":"folders/Sprites/Placeholders/player/spear.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

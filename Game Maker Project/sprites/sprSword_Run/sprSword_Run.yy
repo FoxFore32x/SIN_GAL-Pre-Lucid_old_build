@@ -30,7 +30,7 @@
   "origin":7,
   "parent":{
     "name":"sword",
-    "path":"folders/Sprites/player/sword.yy",
+    "path":"folders/Sprites/Placeholders/player/sword.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

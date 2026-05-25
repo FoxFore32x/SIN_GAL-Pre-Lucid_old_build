@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"boxes",
-    "path":"folders/Sprites/boxes.yy",
+    "path":"folders/Sprites/Placeholders/boxes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

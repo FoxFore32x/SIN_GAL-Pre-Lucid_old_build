@@ -4,7 +4,7 @@ if(global.opMusic == true && !audio_is_playing(global.currentMusic)){
 	audio_play_sound(global.currentMusic, 0, 1);
 }
 
-global.opHp = false;
+/*global.opHp = false;
 global.opTimer = false;
 global.arcadeMode = false;
 
@@ -28,4 +28,6 @@ p1 = instance_create(dist, 80, oPlayer);
 p1.player = 1;
 p1.plId = ids;
 global.playerId[ids] = p1;
-ids++;
+ids++;*/
+
+spawnChars(288, 288);

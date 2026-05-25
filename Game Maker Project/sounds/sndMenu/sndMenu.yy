@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":6,
   "conversionMode":0,
-  "duration":304.96,
+  "duration":284.9595,
   "exportDir":"",
   "name":"sndMenu",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":48000,
-  "soundFile":"sndMenu",
-  "volume":0.7,
+  "soundFile":"sndMenu.ogg",
+  "volume":1.0,
 }

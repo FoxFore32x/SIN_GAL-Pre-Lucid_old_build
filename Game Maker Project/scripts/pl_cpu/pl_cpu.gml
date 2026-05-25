@@ -96,7 +96,7 @@ function pl_cpu() {
 	// Attack
 	if (attackCooldown > 0) attackCooldown -= 1 * god.gameSpeed; // count down each frame
 
-	if (widthDiff <= 8 * global.sprScale && (-heightDiff > 3 * global.sprScale || heightDiff > 3 * global.sprScale ) && attackCooldown <= 0 && hitStun <= 0) {
+	if (widthDiff <= 8 * global.sprScale || ( widthDiff <= 3 * global.sprScale && (-heightDiff > 3 * global.sprScale || heightDiff > 3 * global.sprScale )) && attackCooldown <= 0 && hitStun <= 0) {
 	    // randomly pick light or heavy attack
 	    if (irandom_range(0, 100) < 30) {
 	        if (irandom(1) == 0) {

@@ -25,7 +25,7 @@ if(keyboard_check_pressed(vk_space)){
     camLock = !camLock;
 }
 
-if(room != results && room != title && room != init ){
+if(room != results && room != title && room != init && room != rm_charsel){
 	
 	if(keyboard_check_pressed(vk_escape)){
 	    game_end();

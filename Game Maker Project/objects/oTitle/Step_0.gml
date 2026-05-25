@@ -20,15 +20,15 @@ switch(menu_level){
         if(btnJump){
             switch(pos){
                 case 0:
-					global.currentMode = modes.story
+					global.currentMode = modes.story;
 					room_goto(rm_charsel);
 				break;
                 case 1:
-					global.currentMode = modes.vs
+					global.currentMode = modes.vs;
 					room_goto(rm_charsel);
 				break;
                 case 2: 
-					global.currentMode = modes.training
+					global.currentMode = modes.training;
 					room_goto(rm_charsel);
 				break;
                 case 3: menu_level = 1; break;
