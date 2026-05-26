@@ -4,6 +4,29 @@ function pl_characters(){
 	switch (character){
 	
 		case characters.teori:
+		
+			/*image_xscale = sprite_width * 0.125;
+			image_yscale = sprite_height * 0.125;*/
+			
+			if(currentState == states.attack || parried) animSize = 1;
+			else animSize = 0.06;
+			
+			//animation variables
+			animEmpty = sprEmpty;
+			idleSprite = sTeori_Idle;
+			animJump = sTeori_Jump;
+			animRun = sTeori_Run;
+			animWallRun = sprPlayer_WallSlide;
+			animDash = sTeori_Dash;
+			animDead = sTeori_Dead;
+			animHit = sTeori_Hit;
+			animTum = sTeori_Tumble;
+			animTumGround = sTeori_Tumble_Light;
+			animParry = sprDagger_Attack_Up_A;
+			animRecov = sTeori_Recovery;
+			weaponIdle = sTeori_Idle_Arms;
+			weaponRun = sTeori_Run_Arms;
+			weaponJump = sTeori_Jump_Arms;
 			
 			switch(weapon){    
 			    case weapons.sword:
@@ -166,6 +189,29 @@ function pl_characters(){
 			
 			/*dashHSpeed = 6.5 * global.sprScale;
 			dashYSpeed = 6.5 * global.sprScale;*/
+			
+			/*image_xscale = sprite_width * 0.125;
+			image_yscale = sprite_height * 0.125;*/
+			
+			//animation variables
+			if(currentState == states.attack || parried) animSize = 1;
+			else animSize = 0.06;
+			
+			animEmpty = sprEmpty;
+			idleSprite = sLamb_Idle;
+			animJump = sLamb_Jump;
+			animRun = sLamb_Run;
+			animWallRun = sprPlayer_WallSlide;
+			animDash = sLamb_Dash;
+			animDead = sLamb_Dead;
+			animHit = sLamb_Hit;
+			animTum = sLamb_Tumble;
+			animTumGround = sLamb_Tumble_Light;
+			animParry = sprDagger_Attack_Up_A;
+			animRecov = sLamb_Recovery;
+			weaponIdle = sLamb_Idle_Arms;
+			weaponRun = sLamb_Run_Arms;
+			weaponJump = sLamb_Jump_Arms;
 		
 			switch(currentState){
 			
@@ -361,7 +407,20 @@ function pl_characters(){
 		break;
 		
 		case characters.test:
-		
+
+			animSize = 1;
+			animEmpty = sprEmpty;
+			animJump = sprPlayer_Jump_Base;
+			animRun = sprPlayer_Run_Base;
+			animWallRun = sprPlayer_WallSlide;
+			animDash = sprPlayer_Dash_Base;
+			animDead = sprPlayer_Dead_Base;
+			animHit = sprPlayer_Hit_Base;
+			animTum = sprPlayer_Tumble_Base;
+			animTumGround = sprPlayer_Tumble_Light;
+			animParry = sprDagger_Attack_Up_A;
+			animRecov = sprPlayer_Recovery_Base;
+			
 			switch(weapon){    
 			    case weapons.sword:
 					attDirX = noone;

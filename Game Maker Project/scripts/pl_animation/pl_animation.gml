@@ -32,7 +32,7 @@ function pl_animation() {
 	            if(!left && !right){
 	                if(isCrouching){
 	                    //crouch
-	                    animation_set(fd_pl_idle,sprPlayer_Recovery_Base);
+	                    animation_set(fd_pl_idle,animRecov);
 	                    weaponSprite = sprEmpty;
 	                }else{
 	                    //body
@@ -41,12 +41,12 @@ function pl_animation() {
 	                }
 	            //run
 	            }else{
-	                animation_set(fd_pl_run,sprPlayer_Run_Base);
+	                animation_set(fd_pl_run,animRun);
 	                weaponSprite = weaponRun;
 	            }
 	        //in air animation
 	        }else{
-	            animation_set(fd_pl_jump,sprPlayer_Jump_Base);
+	            animation_set(fd_pl_jump,animJump);
 	            weaponSprite = weaponJump;
 	            //change sprite frame based on vertical speed
 	            if(ySpeed < 1){
@@ -70,12 +70,12 @@ function pl_animation() {
 	    break;
     
 	    case states.dash:
-	        animation_set(fd_pl_roll,sprPlayer_Dash_Base);
+	        animation_set(fd_pl_roll,animDash);
 	        weaponSprite = sprEmpty;
 	    break;
     
 	    case states.dead:
-	        animation_set(fd_pl_dead,sprPlayer_Dead_Base);
+	        animation_set(fd_pl_dead,animDead);
 	        weaponSprite = sprEmpty;        
 	    break;
     
@@ -114,29 +114,29 @@ function pl_animation() {
 	    break;
     
 	    case states.recovery:
-	        animation_set(fd_pl_recovery,sprPlayer_Recovery_Base);
+	        animation_set(fd_pl_recovery,animRecov);
 	        weaponSprite = sprEmpty;
 	    break;
     
 	    case states.tumble:
 	        //draw hit sprite during hit stop
 	        if(god.freeze){
-	            animation_set(fd_pl_tumble,sprPlayer_Hit_Base);
+	            animation_set(fd_pl_tumble,animHit);
 	            weaponSprite = sprEmpty;               
 	        }else{
 	            //laying down on the ground after being hit
 	            if(onGround){
 	                if(hasTumbled == false){
-	                    animation_set(fd_pl_tumbleL,sprPlayer_Tumble_Light);
+	                    animation_set(fd_pl_tumbleL,animTumGround);
 	                    weaponSprite = sprEmpty;  
 	                } else {
-	                    animation_set(fd_pl_tumble,sprPlayer_Dead_Base);
+	                    animation_set(fd_pl_tumble,animDead);
 	                    weaponSprite = sprEmpty;  
 	                }
                 
 	            //flying through the air after being hit      
 	            }else{
-	                animation_set(fd_pl_dead,sprPlayer_Tumble_Base);
+	                animation_set(fd_pl_dead,animTum);
 	                weaponSprite = sprEmpty;        
 	            }
 	        }

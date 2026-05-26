@@ -23,6 +23,7 @@ function createEnemie(argument0, argument1, argument2, argument3) {
 			if(argument3 == true){
 				inst.isBoss = true;
 				inst.hp = 1000;
+				inst.character = characters.lamb;
 			}
 			else inst.hp = 300;
     

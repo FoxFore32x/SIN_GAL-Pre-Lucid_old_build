@@ -14,6 +14,7 @@
 function createTrain(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9, argument10, argument11){
 	if(!instance_exists(oTrain)){
 		var inst = instance_create(argument0, argument1, oTrain);
+		inst.facing = 1;
 		inst.xDir = argument2;
 		inst.yDir = argument3;
 		inst.image_xscale = argument4;

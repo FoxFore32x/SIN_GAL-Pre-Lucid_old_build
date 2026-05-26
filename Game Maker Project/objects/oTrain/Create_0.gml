@@ -23,7 +23,7 @@ hitStun = 0; //hit stun duration
 damage  = 0; //damage dealt
 invincible = false; //what it sounds like
 comboGranted = false; //it's for tracking a single hit when hitting all players
-facing = 0;
+facing = 1;
 
 isFrozen = false;
 freeze = 0;

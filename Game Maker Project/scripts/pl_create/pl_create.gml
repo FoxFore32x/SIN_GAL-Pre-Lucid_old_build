@@ -264,6 +264,21 @@ function pl_create() {
 
 	//draw
 	animation_create();
+	
+	//animation variables
+	
+	animEmpty = sprEmpty;
+	animJump = sprPlayer_Jump_Base;
+	animRun = sprPlayer_Run_Base;
+	animWallRun = sprPlayer_WallSlide;
+	animDash = sprPlayer_Dash_Base;
+	animDead = sprPlayer_Dead_Base;
+	animHit = sprPlayer_Hit_Base;
+	animTum = sprPlayer_Tumble_Base;
+	animTumGround = sprPlayer_Tumble_Light;
+	animParry = sprDagger_Attack_Up_A;
+	animRecov = sprPlayer_Recovery_Base;
+	animSize = 1;
 
 	//weapons
 	weapon = weapons.sword;

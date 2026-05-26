@@ -244,7 +244,8 @@ function pl_endStep() {
 		        if(!downGroundHit) ySpeed = hb.yHit;
 		        else ySpeed = -4;
         
-		        facing = hb.owner.facing * -1;
+				if(hb.owner.facing != 0) facing = hb.owner.facing * -1;
+				else facing = -1;
 		        depth = hb.depth;
 		        hitStun += hb.hitStun;
 				if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 30;
