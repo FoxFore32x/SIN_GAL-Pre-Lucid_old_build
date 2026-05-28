@@ -2,143 +2,141 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para más información
 function initialize_Keybinds(){
 	with (oInput){
-		keybinds = [
 			//Player 1
-			new BindKB("up1", ord("W")),
-			new BindKB("down1", ord("S")),
-			new BindKB("left1", ord("A")),
-			new BindKB("right1", ord("D")),
+			addKeybind(new BindKB("up1", ord("W")));
+			addKeybind(new BindKB("down1", ord("S")));
+			addKeybind(new BindKB("left1", ord("A")));
+			addKeybind(new BindKB("right1", ord("D")));
 			
-			new BindKB("jump1", ord("T")),
-			new BindKB("dash1", ord("Y")),
-			new BindKB("block1", vk_lshift),
-			new BindKB("light1", ord("R")),
-			new BindKB("strong1", ord("F")),
-			new BindKB("special1", ord("G")),
-			new BindKB("pause1", ord("1")),
+			addKeybind(new BindKB("jump1", ord("T")));
+			addKeybind(new BindKB("dash1", ord("Y")));
+			addKeybind(new BindKB("block1", vk_lshift));
+			addKeybind(new BindKB("light1", ord("R")));
+			addKeybind(new BindKB("strong1", ord("F")));
+			addKeybind(new BindKB("special1", ord("G")));
+			addKeybind(new BindKB("pause1", ord("1")));
 			
-			new BindGPB("up1", 0, gp_padu),
-			new BindGPB("down1", 0, gp_padd),
-			new BindGPB("left1", 0, gp_padl),
-			new BindGPB("right1", 0, gp_padr),
+			addKeybind(new BindGPB("up1", 0, gp_padu));
+			addKeybind(new BindGPB("down1", 0, gp_padd));
+			addKeybind(new BindGPB("left1", 0, gp_padl));
+			addKeybind(new BindGPB("right1", 0, gp_padr));
 			
-			new BindGPA("up1", 0, gp_axislv, -0.6),
-			new BindGPA("down1", 0, gp_axislv, 0.6),
-			new BindGPA("left1", 0, gp_axislh, -0.6),
-			new BindGPA("right1", 0, gp_axislh, 0.6),
+			addKeybind(new BindGPA("up1", 0, gp_axislv, -0.6));
+			addKeybind(new BindGPA("down1", 0, gp_axislv, 0.6));
+			addKeybind(new BindGPA("left1", 0, gp_axislh, -0.6));
+			addKeybind(new BindGPA("right1", 0, gp_axislh, 0.6));
 			
-			new BindGPB("jump1", 0, gp_face1),
-			new BindGPB("dash1", 0, gp_shoulderr),
-			new BindGPB("dash1", 0, gp_shoulderrb),
-			new BindGPB("block1", 0, gp_shoulderl),
-			new BindGPB("block1", 0, gp_shoulderlb),
-			new BindGPB("light1", 0, gp_face3),
-			new BindGPB("strong1", 0, gp_face4),
-			new BindGPB("special1", 0, gp_face2),
-			new BindGPB("pause1", 0, gp_start),
+			addKeybind(new BindGPB("jump1", 0, gp_face1));
+			addKeybind(new BindGPB("dash1", 0, gp_shoulderr));
+			addKeybind(new BindGPB("dash1", 0, gp_shoulderrb));
+			addKeybind(new BindGPB("block1", 0, gp_shoulderl));
+			addKeybind(new BindGPB("block1", 0, gp_shoulderlb));
+			addKeybind(new BindGPB("light1", 0, gp_face3));
+			addKeybind(new BindGPB("strong1", 0, gp_face4));
+			addKeybind(new BindGPB("special1", 0, gp_face2));
+			addKeybind(new BindGPB("pause1", 0, gp_start));
 			
 			//Player 2
-			new BindKB("up2", vk_up),
-			new BindKB("down2", vk_down),
-			new BindKB("left2", vk_left),
-			new BindKB("right2", vk_right),
+			addKeybind(new BindKB("up2", vk_up));
+			addKeybind(new BindKB("down2", vk_down));
+			addKeybind(new BindKB("left2", vk_left));
+			addKeybind(new BindKB("right2", vk_right));
 			
-			new BindKB("jump2", ord("O")),
-			new BindKB("dash2", ord("P")),
-			new BindKB("block2", vk_rshift),
-			new BindKB("light2", ord("I")),
-			new BindKB("strong2", ord("K")),
-			new BindKB("special2", ord("L")),
-			new BindKB("pause2", ord("2")),
+			addKeybind(new BindKB("jump2", ord("O")));
+			addKeybind(new BindKB("dash2", ord("P")));
+			addKeybind(new BindKB("block2", vk_rshift));
+			addKeybind(new BindKB("light2", ord("I")));
+			addKeybind(new BindKB("strong2", ord("K")));
+			addKeybind(new BindKB("special2", ord("L")));
+			addKeybind(new BindKB("pause2", ord("2")));
 			
-			new BindGPB("up2", 1, gp_padu),
-			new BindGPB("down2", 1, gp_padd),
-			new BindGPB("left2", 1, gp_padl),
-			new BindGPB("right2", 1, gp_padr),
+			addKeybind(new BindGPB("up2", 1, gp_padu));
+			addKeybind(new BindGPB("down2", 1, gp_padd));
+			addKeybind(new BindGPB("left2", 1, gp_padl));
+			addKeybind(new BindGPB("right2", 1, gp_padr));
 			
-			new BindGPA("up2", 1, gp_axislv, -0.6),
-			new BindGPA("down2", 1, gp_axislv, 0.6),
-			new BindGPA("left2", 1, gp_axislh, -0.6),
-			new BindGPA("right2", 1, gp_axislh, 0.6),
+			addKeybind(new BindGPA("up2", 1, gp_axislv, -0.6));
+			addKeybind(new BindGPA("down2", 1, gp_axislv, 0.6));
+			addKeybind(new BindGPA("left2", 1, gp_axislh, -0.6));
+			addKeybind(new BindGPA("right2", 1, gp_axislh, 0.6));
 			
-			new BindGPB("jump2", 1, gp_face1),
-			new BindGPB("dash2", 1, gp_shoulderr),
-			new BindGPB("dash2", 1, gp_shoulderrb),
-			new BindGPB("block2", 1, gp_shoulderl),
-			new BindGPB("block2", 1, gp_shoulderlb),
-			new BindGPB("light2", 1, gp_face3),
-			new BindGPB("strong2", 1, gp_face4),
-			new BindGPB("special2", 1, gp_face2),
-			new BindGPB("pause2", 1, gp_start),
+			addKeybind(new BindGPB("jump2", 1, gp_face1));
+			addKeybind(new BindGPB("dash2", 1, gp_shoulderr));
+			addKeybind(new BindGPB("dash2", 1, gp_shoulderrb));
+			addKeybind(new BindGPB("block2", 1, gp_shoulderl));
+			addKeybind(new BindGPB("block2", 1, gp_shoulderlb));
+			addKeybind(new BindGPB("light2", 1, gp_face3));
+			addKeybind(new BindGPB("strong2", 1, gp_face4));
+			addKeybind(new BindGPB("special2", 1, gp_face2));
+			addKeybind(new BindGPB("pause2", 1, gp_start));
 			
 			//Player 3
-			new BindKB("up3", ord("N/A")),
-			new BindKB("down3", ord("N/A")),
-			new BindKB("left3", ord("N/A")),
-			new BindKB("right3", ord("N/A")),
+			addKeybind(new BindKB("up3", ord("N/A")));
+			addKeybind(new BindKB("down3", ord("N/A")));
+			addKeybind(new BindKB("left3", ord("N/A")));
+			addKeybind(new BindKB("right3", ord("N/A")));
 			
-			new BindKB("jump3", ord("N/A")),
-			new BindKB("dash3", ord("N/A")),
-			new BindKB("block3", ord("N/A")),
-			new BindKB("light3", ord("N/A")),
-			new BindKB("strong3", ord("N/A")),
-			new BindKB("special3", ord("N/A")),
-			new BindKB("pause3", ord("3")),
+			addKeybind(new BindKB("jump3", ord("N/A")));
+			addKeybind(new BindKB("dash3", ord("N/A")));
+			addKeybind(new BindKB("block3", ord("N/A")));
+			addKeybind(new BindKB("light3", ord("N/A")));
+			addKeybind(new BindKB("strong3", ord("N/A")));
+			addKeybind(new BindKB("special3", ord("N/A")));
+			addKeybind(new BindKB("pause3", ord("3")));
 			
-			new BindGPB("up3", 2, gp_padu),
-			new BindGPB("down3", 2, gp_padd),
-			new BindGPB("left3", 2, gp_padl),
-			new BindGPB("right3", 2, gp_padr),
+			addKeybind(new BindGPB("up3", 2, gp_padu));
+			addKeybind(new BindGPB("down3", 2, gp_padd));
+			addKeybind(new BindGPB("left3", 2, gp_padl));
+			addKeybind(new BindGPB("right3", 2, gp_padr));
 			
-			new BindGPA("up3", 2, gp_axislv, -0.6),
-			new BindGPA("down3", 2, gp_axislv, 0.6),
-			new BindGPA("left3", 2, gp_axislh, -0.6),
-			new BindGPA("right3", 2, gp_axislh, 0.6),
+			addKeybind(new BindGPA("up3", 2, gp_axislv, -0.6));
+			addKeybind(new BindGPA("down3", 2, gp_axislv, 0.6));
+			addKeybind(new BindGPA("left3", 2, gp_axislh, -0.6));
+			addKeybind(new BindGPA("right3", 2, gp_axislh, 0.6));
 			
-			new BindGPB("jump3", 2, gp_face1),
-			new BindGPB("dash3", 2, gp_shoulderr),
-			new BindGPB("dash3", 2, gp_shoulderrb),
-			new BindGPB("block3", 2, gp_shoulderl),
-			new BindGPB("block3", 2, gp_shoulderlb),
-			new BindGPB("light3", 2, gp_face3),
-			new BindGPB("strong3", 2, gp_face4),
-			new BindGPB("special3", 2, gp_face2),
-			new BindGPB("pause3", 2, gp_start),
+			addKeybind(new BindGPB("jump3", 2, gp_face1));
+			addKeybind(new BindGPB("dash3", 2, gp_shoulderr));
+			addKeybind(new BindGPB("dash3", 2, gp_shoulderrb));
+			addKeybind(new BindGPB("block3", 2, gp_shoulderl));
+			addKeybind(new BindGPB("block3", 2, gp_shoulderlb));
+			addKeybind(new BindGPB("light3", 2, gp_face3));
+			addKeybind(new BindGPB("strong3", 2, gp_face4));
+			addKeybind(new BindGPB("special3", 2, gp_face2));
+			addKeybind(new BindGPB("pause3", 2, gp_start));
 			
 			//Player 4
-			new BindKB("up4", ord("N/A")),
-			new BindKB("down4", ord("N/A")),
-			new BindKB("left4", ord("N/A")),
-			new BindKB("right4", ord("N/A")),
+			addKeybind(new BindKB("up4", ord("N/A")));
+			addKeybind(new BindKB("down4", ord("N/A")));
+			addKeybind(new BindKB("left4", ord("N/A")));
+			addKeybind(new BindKB("right4", ord("N/A")));
 			
-			new BindKB("jump4", ord("N/A")),
-			new BindKB("dash4", ord("N/A")),
-			new BindKB("block4", ord("N/A")),
-			new BindKB("light4", ord("N/A")),
-			new BindKB("strong4", ord("N/A")),
-			new BindKB("special4", ord("N/A")),
-			new BindKB("pause4", ord("4")),
+			addKeybind(new BindKB("jump4", ord("N/A")));
+			addKeybind(new BindKB("dash4", ord("N/A")));
+			addKeybind(new BindKB("block4", ord("N/A")));
+			addKeybind(new BindKB("light4", ord("N/A")));
+			addKeybind(new BindKB("strong4", ord("N/A")));
+			addKeybind(new BindKB("special4", ord("N/A")));
+			addKeybind(new BindKB("pause4", ord("4")));
 			
-			new BindGPB("up4", 3, gp_padu),
-			new BindGPB("down4", 3, gp_padd),
-			new BindGPB("left4", 3, gp_padl),
-			new BindGPB("right4", 3, gp_padr),
+			addKeybind(new BindGPB("up4", 3, gp_padu));
+			addKeybind(new BindGPB("down4", 3, gp_padd));
+			addKeybind(new BindGPB("left4", 3, gp_padl));
+			addKeybind(new BindGPB("right4", 3, gp_padr));
 			
-			new BindGPA("up4", 3, gp_axislv, -0.6),
-			new BindGPA("down4", 3, gp_axislv, 0.6),
-			new BindGPA("left4", 3, gp_axislh, -0.6),
-			new BindGPA("right4", 3, gp_axislh, 0.6),
+			addKeybind(new BindGPA("up4", 3, gp_axislv, -0.6));
+			addKeybind(new BindGPA("down4", 3, gp_axislv, 0.6));
+			addKeybind(new BindGPA("left4", 3, gp_axislh, -0.6));
+			addKeybind(new BindGPA("right4", 3, gp_axislh, 0.6));
 			
-			new BindGPB("jump4", 3, gp_face1),
-			new BindGPB("dash4", 3, gp_shoulderr),
-			new BindGPB("dash4", 3, gp_shoulderrb),
-			new BindGPB("block4", 3, gp_shoulderl),
-			new BindGPB("block4", 3, gp_shoulderlb),
-			new BindGPB("light4", 3, gp_face3),
-			new BindGPB("strong4", 3, gp_face4),
-			new BindGPB("special4", 3, gp_face2),
-			new BindGPB("pause4", 3, gp_start)
-		];
+			addKeybind(new BindGPB("jump4", 3, gp_face1));
+			addKeybind(new BindGPB("dash4", 3, gp_shoulderr));
+			addKeybind(new BindGPB("dash4", 3, gp_shoulderrb));
+			addKeybind(new BindGPB("block4", 3, gp_shoulderl));
+			addKeybind(new BindGPB("block4", 3, gp_shoulderlb));
+			addKeybind(new BindGPB("light4", 3, gp_face3));
+			addKeybind(new BindGPB("strong4", 3, gp_face4));
+			addKeybind(new BindGPB("special4", 3, gp_face2));
+			addKeybind(new BindGPB("pause4", 3, gp_start));
 	}
 }
 

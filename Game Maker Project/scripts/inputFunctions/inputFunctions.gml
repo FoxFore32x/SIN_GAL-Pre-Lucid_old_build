@@ -141,6 +141,18 @@ function BindGPA(_name, _dvc, _axis, _value) constructor {
 	}
 }
 
+function addKeybind(_bind)
+{
+    array_push(keybinds, _bind);
+
+    if (!variable_struct_exists(keybindMap, _bind.bindName))
+    {
+        keybindMap[$ _bind.bindName] = [];
+    }
+
+    array_push(keybindMap[$ _bind.bindName], _bind);
+}
+
 function inputUpdate(){
 	with (oInput){
 		for(var i = 0; i < array_length(keybinds); i++){
@@ -151,40 +163,52 @@ function inputUpdate(){
 	}
 }
 
-function inputCheckHeld(_name) {
-    var _result = false;
-    with (oInput) {
-        for (var i = 0; i < array_length(keybinds); i++){
-            if(keybinds[i].bindName == _name){
-                _result = _result || keybinds[i].held;
-            }
-        }
+function inputCheckHeld(_name)
+{
+    var binds = oInput.keybindMap[$ _name];
+
+    if (is_undefined(binds))
+        return false;
+
+    for (var i = 0; i < array_length(binds); i++)
+    {
+        if (binds[i].held)
+            return true;
     }
-    return _result;
+
+    return false;
 }
 
-function inputCheckPressed(_name) {
-    var _result = false;
-    with (oInput) {
-        for (var i = 0; i < array_length(keybinds); i++){
-            if(keybinds[i].bindName == _name){
-                _result = _result || keybinds[i].pressed;
-            }
-        }
+function inputCheckPressed(_name)
+{
+    var binds = oInput.keybindMap[$ _name];
+
+    if (is_undefined(binds))
+        return false;
+
+    for (var i = 0; i < array_length(binds); i++)
+    {
+        if (binds[i].pressed)
+            return true;
     }
-    return _result;
+
+    return false;
 }
 
-function inputCheckReleased(_name) {
-    var _result = false;
-    with (oInput) {
-        for (var i = 0; i < array_length(keybinds); i++){
-            if(keybinds[i].bindName == _name){
-                _result = _result || keybinds[i].released;
-            }
-        }
+function inputCheckReleased(_name)
+{
+    var binds = oInput.keybindMap[$ _name];
+
+    if (is_undefined(binds))
+        return false;
+
+    for (var i = 0; i < array_length(binds); i++)
+    {
+        if (binds[i].released)
+            return true;
     }
-    return _result;
+
+    return false;
 }
 
 function inputReplace(_name, _newKeybind) {

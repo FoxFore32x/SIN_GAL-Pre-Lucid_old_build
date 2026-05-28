@@ -29,6 +29,7 @@ global.plPause = 0;
 global.currentMusic = noone;
 global.currentMode = -1;
 global.playerChar = array_create(5, 0);
+global.playerInput = array_create(4);
 
 global.keyUp = array_create(5, false);
 global.keyDown = array_create(5, false);
