@@ -124,6 +124,8 @@ function pl_normalState() {
 		    isJump = true;
 		}
 		
+		//Fast fall
+		
 		if(!onGround && down){
 			if(tSpeed < 27){
 				ySpeed += 1;

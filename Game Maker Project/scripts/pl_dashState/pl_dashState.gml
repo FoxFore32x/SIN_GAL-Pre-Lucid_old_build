@@ -54,14 +54,16 @@ function pl_dashState() {
 
 		    // Countdown and reset state
 		    dashDur -= 1 * god.gameSpeed;
-		    if (dashDur <= 0 || (lattKeyBuffered || hattKeyBuffered)) {
-				if((lattKeyBuffered || hattKeyBuffered)) dashCanCldn = dashCanCldnMax;
+		    if (dashDur <= 0 || (lattKeyBuffered || hattKeyBuffered || jumpKeyBuffered)) {
+				if((lattKeyBuffered || hattKeyBuffered || jumpKeyBuffered)) dashCanCldn = dashCanCldnMax;
+				if(jumpKeyBuffered && !isJump) canJump = true;
 		        xSpeed /= 1.5;
 		        ySpeed /= 1.5;
 		        dashDur = 0;
 		        dashAnt = dashAntLimit;
 		        willDash = false;
 		        tSpeed = 10 * (global.sprScale);
+				if(!isJump) canJump = true;
 		        state_reset();
 		    }
 		}
