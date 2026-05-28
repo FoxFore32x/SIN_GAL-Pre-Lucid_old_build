@@ -1,5 +1,3 @@
-inputUpdate();
-
 leftHold  = left;
 rightHold = right;
 upHold    = up;

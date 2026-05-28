@@ -1,6 +1,5 @@
 /// @description Inserte aquí la descripción
 // Puede escribir su código en este editor
-inputUpdate();
 
 var used = array_create(5, false);
 
