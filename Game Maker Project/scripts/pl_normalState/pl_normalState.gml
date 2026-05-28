@@ -123,6 +123,13 @@ function pl_normalState() {
 		    if(isJump == false) play_sfx(sfxJump, 1, 0);
 		    isJump = true;
 		}
+		
+		if(!onGround && down){
+			if(tSpeed < 27){
+				ySpeed += 1;
+				tSpeed = 27;
+			}
+		}
 
 		//jump if you are on the ground and not holding the jump button
 
