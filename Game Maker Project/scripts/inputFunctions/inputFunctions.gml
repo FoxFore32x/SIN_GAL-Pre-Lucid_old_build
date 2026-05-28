@@ -88,15 +88,15 @@ function BindGPB(_name, _dvc, _key) constructor {
 	released = false;
 	
 	pressedFn = function() {
-		pressed = gamepad_button_check_pressed(device, key);
+		pressed = gamepad_button_check_pressed(global.plInput[device], key);
 	}
 	
 	heldFn = function() {
-		held = gamepad_button_check(device, key);
+		held = gamepad_button_check(global.plInput[device], key);
 	}
 	
 	releasedFn = function() {
-		released = gamepad_button_check_released(device, key);
+		released = gamepad_button_check_released(global.plInput[device], key);
 	}
 	
 }
@@ -124,9 +124,9 @@ function BindGPA(_name, _dvc, _axis, _value) constructor {
 	heldFn = function() {
 		lastHeld = held;
 		if(value < 0) {
-			held = (gamepad_axis_value(device, axis) < value);
+			held = (gamepad_axis_value(global.plInput[device], axis) < value);
 		} else if (value > 0){
-			held = (gamepad_axis_value(device, axis) > value);
+			held = (gamepad_axis_value(global.plInput[device], axis) > value);
 		} else {
 			held = false;
 		}
@@ -151,34 +151,40 @@ function inputUpdate(){
 	}
 }
 
-function inputCheckPressed(_name) {
-	with (oInput) {
-		for (var i = 0; i < array_length(keybinds); i++){
-			if(keybinds[i].bindName == _name){
-				return(keybinds[i].pressed);
-			}
-		}
-	}
+function inputCheckHeld(_name) {
+    var _result = false;
+    with (oInput) {
+        for (var i = 0; i < array_length(keybinds); i++){
+            if(keybinds[i].bindName == _name){
+                _result = _result || keybinds[i].held;
+            }
+        }
+    }
+    return _result;
 }
 
-function inputCheckHeld(_name) {
-	with (oInput) {
-		for (var i = 0; i < array_length(keybinds); i++){
-			if(keybinds[i].bindName == _name){
-				return(keybinds[i].held);
-			}
-		}
-	}
+function inputCheckPressed(_name) {
+    var _result = false;
+    with (oInput) {
+        for (var i = 0; i < array_length(keybinds); i++){
+            if(keybinds[i].bindName == _name){
+                _result = _result || keybinds[i].pressed;
+            }
+        }
+    }
+    return _result;
 }
 
 function inputCheckReleased(_name) {
-	with (oInput) {
-		for (var i = 0; i < array_length(keybinds); i++){
-			if(keybinds[i].bindName == _name){
-				return(keybinds[i].released);
-			}
-		}
-	}
+    var _result = false;
+    with (oInput) {
+        for (var i = 0; i < array_length(keybinds); i++){
+            if(keybinds[i].bindName == _name){
+                _result = _result || keybinds[i].released;
+            }
+        }
+    }
+    return _result;
 }
 
 function inputReplace(_name, _newKeybind) {

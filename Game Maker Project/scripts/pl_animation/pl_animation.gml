@@ -56,7 +56,7 @@ function pl_animation() {
 	            }
             
 	            if(isWallGrabbing){
-	                weaponSprite = sprPlayer_WallSlide;
+	                weaponSprite = animWallRun;
 	            }
 	        }
         
@@ -144,7 +144,7 @@ function pl_animation() {
 	}
 
 	if(parried){
-	    upSpriteA    = sprDagger_Attack_Up_A;
+	    upSpriteA    = animParry;
 	    fd_up        = fd_dagger_up;
     
 	    animation_set(fd_up,upSpriteA);

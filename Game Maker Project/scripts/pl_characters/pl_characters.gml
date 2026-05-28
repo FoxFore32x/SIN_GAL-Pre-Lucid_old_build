@@ -8,21 +8,21 @@ function pl_characters(){
 			/*image_xscale = sprite_width * 0.125;
 			image_yscale = sprite_height * 0.125;*/
 			
-			if(currentState == states.attack || parried) animSize = 1;
-			else animSize = 0.06;
+			/*if(currentState == states.attack || parried) animSize = 1;
+			else */animSize = 0.06;
 			
 			//animation variables
 			animEmpty = sprEmpty;
 			idleSprite = sTeori_Idle;
 			animJump = sTeori_Jump;
 			animRun = sTeori_Run;
-			animWallRun = sprPlayer_WallSlide;
+			animWallRun = sTeoriWallslide;
 			animDash = sTeori_Dash;
 			animDead = sTeori_Dead;
 			animHit = sTeori_Hit;
 			animTum = sTeori_Tumble;
 			animTumGround = sTeori_Tumble_Light;
-			animParry = sprDagger_Attack_Up_A;
+			animParry = sLambUAttLG;
 			animRecov = sTeori_Recovery;
 			weaponIdle = sTeori_Idle_Arms;
 			weaponRun = sTeori_Run_Arms;
@@ -30,6 +30,13 @@ function pl_characters(){
 			
 			switch(weapon){    
 			    case weapons.sword:
+				
+					sideSpriteG  = sTeoriSAttSG;
+			        sideSpriteA  = sTeoriSAttSA;
+			        upSpriteG    = sTeoriUAttSG;
+			        upSpriteA    = sTeoriUAttSA;
+			        downSpriteG  = sTeoriDAttSG;
+			        downSpriteA  = sTeoriDAttSA;
 					
 					if(!down /*&& onGround*/) {
 						if(onGround) attOnGround = true;
@@ -110,6 +117,14 @@ function pl_characters(){
 			    break;
     
 			    case weapons.dagger:
+				
+					sideSpriteG  = sTeoriSAttLG;
+			        sideSpriteA  = sTeoriSAttLA;
+			        upSpriteG    = sTeoriUAttLG;
+			        upSpriteA    = sTeoriUAttLA;
+			        downSpriteG  = sTeoriDAttLG;
+			        downSpriteA  = sTeoriDAttLA;
+					
 					attDirX = noone;
 					attDirY = noone;
 					
@@ -194,20 +209,20 @@ function pl_characters(){
 			image_yscale = sprite_height * 0.125;*/
 			
 			//animation variables
-			if(currentState == states.attack || parried) animSize = 1;
-			else animSize = 0.06;
+			/*if(currentState == states.attack || parried) animSize = 1;
+			else*/ animSize = 0.06;
 			
 			animEmpty = sprEmpty;
 			idleSprite = sLamb_Idle;
 			animJump = sLamb_Jump;
 			animRun = sLamb_Run;
-			animWallRun = sprPlayer_WallSlide;
+			animWallRun = sLambWallslide;
 			animDash = sLamb_Dash;
 			animDead = sLamb_Dead;
 			animHit = sLamb_Hit;
 			animTum = sLamb_Tumble;
 			animTumGround = sLamb_Tumble_Light;
-			animParry = sprDagger_Attack_Up_A;
+			animParry = sLambUAttLG;
 			animRecov = sLamb_Recovery;
 			weaponIdle = sLamb_Idle_Arms;
 			weaponRun = sLamb_Run_Arms;
@@ -258,6 +273,13 @@ function pl_characters(){
 						
 			switch(weapon){    
 			    case weapons.sword:
+				
+					sideSpriteG  = sTeoriSAttSG;
+			        sideSpriteA  = sTeoriSAttSA;
+			        upSpriteG    = sTeoriUAttSG;
+			        upSpriteA    = sTeoriUAttSA;
+			        downSpriteG  = sTeoriDAttSG;
+			        downSpriteA  = sTeoriDAttSA;
 				
 					if(!down /*&& onGround*/) {
 						if(onGround) attOnGround = true;
@@ -331,6 +353,14 @@ function pl_characters(){
 			    break;
     
 			    case weapons.dagger:
+				
+					sideSpriteG  = sLambSAttLG;
+			        sideSpriteA  = sLambSAttLA;
+			        upSpriteG    = sLambUAttLG;
+			        upSpriteA    = sLambUAttLA;
+			        downSpriteG  = sLambDAttLG;
+			        downSpriteA  = sTeoriDAttLA;
+					
 					attDirX = noone;
 					attDirY = noone;
 					

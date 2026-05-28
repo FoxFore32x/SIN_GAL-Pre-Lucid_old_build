@@ -1,5 +1,4 @@
 inputUpdate();
-globalKeys();
 
 leftHold  = left;
 rightHold = right;

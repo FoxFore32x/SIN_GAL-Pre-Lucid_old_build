@@ -1,5 +1,4 @@
 inputUpdate();
-globalKeys();
 
 if(global.keyPauseAll){
     audio_stop_all();
