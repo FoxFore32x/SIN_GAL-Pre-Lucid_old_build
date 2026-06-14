@@ -9,7 +9,8 @@ function pl_endStep() {
 	    break;
     
 	    case states.attack:
-	        pl_attackState();
+	        //pl_attackState();
+			pl_normalState();
 	    break;
     
 	    case states.dash:

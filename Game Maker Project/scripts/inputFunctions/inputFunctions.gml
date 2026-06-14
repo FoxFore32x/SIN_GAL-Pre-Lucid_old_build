@@ -88,15 +88,21 @@ function BindGPB(_name, _dvc, _key) constructor {
 	released = false;
 	
 	pressedFn = function() {
-		pressed = gamepad_button_check_pressed(global.plInput[device], key);
+		if(os_type == os_switch || os_type == os_switch2)
+			pressed = gamepad_button_check_pressed(global.plInput[device], key);
+		else pressed = gamepad_button_check_pressed(device, key);
 	}
 	
 	heldFn = function() {
-		held = gamepad_button_check(global.plInput[device], key);
+		if(os_type == os_switch || os_type == os_switch2)
+			held = gamepad_button_check(global.plInput[device], key);
+		else held = gamepad_button_check(device, key);
 	}
 	
 	releasedFn = function() {
-		released = gamepad_button_check_released(global.plInput[device], key);
+		if(os_type == os_switch || os_type == os_switch2)
+			released = gamepad_button_check_released(global.plInput[device], key);
+		else released = gamepad_button_check_released(device, key);
 	}
 	
 }
@@ -124,9 +130,13 @@ function BindGPA(_name, _dvc, _axis, _value) constructor {
 	heldFn = function() {
 		lastHeld = held;
 		if(value < 0) {
-			held = (gamepad_axis_value(global.plInput[device], axis) < value);
+			if(os_type == os_switch || os_type == os_switch2)
+				held = (gamepad_axis_value(global.plInput[device], axis) < value);
+			else held = (gamepad_axis_value(device, axis) < value);
 		} else if (value > 0){
-			held = (gamepad_axis_value(global.plInput[device], axis) > value);
+			if(os_type == os_switch || os_type == os_switch2)
+				held = (gamepad_axis_value(global.plInput[device], axis) > value);
+			else held = (gamepad_axis_value(device, axis) > value);
 		} else {
 			held = false;
 		}

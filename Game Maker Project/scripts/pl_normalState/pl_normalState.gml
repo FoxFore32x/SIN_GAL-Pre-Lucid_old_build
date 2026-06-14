@@ -194,6 +194,8 @@ function pl_normalState() {
 		        }
 		    }
 		    currentState = states.attack;
+			
+			pl_attackState();
 
 		    frame_reset();
 		}
