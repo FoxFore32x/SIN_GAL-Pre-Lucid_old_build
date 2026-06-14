@@ -5,10 +5,11 @@ function setOnGround(argument0) {
 		dashed = false;
 	    canWallGrab = true;
 	    isWallGrabbing = false;
+		tSpeed = 10 * (global.sprScale);
 	    wallGrabTimer = -1;
 	    coyoteHangTimer = coyoteHangFrames;
 	} else {
-	    if (canJump) canJump = false;
+	    if (canJump && !isDash) canJump = false;
 	    onGround = false;
 	    if(ySpeed < 0) coyoteHangTimer = 0;
 	}

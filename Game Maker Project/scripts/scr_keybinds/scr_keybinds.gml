@@ -71,12 +71,12 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("pause2", 1, gp_start));
 			
 			//Player 3
-			addKeybind(new BindKB("up3", ord("N/A")));
-			addKeybind(new BindKB("down3", ord("N/A")));
+			addKeybind(new BindKB("up3", ord("C")));
+			addKeybind(new BindKB("down3", ord("V")));
 			addKeybind(new BindKB("left3", ord("N/A")));
 			addKeybind(new BindKB("right3", ord("N/A")));
 			
-			addKeybind(new BindKB("jump3", ord("N/A")));
+			addKeybind(new BindKB("jump3", ord("B")));
 			addKeybind(new BindKB("dash3", ord("N/A")));
 			addKeybind(new BindKB("block3", ord("N/A")));
 			addKeybind(new BindKB("light3", ord("N/A")));
@@ -105,12 +105,12 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("pause3", 2, gp_start));
 			
 			//Player 4
-			addKeybind(new BindKB("up4", ord("N/A")));
-			addKeybind(new BindKB("down4", ord("N/A")));
+			addKeybind(new BindKB("up4", ord("N")));
+			addKeybind(new BindKB("down4", ord("M")));
 			addKeybind(new BindKB("left4", ord("N/A")));
 			addKeybind(new BindKB("right4", ord("N/A")));
 			
-			addKeybind(new BindKB("jump4", ord("N/A")));
+			addKeybind(new BindKB("jump4", ord("U")));
 			addKeybind(new BindKB("dash4", ord("N/A")));
 			addKeybind(new BindKB("block4", ord("N/A")));
 			addKeybind(new BindKB("light4", ord("N/A")));
