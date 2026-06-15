@@ -108,6 +108,7 @@ if(room != results && room != title && room != init && room != rm_charsel){
 		draw_text_colour(450,224,string_hash_to_newline("shield = " + string(parentPhysics.shield)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,240,string_hash_to_newline("var = " + string(res1)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,256,string_hash_to_newline("ySpeed = " + string(parentPhysics.ySpeed)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,272, string_hash_to_newline("chitTimer = " + string(parentPhysics.chitTimer)), _c1, _c1, _c1, _c1, 1);
 	}
 
 }

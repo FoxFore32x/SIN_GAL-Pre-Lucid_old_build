@@ -20,6 +20,7 @@ function weapon_stats() {
 	        fd_up        = fd_sword_up;
 	        fd_down      = fd_sword_down;
         
+		/*
 	        //Attack Stats
 	        upperAtt = 0;
 	        sideAtt = 0;
@@ -52,6 +53,7 @@ function weapon_stats() {
 	        upAtST = 40;
 	        sideAtST = 40;
 	        downAtST = 40;
+			*/
 	    break;
     
 	    //dagger
@@ -72,6 +74,7 @@ function weapon_stats() {
 	        fd_up        = fd_dagger_up;
 	        fd_down      = fd_dagger_down;
         
+		/*
 	        //Attack Stats
 	        upperAtt = 0;
 	        sideAtt = 0;
@@ -104,6 +107,7 @@ function weapon_stats() {
 	        upAtST = 30;
 	        sideAtST = 30;
 	        downAtST = 30;
+			*/
 	    break;
     
 	    //axe

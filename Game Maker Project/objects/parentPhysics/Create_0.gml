@@ -23,3 +23,4 @@ isDash = 0;
 hitStun = 0;
 dashed = 0;
 shield = 0;
+chitTimer=0;
