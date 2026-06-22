@@ -88,9 +88,9 @@ function pl_characters(){
 			        downAtSY = 3.5;
         
 			        //Attack timers
-			        upAtT = 5;
-			        sideAtT = 5;
-			        downAtT = 5;
+			        upAtT = 10;
+			        sideAtT = 10;
+			        downAtT = 10;
         
 			        upAtST = 10;
 			        sideAtST = 10;
