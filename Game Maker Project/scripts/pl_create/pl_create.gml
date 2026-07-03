@@ -166,6 +166,7 @@ function pl_create() {
 	invins = false;
 	unTumbled = false;
 	strongAt = false;
+	hasSAttWhJump = false;
 
 	//Combo
 	jabLimit= 2;

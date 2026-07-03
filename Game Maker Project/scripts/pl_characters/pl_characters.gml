@@ -54,14 +54,16 @@ function pl_characters(){
 						attDirX = 3 * global.sprScale * facing;
 					}
 					else attDirX = noone;
-					//if(onGround){
+					
+					if(!hasSAttWhJump){
 						if(up) attDirY = -1.51 * global.sprScale;
 						else attDirY = -1.3 * global.sprScale;
-					//}
-					/*else {
-						/*if(!attOnGround) attDirY = 0;
-						else*/ attDirY = noone;
-					//}
+						if (chitTimer == 0) hasSAttWhJump = true;
+					}
+					if(!onGround && hasSAttWhJump) {
+						if(!attOnGround && ! hasSAttWhJump) attDirY = 0;
+						else attDirY = noone;
+					}
 					
 					//Attack Stats
 			        upperAtt = 0;
