@@ -58,62 +58,57 @@ function pl_controller() {
 		} else {
 			downKeyBuffered = 0;
 		}
+		
+		left2 = global.keyLeft2[player];
+		right2 = global.keyRight2[player];
+		up2 = global.keyUp2[player];
+		down2 = global.keyDown2[player];
     
-		// reset flags cada frame
+		// reset dtaps every frame
 		leftDouble  = false;
 		rightDouble = false;
 		upDouble    = false;
 		downDouble  = false;
     
-		// ---------------- LEFT ----------------
-		if (leftKeyBuffered && (!right || !up || !down)) {
+		// left dtap
+		if ((left2) && (!right || !up || !down)) {
 			if (dt_left_timer > 0) {
-				dt_buffer = 1;
+				if (left2) leftDouble  = true;
 				dt_left_timer = -1;
 			} else {
-				dt_left_timer = 30;
-				dt_buffer = 0;
+				dt_left_timer = 7;
 			}
 		}
     
-		// ---------------- RIGHT ----------------
-		if (rightKeyBuffered	&& (!left || !up || !down)) {
+		// right dtap
+		if ((right2) && (!left || !up || !down)) {
 			if (dt_right_timer > 0) {
-				dt_buffer = 1;
+				if (right2) rightDouble = true;
 				dt_right_timer = -1;
 			} else {
-				dt_right_timer = 30;
-				dt_buffer = 0;
+				dt_right_timer = 7;
 			}
 		}
     
-		// ---------------- UP ----------------
-		if (upKeyBuffered && (!right || !left || !down)) {
+		// up dtap
+		if ((up2) && (!right || !left || !down)) {
 			if (dt_up_timer > 0) {
-				dt_buffer = 1;
+				if (up2) upDouble = true;
 				dt_up_timer = -1;
 			} else {
-				dt_up_timer = 30;
-				dt_buffer = 0;
+				dt_up_timer = 7;
 			}
 		}
     
-		// ---------------- DOWN ----------------
-		if (downKeyBuffered && (!right || !up || !left)) {
+		// down dtap
+		if ((down2) && (!right || !up || !left)) {
 			if (dt_down_timer > 0) {
-				dt_buffer = 1;
+				if (down2) downDouble = true;
 				dt_down_timer = -1;
 			} else {
-				dt_down_timer = 30;
-				dt_buffer = 0;
+				dt_down_timer = 7;
 			}
 		}
-    
-		// timers
-		if (dt_left_timer  > 0) dt_left_timer  -= 1;
-		if (dt_right_timer > 0) dt_right_timer -= 1;
-		if (dt_up_timer    > 0) dt_up_timer    -= 1;
-		if (dt_down_timer  > 0) dt_down_timer  -= 1;
     
 		jumpHold = jump;
 		//jump = keyboard_check(ord("O")) || gamepad_button_check(global.plInput[player], gp_face1);
@@ -297,7 +292,7 @@ function pl_controller() {
 		downDouble  = false;
     
 		// ---------------- LEFT ----------------
-		if (leftKeyBuffered && (!right || !up || !down)) {
+		if ((left && !leftHold) && (!right || !up || !down)) {
 			if (dt_left_timer > 0) {
 				dt_buffer = 1;
 				dt_left_timer = -1;
@@ -308,7 +303,7 @@ function pl_controller() {
 		}
     
 		// ---------------- RIGHT ----------------
-		if (rightKeyBuffered	&& (!left || !up || !down)) {
+		if ((right && !rightHold) && (!left || !up || !down)) {
 			if (dt_right_timer > 0) {
 				dt_buffer = 1;
 				dt_right_timer = -1;
@@ -319,7 +314,7 @@ function pl_controller() {
 		}
     
 		// ---------------- UP ----------------
-		if (upKeyBuffered && (!right || !left || !down)) {
+		if ((up && !upHold) && (!right || !left || !down)) {
 			if (dt_up_timer > 0) {
 				dt_buffer = 1;
 				dt_up_timer = -1;
@@ -330,7 +325,7 @@ function pl_controller() {
 		}
     
 		// ---------------- DOWN ----------------
-		if (downKeyBuffered && (!right || !up || !left)) {
+		if ((down && !downHold) && (!right || !up || !left)) {
 			if (dt_down_timer > 0) {
 				dt_buffer = 1;
 				dt_down_timer = -1;

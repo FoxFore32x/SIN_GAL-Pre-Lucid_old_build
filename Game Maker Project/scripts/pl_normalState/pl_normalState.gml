@@ -211,7 +211,7 @@ function pl_normalState() {
 
 		//dash
 
-		if(dashKeyBuffered && dashCanCldn <= 0){
+		if((leftDouble || rightDouble || upDouble || downDouble) && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
