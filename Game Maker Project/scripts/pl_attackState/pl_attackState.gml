@@ -5,8 +5,16 @@ function pl_attackState() {
 
 	loop = false;
 	
-	if(attDirX != noone) xSpeed = attDirX;
-	if(attDirY != noone) ySpeed = attDirY;
+	if (smallStAtJump){
+		if(!smallStAtJumpAct){
+			if(attDirX != noone) xSpeed = attDirX;
+			if(attDirY != noone) ySpeed = attDirY;
+			smallStAtJumpAct = true;
+		}
+	} else {
+		if(attDirX != noone) xSpeed = attDirX;
+		if(attDirY != noone) ySpeed = attDirY;
+	}
 
 	if(onGround){
 	    xSpeed = approach(xSpeed,0.8 * facing,aSpeed * god.gameSpeed);
@@ -55,6 +63,7 @@ function pl_attackState() {
 	if(/*animation_end() ||*/ chitTimer == 0){
 	    canPlay = true;
 		attOnGround = false;
+		smallStAtJumpAct = false;
 	    state_reset();
 	}
 

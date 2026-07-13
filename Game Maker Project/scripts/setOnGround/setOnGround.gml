@@ -8,7 +8,7 @@ function setOnGround(argument0) {
 		hasSAttWhJump = false;
 		tSpeed = 10 * (global.sprScale);
 	    wallGrabTimer = -1;
-	    coyoteHangTimer = coyoteHangFrames;
+	    coyoteHangTimer = coyoteHangFrames
 	} else {
 	    if (canJump && !isDash) canJump = false;
 	    onGround = false;

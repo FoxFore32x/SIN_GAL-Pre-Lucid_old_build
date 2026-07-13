@@ -5,15 +5,15 @@ function pl_characters(){
 	
 		case characters.teori:
 		
-			//sword
-		fd_sword_side = frame_factory(2,3,12);
-		fd_sword_up   = frame_factory(2,3,12);
-		fd_sword_down = frame_factory(2,3,12);
+				//sword
+			fd_sword_side = frame_factory(5,6,12);
+			fd_sword_up   = frame_factory(5,6,12);
+			fd_sword_down = frame_factory(5,6,12);
 
-		//dagger
-		fd_dagger_side = frame_factory(2,5,10);
-		fd_dagger_up   = frame_factory(2,5,10);
-		fd_dagger_down = frame_factory(2,5,10);
+			//dagger
+			fd_dagger_side = frame_factory(2,5,10);
+			fd_dagger_up   = frame_factory(2,5,10);
+			fd_dagger_down = frame_factory(2,5,10);
 		
 			/*image_xscale = sprite_width * 0.125;
 			image_yscale = sprite_height * 0.125;*/
@@ -55,6 +55,8 @@ function pl_characters(){
 					}
 					else attDirX = noone;
 					
+					smallStAtJump = true;
+					
 					if(!hasSAttWhJump){
 						if(up) attDirY = -1.51 * global.sprScale;
 						else attDirY = -1.3 * global.sprScale;
@@ -90,13 +92,13 @@ function pl_characters(){
 			        downAtSY = 3.5;
         
 			        //Attack timers
-			        upAtT = 10;
-			        sideAtT = 10;
-			        downAtT = 10;
+			        upAtT = 20;
+			        sideAtT = 20;
+			        downAtT = 20;
         
-			        upAtST = 10;
-			        sideAtST = 10;
-			        downAtST = 10;
+			        upAtST = 20;
+			        sideAtST = 20;
+			        downAtST = 20;
 					
 					switch(subState){
 						case attacks.side_ground:

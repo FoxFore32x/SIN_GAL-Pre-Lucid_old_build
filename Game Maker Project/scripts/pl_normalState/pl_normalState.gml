@@ -143,6 +143,8 @@ function pl_normalState() {
 		//attack
 		//change to the attack state and relevant subState based on direction and attack
 		if(lattKeyBuffered || hattKeyBuffered){
+			
+			smallStAtJumpAct = false;
 
 		    play_sfx(sfxSwoosh, 1, 0);
 
@@ -211,7 +213,7 @@ function pl_normalState() {
 
 		//dash
 
-		if((leftDouble || rightDouble || upDouble || downDouble) && dashCanCldn <= 0){
+		if(/*(leftDouble || rightDouble || upDouble || downDouble)*/ dashKeyBuffered && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;

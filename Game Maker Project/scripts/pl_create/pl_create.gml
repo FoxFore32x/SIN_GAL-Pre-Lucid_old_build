@@ -167,6 +167,8 @@ function pl_create() {
 	unTumbled = false;
 	strongAt = false;
 	hasSAttWhJump = false;
+	smallStAtJump = false;
+	smallStAtJumpAct = false;
 
 	//Combo
 	jabLimit= 2;
