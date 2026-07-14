@@ -135,8 +135,8 @@ function pl_create() {
 	bgWallDurMax = 40;
 	wallGrabMax = 40;
 	wallGrabTimer = 40;
-	dashHSpeed = 6.5 * global.sprScale;
-	dashYSpeed = 6.5 * global.sprScale;
+	dashHSpeed = 8 * global.sprScale;
+	dashYSpeed = 8 * global.sprScale;
 	parryHitStun = 25;
 	perParryHS = 60;
 	perParryTim = 5;

@@ -81,22 +81,22 @@ option[0, 3] = "Settings";
 option[0, 4] = "Quit Game";
 
 //Settings Menu
-option[1, 0] = "Players";
-option[1, 1] = "CPUs";
-option[1, 2] = "Health";
-option[1, 3] = "Timer";
-option[1, 4] = "Music";
-option[1, 5] = "SFX";
-option[1, 6] = "Back";
+/*option[1, 0] = "Players";
+option[1, 1] = "CPUs";*/
+option[1, 0] = "Health";
+option[1, 1] = "Timer";
+option[1, 2] = "Music";
+option[1, 3] = "SFX";
+option[1, 4] = "Back";
 
 //Setting Values
 
-settVal[0] = global.players;
-settVal[1] = global.cpus;
-settVal[2] = global.opHp;
-settVal[3] = global.opTimer;
-settVal[4] = global.volMusic;
-settVal[5] = global.volSfx;
+/*settVal[0] = global.players;
+settVal[1] = global.cpus;*/
+settVal[0] = global.opHp;
+settVal[1] = global.opTimer;
+settVal[2] = global.volMusic;
+settVal[3] = global.volSfx;
 
 global.arPlWon = false;
 

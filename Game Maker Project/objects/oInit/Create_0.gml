@@ -1,4 +1,4 @@
-global.sprScale = 2.6666666666666666666666666666667;
+global.sprScale = 3;
 
 global.existentPl = 0;
 global.uLostLmao = 0;

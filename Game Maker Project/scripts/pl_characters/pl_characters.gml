@@ -6,9 +6,9 @@ function pl_characters(){
 		case characters.teori:
 		
 				//sword
-			fd_sword_side = frame_factory(5,6,12);
-			fd_sword_up   = frame_factory(5,6,12);
-			fd_sword_down = frame_factory(5,6,12);
+			fd_sword_side = frame_factory(2,3,12);
+			fd_sword_up   = frame_factory(2,3,12);
+			fd_sword_down = frame_factory(2,3,12);
 
 			//dagger
 			fd_dagger_side = frame_factory(2,5,10);
@@ -51,15 +51,15 @@ function pl_characters(){
 					if(!down /*&& onGround*/) {
 						if(onGround) attOnGround = true;
 						else attOnGround = false;
-						attDirX = 3 * global.sprScale * facing;
+						attDirX = 4 * global.sprScale * facing;
 					}
 					else attDirX = noone;
 					
 					smallStAtJump = true;
 					
 					if(!hasSAttWhJump){
-						if(up) attDirY = -1.51 * global.sprScale;
-						else attDirY = -1.3 * global.sprScale;
+						if(up) attDirY = -2 * global.sprScale;
+						else attDirY = -1.51 * global.sprScale;
 						if (chitTimer == 0) hasSAttWhJump = true;
 					}
 					if(!onGround && hasSAttWhJump) {
@@ -92,9 +92,9 @@ function pl_characters(){
 			        downAtSY = 3.5;
         
 			        //Attack timers
-			        upAtT = 20;
-			        sideAtT = 20;
-			        downAtT = 20;
+			        upAtT = 15;
+			        sideAtT = 15;
+			        downAtT = 15;
         
 			        upAtST = 20;
 			        sideAtST = 20;

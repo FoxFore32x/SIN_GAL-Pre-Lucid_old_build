@@ -39,11 +39,11 @@ switch(menu_level){
         
     case 1:
         var change = (right && !rightHold) - (left && !leftHold);
-        var total = settVal[0] + settVal[1];
+        //var total = settVal[0] + settVal[1];
 
         switch (pos) {
             // PLAYER COUNT
-            case 0:
+            /*case 0:
                 if (change != 0) {
                     settVal[0] += change;
                     if (settVal[0] < 0) settVal[0] = 0;
@@ -66,37 +66,37 @@ switch(menu_level){
                     if (settVal[0] + settVal[1] > global.maxPlayers)
                         settVal[0] = global.maxPlayers - settVal[1];
                 }
-            break;
+            break;*/
             
             // HP SETTING
-            case 2:
+            case 0:
                 if (change != 0) {
-                    if (settVal[2] == false) settVal[2] = true;
-                    else settVal[2] = false;
+                    if (settVal[0] == false) settVal[0] = true;
+                    else settVal[0] = false;
                 }
             break;
             
             // TIMER SETTING
-            case 3:
+            case 1:
                 if (change != 0) {
-                    if (settVal[3] == false) settVal[3] = true;
-                    else settVal[3] = false;
+                    if (settVal[1] == false) settVal[1] = true;
+                    else settVal[1] = false;
                 }
             break;
             
             // MUSIC SETTING
-            case 4:
+            case 2:
                 if (change != 0) {
-					settVal[4] += (change * 0.1);
-					if(settVal[4] > 0){
+					settVal[2] += (change * 0.1);
+					if(settVal[2] > 0){
 						global.opMusic = true;
 					}
 					else global.opMusic = false;
 					
-					if (settVal[4] < 0) settVal[4] = 0;
-					if (settVal[4] > global.maxVolMusic) settVal[4] = global.maxVolMusic;
+					if (settVal[2] < 0) settVal[2] = 0;
+					if (settVal[2] > global.maxVolMusic) settVal[2] = global.maxVolMusic;
 					
-					audio_sound_gain(global.currentMusic, settVal[4]);
+					audio_sound_gain(global.currentMusic, settVal[2]);
 					
                     if (global.opMusic == true && !audio_is_playing(global.currentMusic)) {
                         audio_play_sound(global.currentMusic, 0, 1);
@@ -108,45 +108,45 @@ switch(menu_level){
             break;
             
             // SFX SETTING
-            case 5:
+            case 3:
 				if (change != 0) {
-					settVal[5] += (change * 0.1);
-					if(settVal[5] > 0) global.opSfx = true;
+					settVal[3] += (change * 0.1);
+					if(settVal[3] > 0) global.opSfx = true;
 					else global.opSfx = false;
 					
-					if (settVal[5] < 0) settVal[5] = 0;
-					if (settVal[5] > global.maxVolSfx) settVal[5] = global.maxVolSfx;
+					if (settVal[3] < 0) settVal[3] = 0;
+					if (settVal[3] > global.maxVolSfx) settVal[3] = global.maxVolSfx;
                 }
             break;
 
             // BACK
-            case 6:
+            case 4:
                 if (btnJump){
-                    global.players = settVal[0];
-                    global.cpus = settVal[1];
-                    global.opHp = settVal[2];
-                    global.opTimer = settVal[3];
-                    global.volMusic = settVal[4];
-                    global.volSfx = settVal[5];
+                    /*global.players = settVal[0];
+                    global.cpus = settVal[1];*/
+                    global.opHp = settVal[0];
+                    global.opTimer = settVal[1];
+                    global.volMusic = settVal[2];
+                    global.volSfx = settVal[3];
                     menu_level = 0;
                 }
             break;
         }
 
         // recompute total at end
-        global.balancer = settVal[0] + settVal[1];
+       // global.balancer = settVal[0] + settVal[1];
         
     break;
 }
 
 // Proper back handling
 if (menu_level == 1 && lowAt && !lowAtHold){
-    global.players	= settVal[0];
-    global.cpus		= settVal[1];
-    global.opHp		= settVal[2];
-    global.opTimer	= settVal[3];
-    global.volMusic	= settVal[4];
-    global.volSfx	= settVal[5];
+    /*global.players	= settVal[0];
+    global.cpus		= settVal[1];*/
+    global.opHp		= settVal[0];
+    global.opTimer	= settVal[1];
+    global.volMusic	= settVal[2];
+    global.volSfx	= settVal[3];
 
     menu_level = 0;
     pos = 0;
