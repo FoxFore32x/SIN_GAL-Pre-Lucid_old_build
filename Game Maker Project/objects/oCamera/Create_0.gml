@@ -4,6 +4,8 @@ setCamY = 0;
 finalCamX = 0;
 finalCamY = 0;
 camTrailSpd = 0.25;
+lookX = 0;
+lookY = 0;
 
 // Visible room area (internal resolution)
 view_w = 640;

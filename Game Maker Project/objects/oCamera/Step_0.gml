@@ -35,6 +35,11 @@ var right  = -999999;
 var top    =  999999;
 var bottom = -999999;
 
+var xSpd = 0;
+var ySpd = 0;
+
+var lookDist = 70;
+
 with(oPlayer){
 	left = min(left, x);
 	right = max(right, x);
@@ -43,6 +48,8 @@ with(oPlayer){
 	
 	totalX += x;
 	totalY += y;
+	xSpd = facing;
+	ySpd = ySpeed;
 	count++;
 }
 
@@ -54,11 +61,17 @@ var _camWidth  = __view_get( e__VW.WView, 0 );
 var _camHeight = __view_get( e__VW.HView, 0 );
 
 if(count > 0){
-	targetX = totalX / count;
-	targetY = totalY / count;
+	var desiredLookX = xSpd * lookDist;
+	var desiredLookY = ySpd * 10;
+
+	lookX = lerp(lookX, desiredLookX, 0.06);
+	lookY = lerp(lookY, desiredLookY, 0.06);
+
+	targetX = totalX / count + lookX;
+	targetY = totalY / count + lookY;
 	
-	setCamX = lerp(setCamX, targetX, 0.1);
-	setCamY = lerp(setCamY, targetY, 0.1);
+	setCamX = targetX;
+	setCamY = targetY;
 	
 	//cal group size
 	var playersW = right - left;
