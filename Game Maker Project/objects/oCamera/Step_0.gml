@@ -65,7 +65,7 @@ if(count > 0){
 	var desiredLookY = ySpd * 10;
 
 	lookX = lerp(lookX, desiredLookX, 0.06);
-	lookY = lerp(lookY, desiredLookY, 0.06);
+	lookY = lerp(lookY, desiredLookY, 0.01);
 
 	targetX = totalX / count + lookX;
 	targetY = totalY / count + lookY;
@@ -106,6 +106,11 @@ _camY = clamp(_camY, 0, room_height - camH);
 // Smooth camera
 finalCamX += (_camX - finalCamX) * camTrailSpd;
 finalCamY += (_camY - finalCamY) * camTrailSpd;
+
+layer_x("Backgrounds_1", finalCamX * 0.5);
+layer_y("Backgrounds_1", finalCamY * 0.5);
+layer_x("Background", finalCamX * 0.25);
+layer_y("Background", finalCamY * 0.25);
 
 // Apply view position
 __view_set(e__VW.WView, 0, camW);
