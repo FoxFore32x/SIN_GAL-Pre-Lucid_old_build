@@ -1,12 +1,12 @@
-// Toggle fullscreen
+// toggle fullscreen
 if (keyboard_check_pressed(vk_f8)) {
     window_set_fullscreen(!window_get_fullscreen());
 }
 
-// Find camera target
+// find camera target
 var _target = noone;
 
-// Prefer human players
+// prefer human players
 with (oPlayer) {
     if (player >= 0 && !dead) {
         _target = id;
@@ -14,7 +14,7 @@ with (oPlayer) {
     }
 }
 
-// Fallback to any alive player
+// fallback to any alive player
 if (_target == noone) {
     with (oPlayer) {
         if (!dead) {
@@ -56,7 +56,7 @@ with(oPlayer){
 // If still no target, stop
 if (_target == noone) exit;
 
-// --- CAMERA LOGIC ---
+// camera logic
 var _camWidth  = __view_get( e__VW.WView, 0 );
 var _camHeight = __view_get( e__VW.HView, 0 );
 
@@ -73,23 +73,23 @@ if(count > 0){
 	setCamX = targetX;
 	setCamY = targetY;
 	
-	//cal group size
+	// cal group size
 	var playersW = right - left;
 	var playersH = bottom - top;
 	
 	playersW += 128;
 	playersH += 128;
 	
-	//determine req zoom
+	// determine req zoom
 	var zoomX = playersW / view_w;
 	var zoomY = playersH / view_h;
 	
 	camZoomTarget = max(zoomX, zoomY);
 	
-	//limits
+	// limits
 	camZoomTarget = clamp(camZoomTarget, 1, 3);
 	
-	//smoothin'
+	// smoothing
 	camZoom = lerp(camZoom, camZoomTarget, 0.1);
 }
 
@@ -99,11 +99,11 @@ var camH = view_h * camZoom;
 var _camX = setCamX - camW  / 2;
 var _camY = setCamY - camH / 2;
 
-// Clamp to room
+// clamp to room
 _camX = clamp(_camX, 0, room_width  - camW);
 _camY = clamp(_camY, 0, room_height - camH);
 
-// Smooth camera
+// smooth camera
 finalCamX += (_camX - finalCamX) * camTrailSpd;
 finalCamY += (_camY - finalCamY) * camTrailSpd;
 
@@ -112,7 +112,7 @@ layer_y("Backgrounds_1", finalCamY * 0.5);
 layer_x("Background", finalCamX * 0.25);
 layer_y("Background", finalCamY * 0.25);
 
-// Apply view position
+// apply view position
 __view_set(e__VW.WView, 0, camW);
 __view_set(e__VW.HView, 0, camH);
 __view_set( e__VW.XView, 0, finalCamX );

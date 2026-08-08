@@ -1,7 +1,10 @@
 function hitbox_destroy() {
 	if(!destroy)exit;
-
-	instance_destroy();
+	
+	//reset owner hitbox variable
+	if (instance_exists(owner)) {
+		owner.hitbox = -1;
+	}
 
 	//loop through our list ignore targets, clear it, and delete the list
 	for(i = ds_list_size(ignoreList) - 1; i >= 0; i --){
@@ -13,10 +16,7 @@ function hitbox_destroy() {
 	if(ds_list_size(ignoreList) == 0){
 	    ds_list_destroy(ignoreList);
 	}
-
-	//reset owner hitbox variable
-	owner.hitbox = -1;
-
-
+		
+	instance_destroy();
 
 }
