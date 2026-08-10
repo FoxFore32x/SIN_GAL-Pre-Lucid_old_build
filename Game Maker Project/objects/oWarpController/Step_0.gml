@@ -1,7 +1,7 @@
 /// @description  @description Inserte aquí la descripción
 // Puede escribir su código en este editor
 
-if(currentPlayer.player < 0 && !pitBool){
+if(instance_exists(currentPlayer.player) && currentPlayer.player < 0 && !pitBool){
 	instance_destroy();
 	exit;
 }

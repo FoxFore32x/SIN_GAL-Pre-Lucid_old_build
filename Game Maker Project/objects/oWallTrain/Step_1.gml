@@ -1,9 +1,8 @@
-pl_freeze();
+var nearest = noone;
+var nearestDist = room_width;
 
 if (place_meeting(x, y, oPlayer))
 {
-	var nearest = noone;
-	var nearestDist = room_width;
 
 	with (oPlayer) {
 		if (id != other.id) {
