@@ -11,6 +11,8 @@ function pl_create() {
 	// < 0: CPU Players
 	player = 0;
 	isBoss = false;
+	
+	moveDir = 0;
 
 	onGround = 0;
 	isCrouching = false;

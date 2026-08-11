@@ -1,5 +1,6 @@
 /// @description collision
 var h, v;
+var _subPixel = .5;
 
 // Handle sub-pixel movement
 hCounter += xSpeed;

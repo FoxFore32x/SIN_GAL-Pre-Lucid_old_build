@@ -11,6 +11,8 @@ function pl_normalState() {
 		}else{
 		    xSpeed = approach(xSpeed,0,aSpeed * god.gameSpeed);
 		}
+		
+		moveDir = right - left;
 
 		if(down && (!left && !right)) isCrouching = true;
 		else isCrouching = false;
