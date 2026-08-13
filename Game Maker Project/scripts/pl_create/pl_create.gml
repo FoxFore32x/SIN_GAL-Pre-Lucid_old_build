@@ -19,6 +19,7 @@ function pl_create() {
 	hasTumbled = false;
 	
 	wallTrain = noone;
+	smallStop = false;
 
 	onSideWall = 0;
 	alrWS = false;

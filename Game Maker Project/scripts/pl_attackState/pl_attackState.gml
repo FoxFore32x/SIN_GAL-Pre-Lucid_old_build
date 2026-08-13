@@ -8,12 +8,12 @@ function pl_attackState() {
 	if (smallStAtJump){
 		if(!smallStAtJumpAct){
 			if(attDirX != noone) xSpeed = attDirX;
-			if(attDirY != noone) ySpeed = attDirY;
+			if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;
 			smallStAtJumpAct = true;
 		}
 	} else {
 		if(attDirX != noone) xSpeed = attDirX;
-		if(attDirY != noone) ySpeed = attDirY;
+		if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;
 	}
 
 	if(onGround){
@@ -63,6 +63,7 @@ function pl_attackState() {
 	if(/*animation_end() ||*/ chitTimer == 0){
 	    canPlay = true;
 		attOnGround = false;
+		smallStop = false;
 		smallStAtJumpAct = false;
 	    state_reset();
 	}

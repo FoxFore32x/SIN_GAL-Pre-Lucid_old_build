@@ -8,6 +8,7 @@ function setOnGround(argument0) {
 		hasSAttWhJump = false;
 		tSpeed = 10 * (global.sprScale);
 		jPotent = 1;
+		smallStop = false;
 	    wallGrabTimer = -1;
 	    coyoteHangTimer = coyoteHangFrames
 	} else {

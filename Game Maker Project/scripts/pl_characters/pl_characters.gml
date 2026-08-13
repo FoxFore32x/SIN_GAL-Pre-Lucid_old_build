@@ -49,22 +49,18 @@ function pl_characters(){
 			        downSpriteA  = sTeoriDAttSA;
 					
 					if(!down /*&& onGround*/) {
-						if(onGround) attOnGround = true;
-						else attOnGround = false;
-						attDirX = 4 * global.sprScale * facing;
+						attDirX = 5 * global.sprScale * facing;
 					}
 					else attDirX = noone;
 					
 					smallStAtJump = true;
-					
 					if(!hasSAttWhJump){
-						if(up) attDirY = -2 * global.sprScale;
+						
+						if(up){
+							attDirY = -4 * global.sprScale;
+						}
 						else attDirY = -1.51 * global.sprScale;
-						if (chitTimer == 0) hasSAttWhJump = true;
-					}
-					if(!onGround && hasSAttWhJump) {
-						if(!attOnGround && ! hasSAttWhJump) attDirY = 0;
-						else attDirY = noone;
+						if (currentState == states.attack && chitTimer == 1) hasSAttWhJump = true;
 					}
 					
 					//Attack Stats
