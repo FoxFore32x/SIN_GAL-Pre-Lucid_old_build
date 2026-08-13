@@ -18,6 +18,8 @@ if (place_meeting(x, y, oPlayer))
 	if (player == noone) exit;
 	
 	if (player.isWallGrabbing == true){
+		player.wallTrain = id;
+		
 		if(activeAll){
 			with(oWallTrain) active = true;
 		} else active = true;

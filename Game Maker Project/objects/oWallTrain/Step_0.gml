@@ -1,4 +1,7 @@
 if ((trainTime > 0 && !needsActiv) || !active){
+	
+	xSpeed = 0;
+    ySpeed = 0;
 	if(!needsActiv) trainTime -= 1 * god.gameSpeed;
 }
 else {

@@ -108,6 +108,7 @@ function pl_normalState() {
 
 		if(!isWallGrabbing){
 			alrWS = false;
+			wallTrain = noone;
 		    tSpeed = 10 * (global.sprScale);
 		    mSpeed = mSpeedDefault;
 		}

@@ -17,6 +17,8 @@ function pl_create() {
 	onGround = 0;
 	isCrouching = false;
 	hasTumbled = false;
+	
+	wallTrain = noone;
 
 	onSideWall = 0;
 	alrWS = false;
