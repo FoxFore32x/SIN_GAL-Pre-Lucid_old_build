@@ -80,6 +80,7 @@ function pl_animation() {
 	    break;
     
 	    case states.attack:
+			if (weapon == weapons.sword && dashAnt != 0) exit;
 	        switch(subState){
 	            case attacks.side_ground:
 	                animation_set(fd_side,sideSpriteG);

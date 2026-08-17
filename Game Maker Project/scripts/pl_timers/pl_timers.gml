@@ -18,4 +18,18 @@ function pl_timers(){
 		comboCnt = 0;
 		jabCnt = 0;
 	}
+	
+	if(heavyBar < heavyBarMax){
+		heavyBar += heavyIncrease * god.gameSpeed;
+	}
+	
+	if(heavyBar > heavyBarMax){
+		heavyBar = 3;
+	}
+	
+	if(heavyBar <= 1){
+		tired = true;	
+	} else {
+		tired = false;
+	}
 }

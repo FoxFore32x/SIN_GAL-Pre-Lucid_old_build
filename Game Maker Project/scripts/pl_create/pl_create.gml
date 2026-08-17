@@ -263,6 +263,21 @@ function pl_create() {
 	oHitBy = noone; //hitBy.owner for other funcs.
 	hitQueue = ds_list_create();
 	
+	//heavy att bar
+	tired = false;
+	heavyBarMax = 3;
+	heavyBar = heavyBarMax;
+	heavyIncrease = 0.005;
+	heavyIncAtt = 0.3;
+	heavyDam[0] = 40;
+	heavyDam[1] = 30;
+	heavyDam[2] = 20;
+	heavyDist[0] = 4;
+	heavyDist[1] = 3;
+	heavyDashStall[0] = 0;
+	heavyDashStall[1] = 5;
+	heavyDashStall[2] = 7;
+	
 	prevBgWall = noone;
 
 	plId = 0;

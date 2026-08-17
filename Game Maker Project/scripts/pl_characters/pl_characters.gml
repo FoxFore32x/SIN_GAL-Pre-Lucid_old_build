@@ -38,7 +38,7 @@ function pl_characters(){
 			weaponRun = sTeori_Run_Arms;
 			weaponJump = sTeori_Jump_Arms;
 			
-			switch(weapon){    
+			switch(weapon){
 			    case weapons.sword:
 				
 					sideSpriteG  = sTeoriSAttSG;
@@ -49,7 +49,7 @@ function pl_characters(){
 			        downSpriteA  = sTeoriDAttSA;
 					
 					if(!down /*&& onGround*/) {
-						attDirX = 5 * global.sprScale * facing;
+						attDirX = heavyDist[tired] * global.sprScale * facing;
 					}
 					else attDirX = noone;
 					
@@ -57,7 +57,7 @@ function pl_characters(){
 					if(!hasSAttWhJump){
 						
 						if(up){
-							attDirY = -4 * global.sprScale;
+							attDirY = -heavyDist[tired] * global.sprScale;
 						}
 						else attDirY = -1.51 * global.sprScale;
 						if (currentState == states.attack && chitTimer == 1) hasSAttWhJump = true;

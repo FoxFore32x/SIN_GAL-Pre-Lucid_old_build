@@ -20,7 +20,7 @@ if(room != results && room != title && room != init && room != rm_charsel){
     
 	            draw_text_transformed_colour(
 	                32, vSpacing,
-	                string_hash_to_newline(string_hash_to_newline(string(inst.hp))),
+	                string_hash_to_newline(string_hash_to_newline(string(inst.hp)) + ", " + string_hash_to_newline(string(inst.heavyBar))),
 	                0.3333, 0.3333, 0,
 	                col, col, col, col, 1
 	            );

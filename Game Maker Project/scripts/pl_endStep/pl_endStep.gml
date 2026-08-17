@@ -126,6 +126,8 @@ function pl_endStep() {
 	        pl_hitReset();
 			
 			if(!hb.obstacle){
+				if(hb.owner.heavyBar < hb.owner.heavyBarMax) hb.owner.heavyBar += hb.owner.heavyIncAtt;
+				
 				hb.owner.hasHit = true;
 		        if (!hb.comboGranted) {
 		            hb.comboGranted = true;

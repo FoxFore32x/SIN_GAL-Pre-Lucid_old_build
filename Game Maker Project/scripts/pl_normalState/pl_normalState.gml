@@ -148,9 +148,9 @@ function pl_normalState() {
 		//change to the attack state and relevant subState based on direction and attack
 		if(lattKeyBuffered || hattKeyBuffered){
 			
+			dashAnt = heavyDashStall[floor(abs(heavyBar - 3))];
+			
 			smallStAtJumpAct = false;
-
-		    play_sfx(sfxSwoosh, 1, 0);
 
 		    if(lattKeyBuffered){
 		        weapon = weapons.dagger;
@@ -161,6 +161,8 @@ function pl_normalState() {
 		        hattKeyBuffered = 0;
 		        hattKeyBufferTimer = 0;
 		    }
+			
+			play_sfx(sfxSwoosh, 1, 0);
     
 		    weapon_stats();
     
@@ -208,11 +210,14 @@ function pl_normalState() {
 		            chitTimer = sideAtT;
 		        }
 		    }
-		    currentState = states.attack;
+			
+			currentState = states.attack;
+			
+			if (weapon == weapons.sword && heavyBar >= 1) heavyBar -= 1;
 			
 			//pl_attackState();
 
-		    frame_reset();
+			frame_reset();
 		}
 
 		//dash
