@@ -48,7 +48,7 @@ function pl_characters(){
 			        downSpriteG  = sTeoriDAttSG;
 			        downSpriteA  = sTeoriDAttSA;
 					
-					if(!down /*&& onGround*/) {
+					if((left || right) && (!down)) {
 						attDirX = heavyDist[tired] * global.sprScale * facing;
 					}
 					else attDirX = noone;
@@ -291,12 +291,16 @@ function pl_characters(){
 			        downSpriteG  = sTeoriDAttSG;
 			        downSpriteA  = sTeoriDAttSA;
 				
-					if(!down /*&& onGround*/) {
+					if((left || right) && (!down)) {
 						if(onGround) attOnGround = true;
 						else attOnGround = false;
-						attDirX = 6 * global.sprScale * facing;
+						attDirX = heavyDist[tired] * global.sprScale * facing;
 					}
 					else attDirX = noone;
+					
+					if(up) attDirY = -heavyDist[tired] * global.sprScale;
+					else if(down) attDirY = heavyDist[tired] * global.sprScale;
+					else attDirY = noone;
 					
 					if(hasHit) xSpeed = 0;
 					//Attack Stats

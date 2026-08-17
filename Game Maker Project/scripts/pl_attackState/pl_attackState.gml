@@ -70,6 +70,7 @@ function pl_attackState() {
 			attOnGround = false;
 			smallStop = false;
 			smallStAtJumpAct = false;
+			tSpeed = 10 * (global.sprScale);
 		    state_reset();
 		}
 

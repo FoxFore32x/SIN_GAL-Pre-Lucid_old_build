@@ -6,6 +6,7 @@ function pl_create() {
 	landed = 0;
 
 	canPlay = true;
+	gravMax = 0.2 * (global.sprScale);
 
 	// >= 0: Human PLayers
 	// < 0: CPU Players
@@ -267,8 +268,8 @@ function pl_create() {
 	tired = false;
 	heavyBarMax = 3;
 	heavyBar = heavyBarMax;
-	heavyIncrease = 0.005;
-	heavyIncAtt = 0.3;
+	heavyIncrease = 0.025;
+	heavyIncAtt = 1;
 	heavyDam[0] = 40;
 	heavyDam[1] = 30;
 	heavyDam[2] = 20;
