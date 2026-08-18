@@ -92,6 +92,8 @@ function pl_endStep() {
 				}
 	            if (hp <= 0){
 	                if(dead == false){
+						if(player >= 0) global.players--;
+						else global.cpus--;
 	                    global.existentPl -= 1;
 	                    global.winId[global.winnerVar] = plId + 1;
 	                    global.winnerVar++;
