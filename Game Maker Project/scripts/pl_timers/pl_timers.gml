@@ -32,4 +32,8 @@ function pl_timers(){
 	} else {
 		tired = false;
 	}
+	
+	if(hangPassThroughTime > 0){
+		hangPassThroughTime -= 1 * god.gameSpeed;
+	}
 }

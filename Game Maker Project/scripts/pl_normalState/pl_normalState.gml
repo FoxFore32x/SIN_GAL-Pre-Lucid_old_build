@@ -18,6 +18,7 @@ function pl_normalState() {
 		else isCrouching = false;
 		
 		if(passTrough){
+			hangPassThroughTime = hangPassThroughTimeMax;
 			if(instance_place( x, y+1, parentJumpthru )) jumpThru = noone;
 			if(instance_place( x, y, parentJumpthru )) thruPlat = noone;
 			else passTrough = false;
@@ -130,10 +131,10 @@ function pl_normalState() {
 		
 		//Fast fall
 		
-		if(!onGround && down){
-			if(ySpeed > 2 && tSpeed < 27){
+		if(!onGround && down && (hangPassThroughTime == 0)){
+			if(ySpeed > 2 && tSpeed < 34){
 				ySpeed += 1;
-				tSpeed = 27;
+				tSpeed = 34;
 			}
 		}
 

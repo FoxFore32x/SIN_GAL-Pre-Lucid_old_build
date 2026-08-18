@@ -157,6 +157,9 @@ function pl_create() {
 	//Hang Time
 	coyoteHangFrames = 2;
 	coyoteHangTimer = 0;
+	
+	hangPassThroughTimeMax = 6;
+	hangPassThroughTime = 0;
 
 	//Jump Buffer Time
 	coyoteJumpFrames = 5;
