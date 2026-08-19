@@ -72,6 +72,7 @@ op_border = 8;
 op_space = 48;
 
 pos = 0;
+playerPos = 1;
 
 //Pause Menu
 option[0, 0] = "Arcade";
@@ -87,16 +88,35 @@ option[1, 0] = "Health";
 option[1, 1] = "Timer";
 option[1, 2] = "Music";
 option[1, 3] = "SFX";
-option[1, 4] = "Back";
+option[1, 4] = "Keybinds";
+option[1, 5] = "Back";
+
+//Keybind Menu
+option[2, 0] = "Player";
+option[2, 1] = "Left";
+option[2, 2] = "Right";
+option[2, 3] = "Up";
+option[2, 4] = "Down";
+option[2, 5] = "Jump";
+option[2, 6] = "Light Attack";
+option[2, 7] = "Heavy Attack";
+option[2, 8] = "Block";
+option[2, 9] = "Grab";
+option[2, 10] = "Back";
 
 //Setting Values
 
 /*settVal[0] = global.players;
 settVal[1] = global.cpus;*/
-settVal[0] = global.opHp;
-settVal[1] = global.opTimer;
-settVal[2] = global.volMusic;
-settVal[3] = global.volSfx;
+settVal[0, 0] = global.opHp;
+settVal[0, 1] = global.opTimer;
+settVal[0, 2] = global.volMusic;
+settVal[0, 3] = global.volSfx;
+
+settVal[1, 0] = 0;
+settVal[1, 1] = chr(keybindMap[$ "up" + string(playerPos)]);
+settVal[1, 2] = chr(keybindMap[$ "up" + string(playerPos)]);
+settVal[1, 3] = chr(keybindMap[$ "up" + string(playerPos)]);
 
 global.arPlWon = false;
 
