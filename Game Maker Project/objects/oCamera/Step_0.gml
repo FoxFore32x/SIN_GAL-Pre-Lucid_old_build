@@ -107,10 +107,10 @@ _camY = clamp(_camY, 0, room_height - camH);
 finalCamX += (_camX - finalCamX) * camTrailSpd;
 finalCamY += (_camY - finalCamY) * camTrailSpd;
 
-layer_x("Backgrounds_1", finalCamX * 0.5);
-layer_y("Backgrounds_1", finalCamY * 0.5);
-layer_x("Background", finalCamX * 0.25);
-layer_y("Background", finalCamY * 0.25);
+layer_x("Backgrounds_1", foreLayer_xOff + finalCamX * 0.5);
+layer_y("Backgrounds_1", foreLayer_yOff + finalCamY * 0.5);
+layer_x("Background", backLayer_xOff + finalCamX * 0.25);
+layer_y("Background", backLayer_yOff + finalCamY * 0.25);
 
 // apply view position
 __view_set(e__VW.WView, 0, camW);

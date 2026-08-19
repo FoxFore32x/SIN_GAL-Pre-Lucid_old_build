@@ -7,6 +7,11 @@ if (room == title || room == results || room == init) {
     view_h = 480;
 }
 
+foreLayer_xOff = layer_get_x("Backgrounds_1");
+foreLayer_yOff = layer_get_y("Backgrounds_1");
+backLayer_xOff = layer_get_x("Background");
+backLayer_yOff = layer_get_y("Background");
+
 room_speed = 60;
 
 // Enable views

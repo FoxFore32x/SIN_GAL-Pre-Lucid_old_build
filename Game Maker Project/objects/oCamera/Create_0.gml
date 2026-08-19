@@ -11,6 +11,11 @@ lookY = 0;
 view_w = 640;
 view_h = 480;
 
+foreLayer_xOff = 0;
+foreLayer_yOff = 0;
+backLayer_xOff = 0;
+backLayer_yOff = 0;
+
 // GUI matches visible area
 //display_set_gui_size(view_w, view_h);
 
