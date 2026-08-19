@@ -48,10 +48,12 @@ for(var i = 0; i < op_length; i++){
     draw_text_transformed_colour(x+op_border, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(option[menu_level, i])), 0.3333, 0.3333, 0, _c, _c, _c, _c, 1);
 }
 
-if(menu_level == 1){
+if(menu_level >= 1){
+	var val_length = array_length_2d(settVal, menu_level);
+	
     for(var i = 0; i < val_length; i++){
         var _c = c_white;
         if(pos == i){ _c = c_red};
-        draw_text_transformed_colour(x+_new_w*1.3, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(settVal[i])), 0.3333, 0.3333, 0, _c, _c, _c, _c, 1);
+        draw_text_transformed_colour(x+_new_w*1.3, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(settVal[menu_level, i])), 0.3333, 0.3333, 0, _c, _c, _c, _c, 1);
     }
 }

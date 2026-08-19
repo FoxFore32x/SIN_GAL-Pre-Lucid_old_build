@@ -13,7 +13,7 @@ function initialize_Keybinds(){
 			addKeybind(new BindKB("block1", vk_lshift));
 			addKeybind(new BindKB("light1", ord("R")));
 			addKeybind(new BindKB("strong1", ord("F")));
-			addKeybind(new BindKB("special1", ord("G")));
+			addKeybind(new BindKB("special1", ord("Y")));
 			addKeybind(new BindKB("pause1", ord("1")));
 			
 			addKeybind(new BindGPB("up1", 0, gp_padu));

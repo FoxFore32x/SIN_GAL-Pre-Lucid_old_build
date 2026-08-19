@@ -1,4 +1,5 @@
 pos += (down && !downHold) - (up && !upHold);
+var change = (right && !rightHold) - (left && !leftHold);
 
 op_length = array_length_2d(option, menu_level);
 
@@ -38,7 +39,6 @@ switch(menu_level){
     break;
         
     case 1:
-        var change = (right && !rightHold) - (left && !leftHold);
         //var total = settVal[0] + settVal[1];
 
         switch (pos) {
@@ -119,8 +119,13 @@ switch(menu_level){
                 }
             break;
 
-            // BACK
+            // KEYBINDS
             case 4:
+               if (btnJump) menu_level = 2;
+            break;
+			
+			// BACK
+			case 5:
                 if (btnJump){
                     /*global.players = settVal[0];
                     global.cpus = settVal[1];*/
@@ -135,12 +140,45 @@ switch(menu_level){
 
         // recompute total at end
        // global.balancer = settVal[0] + settVal[1];
-        
-    break;
+	
+	case 2:
+		
+		switch(pos){
+			case 0:
+				if (change != 0){
+					playerPos += change;
+					settVal[2, 0] += change;
+					settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+					settVal[2, 2] = chr(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
+					settVal[2, 3] = chr(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
+					settVal[2, 4] = chr(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
+					settVal[2, 5] = chr(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
+					settVal[2, 6] = chr(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
+					settVal[2, 7] = chr(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
+					settVal[2, 8] = chr(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
+					settVal[2, 9] = chr(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
+					settVal[2, 10] = chr(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
+				}
+				
+			break;
+			case 1: if (btnJump) inputChangeKeybind("left", playerPos -1); break;
+			case 2: if (btnJump) inputChangeKeybind("right", playerPos -1); break;
+			case 3: if (btnJump) inputChangeKeybind("up", playerPos -1); break;
+			case 4: if (btnJump) inputChangeKeybind("down", playerPos -1); break;
+			case 5: if (btnJump) inputChangeKeybind("jump", playerPos -1); break;
+			case 6: if (btnJump) inputChangeKeybind("light", playerPos -1); break;
+			case 7: if (btnJump) inputChangeKeybind("strong", playerPos -1); break;
+			case 8: if (btnJump) inputChangeKeybind("block", playerPos -1); break;
+			case 9: if (btnJump) inputChangeKeybind("special", playerPos -1); break;
+			case 10: if (btnJump) inputChangeKeybind("pause", playerPos -1); break;
+			case 11: if (btnJump) menu_level = 1;
+		}
+	
+	break;
 }
 
 // Proper back handling
-if (menu_level == 1 && lowAt && !lowAtHold){
+if (menu_level >= 1 && lowAt && !lowAtHold){
     /*global.players	= settVal[0];
     global.cpus		= settVal[1];*/
     global.opHp		= settVal[0];
@@ -148,7 +186,7 @@ if (menu_level == 1 && lowAt && !lowAtHold){
     global.volMusic	= settVal[2];
     global.volSfx	= settVal[3];
 
-    menu_level = 0;
+    menu_level--;
     pos = 0;
 }
 
