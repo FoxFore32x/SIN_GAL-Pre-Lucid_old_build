@@ -25,7 +25,9 @@ draw_text_transformed(32,448,string_hash_to_newline(string_hash_to_newline(strin
 }
 
 var _new_w = 0;
-var text_scale = 0.3333;
+
+if(menu_level == 2) text_scale = 0.25;
+else text_scale = 0.3333;
 
 for (var i = 0; i < op_length; i++) {
     var _op_w = string_width(string_hash_to_newline(string_hash_to_newline(option[menu_level, i]))) * text_scale;
@@ -45,7 +47,7 @@ y = __view_get( e__VW.YView, 0 ) + __view_get( e__VW.HView, 0 ) / 2 - height / 2
 for(var i = 0; i < op_length; i++){
     var _c = c_white;
     if(pos == i){ _c = c_yellow};
-    draw_text_transformed_colour(x+op_border, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(option[menu_level, i])), 0.3333, 0.3333, 0, _c, _c, _c, _c, 1);
+    draw_text_transformed_colour(x+op_border, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(option[menu_level, i])), text_scale, text_scale, 0, _c, _c, _c, _c, 1);
 }
 
 if(menu_level >= 1){
@@ -54,6 +56,6 @@ if(menu_level >= 1){
     for(var i = 0; i < val_length; i++){
         var _c = c_white;
         if(pos == i){ _c = c_red};
-        draw_text_transformed_colour(x+_new_w*1.3, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(settVal[menu_level, i])), 0.3333, 0.3333, 0, _c, _c, _c, _c, 1);
+        draw_text_transformed_colour(x+_new_w*1.3, y+op_border + op_space*i, string_hash_to_newline(string_hash_to_newline(settVal[menu_level, i])), text_scale, text_scale, 0, _c, _c, _c, _c, 1);
     }
 }

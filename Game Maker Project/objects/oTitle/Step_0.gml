@@ -12,7 +12,7 @@ if (pos < 0)
     pos = op_length-1;
 }
 
-var btnJump = (jump2);
+var btnJump = (jump && !jumpHold);
 
 var _sml = menu_level;
 
@@ -129,10 +129,10 @@ switch(menu_level){
                 if (btnJump){
                     /*global.players = settVal[0];
                     global.cpus = settVal[1];*/
-                    global.opHp = settVal[0];
-                    global.opTimer = settVal[1];
-                    global.volMusic = settVal[2];
-                    global.volSfx = settVal[3];
+                    global.opHp = settVal[1, 0];
+                    global.opTimer = settVal[1, 1];
+                    global.volMusic = settVal[1, 2];
+                    global.volSfx = settVal[1, 3];
                     menu_level = 0;
                 }
             break;
@@ -161,16 +161,30 @@ switch(menu_level){
 				}
 				
 			break;
-			case 1: if (btnJump) inputChangeKeybind("left", playerPos -1); break;
-			case 2: if (btnJump) inputChangeKeybind("right", playerPos -1); break;
-			case 3: if (btnJump) inputChangeKeybind("up", playerPos -1); break;
-			case 4: if (btnJump) inputChangeKeybind("down", playerPos -1); break;
-			case 5: if (btnJump) inputChangeKeybind("jump", playerPos -1); break;
-			case 6: if (btnJump) inputChangeKeybind("light", playerPos -1); break;
-			case 7: if (btnJump) inputChangeKeybind("strong", playerPos -1); break;
-			case 8: if (btnJump) inputChangeKeybind("block", playerPos -1); break;
-			case 9: if (btnJump) inputChangeKeybind("special", playerPos -1); break;
-			case 10: if (btnJump) inputChangeKeybind("pause", playerPos -1); break;
+			case 1:
+				if (btnJump){
+					readingKeybind = true;
+				}
+				
+				if (readingKeybind == true){
+					settVal[2, 1] = "...";
+					var _newKeybind = inputChangeKeybind("left" + string(playerPos), playerPos - 1);
+					if(_newKeybind != -1){
+						inputReplace("left" + string(playerPos), _newKeybind);
+						settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+						readingKeybind = false;
+					}
+				}
+			break;
+			case 2: if (btnJump) inputChangeKeybind("right1", playerPos -1); break;
+			case 3: if (btnJump) inputChangeKeybind("up1", playerPos -1); break;
+			case 4: if (btnJump) inputChangeKeybind("down1", playerPos -1); break;
+			case 5: if (btnJump) inputChangeKeybind("jump1", playerPos -1); break;
+			case 6: if (btnJump) inputChangeKeybind("light1", playerPos -1); break;
+			case 7: if (btnJump) inputChangeKeybind("strong1", playerPos -1); break;
+			case 8: if (btnJump) inputChangeKeybind("block1", playerPos -1); break;
+			case 9: if (btnJump) inputChangeKeybind("special1", playerPos -1); break;
+			case 10: if (btnJump) inputChangeKeybind("pause1", playerPos -1); break;
 			case 11: if (btnJump) menu_level = 1;
 		}
 	
@@ -181,10 +195,10 @@ switch(menu_level){
 if (menu_level >= 1 && lowAt && !lowAtHold){
     /*global.players	= settVal[0];
     global.cpus		= settVal[1];*/
-    global.opHp		= settVal[0];
-    global.opTimer	= settVal[1];
-    global.volMusic	= settVal[2];
-    global.volSfx	= settVal[3];
+    global.opHp		= settVal[1, 0];
+    global.opTimer	= settVal[1, 1];
+    global.volMusic	= settVal[1, 2];
+    global.volSfx	= settVal[1, 3];
 
     menu_level--;
     pos = 0;

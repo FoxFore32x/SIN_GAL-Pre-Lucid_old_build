@@ -112,6 +112,7 @@ if (dt_up_timer    > 0) dt_up_timer    -= 1;
 if (dt_down_timer  > 0) dt_down_timer  -= 1;
     
 jumpHold = jump;
+jumpHold2 = jump2;
 //jump = keyboard_check(ord("O")) || gamepad_button_check(global.plInput[player], gp_face1);
 //jump2 = keyboard_check_pressed(ord("O")) || gamepad_button_check_pressed(global.plInput[player], gp_face1);
 jump = global.keyJumpAll;

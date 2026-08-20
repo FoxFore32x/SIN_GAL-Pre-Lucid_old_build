@@ -226,6 +226,7 @@
     {"id":{"name":"pl_tumbleState","path":"scripts/pl_tumbleState/pl_tumbleState.yy",},},
     {"id":{"name":"play_sfx","path":"scripts/play_sfx/play_sfx.yy",},},
     {"id":{"name":"recovery_set","path":"scripts/recovery_set/recovery_set.yy",},},
+    {"id":{"name":"scr_bindKey","path":"scripts/scr_bindKey/scr_bindKey.yy",},},
     {"id":{"name":"scr_changeInput","path":"scripts/scr_changeInput/scr_changeInput.yy",},},
     {"id":{"name":"scr_keybinds","path":"scripts/scr_keybinds/scr_keybinds.yy",},},
     {"id":{"name":"setOnGround","path":"scripts/setOnGround/setOnGround.yy",},},

@@ -39,6 +39,9 @@ downDouble  = false;
     
 jump  = false;
 jumpHold = false;
+
+jump2 = false;
+jumpHold2 = false;
     
 attack = false;
 attackHold = false;
@@ -134,6 +137,8 @@ global.arPlWon = false;
 op_length = array_length(option);
 val_length = array_length(settVal);
 menu_level = 0;
+readingKeybind = false;
+text_scale = 0.3333;
 
 showCtrl = false;
 

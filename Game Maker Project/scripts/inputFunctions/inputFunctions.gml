@@ -222,10 +222,23 @@ function inputCheckReleased(_name)
 }
 
 function inputReplace(_name, _newKeybind) {
-	for (var i = 0; i < array_length(oInput.keybinds); i++){
-		if (oInput.keybinds[i].bindName == _name){
-			oInput.keybinds[i] = _newKeybind;
-			return;
-		}
-	}
+    // Replace in keybinds array
+    for (var i = 0; i < array_length(oInput.keybinds); i++) {
+        if (oInput.keybinds[i].bindName == _name) {
+            oInput.keybinds[i] = _newKeybind;
+            break;
+        }
+    }
+
+    // Replace in keybindMap
+    if (variable_struct_exists(oInput.keybindMap, _name)) {
+        var _binds = oInput.keybindMap[$ _name];
+
+        for (var i = 0; i < array_length(_binds); i++) {
+            if (_binds[i].bindName == _name) {
+                _binds[i] = _newKeybind;
+                return;
+            }
+        }
+    }
 }

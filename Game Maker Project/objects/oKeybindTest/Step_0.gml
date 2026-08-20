@@ -2,7 +2,7 @@
 // Puede escribir su código en este editor
 
 //keychange
-if (keyboard_check_pressed(vk_escape)) {
+if (keyboard_check_pressed("7")) {
 	readingKeybind = true;
 }
 
