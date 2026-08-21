@@ -14,7 +14,7 @@ function initialize_Keybinds(){
 			addKeybind(new BindKB("light1", ord("R")));
 			addKeybind(new BindKB("strong1", ord("F")));
 			addKeybind(new BindKB("special1", ord("Y")));
-			addKeybind(new BindKB("pause1", ord("1")));
+			addKeybind(new BindKB("pause1", vk_space));
 			
 			addKeybind(new BindGPB("up1", 0, gp_padu));
 			addKeybind(new BindGPB("down1", 0, gp_padd));
@@ -48,7 +48,7 @@ function initialize_Keybinds(){
 			addKeybind(new BindKB("light2", ord("I")));
 			addKeybind(new BindKB("strong2", ord("K")));
 			addKeybind(new BindKB("special2", ord("L")));
-			addKeybind(new BindKB("pause2", ord("2")));
+			addKeybind(new BindKB("pause2", vk_enter));
 			
 			addKeybind(new BindGPB("up2", 1, gp_padu));
 			addKeybind(new BindGPB("down2", 1, gp_padd));
@@ -161,6 +161,8 @@ function globalKeys() {
 	global.keyStrong[0] = inputCheckHeld("strong1");
 	global.keySpecial[0] = inputCheckHeld("special1");
 	global.keyPause[0] = inputCheckHeld("pause1");
+	global.keyPause2[0] = inputCheckPressed("pause1");
+	global.keyPause3[0] = inputCheckReleased("pause1");
 	global.keyAny[0] = (inputCheckPressed("up1") || inputCheckPressed("down1") || 
 	inputCheckPressed("left1") || inputCheckPressed("right1") || 
 	inputCheckPressed("up1") || inputCheckPressed("jump1") ||
@@ -187,6 +189,8 @@ function globalKeys() {
 	global.keyStrong[1] = inputCheckHeld("strong2");
 	global.keySpecial[1] = inputCheckHeld("special2");
 	global.keyPause[1] = inputCheckHeld("pause2");
+	global.keyPause2[1] = inputCheckPressed("pause2");
+	global.keyPause3[1] = inputCheckReleased("pause2");
 	global.keyAny[1] = (inputCheckPressed("up2") || inputCheckPressed("down2") || 
 	inputCheckPressed("left2") || inputCheckPressed("right2") || 
 	inputCheckPressed("up2") || inputCheckPressed("jump2") ||
@@ -213,6 +217,8 @@ function globalKeys() {
 	global.keyStrong[2] = inputCheckHeld("strong3");
 	global.keySpecial[2] = inputCheckHeld("special3");
 	global.keyPause[2] = inputCheckHeld("pause3");
+	global.keyPause2[2] = inputCheckPressed("pause3");
+	global.keyPause3[2] = inputCheckReleased("pause3");
 	global.keyAny[2] = (inputCheckPressed("up3") || inputCheckPressed("down3") || 
 	inputCheckPressed("left3") || inputCheckPressed("right3") || 
 	inputCheckPressed("up3") || inputCheckPressed("jump3") ||
@@ -239,6 +245,8 @@ function globalKeys() {
 	global.keyStrong[3] = inputCheckHeld("strong4");
 	global.keySpecial[3] = inputCheckHeld("special4");
 	global.keyPause[3] = inputCheckHeld("pause4");
+	global.keyPause2[3] = inputCheckPressed("pause4");
+	global.keyPause3[3] = inputCheckReleased("pause4");
 	global.keyAny[3] = (inputCheckPressed("up4") || inputCheckPressed("down4") || 
 	inputCheckPressed("left4") || inputCheckPressed("right4") || 
 	inputCheckPressed("up4") || inputCheckPressed("jump4") ||
@@ -264,5 +272,7 @@ function globalKeys() {
 	global.keyStrongAll = global.keyStrong[0] || global.keyStrong[1] || global.keyStrong[2] || global.keyStrong[3];
 	global.keySpecialAll = global.keySpecial[0] || global.keySpecial[1] || global.keySpecial[2] || global.keySpecial[3];
 	global.keyPauseAll = global.keyPause[0] || global.keyPause[1] || global.keyPause[2] || global.keyPause[3];
+	global.keyPause2All = global.keyPause2[0] || global.keyPause2[1] || global.keyPause2[2] || global.keyPause2[3];
+	global.keyPause3All = global.keyPause3[0] || global.keyPause3[1] || global.keyPause3[2] || global.keyPause3[3];
 	global.keyAnyAll = global.keyAny[0] || global.keyAny[1] || global.keyAny[2] || global.keyAny[3];
 }

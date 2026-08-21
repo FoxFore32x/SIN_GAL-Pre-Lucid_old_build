@@ -228,3 +228,5 @@ if(wallKeyBufferTimer > 0){
 pauseHold = pause;
 //pause = keyboard_check(ord("1")) || (gamepad_button_check(global.plInput[0], gp_start));
 pause = global.keyPauseAll;
+pause2 = global.keyPause2All;
+pauseRel = global.keyPause3All;

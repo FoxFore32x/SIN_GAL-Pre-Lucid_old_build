@@ -1,4 +1,5 @@
-pos += ((down && !downHold) - (up && !upHold) && !readingKeybind);
+
+if(!readingKeybind) pos += ((down && !downHold) - (up && !upHold));
 var change = (right && !rightHold) - (left && !leftHold);
 
 op_length = array_length_2d(option, menu_level);
@@ -12,8 +13,8 @@ if (pos < 0)
     pos = op_length-1;
 }
 
-var btnJump = (jump2);
-var btnJumpRelease = (jumpRel);
+var btnJump = (jump2 || pause2);
+var btnJumpRelease = (jumpRel || pauseRel);
 
 var _sml = menu_level;
 
@@ -149,7 +150,7 @@ switch(menu_level){
 	
 	case 2:
 		if (keybindWaitRelease) {
-			if (jumpRel) {
+			if (btnJumpRelease) {
 				keybindWaitRelease = false;
 			}
 		} else {
@@ -181,7 +182,7 @@ switch(menu_level){
 					settVal[2, 1] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -202,7 +203,7 @@ switch(menu_level){
 					settVal[2, 2] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -223,7 +224,7 @@ switch(menu_level){
 					settVal[2, 3] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -244,7 +245,7 @@ switch(menu_level){
 					settVal[2, 4] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -265,7 +266,7 @@ switch(menu_level){
 					settVal[2, 5] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -286,7 +287,7 @@ switch(menu_level){
 					settVal[2, 6] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -307,7 +308,7 @@ switch(menu_level){
 					settVal[2, 7] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -328,7 +329,7 @@ switch(menu_level){
 					settVal[2, 8] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -349,7 +350,7 @@ switch(menu_level){
 					settVal[2, 9] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
@@ -370,7 +371,7 @@ switch(menu_level){
 					settVal[2, 10] = "...";
 					
 					if (keybindWaitRelease) {
-				        if (jumpRel) {
+				        if (btnJumpRelease) {
 				            keybindWaitRelease = false;
 				        }
 				    } else {
