@@ -153,6 +153,7 @@ function globalKeys() {
 	global.keyRight2[0] = inputCheckPressed("right1");
 	global.keyJump[0] = inputCheckHeld("jump1");
 	global.keyJump2[0] = inputCheckPressed("jump1");
+	global.keyJump3[0] = inputCheckReleased("jump1");
 	global.keyDash[0] = inputCheckHeld("dash1");
 	global.keyBlock[0] = inputCheckHeld("block1");
 	global.keyLight[0] = inputCheckHeld("light1");
@@ -178,6 +179,7 @@ function globalKeys() {
 	global.keyRight2[1] = inputCheckPressed("right2");
 	global.keyJump[1] = inputCheckHeld("jump2");
 	global.keyJump2[1] = inputCheckPressed("jump2");
+	global.keyJump3[1] = inputCheckReleased("jump2");
 	global.keyDash[1] = inputCheckHeld("dash2");
 	global.keyBlock[1] = inputCheckHeld("block2");
 	global.keyLight[1] = inputCheckHeld("light2");
@@ -203,6 +205,7 @@ function globalKeys() {
 	global.keyRight2[2] = inputCheckPressed("right3");
 	global.keyJump[2] = inputCheckHeld("jump3");
 	global.keyJump2[2] = inputCheckPressed("jump3");
+	global.keyJump3[2] = inputCheckReleased("jump3");
 	global.keyDash[2] = inputCheckHeld("dash3");
 	global.keyBlock[2] = inputCheckHeld("block3");
 	global.keyLight[2] = inputCheckHeld("light3");
@@ -228,6 +231,7 @@ function globalKeys() {
 	global.keyRight2[3] = inputCheckPressed("right4");
 	global.keyJump[3] = inputCheckHeld("jump4");
 	global.keyJump2[3] = inputCheckPressed("jump4");
+	global.keyJump3[3] = inputCheckReleased("jump4");
 	global.keyDash[3] = inputCheckHeld("dash4");
 	global.keyBlock[3] = inputCheckHeld("block4");
 	global.keyLight[3] = inputCheckHeld("light4");
@@ -252,6 +256,7 @@ function globalKeys() {
 	global.keyRight2All = global.keyRight2[0] || global.keyRight2[1] || global.keyRight2[2] || global.keyRight2[3];
 	global.keyJumpAll = global.keyJump[0] || global.keyJump[1] || global.keyJump[2] || global.keyJump[3];
 	global.keyJump2All = global.keyJump2[0] || global.keyJump2[1] || global.keyJump2[2] || global.keyJump2[3];
+	global.keyJump3All = global.keyJump3[0] || global.keyJump3[1] || global.keyJump3[2] || global.keyJump3[3];
 	global.keyDashAll = global.keyDash[0] || global.keyDash[1] || global.keyDash[2] || global.keyDash[3];
 	global.keyBlockAll = global.keyBlock[0] || global.keyBlock[1] || global.keyBlock[2] || global.keyBlock[3];
 	global.keyLightAll = global.keyLight[0] || global.keyLight[1] || global.keyLight[2] || global.keyLight[3];

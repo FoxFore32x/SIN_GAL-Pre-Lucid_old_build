@@ -117,6 +117,7 @@ jumpHold2 = jump2;
 //jump2 = keyboard_check_pressed(ord("O")) || gamepad_button_check_pressed(global.plInput[player], gp_face1);
 jump = global.keyJumpAll;
 jump2 = global.keyJump2All;
+jumpRel = global.keyJump3All;
 	
 if (jump && !jumpHold){
 	jumpKeyBufferTimer = bufferTime;

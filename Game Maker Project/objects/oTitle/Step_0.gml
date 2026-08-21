@@ -1,4 +1,4 @@
-pos += (down && !downHold) - (up && !upHold);
+pos += ((down && !downHold) - (up && !upHold) && !readingKeybind);
 var change = (right && !rightHold) - (left && !leftHold);
 
 op_length = array_length_2d(option, menu_level);
@@ -12,9 +12,12 @@ if (pos < 0)
     pos = op_length-1;
 }
 
-var btnJump = (jump && !jumpHold);
+var btnJump = (jump2);
+var btnJumpRelease = (jumpRel);
 
 var _sml = menu_level;
+
+var keybindFinished = false;
 
 switch(menu_level){
     case 0:
@@ -121,7 +124,10 @@ switch(menu_level){
 
             // KEYBINDS
             case 4:
-               if (btnJump) menu_level = 2;
+               if (btnJump) {
+				   keybindWaitRelease = true;
+				   menu_level = 2;
+			   }
             break;
 			
 			// BACK
@@ -142,8 +148,17 @@ switch(menu_level){
        // global.balancer = settVal[0] + settVal[1];
 	
 	case 2:
-		
+		if (keybindWaitRelease) {
+			if (jumpRel) {
+				keybindWaitRelease = false;
+			}
+		} else {
+			if (!keybindWaitRelease && (pos >= 1 && pos < 11) &&  (btnJump && !readingKeybind)){
+				readingKeybind = true;
+				keybindWaitRelease = true;
+			}
 		switch(pos){
+			
 			case 0:
 				if (change != 0){
 					playerPos += change;
@@ -162,44 +177,231 @@ switch(menu_level){
 				
 			break;
 			case 1:
-				if (btnJump){
-					readingKeybind = true;
-				}
-				
 				if (readingKeybind == true){
 					settVal[2, 1] = "...";
-					var _newKeybind = inputChangeKeybind("left" + string(playerPos), playerPos - 1);
-					if(_newKeybind != -1){
-						inputReplace("left" + string(playerPos), _newKeybind);
-						settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
-						readingKeybind = false;
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("left" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("left" + string(playerPos), _newKeybind);
+								settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
 					}
 				}
 			break;
-			case 2: if (btnJump) inputChangeKeybind("right1", playerPos -1); break;
-			case 3: if (btnJump) inputChangeKeybind("up1", playerPos -1); break;
-			case 4: if (btnJump) inputChangeKeybind("down1", playerPos -1); break;
-			case 5: if (btnJump) inputChangeKeybind("jump1", playerPos -1); break;
-			case 6: if (btnJump) inputChangeKeybind("light1", playerPos -1); break;
-			case 7: if (btnJump) inputChangeKeybind("strong1", playerPos -1); break;
-			case 8: if (btnJump) inputChangeKeybind("block1", playerPos -1); break;
-			case 9: if (btnJump) inputChangeKeybind("special1", playerPos -1); break;
-			case 10: if (btnJump) inputChangeKeybind("pause1", playerPos -1); break;
+			case 2: 
+				if (readingKeybind == true){
+					settVal[2, 2] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("right" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("right" + string(playerPos), _newKeybind);
+								settVal[2, 2] = chr(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 3: 
+				if (readingKeybind == true){
+					settVal[2, 3] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("up" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("up" + string(playerPos), _newKeybind);
+								settVal[2, 3] = chr(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 4:
+				if (readingKeybind == true){
+					settVal[2, 4] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("down" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("down" + string(playerPos), _newKeybind);
+								settVal[2, 4] = chr(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 5: 
+				if (readingKeybind == true){
+					settVal[2, 5] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("jump" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("jump" + string(playerPos), _newKeybind);
+								settVal[2, 5] = chr(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 6:
+				if (readingKeybind == true){
+					settVal[2, 6] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("light" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("light" + string(playerPos), _newKeybind);
+								settVal[2, 6] = chr(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 7:
+				if (readingKeybind == true){
+					settVal[2, 7] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("strong" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("strong" + string(playerPos), _newKeybind);
+								settVal[2, 7] = chr(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 8:
+				if (readingKeybind == true){
+					settVal[2, 8] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("block" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("block" + string(playerPos), _newKeybind);
+								settVal[2, 8] = chr(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 9:
+				if (readingKeybind == true){
+					settVal[2, 9] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("special" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("special" + string(playerPos), _newKeybind);
+								settVal[2, 9] = chr(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
+			case 10: 
+				if (readingKeybind == true){
+					settVal[2, 10] = "...";
+					
+					if (keybindWaitRelease) {
+				        if (jumpRel) {
+				            keybindWaitRelease = false;
+				        }
+				    } else {
+						if(keyboard_check_pressed(vk_anykey)){
+							var _newKeybind = inputChangeKeybind("pause" + string(playerPos), playerPos - 1);
+							if(_newKeybind != -1){
+								inputReplace("pause" + string(playerPos), _newKeybind);
+								settVal[2, 10] = chr(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
+								readingKeybind = false;
+								keybindFinished = true;
+							}
+						}
+					}
+				}
+			break;
 			case 11: if (btnJump) menu_level = 1;
 		}
-	
+		}
 	break;
 }
 
 // Proper back handling
-if (menu_level >= 1 && lowAt && !lowAtHold){
+if (menu_level >= 1 && (lowAt && !lowAtHold) && !readingKeybind && !keybindFinished){
     /*global.players	= settVal[0];
     global.cpus		= settVal[1];*/
-    global.opHp		= settVal[1, 0];
-    global.opTimer	= settVal[1, 1];
-    global.volMusic	= settVal[1, 2];
-    global.volSfx	= settVal[1, 3];
-
+	if(menu_level == 1){
+	    global.opHp		= settVal[1, 0];
+	    global.opTimer	= settVal[1, 1];
+	    global.volMusic	= settVal[1, 2];
+	    global.volSfx	= settVal[1, 3];
+	}
     menu_level--;
     pos = 0;
 }

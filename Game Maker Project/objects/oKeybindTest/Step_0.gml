@@ -8,9 +8,9 @@ if (keyboard_check_pressed("7")) {
 
 if (readingKeybind == true){
 	text = "Reading...";
-	var _newKeybind = inputChangeKeybind("right", player);
+	var _newKeybind = inputChangeKeybind("right1", player);
 	if(_newKeybind != -1){
-		inputReplace("right", _newKeybind);
+		inputReplace("right1", _newKeybind);
 		readingKeybind = false;
 	}
 } else {
