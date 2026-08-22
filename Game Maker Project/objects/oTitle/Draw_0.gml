@@ -1,10 +1,11 @@
 var op_length = array_length_2d(option, menu_level);
 //DRAW TITLE
 var _c1 = c_white;
-draw_text_transformed(180,20,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("Feltree Forestk Presents:"))), 0.2, 0.2, 0);
-draw_text_transformed_colour(100,42,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("SIN_GAL: Pre-Lucid"))), 0.4167, 0.4167, 0, _c1, _c1, _c1, _c1, 1);
+var _c2 = make_color_rgb(0, 183, 235);
+draw_text_transformed_colour(180,20,string_hash_to_newline(string_hash_to_newline("Feltree Forestk Presents:")), 0.2, 0.2, 0, _c2, _c2, _c2, _c2, 1);
+draw_text_transformed_colour(100,42,string_hash_to_newline(string_hash_to_newline("SIN_GAL: Pre-Lucid")), 0.4167, 0.4167, 0, _c1, _c1, _c1, _c1, 1);
 
-if(showCtrl == true){
+/*if(showCtrl == true){
 draw_set_color(make_color_rgb(0, 183, 235));
 draw_text_transformed(32,352,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("WASD | Arrows: Move / Aim Attack"))), 0.2, 0.2, 0);
 draw_text_transformed(32,368,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("O | H: Jump"))), 0.2, 0.2, 0);
@@ -22,12 +23,18 @@ draw_text_transformed(32,400,string_hash_to_newline(string_hash_to_newline(strin
 draw_text_transformed(32,416,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("S: Down"))), 0.2, 0.2, 0);
 draw_text_transformed(32,432,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("A/D: Change value"))), 0.2, 0.2, 0);
 draw_text_transformed(32,448,string_hash_to_newline(string_hash_to_newline(string_hash_to_newline("Z: See in-game controls"))), 0.2, 0.2, 0);
-}
+}*/
 
 var _new_w = 0;
 
-if(menu_level == 2) text_scale = 0.25;
-else text_scale = 0.3333;
+if(menu_level == 2){
+	op_space = 30;
+	text_scale = 0.25;
+}
+else{
+	op_space = 48;
+	text_scale = 0.3333;
+}
 
 for (var i = 0; i < op_length; i++) {
     var _op_w = string_width(string_hash_to_newline(string_hash_to_newline(option[menu_level, i]))) * text_scale;

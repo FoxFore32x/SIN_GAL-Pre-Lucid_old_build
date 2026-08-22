@@ -410,7 +410,11 @@ if (menu_level >= 1 && (lowAt && !lowAtHold) && !readingKeybind && !keybindFinis
 if (pos >= op_length) pos = 0;
 
 if(btnJump){
-    if _sml != menu_level {pos = 0};
+    if (_sml != menu_level) {
+		pos = 0
+		readingKeybind = false;
+		keybindWaitRelease = false;
+	};
     op_length = array_length(option);
 }
 

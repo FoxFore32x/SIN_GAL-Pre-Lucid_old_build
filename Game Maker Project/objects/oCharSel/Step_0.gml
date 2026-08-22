@@ -18,36 +18,52 @@ for (var i = 0; i < 4; i++)
 
 for(var i = 0; i < 4; i++){
 	
-	if(isPActive[i]){
-		
-		pos[i] += global.keyRight2[i] - global.keyLeft2[i];
-	
-		if (pos[i] >= 4) pos[i] = 0;
-		if (pos[i] < 0) pos[i] = 3;
-		
-		if(!isPSelected[pos[i]]){
-			sel[pos[i]] += global.keyDown2[i] - global.keyUp2[i];
+	if (isPActive[i]) {
 
-			if (sel[pos[i]] >= 4) sel[pos[i]] = 0;
-			if (sel[pos[i]] < 0) sel[pos[i]] = 3;
-			
-			var oldPos = pos[i];
-			
-			for (var j = 0; j < 4; j++){
-				if(i != j && isPActive[j]){
-					if(pos[i] == pos[j]){
-						pos[i] = oldPos;
-						break;
-					}
-				}
-			}
-		}
+	    var move = global.keyRight2[i] - global.keyLeft2[i];
 
-		while (used[pos[i]]){
+	    var oldPos = pos[i];
+	    var newPos = oldPos + move;
+
+	    // Wrap around
+	    if (newPos >= 4) newPos = 0;
+	    if (newPos < 0) newPos = 3;
+
+	    // Find player occupying destination
+	    var collision = -1;
+
+	    for (var j = 0; j < 4; j++) {
+	        if (j != i && isPActive[j] && pos[j] == newPos) {
+	            collision = j;
+	            break;
+	        }
+	    }
+
+	    // Skip occupied position in the direction we're moving
+	    if (collision != -1) {
+	        newPos += move;
+
+	        if (newPos >= 4) newPos = 0;
+	        if (newPos < 0) newPos = 3;
+	    }
+
+	    pos[i] = newPos;
+
+	    // Character selection
+	    if (!isPSelected[pos[i]]) {
+	        sel[pos[i]] += global.keyDown2[i] - global.keyUp2[i];
+
+	        if (sel[pos[i]] >= 4) sel[pos[i]] = 0;
+	        if (sel[pos[i]] < 0) sel[pos[i]] = 3;
+	    }
+
+	    used[pos[i]] = true;
+
+		/*while (used[pos[i]]){
 			pos[i]++;
 		
 			if(pos[i] >= 4) pos[i] = 0;
-		}
+		}*/
 	
 		used[pos[i]] = true;
 
