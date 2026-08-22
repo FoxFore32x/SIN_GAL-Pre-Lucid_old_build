@@ -75,32 +75,32 @@ switch(menu_level){
             // HP SETTING
             case 0:
                 if (change != 0) {
-                    if (settVal[0] == false) settVal[0] = true;
-                    else settVal[0] = false;
+                    if (settVal[1, 0] == false) settVal[1, 0] = true;
+                    else settVal[1, 0] = false;
                 }
             break;
             
             // TIMER SETTING
             case 1:
                 if (change != 0) {
-                    if (settVal[1] == false) settVal[1] = true;
-                    else settVal[1] = false;
+                    if (settVal[1, 1] == false) settVal[1, 1] = true;
+                    else settVal[1, 1] = false;
                 }
             break;
             
             // MUSIC SETTING
             case 2:
                 if (change != 0) {
-					settVal[2] += (change * 0.1);
-					if(settVal[2] > 0){
+					settVal[1, 2] += (change * 0.1);
+					if(settVal[1, 2] > 0){
 						global.opMusic = true;
 					}
 					else global.opMusic = false;
 					
-					if (settVal[2] < 0) settVal[2] = 0;
-					if (settVal[2] > global.maxVolMusic) settVal[2] = global.maxVolMusic;
+					if (settVal[1, 2] < 0) settVal[1, 2] = 0;
+					if (settVal[1, 2] > global.maxVolMusic) settVal[1, 2] = global.maxVolMusic;
 					
-					audio_sound_gain(global.currentMusic, settVal[2]);
+					audio_sound_gain(global.currentMusic, settVal[1, 2]);
 					
                     if (global.opMusic == true && !audio_is_playing(global.currentMusic)) {
                         audio_play_sound(global.currentMusic, 0, 1);
@@ -114,12 +114,12 @@ switch(menu_level){
             // SFX SETTING
             case 3:
 				if (change != 0) {
-					settVal[3] += (change * 0.1);
-					if(settVal[3] > 0) global.opSfx = true;
+					settVal[1, 3] += (change * 0.1);
+					if(settVal[1, 3] > 0) global.opSfx = true;
 					else global.opSfx = false;
 					
-					if (settVal[3] < 0) settVal[3] = 0;
-					if (settVal[3] > global.maxVolSfx) settVal[3] = global.maxVolSfx;
+					if (settVal[1, 3] < 0) settVal[1, 3] = 0;
+					if (settVal[1, 3] > global.maxVolSfx) settVal[1, 3] = global.maxVolSfx;
                 }
             break;
 

@@ -234,7 +234,7 @@ function pl_endStep() {
 		        hb.owner.freeze = freezeLLim;
 				play_sfx(sfxPnch1low, 1, 0);
 			}
-			if(shield){
+			if(shield &&(((hb.owner.subState == attacks.up_ground || hb.owner.subState == attacks.side_ground) && !down) || (hb.owner.subState == attacks.down_ground && down))){
 				xSpeed = hb.xHit / 3;
         
 		        facing = hb.owner.facing * -1;
