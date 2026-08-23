@@ -111,6 +111,7 @@ if(room != results && room != title && room != init && room != rm_charsel){
 		draw_text_colour(450,272, string_hash_to_newline("chitTimer = " + string(parentPhysics.chitTimer)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,288, string_hash_to_newline("players = " + string(global.players)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,304, string_hash_to_newline("cpus = " + string(global.cpus)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,320, string_hash_to_newline("dt_left_timer = " + string(parentPhysics.dt_left_timer)), _c1, _c1, _c1, _c1, 1);
 	}
 
 }

@@ -24,3 +24,4 @@ hitStun = 0;
 dashed = 0;
 shield = 0;
 chitTimer=0;
+dt_left_timer=0;

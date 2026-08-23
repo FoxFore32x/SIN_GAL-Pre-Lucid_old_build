@@ -69,14 +69,18 @@ function pl_controller() {
 		rightDouble = false;
 		upDouble    = false;
 		downDouble  = false;
+		
+		if (dt_left_timer > 0) dt_left_timer -= 1;
+		if (dt_right_timer > 0) dt_right_timer -= 1;
+		if (dt_up_timer > 0) dt_up_timer -= 1;
+		if (dt_down_timer > 0) dt_down_timer -= 1;
     
 		// left dtap
 		if ((left2) && (!right || !up || !down)) {
 			if (dt_left_timer > 0) {
 				if (left2) leftDouble  = true;
-				dt_left_timer = -1;
 			} else {
-				dt_left_timer = 7;
+				dt_left_timer = 20;
 			}
 		}
     
@@ -84,9 +88,8 @@ function pl_controller() {
 		if ((right2) && (!left || !up || !down)) {
 			if (dt_right_timer > 0) {
 				if (right2) rightDouble = true;
-				dt_right_timer = -1;
 			} else {
-				dt_right_timer = 7;
+				dt_right_timer = 20;
 			}
 		}
     
@@ -94,9 +97,8 @@ function pl_controller() {
 		if ((up2) && (!right || !left || !down)) {
 			if (dt_up_timer > 0) {
 				if (up2) upDouble = true;
-				dt_up_timer = -1;
 			} else {
-				dt_up_timer = 7;
+				dt_up_timer = 20;
 			}
 		}
     
@@ -104,9 +106,8 @@ function pl_controller() {
 		if ((down2) && (!right || !up || !left)) {
 			if (dt_down_timer > 0) {
 				if (down2) downDouble = true;
-				dt_down_timer = -1;
 			} else {
-				dt_down_timer = 7;
+				dt_down_timer = 20;
 			}
 		}
     

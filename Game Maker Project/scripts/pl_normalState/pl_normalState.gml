@@ -223,8 +223,8 @@ function pl_normalState() {
 
 		//dash
 
-	/*
-		if(/*(leftDouble || rightDouble || upDouble || downDouble) dashKeyBuffered && dashCanCldn <= 0){
+	
+		if(((leftDouble || rightDouble || upDouble || downDouble) || (dashKeyBuffered)) && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
@@ -247,7 +247,7 @@ function pl_normalState() {
 		    }
 		}
 
-*/
+
 
 
 }
