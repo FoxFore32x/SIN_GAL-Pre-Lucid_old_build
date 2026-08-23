@@ -63,23 +63,28 @@ function pl_controller() {
 		right2 = global.keyRight2[player];
 		up2 = global.keyUp2[player];
 		down2 = global.keyDown2[player];
-    
-		// reset dtaps every frame
-		leftDouble  = false;
-		rightDouble = false;
-		upDouble    = false;
-		downDouble  = false;
+		
+		left3 = global.keyLeft3[player];
+		right3 = global.keyRight3[player];
+		up3 = global.keyUp3[player];
+		down3 = global.keyDown3[player];
 		
 		if (dt_left_timer > 0) dt_left_timer -= 1;
 		if (dt_right_timer > 0) dt_right_timer -= 1;
 		if (dt_up_timer > 0) dt_up_timer -= 1;
 		if (dt_down_timer > 0) dt_down_timer -= 1;
+		
+		/*if(left3) dt_left_timer = 0;
+		if(right3) dt_right_timer = 0;
+		if(up3) dt_up_timer = 0;
+		if(down3) dt_down_timer = 0;*/
     
 		// left dtap
 		if ((left2) && (!right || !up || !down)) {
 			if (dt_left_timer > 0) {
 				if (left2) leftDouble  = true;
 			} else {
+				leftDouble  = false;
 				dt_left_timer = 20;
 			}
 		}
@@ -89,6 +94,7 @@ function pl_controller() {
 			if (dt_right_timer > 0) {
 				if (right2) rightDouble = true;
 			} else {
+				rightDouble = false;
 				dt_right_timer = 20;
 			}
 		}
@@ -98,6 +104,7 @@ function pl_controller() {
 			if (dt_up_timer > 0) {
 				if (up2) upDouble = true;
 			} else {
+				upDouble    = false;
 				dt_up_timer = 20;
 			}
 		}
@@ -107,6 +114,7 @@ function pl_controller() {
 			if (dt_down_timer > 0) {
 				if (down2) downDouble = true;
 			} else {
+				downDouble  = false;
 				dt_down_timer = 20;
 			}
 		}

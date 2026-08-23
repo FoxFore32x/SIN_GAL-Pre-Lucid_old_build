@@ -151,6 +151,10 @@ function globalKeys() {
 	global.keyDown2[0] = inputCheckPressed("down1");
 	global.keyLeft2[0] = inputCheckPressed("left1");
 	global.keyRight2[0] = inputCheckPressed("right1");
+	global.keyUp3[0] = inputCheckReleased("up1");
+	global.keyDown3[0] = inputCheckReleased("down1");
+	global.keyLeft3[0] = inputCheckReleased("left1");
+	global.keyRight3[0] = inputCheckReleased("right1");
 	global.keyJump[0] = inputCheckHeld("jump1");
 	global.keyJump2[0] = inputCheckPressed("jump1");
 	global.keyJump3[0] = inputCheckReleased("jump1");
@@ -179,6 +183,10 @@ function globalKeys() {
 	global.keyDown2[1] = inputCheckPressed("down2");
 	global.keyLeft2[1] = inputCheckPressed("left2");
 	global.keyRight2[1] = inputCheckPressed("right2");
+	global.keyUp3[1] = inputCheckReleased("up2");
+	global.keyDown3[1] = inputCheckReleased("down2");
+	global.keyLeft3[1] = inputCheckReleased("left2");
+	global.keyRight3[1] = inputCheckReleased("right2");
 	global.keyJump[1] = inputCheckHeld("jump2");
 	global.keyJump2[1] = inputCheckPressed("jump2");
 	global.keyJump3[1] = inputCheckReleased("jump2");
@@ -207,6 +215,10 @@ function globalKeys() {
 	global.keyDown2[2] = inputCheckPressed("down3");
 	global.keyLeft2[2] = inputCheckPressed("left3");
 	global.keyRight2[2] = inputCheckPressed("right3");
+	global.keyUp3[2] = inputCheckReleased("up3");
+	global.keyDown3[2] = inputCheckReleased("down3");
+	global.keyLeft3[2] = inputCheckReleased("left3");
+	global.keyRight3[2] = inputCheckReleased("right3");
 	global.keyJump[2] = inputCheckHeld("jump3");
 	global.keyJump2[2] = inputCheckPressed("jump3");
 	global.keyJump3[2] = inputCheckReleased("jump3");
@@ -235,6 +247,10 @@ function globalKeys() {
 	global.keyDown2[3] = inputCheckPressed("down4");
 	global.keyLeft2[3] = inputCheckPressed("left4");
 	global.keyRight2[3] = inputCheckPressed("right4");
+	global.keyUp3[3] = inputCheckReleased("up4");
+	global.keyDown3[3] = inputCheckReleased("down4");
+	global.keyLeft3[3] = inputCheckReleased("left4");
+	global.keyRight3[3] = inputCheckReleased("right4");
 	global.keyJump[3] = inputCheckHeld("jump4");
 	global.keyJump2[3] = inputCheckPressed("jump4");
 	global.keyJump3[3] = inputCheckReleased("jump4");
@@ -262,6 +278,10 @@ function globalKeys() {
 	global.keyDown2All = global.keyDown2[0] || global.keyDown2[1] || global.keyDown2[2] || global.keyDown2[3];
 	global.keyLeft2All = global.keyLeft2[0] || global.keyLeft2[1] || global.keyLeft2[2] || global.keyLeft2[3];
 	global.keyRight2All = global.keyRight2[0] || global.keyRight2[1] || global.keyRight2[2] || global.keyRight2[3];
+	global.keyUp3All = global.keyUp3[0] || global.keyUp3[1] || global.keyUp3[2] || global.keyUp3[3];
+	global.keyDown3All = global.keyDown3[0] || global.keyDown3[1] || global.keyDown3[2] || global.keyDown3[3];
+	global.keyLeft3All = global.keyLeft3[0] || global.keyLeft3[1] || global.keyLeft3[2] || global.keyLeft3[3];
+	global.keyRight3All = global.keyRight3[0] || global.keyRight3[1] || global.keyRight3[2] || global.keyRight3[3];
 	global.keyJumpAll = global.keyJump[0] || global.keyJump[1] || global.keyJump[2] || global.keyJump[3];
 	global.keyJump2All = global.keyJump2[0] || global.keyJump2[1] || global.keyJump2[2] || global.keyJump2[3];
 	global.keyJump3All = global.keyJump3[0] || global.keyJump3[1] || global.keyJump3[2] || global.keyJump3[3];

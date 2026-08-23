@@ -157,11 +157,23 @@ function pl_normalState() {
 		        weapon = weapons.dagger;
 		        lattKeyBuffered = 0;
 		        lattKeyBufferTimer = 0;
-		    } else if(hattKeyBuffered){
+		    } else if(!(leftDouble || rightDouble || upDouble || downDouble) && hattKeyBuffered){
 		        weapon = weapons.sword;
 		        hattKeyBuffered = 0;
 		        hattKeyBufferTimer = 0;
-		    }
+		    } else if ((leftDouble || rightDouble || upDouble || downDouble) && hattKeyBuffered){
+				weapon = weapons.axe;
+				dt_left_timer = 0;
+				dt_right_timer = 0;
+				dt_up_timer = 0;
+				dt_down_timer = 0;
+				leftDouble  = false;
+				rightDouble = false;
+				upDouble    = false;
+				downDouble  = false;
+		        hattKeyBuffered = 0;
+		        hattKeyBufferTimer = 0;
+			}
 			
 			play_sfx(sfxSwoosh, 1, 0);
     
@@ -224,7 +236,7 @@ function pl_normalState() {
 		//dash
 
 	
-		if(((leftDouble || rightDouble || upDouble || downDouble) || (dashKeyBuffered)) && dashCanCldn <= 0){
+		if((/*(leftDouble || rightDouble || upDouble || downDouble) || */(dashKeyBuffered)) && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
