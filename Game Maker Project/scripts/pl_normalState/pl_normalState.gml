@@ -2,6 +2,7 @@ function pl_normalState() {
 	//move left and right
 	isDash = false;
 	hasHit = false;
+	grabbed = false;
 	prevDam = 0;
 	if (god.isPaused) exit;
 		if(left){
@@ -42,8 +43,11 @@ function pl_normalState() {
 		
 		if(itemHold){
 			if((up || down || left || right) && place_meeting(x, y, oPlayer)){
-				if(up || down) grabDirY = ((down && !downHold) - (up && !upHold));
-				if(left || right) grabDirX = (right && !rightHold) - (left && !leftHold);
+				if(up || down) grabDirY = ((down) - (up));
+				else grabDirY = 0;
+				
+				if(left || right) grabDirX = (right) - (left);
+				else grabDirX = 0;
 				
 				grabDur = grabDurMax;
 				currentState = states.grab;

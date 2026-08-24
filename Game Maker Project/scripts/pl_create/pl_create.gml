@@ -294,6 +294,7 @@ function pl_create() {
 	grabDur = 0;
 	grabStun = 200;
 	grabInitStop = 70;
+	grabbed = false;
 	
 	prevBgWall = noone;
 	otherPlayer = noone;

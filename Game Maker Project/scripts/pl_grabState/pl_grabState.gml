@@ -1,8 +1,11 @@
 function pl_grabState(){
 	if(grabDur > 0) grabDur -= 1 * god.gameSpeed;
 	
-	if(up || down) grabDirY = ((down && !downHold) - (up && !upHold));
-	if(left || right) grabDirX = (right && !rightHold) - (left && !leftHold);
+	if(up || down) grabDirY = ((down) - (up)) * (5 * global.sprScale);
+	else grabDirY = 0;
+	
+	if(left || right) grabDirX = ((right) - (left)) * (5 * global.sprScale);
+	else grabDirX = 0;
 	
 	var nearest = noone;
 	var nearestDist = room_width;
@@ -23,13 +26,14 @@ function pl_grabState(){
 		otherPlayer = nearest;
 		if (otherPlayer == noone) exit;
 		
-		if(otherPlayer.hit == false){
+		if(otherPlayer.grabbed == false){
+			otherPlayer.currentState = states.tumble;
 			otherPlayer.hitStun = grabStun;
 			otherPlayer.xSpeed = grabDirX;
 			otherPlayer.ySpeed = grabDirY;
 			otherPlayer.hp -= grabDam;
 			
-			otherPlayer.hit = true;
+			otherPlayer.grabbed = true;
 		}
 	}
 	
