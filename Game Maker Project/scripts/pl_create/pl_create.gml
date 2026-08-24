@@ -281,6 +281,9 @@ function pl_create() {
 	heavyDashStall[0] = 0;
 	heavyDashStall[1] = 5;
 	heavyDashStall[2] = 7;
+	heavyHitstun[0] = 150;
+	heavyHitstun[1] = 100;
+	heavyHitstun[2] = 50;
 	
 	prevBgWall = noone;
 
