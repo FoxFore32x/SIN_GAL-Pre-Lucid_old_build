@@ -23,6 +23,10 @@ function pl_endStep() {
 	    case states.tumble:
 	        pl_tumbleState();
 	    break;
+		
+		case states.grab:
+			pl_grabState();
+		break;
 	}
 
 	// HIT

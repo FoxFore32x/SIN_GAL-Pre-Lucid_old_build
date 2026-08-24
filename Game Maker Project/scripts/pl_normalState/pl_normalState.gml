@@ -38,6 +38,20 @@ function pl_normalState() {
 		    parryActive = true;
 		}
 		
+		//Grab
+		
+		if(itemHold){
+			if((up || down || left || right) && place_meeting(x, y, oPlayer)){
+				if(up || down) grabDirY = ((down && !downHold) - (up && !upHold));
+				if(left || right) grabDirX = (right && !rightHold) - (left && !leftHold);
+				
+				grabDur = grabDurMax;
+				currentState = states.grab;
+			}
+		}
+		
+		//Block
+		
 		if(wallKeyBuffered && onGround){
 			
 			if(shield > 0){

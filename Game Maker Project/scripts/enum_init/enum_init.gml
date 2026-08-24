@@ -10,7 +10,8 @@ function enum_init() {
 	    block,
 	    tumble,
 	    dead,
-	    recovery
+	    recovery,
+		grab
 	}
 
 	enum attacks {

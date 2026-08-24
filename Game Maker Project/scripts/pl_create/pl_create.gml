@@ -285,7 +285,18 @@ function pl_create() {
 	heavyHitstun[1] = 100;
 	heavyHitstun[2] = 50;
 	
+	//Grab
+	grabThrowSpd = 0;
+	grabDirX = 0;
+	grabDirY = 0;
+	grabDam = 15;
+	grabDurMax = 20;
+	grabDur = 0;
+	grabStun = 200;
+	grabInitStop = 70;
+	
 	prevBgWall = noone;
+	otherPlayer = noone;
 
 	plId = 0;
 
