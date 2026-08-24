@@ -1,4 +1,4 @@
-/// @description hitbox_create( xOffset, yOffset, xScale, yScale, duration, xhit, yhit, hit stun, damage, isObstacle);
+/// @description hitbox_create( xOffset, yOffset, xScale, yScale, duration, xhit, yhit, hit stun, damage, isObstacle, isGrab);
 /// @param  xOffset
 /// @param  yOffset
 /// @param  xScale
@@ -9,7 +9,8 @@
 /// @param  hit stun
 /// @param  damage
 /// @param  isObstacle
-function hitbox_create(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9) {
+/// @oaram  isGrab
+function hitbox_create(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8, argument9, argument10) {
 
 	//create the hitbox object, assign the owner to the creator, set offset and scale
 	_hitbox = instance_create(x + argument0, y + argument1, oHitbox);
@@ -25,7 +26,8 @@ function hitbox_create(argument0, argument1, argument2, argument3, argument4, ar
 	_hitbox.yHit    = argument6; //vertical knock back
 	_hitbox.hitStun = argument7; //hit stun duration
 	_hitbox.damage  = argument8; //damage dealt
-	_hitbox.obstacle = argument9;//for obstacles or hazards
+	_hitbox.obstacle = argument9; //for obstacles or hazards
+	_hitbox.isGrab = argument10; //for player grabs
 
 	hitbox = _hitbox;
 

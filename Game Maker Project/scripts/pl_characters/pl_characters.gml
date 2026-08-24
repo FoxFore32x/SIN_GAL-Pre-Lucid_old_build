@@ -255,7 +255,7 @@ function pl_characters(){
 						// Hitbox creation timing
 					    if (dashDur >= dashDurMax){
 					        invFrames = 6;
-					        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3,false);
+					        hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, dashHitX*(global.sprScale), dashHitY*(global.sprScale), 15, 3,false, false);
 					    }
 						
 						// Reset temporary speed near end

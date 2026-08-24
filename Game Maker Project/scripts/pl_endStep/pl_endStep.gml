@@ -238,7 +238,7 @@ function pl_endStep() {
 		        hb.owner.freeze = freezeLLim;
 				play_sfx(sfxPnch1low, 1, 0);
 			}
-			if(shield &&(((hb.owner.subState == attacks.up_ground || hb.owner.subState == attacks.side_ground) && !down) || (hb.owner.subState == attacks.down_ground && down))){
+			if(shield && (!hb.obstacle) &&(((hb.owner.subState == attacks.up_ground || hb.owner.subState == attacks.side_ground) && !down) || (hb.owner.subState == attacks.down_ground && down))){
 				xSpeed = hb.xHit / 3;
         
 		        facing = hb.owner.facing * -1;
@@ -268,6 +268,31 @@ function pl_endStep() {
         
 	        hit = false;
 	    }
+	}
+	
+	if(grabbed){
+	    for (var i = 0; i < hitCount; i++) {
+    
+	        var hb = hitQueue[| i];
+	        if (!instance_exists(hb)) continue;
+	        if (!instance_exists(hb.owner)) continue;
+	        oHitBy = hb.owner;
+			
+			oHitBy.isPlayerGrabbed = true;
+			
+			//if(oHitBy.grabDur == oHitBy.grabDur / 2){
+			
+				hitStun = grabStun;
+				xSpeed = hb.xHit;
+				ySpeed = hb.yHit;
+				hp -= grabDam;
+			
+				currentState = states.tumble;
+			
+			//}
+			
+			grabbed = false;
+		}
 	}
 
 	//update hitbox position

@@ -290,11 +290,12 @@ function pl_create() {
 	grabDirX = 0;
 	grabDirY = 0;
 	grabDam = 15;
-	grabDurMax = 20;
+	grabDurMax = 40;
 	grabDur = 0;
 	grabStun = 200;
 	grabInitStop = 70;
 	grabbed = false;
+	isPlayerGrabbed = false;
 	
 	prevBgWall = noone;
 	otherPlayer = noone;

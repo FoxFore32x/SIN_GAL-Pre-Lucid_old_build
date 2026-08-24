@@ -2,7 +2,7 @@ if (trainTime > 0)trainTime -= 1 * god.gameSpeed;
 else {
 	if(dist > 0){
 		if(dist == distLimit && !hitBoxSpawned){
-			hitbox_create(0, 0, sprite_width, sprite_height, dist, xHit, yHit, 200, 200, obstacle);
+			hitbox_create(0, 0, sprite_width, sprite_height, dist, xHit, yHit, 200, 200, obstacle, false);
 			hitBoxSpawned = true;
 		}
 		xSpeed = (xDir * spd) * god.gameSpeed;

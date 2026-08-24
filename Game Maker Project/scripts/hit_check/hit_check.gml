@@ -22,7 +22,10 @@ function hit_check() {
 		                    //the ignore list
 		                    if(!ignore){
 		                        if (instance_exists(other.owner)) {
-		                            other.owner.hit = true;
+		                            if (isGrab){
+										other.owner.grabbed = true;
+									}
+									else other.owner.hit = true;
 		                            //other.owner.hitBy = id;
 		                        }
 		                        if (instance_exists(other.owner)) {

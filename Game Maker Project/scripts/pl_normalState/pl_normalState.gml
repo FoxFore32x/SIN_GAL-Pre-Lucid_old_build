@@ -42,15 +42,24 @@ function pl_normalState() {
 		//Grab
 		
 		if(itemHold){
-			if((up || down || left || right) && place_meeting(x, y, oPlayer)){
-				if(up || down) grabDirY = ((down) - (up));
+			if((up || down || left || right)){
+				if(up || down) grabDirY = ((down) - (up)) * (5 * global.sprScale);
 				else grabDirY = 0;
-				
-				if(left || right) grabDirX = (right) - (left);
+	
+				if(left || right) grabDirX = ((right) - (left)) * (5 * global.sprScale);
 				else grabDirX = 0;
 				
-				grabDur = grabDurMax;
-				currentState = states.grab;
+				if(!(upHold || downHold || leftHold || rightHold)){
+					parryDur = 0;
+					parryActive = false;
+					shield = 0;
+					hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, grabDirX, grabDirY, grabStun, grabDam,false, true);
+				}
+				
+				if(isPlayerGrabbed == true){
+					grabDur = grabDurMax;
+					currentState = states.grab;
+				}
 			}
 		}
 		
