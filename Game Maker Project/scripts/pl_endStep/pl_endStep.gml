@@ -27,6 +27,10 @@ function pl_endStep() {
 		case states.grab:
 			pl_grabState();
 		break;
+		
+		case states.spAtt:
+			pl_spAttackState();
+		break;
 	}
 
 	// HIT

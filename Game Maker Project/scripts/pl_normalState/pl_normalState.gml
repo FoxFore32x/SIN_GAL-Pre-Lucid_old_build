@@ -173,6 +173,13 @@ function pl_normalState() {
 		if((up || down) && (jabCnt > (jabLimit - 3))) halfCombo = true;
 
 		//attack
+		
+		if(dashKeyBuffered){
+			chitTimer = 10;
+			
+			currentState = states.spAtt;
+		}
+		
 		//change to the attack state and relevant subState based on direction and attack
 		if(lattKeyBuffered || hattKeyBuffered){
 			
@@ -263,7 +270,7 @@ function pl_normalState() {
 		//dash
 
 	
-		if((/*(leftDouble || rightDouble || upDouble || downDouble) || */(dashKeyBuffered)) && dashCanCldn <= 0){
+		/*if((/*(leftDouble || rightDouble || upDouble || downDouble) || (dashKeyBuffered)) && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
@@ -285,7 +292,7 @@ function pl_normalState() {
 		        currentState = states.dash;
 		    }
 		}
-
+*/
 
 
 

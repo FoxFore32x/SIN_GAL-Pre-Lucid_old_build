@@ -223,6 +223,7 @@
     {"id":{"name":"pl_normalState","path":"scripts/pl_normalState/pl_normalState.yy",},},
     {"id":{"name":"pl_recoveryState","path":"scripts/pl_recoveryState/pl_recoveryState.yy",},},
     {"id":{"name":"pl_setCharStats","path":"scripts/pl_setCharStats/pl_setCharStats.yy",},},
+    {"id":{"name":"pl_spAttackState","path":"scripts/pl_spAttackState/pl_spAttackState.yy",},},
     {"id":{"name":"pl_timers","path":"scripts/pl_timers/pl_timers.yy",},},
     {"id":{"name":"pl_tumbleState","path":"scripts/pl_tumbleState/pl_tumbleState.yy",},},
     {"id":{"name":"play_sfx","path":"scripts/play_sfx/play_sfx.yy",},},

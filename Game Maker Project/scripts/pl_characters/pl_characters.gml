@@ -38,6 +38,12 @@ function pl_characters(){
 			weaponRun = sTeori_Run_Arms;
 			weaponJump = sTeori_Jump_Arms;
 			
+			switch(currentState){
+				case states.spAtt:
+				
+				break;
+			}
+			
 			switch(weapon){
 			    case weapons.sword:
 				

@@ -11,7 +11,8 @@ function enum_init() {
 	    tumble,
 	    dead,
 	    recovery,
-		grab
+		grab,
+		spAtt
 	}
 
 	enum attacks {
