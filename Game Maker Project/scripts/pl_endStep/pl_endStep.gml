@@ -40,6 +40,11 @@ function pl_endStep() {
 	        if (!instance_exists(hb)) continue;
 	        if (!instance_exists(hb.owner)) continue;
 	        oHitBy = hb.owner;
+			
+			if(hb.isGrab){
+				grabbed = true;
+				hit = false;	
+			}
         
 	        if(parryActive && parryDur > 0){
 	            parried = true;

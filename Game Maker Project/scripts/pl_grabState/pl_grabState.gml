@@ -9,7 +9,6 @@ function pl_grabState(){
 		hasSAttWhJump = false;
 		canWallGrab = true;
 		isPlayerGrabbed = false;
-		if(ds_list_size(ignoreList) != 0) ds_list_destroy(ignoreList);
 		state_reset();	
 	}
 }
