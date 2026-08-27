@@ -127,7 +127,7 @@ function pl_cpu() {
 	// Dash
 	if ((widthDiff >= 30 * global.sprScale || heightDiff >= 140 * global.sprScale) && (irandom_range(0, 100) < 3)) {
 	    action_up_down(p, heightDiff);
-		dashKeyBuffered = 1;
+		hattKeyBuffered = 1;
 	}
 
 }
