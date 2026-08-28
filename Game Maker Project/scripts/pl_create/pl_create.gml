@@ -115,6 +115,7 @@ function pl_create() {
 	jPower = -5 * (global.sprScale);
 	jPotent = 1;
 	facing = 1;
+	gravityActive = 1;
 
 	isJump = false;
 	canJump = false;
@@ -131,6 +132,7 @@ function pl_create() {
 	custDash = false;
 
 	gSpeedDefault = gSpeed;
+	gSpeedMax = 0.2 * (global.sprScale);
 
 	dashDur = 12;
 	dashDurMax = 12;
@@ -190,6 +192,7 @@ function pl_create() {
 	isCombing= false;
 	cxHit= 0;
 	cyHit= 0;
+	chitTimerMax= 0;
 	chitTimer= 0;
 	dashHitX = 0;
 	dashHitY = 0;
@@ -257,6 +260,7 @@ function pl_create() {
 
 	//attack
 	attackType = attacks.side_ground;
+	spAttMax = 100;
 
 	//hit
 	hit = false;
@@ -284,6 +288,8 @@ function pl_create() {
 	heavyHitstun[0] = 150;
 	heavyHitstun[1] = 100;
 	heavyHitstun[2] = 50;
+	smallStop = false;
+	smallStopDone = false;
 	
 	//Grab
 	grabThrowSpd = 0;

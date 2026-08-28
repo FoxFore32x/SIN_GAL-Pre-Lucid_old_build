@@ -8,7 +8,13 @@ function pl_attackState() {
 		//invFrames = 3;
 
 		loop = false;
-	
+		
+		if(smallStop){
+			xSpeed = 0;
+			ySpeed = 0;
+			smallStop = false;
+			smallStopDone = true;
+		}
 		if (smallStAtJump){
 			if(!smallStAtJumpAct){
 				if(attDirX != noone) xSpeed = attDirX;
@@ -65,6 +71,7 @@ function pl_attackState() {
 
 		//reset to normal state when the attack animation ends
 		if(/*animation_end() ||*/ chitTimer == 0){
+			smallStopDone = false;
 		    canPlay = true;
 			willDash = false;
 			attOnGround = false;

@@ -41,6 +41,8 @@ function pl_normalState() {
 		
 		//Grab
 		
+		
+		
 		if(itemHold){
 			if((up || down || left || right)){
 				if(up || down) grabDirY = ((down) - (up)) * (5 * global.sprScale);
@@ -175,7 +177,7 @@ function pl_normalState() {
 		//attack
 		
 		if(dashKeyBuffered){
-			chitTimer = 10;
+			chitTimer = spAttMax;
 			
 			currentState = states.spAtt;
 		}
@@ -221,18 +223,21 @@ function pl_normalState() {
 		            squash_stretch(0.7,1.3);
 		            cxHit = upAtX;
 		            cyHit = upAtY;
+					chitTimerMax = upAtT;
 		            chitTimer = upAtT;
 		        }else if(down){
 		            subState = attacks.down_ground;
 		            squash_stretch(0.7,1.3);
 		            cxHit = downAtX;
 		            cyHit = downAtY;
+					chitTimerMax = downAtT;
 		            chitTimer = downAtT;
 		        }else{
 		            subState = attacks.side_ground;
 		            squash_stretch(1.3,0.7);
 		            cxHit = sideAtX;
 		            cyHit = sideAtY;
+					chitTimerMax = sideAtT;
 		            chitTimer = sideAtT;
 		        }
 		    }else{
@@ -242,18 +247,21 @@ function pl_normalState() {
 		            squash_stretch(0.7,1.3);
 		            cxHit = upAtX;
 		            cyHit = upAtY;
+					chitTimerMax = upAtT;
 		            chitTimer = upAtT;
 		        }else if(down){
 		            subState = attacks.down_air;
 		            squash_stretch(0.7,1.3);
 		            cxHit = downAtX;
 		            cyHit = downAtY;
+					chitTimerMax = downAtT;
 		            chitTimer = downAtT;
 		        }else{
 		            subState = attacks.side_air;
 		            squash_stretch(1.3,0.7);
 		            cxHit = sideAtX;
 		            cyHit = sideAtY;
+					chitTimerMax = sideAtT;
 		            chitTimer = sideAtT;
 		        }
 		    }

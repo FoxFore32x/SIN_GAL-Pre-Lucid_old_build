@@ -189,36 +189,42 @@ function pl_endStep() {
 		                case attacks.up_ground:
 		                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.upAtST;
 		                    hb.owner.chitTimer = hb.owner.upAtST;
 		                break;
                     
 		                case attacks.down_ground:
 		                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.downAtST;
 		                    hb.owner.chitTimer = hb.owner.downAtST;
 		                break;
                     
 		                case attacks.side_ground:
 		                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.sideAtST;
 		                    hb.owner.chitTimer = hb.owner.sideAtST;
 		                break;
                 
 		                case attacks.up_air:
 		                    hb.xHit = hb.owner.upAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.upAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.upAtST;
 		                    hb.owner.chitTimer = hb.owner.upAtST;
 		                break;
                     
 		                case attacks.down_air:
 		                    hb.xHit = hb.owner.downAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.downAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.downAtST;
 		                    hb.owner.chitTimer = hb.owner.downAtST;
 		                break;
                     
 		                case attacks.side_air:
 		                    hb.xHit = hb.owner.sideAtSX * hb.owner.facing*(global.sprScale);
 		                    hb.yHit = hb.owner.sideAtSY*(global.sprScale);
+							hb.owner.chitTimerMax = hb.owner.sideAtST;
 		                    hb.owner.chitTimer = hb.owner.sideAtST;
 		                break;
 		            }

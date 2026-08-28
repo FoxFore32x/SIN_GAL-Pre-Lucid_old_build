@@ -258,6 +258,7 @@
     {"id":{"name":"bkg_lvl1","path":"sprites/bkg_lvl1/bkg_lvl1.yy",},},
     {"id":{"name":"bkg_lvl1BG","path":"sprites/bkg_lvl1BG/bkg_lvl1BG.yy",},},
     {"id":{"name":"bkg_lvl1FG","path":"sprites/bkg_lvl1FG/bkg_lvl1FG.yy",},},
+    {"id":{"name":"phSpecial","path":"sprites/phSpecial/phSpecial.yy",},},
     {"id":{"name":"plmeasure","path":"sprites/plmeasure/plmeasure.yy",},},
     {"id":{"name":"sCharselNobody","path":"sprites/sCharselNobody/sCharselNobody.yy",},},
     {"id":{"name":"sJayRender","path":"sprites/sJayRender/sJayRender.yy",},},

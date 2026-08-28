@@ -1,6 +1,7 @@
 xSpeed = 0;
 ySpeed = 0;
-gSpeed = 0.2 * (global.sprScale);
+gSpeedMax = 0.2 * (global.sprScale);
+gSpeed = gSpeedMax;
 
 hCounter = 0;
 vCounter = 0;

@@ -2,6 +2,8 @@
 var h, v;
 var _subPixel = .5;
 
+gSpeed = gSpeedMax * gravityActive;
+
 // Handle sub-pixel movement
 hCounter += xSpeed;
 vCounter += ySpeed;
