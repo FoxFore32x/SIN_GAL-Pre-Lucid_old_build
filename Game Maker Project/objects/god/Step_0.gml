@@ -13,19 +13,19 @@ if(keyboard_check_released(vk_escape)){
 	_exit = 500;
 }
 
-if(keyboard_check_pressed(ord("Z")) && room != title/* || gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start)*/){
+if(keyboard_check_pressed(ord("Z")) && room != rm_menu/* || gamepad_button_check_pressed(0, gp_start) || gamepad_button_check_pressed(1, gp_start)*/){
     audio_stop_all();
     instance_destroy(oHurtbox);
     instance_destroy(oHitbox);
     with (oPlayer) instance_destroy();
-	room_goto(title);
+	room_goto(rm_menu);
 }
 
 if(keyboard_check_pressed(vk_space)){
     camLock = !camLock;
 }
 
-if(room != results && room != title && room != init && room != rm_charsel){
+if(room != results && room != rm_menu && room != init && room != rm_charsel && room != rm_titleScreen){
 	
 	if(keyboard_check_pressed(vk_escape)){
 	    game_end();
@@ -106,7 +106,7 @@ if(room != results && room != title && room != init && room != rm_charsel){
 						    instance_destroy(oHurtbox);
 						    instance_destroy(oHitbox);
 						    with (oPlayer) instance_destroy();
-							room_goto(title);
+							room_goto(rm_menu);
 						break;
 		            }
 		        }

@@ -1,5 +1,5 @@
 // Visible area depending on room
-if (room == title || room == results || room == init) {
+if (room == rm_menu || room == results || room == init) {
     view_w = 640;
     view_h = 480;
 } else {

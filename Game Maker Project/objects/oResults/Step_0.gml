@@ -1,4 +1,4 @@
 if(global.keyPauseAll){
     audio_stop_all();
-    room_goto(title);
+    room_goto(rm_menu);
 }

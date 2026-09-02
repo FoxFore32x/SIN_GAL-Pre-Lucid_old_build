@@ -1,4 +1,5 @@
 global.sprScale = 3;
+global.credits = 0;
 
 global.existentPl = 0;
 global.uLostLmao = 0;
@@ -7,6 +8,9 @@ global.playerId[1] = 0;
 global.playerId[2] = 0;
 global.playerId[3] = 0;
 global.plInput = array_create(5, -1);
+
+global.room_status_map = ds_map_create();
+global.enemies_created_check = ds_map_create();
 
 global.players = 0;
 global.cpus = 0;
