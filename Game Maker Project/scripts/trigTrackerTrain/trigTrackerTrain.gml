@@ -35,7 +35,7 @@ function trigTrackerTrain(xChange, yChange, xPos, yPos){
 		else
 			spawnY = player.y - 128;
 
-		createTrain(spawnX, spawnY, 0, 0, 0.5, 0.5, 0, 60, 400, 5, -30, true);
+		createTrain(spawnX, spawnY, 0, 0, 0.5, 0.5, 0, 60, 200, 5, -30, true);
 	}
 	
 	if(!instance_exists(oTrain)) triggered = false;
