@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.309146,
+  "duration":3.8447292,
   "exportDir":"",
   "name":"sfxPlayerStart",
   "parent":{
