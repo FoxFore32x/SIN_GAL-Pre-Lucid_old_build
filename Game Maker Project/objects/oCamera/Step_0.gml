@@ -67,8 +67,10 @@ if(count > 0){
 	lookX = lerp(lookX, desiredLookX, 0.06);
 	lookY = lerp(lookY, desiredLookY, 0.01);
 
-	targetX = totalX / count + lookX;
-	targetY = totalY / count + lookY;
+	scrollX += scrollSpdX * god.gameSpeed;
+	scrollY += scrollSpdY * god.gameSpeed;
+	targetX = scrollX +  totalX / count + lookX;
+	targetY = scrollY + totalY / count + lookY;
 	
 	setCamX = targetX;
 	setCamY = targetY;
@@ -107,10 +109,51 @@ _camY = clamp(_camY, 0, room_height - camH);
 finalCamX += (_camX - finalCamX) * camTrailSpd;
 finalCamY += (_camY - finalCamY) * camTrailSpd;
 
-layer_x("Backgrounds_1", foreLayer_xOff + finalCamX * 0.5);
-layer_y("Backgrounds_1", foreLayer_yOff + finalCamY * 0.5);
-layer_x("Background", backLayer_xOff + finalCamX * 0.25);
-layer_y("Background", backLayer_yOff + finalCamY * 0.25);
+var _camX1 = camera_get_view_x(view_camera[0]);
+
+switch(room){
+	case ts_7:
+		scrollBGSpdX[0] = 15;
+		scrollBGSpdY[0] = 0;
+		scrollBGSpdX[1] = 7.5;
+		scrollBGSpdY[1] = 0;
+	break;
+	
+	default:
+		for(var i = 0; i < 10; i++){
+			scrollBGSpdX[i] = 0;
+			scrollBGSpdY[i] = 0;
+		}
+	break;
+}
+
+for(var i = 0; i < 10; i++){
+	
+	var layerName = "BG" + string(i);
+
+    if (!layer_exists(layerName))
+        continue;
+	
+	scrollBGX[i] += scrollBGSpdX[i] * god.gameSpeed;
+	scrollBGY[i] += scrollBGSpdY[i] * god.gameSpeed;
+	
+	var lay_id = layer_get_id(layerName);
+	var back_id = layer_background_get_id(lay_id);
+	var backW = sprite_get_width(layer_background_get_sprite(back_id));
+	var backH = sprite_get_height(layer_background_get_sprite(back_id));
+
+	if(scrollBGX[i] > backW || (backW < 0 && (scrollBGX[i] < backW))) scrollBGX[i] = 0;
+	if(scrollBGY[i] > backH || (backH < 0 && (scrollBGY[i] < backH))) scrollBGY[i] = 0;
+	
+	var divider = 1;
+	
+	if (i == 0) divider = 1;
+	else divider = i + 1;
+	
+	layer_x(layerName, scrollBGX[i] + backLayer_xOff + finalCamX * 0.5 / divider);
+	layer_y(layerName, scrollBGY[i] + backLayer_yOff + finalCamY * 0.5 / divider);
+
+}
 
 // apply view position
 __view_set(e__VW.WView, 0, camW);

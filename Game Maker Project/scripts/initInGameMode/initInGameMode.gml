@@ -22,7 +22,7 @@ function initInGameMode(modeId){
 			global.arcadeMode = false;
 			global.opHp = false;
 			global.opTimer = false;
-			room_goto(rm_training);
+			room_goto(rm_battle);
 		break;
 	}
 }
