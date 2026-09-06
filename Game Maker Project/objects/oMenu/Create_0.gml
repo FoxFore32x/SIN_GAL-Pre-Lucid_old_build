@@ -104,7 +104,7 @@ option[2, 5] = "Jump";
 option[2, 6] = "Light Attack";
 option[2, 7] = "Heavy Attack";
 option[2, 8] = "Block";
-option[2, 9] = "Grab";
+option[2, 9] = "Special";
 option[2, 10] = "Pause";
 option[2, 11] = "Back";
 
@@ -121,16 +121,16 @@ settVal[1, 2] = global.volMusic;
 settVal[1, 3] = global.volSfx;
 
 settVal[2, 0] = 0;
-settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
-settVal[2, 2] = chr(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
-settVal[2, 3] = chr(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
-settVal[2, 4] = chr(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
-settVal[2, 5] = chr(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
-settVal[2, 6] = chr(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
-settVal[2, 7] = chr(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
-settVal[2, 8] = chr(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
-settVal[2, 9] = chr(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
-settVal[2, 10] = chr(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
+settVal[2, 1] = scr_keyChar(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+settVal[2, 2] = scr_keyChar(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
+settVal[2, 3] = scr_keyChar(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
+settVal[2, 4] = scr_keyChar(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
+settVal[2, 5] = scr_keyChar(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
+settVal[2, 6] = scr_keyChar(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
+settVal[2, 7] = scr_keyChar(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
+settVal[2, 8] = scr_keyChar(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
+settVal[2, 9] = scr_keyChar(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
+settVal[2, 10] = scr_keyChar(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
 
 global.arPlWon = false;
 

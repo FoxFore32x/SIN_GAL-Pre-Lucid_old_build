@@ -91,7 +91,9 @@
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_filter_colour_balance-1.0.0","name":"io.gamemaker.gm_filter_colour_balance-1.0.0","path":"io.gamemaker.gm_filter_colour_balance-1.0.0.yyp",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"jojo480.mp4","CopyToMask":-1,"filePath":"datafiles","name":"jojo480.mp4","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
@@ -233,6 +235,7 @@
     {"id":{"name":"scr_bindKey","path":"scripts/scr_bindKey/scr_bindKey.yy",},},
     {"id":{"name":"scr_changeInput","path":"scripts/scr_changeInput/scr_changeInput.yy",},},
     {"id":{"name":"scr_keybinds","path":"scripts/scr_keybinds/scr_keybinds.yy",},},
+    {"id":{"name":"scr_keyChar","path":"scripts/scr_keyChar/scr_keyChar.yy",},},
     {"id":{"name":"setOnGround","path":"scripts/setOnGround/setOnGround.yy",},},
     {"id":{"name":"spawnChars","path":"scripts/spawnChars/spawnChars.yy",},},
     {"id":{"name":"spear_attacks","path":"scripts/spear_attacks/spear_attacks.yy",},},
@@ -259,6 +262,7 @@
     {"id":{"name":"sndTest","path":"sounds/sndTest/sndTest.yy",},},
     {"id":{"name":"sndTutorial","path":"sounds/sndTutorial/sndTutorial.yy",},},
     {"id":{"name":"sndWinScreen","path":"sounds/sndWinScreen/sndWinScreen.yy",},},
+    {"id":{"name":"bgLogos","path":"sprites/bgLogos/bgLogos.yy",},},
     {"id":{"name":"bkg_lvl1","path":"sprites/bkg_lvl1/bkg_lvl1.yy",},},
     {"id":{"name":"bkg_lvl1BG","path":"sprites/bkg_lvl1BG/bkg_lvl1BG.yy",},},
     {"id":{"name":"bkg_lvl1FG","path":"sprites/bkg_lvl1FG/bkg_lvl1FG.yy",},},

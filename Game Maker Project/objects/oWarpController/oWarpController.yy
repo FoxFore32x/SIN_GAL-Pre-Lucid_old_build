@@ -10,8 +10,8 @@
   "name":"oWarpController",
   "overriddenProperties":[],
   "parent":{
-    "name":"parents",
-    "path":"folders/Objects/parents.yy",
+    "name":"Player",
+    "path":"folders/Objects/System/Player.yy",
   },
   "parentObjectId":null,
   "persistent":true,

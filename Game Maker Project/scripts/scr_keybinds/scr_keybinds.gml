@@ -8,12 +8,12 @@ function initialize_Keybinds(){
 			addKeybind(new BindKB("left1", ord("A")));
 			addKeybind(new BindKB("right1", ord("D")));
 			
-			addKeybind(new BindKB("jump1", ord("T")));
-			addKeybind(new BindKB("dash1", ord("Y")));
+			addKeybind(new BindKB("jump1", ord("O")));
+			addKeybind(new BindKB("dash1", ord("N/A")));
 			addKeybind(new BindKB("block1", vk_lshift));
-			addKeybind(new BindKB("light1", ord("R")));
-			addKeybind(new BindKB("strong1", ord("F")));
-			addKeybind(new BindKB("special1", ord("Y")));
+			addKeybind(new BindKB("light1", ord("I")));
+			addKeybind(new BindKB("strong1", ord("K")));
+			addKeybind(new BindKB("special1", ord("P")));
 			addKeybind(new BindKB("pause1", vk_space));
 			
 			addKeybind(new BindGPB("up1", 0, gp_padu));
@@ -37,18 +37,18 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("pause1", 0, gp_start));
 			
 			//Player 2
-			addKeybind(new BindKB("up2", vk_up));
-			addKeybind(new BindKB("down2", vk_down));
-			addKeybind(new BindKB("left2", vk_left));
-			addKeybind(new BindKB("right2", vk_right));
+			addKeybind(new BindKB("up2", ord("N/A")));
+			addKeybind(new BindKB("down2", ord("N/A")));
+			addKeybind(new BindKB("left2", ord("N/A")));
+			addKeybind(new BindKB("right2", ord("N/A")));
 			
-			addKeybind(new BindKB("jump2", ord("O")));
-			addKeybind(new BindKB("dash2", ord("P")));
-			addKeybind(new BindKB("block2", vk_rshift));
-			addKeybind(new BindKB("light2", ord("I")));
-			addKeybind(new BindKB("strong2", ord("K")));
-			addKeybind(new BindKB("special2", ord("L")));
-			addKeybind(new BindKB("pause2", vk_enter));
+			addKeybind(new BindKB("jump2", ord("N/A")));
+			addKeybind(new BindKB("dash2", ord("N/A")));
+			addKeybind(new BindKB("block2", ord("N/A")));
+			addKeybind(new BindKB("light2", ord("N/A")));
+			addKeybind(new BindKB("strong2", ord("N/A")));
+			addKeybind(new BindKB("special2", ord("N/A")));
+			addKeybind(new BindKB("pause2", ord("N/A")));
 			
 			addKeybind(new BindGPB("up2", 1, gp_padu));
 			addKeybind(new BindGPB("down2", 1, gp_padd));
@@ -71,18 +71,18 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("pause2", 1, gp_start));
 			
 			//Player 3
-			addKeybind(new BindKB("up3", ord("C")));
-			addKeybind(new BindKB("down3", ord("V")));
+			addKeybind(new BindKB("up3", ord("N/A")));
+			addKeybind(new BindKB("down3", ord("N/A")));
 			addKeybind(new BindKB("left3", ord("N/A")));
 			addKeybind(new BindKB("right3", ord("N/A")));
 			
-			addKeybind(new BindKB("jump3", ord("B")));
+			addKeybind(new BindKB("jump3", ord("N/A")));
 			addKeybind(new BindKB("dash3", ord("N/A")));
 			addKeybind(new BindKB("block3", ord("N/A")));
 			addKeybind(new BindKB("light3", ord("N/A")));
 			addKeybind(new BindKB("strong3", ord("N/A")));
 			addKeybind(new BindKB("special3", ord("N/A")));
-			addKeybind(new BindKB("pause3", ord("3")));
+			addKeybind(new BindKB("pause3", ord("N/A")));
 			
 			addKeybind(new BindGPB("up3", 2, gp_padu));
 			addKeybind(new BindGPB("down3", 2, gp_padd));
@@ -105,8 +105,8 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("pause3", 2, gp_start));
 			
 			//Player 4
-			addKeybind(new BindKB("up4", ord("N")));
-			addKeybind(new BindKB("down4", ord("M")));
+			addKeybind(new BindKB("up4", ord("N/A")));
+			addKeybind(new BindKB("down4", ord("N/A")));
 			addKeybind(new BindKB("left4", ord("N/A")));
 			addKeybind(new BindKB("right4", ord("N/A")));
 			
@@ -116,7 +116,7 @@ function initialize_Keybinds(){
 			addKeybind(new BindKB("light4", ord("N/A")));
 			addKeybind(new BindKB("strong4", ord("N/A")));
 			addKeybind(new BindKB("special4", ord("N/A")));
-			addKeybind(new BindKB("pause4", ord("4")));
+			addKeybind(new BindKB("pause4", ord("N/A")));
 			
 			addKeybind(new BindGPB("up4", 3, gp_padu));
 			addKeybind(new BindGPB("down4", 3, gp_padd));
@@ -270,25 +270,25 @@ function globalKeys() {
 	inputCheckPressed("light4") || inputCheckPressed("strong4") ||
 	inputCheckPressed("special4") || inputCheckPressed("pause4"));
 	
-	global.keyUpAll = global.keyUp[0] || global.keyUp[1] || global.keyUp[2] || global.keyUp[3];
-	global.keyDownAll = global.keyDown[0] || global.keyDown[1] || global.keyDown[2] || global.keyDown[3];
-	global.keyLeftAll = global.keyLeft[0] || global.keyLeft[1] || global.keyLeft[2] || global.keyLeft[3];
-	global.keyRightAll = global.keyRight[0] || global.keyRight[1] || global.keyRight[2] || global.keyRight[3];
-	global.keyUp2All = global.keyUp2[0] || global.keyUp2[1] || global.keyUp2[2] || global.keyUp2[3];
-	global.keyDown2All = global.keyDown2[0] || global.keyDown2[1] || global.keyDown2[2] || global.keyDown2[3];
-	global.keyLeft2All = global.keyLeft2[0] || global.keyLeft2[1] || global.keyLeft2[2] || global.keyLeft2[3];
-	global.keyRight2All = global.keyRight2[0] || global.keyRight2[1] || global.keyRight2[2] || global.keyRight2[3];
-	global.keyUp3All = global.keyUp3[0] || global.keyUp3[1] || global.keyUp3[2] || global.keyUp3[3];
-	global.keyDown3All = global.keyDown3[0] || global.keyDown3[1] || global.keyDown3[2] || global.keyDown3[3];
-	global.keyLeft3All = global.keyLeft3[0] || global.keyLeft3[1] || global.keyLeft3[2] || global.keyLeft3[3];
-	global.keyRight3All = global.keyRight3[0] || global.keyRight3[1] || global.keyRight3[2] || global.keyRight3[3];
-	global.keyJumpAll = global.keyJump[0] || global.keyJump[1] || global.keyJump[2] || global.keyJump[3];
-	global.keyJump2All = global.keyJump2[0] || global.keyJump2[1] || global.keyJump2[2] || global.keyJump2[3];
-	global.keyJump3All = global.keyJump3[0] || global.keyJump3[1] || global.keyJump3[2] || global.keyJump3[3];
+	global.keyUpAll = (global.keyUp[0] || global.keyUp[1] || global.keyUp[2] || global.keyUp[3] || keyboard_check(vk_up));
+	global.keyDownAll = (global.keyDown[0] || global.keyDown[1] || global.keyDown[2] || global.keyDown[3]  || keyboard_check(vk_down));
+	global.keyLeftAll = (global.keyLeft[0] || global.keyLeft[1] || global.keyLeft[2] || global.keyLeft[3] || keyboard_check(vk_left));
+	global.keyRightAll = (global.keyRight[0] || global.keyRight[1] || global.keyRight[2] || global.keyRight[3] || keyboard_check(vk_right));
+	global.keyUp2All = (global.keyUp2[0] || global.keyUp2[1] || global.keyUp2[2] || global.keyUp2[3] || keyboard_check_pressed(vk_up));
+	global.keyDown2All = (global.keyDown2[0] || global.keyDown2[1] || global.keyDown2[2] || global.keyDown2[3] || keyboard_check_pressed(vk_down));
+	global.keyLeft2All = (global.keyLeft2[0] || global.keyLeft2[1] || global.keyLeft2[2] || global.keyLeft2[3] || keyboard_check_pressed(vk_left));
+	global.keyRight2All = (global.keyRight2[0] || global.keyRight2[1] || global.keyRight2[2] || global.keyRight2[3] || keyboard_check_pressed(vk_right));
+	global.keyUp3All = (global.keyUp3[0] || global.keyUp3[1] || global.keyUp3[2] || global.keyUp3[3] || keyboard_check_released(vk_up));
+	global.keyDown3All = (global.keyDown3[0] || global.keyDown3[1] || global.keyDown3[2] || global.keyDown3[3] || keyboard_check_released(vk_down));
+	global.keyLeft3All = (global.keyLeft3[0] || global.keyLeft3[1] || global.keyLeft3[2] || global.keyLeft3[3] || keyboard_check_released(vk_left));
+	global.keyRight3All = (global.keyRight3[0] || global.keyRight3[1] || global.keyRight3[2] || global.keyRight3[3] || keyboard_check_released(vk_right));
+	global.keyJumpAll = (global.keyJump[0] || global.keyJump[1] || global.keyJump[2] || global.keyJump[3] || keyboard_check(vk_enter));
+	global.keyJump2All = (global.keyJump2[0] || global.keyJump2[1] || global.keyJump2[2] || global.keyJump2[3] || keyboard_check_pressed(vk_enter));
+	global.keyJump3All = (global.keyJump3[0] || global.keyJump3[1] || global.keyJump3[2] || global.keyJump3[3] || keyboard_check_released(vk_enter));
 	global.keyDashAll = global.keyDash[0] || global.keyDash[1] || global.keyDash[2] || global.keyDash[3];
 	global.keyBlockAll = global.keyBlock[0] || global.keyBlock[1] || global.keyBlock[2] || global.keyBlock[3];
-	global.keyLightAll = global.keyLight[0] || global.keyLight[1] || global.keyLight[2] || global.keyLight[3];
-	global.keyLight2All = global.keyLight2[0] || global.keyLight2[1] || global.keyLight2[2] || global.keyLight2[3];
+	global.keyLightAll = (global.keyLight[0] || global.keyLight[1] || global.keyLight[2] || global.keyLight[3] || keyboard_check(vk_backspace));
+	global.keyLight2All = (global.keyLight2[0] || global.keyLight2[1] || global.keyLight2[2] || global.keyLight2[3] || keyboard_check_pressed(vk_backspace));
 	global.keyStrongAll = global.keyStrong[0] || global.keyStrong[1] || global.keyStrong[2] || global.keyStrong[3];
 	global.keySpecialAll = global.keySpecial[0] || global.keySpecial[1] || global.keySpecial[2] || global.keySpecial[3];
 	global.keyPauseAll = global.keyPause[0] || global.keyPause[1] || global.keyPause[2] || global.keyPause[3];

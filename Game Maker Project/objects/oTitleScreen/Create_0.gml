@@ -53,3 +53,20 @@ itemHold = false;
 
 pause = false;
 pauseHold = false;
+
+isVideoPlaying = false;
+
+section = 0;
+sectionTimeMax[0] = 200;
+sectionTimeMax[1] = -1;
+sectionTimeMax[2] = 600;
+sectionTimeMax[3] = 1200;
+sectionTime = 200;
+creditTxtTimerMax = 150;
+creditTxtTimer = 0;
+fadeLevel = 0.1;
+_vidPos = -1;
+_vidDur = -1;
+_vidStatus = -1;
+_videoData = -1;
+_videoStatus = -1;

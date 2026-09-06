@@ -164,16 +164,16 @@ switch(menu_level){
 				if (change != 0){
 					playerPos += change;
 					settVal[2, 0] += change;
-					settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
-					settVal[2, 2] = chr(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
-					settVal[2, 3] = chr(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
-					settVal[2, 4] = chr(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
-					settVal[2, 5] = chr(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
-					settVal[2, 6] = chr(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
-					settVal[2, 7] = chr(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
-					settVal[2, 8] = chr(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
-					settVal[2, 9] = chr(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
-					settVal[2, 10] = chr(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
+					settVal[2, 1] = scr_keyChar(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+					settVal[2, 2] = scr_keyChar(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
+					settVal[2, 3] = scr_keyChar(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
+					settVal[2, 4] = scr_keyChar(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
+					settVal[2, 5] = scr_keyChar(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
+					settVal[2, 6] = scr_keyChar(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
+					settVal[2, 7] = scr_keyChar(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
+					settVal[2, 8] = scr_keyChar(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
+					settVal[2, 9] = scr_keyChar(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
+					settVal[2, 10] = scr_keyChar(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
 				}
 				
 			break;
@@ -190,7 +190,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("left" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("left" + string(playerPos), _newKeybind);
-								settVal[2, 1] = chr(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
+								settVal[2, 1] = scr_keyChar(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -211,7 +211,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("right" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("right" + string(playerPos), _newKeybind);
-								settVal[2, 2] = chr(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
+								settVal[2, 2] = scr_keyChar(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -232,7 +232,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("up" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("up" + string(playerPos), _newKeybind);
-								settVal[2, 3] = chr(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
+								settVal[2, 3] = scr_keyChar(oInput.keybindMap[$ "up" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -253,7 +253,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("down" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("down" + string(playerPos), _newKeybind);
-								settVal[2, 4] = chr(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
+								settVal[2, 4] = scr_keyChar(oInput.keybindMap[$ "down" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -274,7 +274,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("jump" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("jump" + string(playerPos), _newKeybind);
-								settVal[2, 5] = chr(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
+								settVal[2, 5] = scr_keyChar(oInput.keybindMap[$ "jump" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -295,7 +295,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("light" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("light" + string(playerPos), _newKeybind);
-								settVal[2, 6] = chr(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
+								settVal[2, 6] = scr_keyChar(oInput.keybindMap[$ "light" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -316,7 +316,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("strong" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("strong" + string(playerPos), _newKeybind);
-								settVal[2, 7] = chr(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
+								settVal[2, 7] = scr_keyChar(oInput.keybindMap[$ "strong" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -337,7 +337,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("block" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("block" + string(playerPos), _newKeybind);
-								settVal[2, 8] = chr(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
+								settVal[2, 8] = scr_keyChar(oInput.keybindMap[$ "block" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -358,7 +358,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("special" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("special" + string(playerPos), _newKeybind);
-								settVal[2, 9] = chr(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
+								settVal[2, 9] = scr_keyChar(oInput.keybindMap[$ "special" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}
@@ -379,7 +379,7 @@ switch(menu_level){
 							var _newKeybind = inputChangeKeybind("pause" + string(playerPos), playerPos - 1);
 							if(_newKeybind != -1){
 								inputReplace("pause" + string(playerPos), _newKeybind);
-								settVal[2, 10] = chr(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
+								settVal[2, 10] = scr_keyChar(oInput.keybindMap[$ "pause" + string(playerPos)][0].key);
 								readingKeybind = false;
 								keybindFinished = true;
 							}

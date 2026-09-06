@@ -176,7 +176,7 @@ function pl_normalState() {
 
 		//attack
 		
-		if(dashKeyBuffered){
+		if(spKeyBufferTimer){
 			chitTimer = spAttMax;
 			
 			currentState = states.spAtt;
@@ -189,16 +189,12 @@ function pl_normalState() {
 			
 			smallStAtJumpAct = false;
 
-		    if(lattKeyBuffered){
+		    if(!(leftDouble || rightDouble || upDouble || downDouble) && lattKeyBuffered){
 		        weapon = weapons.dagger;
 		        lattKeyBuffered = 0;
 		        lattKeyBufferTimer = 0;
-		    } else if(!(leftDouble || rightDouble || upDouble || downDouble) && hattKeyBuffered){
+		    } else if(((leftDouble || rightDouble || upDouble || downDouble) && lattKeyBuffered)|| hattKeyBuffered){
 		        weapon = weapons.sword;
-		        hattKeyBuffered = 0;
-		        hattKeyBufferTimer = 0;
-		    } else if ((leftDouble || rightDouble || upDouble || downDouble) && hattKeyBuffered){
-				weapon = weapons.axe;
 				dt_left_timer = 0;
 				dt_right_timer = 0;
 				dt_up_timer = 0;
@@ -209,7 +205,7 @@ function pl_normalState() {
 				downDouble  = false;
 		        hattKeyBuffered = 0;
 		        hattKeyBufferTimer = 0;
-			}
+		    }
 			
 			play_sfx(sfxSwoosh, 1, 0);
     
