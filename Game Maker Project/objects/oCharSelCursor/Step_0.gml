@@ -10,9 +10,17 @@ if (global.keyJump2[player] && token != noone){
 	token.isGrabbed = !token.isGrabbed;
 }
 
-if(global.keyLight2[player] && instance_exists(oCharToken)){
+if (global.keyLight2[player])
+{
 	var pl = player;
-	with(oCharToken){
-		if(player == pl) isGrabbed = false;
+	with (oCharToken){
+		var slot = instance_place(x, y, oCharSlot);
+		if (player == pl){
+			if(slot != noone){
+				if (player < 0) global.cpus--;
+				else global.players--;
+			}
+			isGrabbed = true;
+		}
 	}
 }

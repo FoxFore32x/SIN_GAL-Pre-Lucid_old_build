@@ -7,14 +7,26 @@ if (global.keyAny[asigndPlSlot]){
 
 var cursor = instance_place(x, y, oCharSelCursor);
 
+var cursor_x = 0;
+var cursor_y = 0;
+
+var pl = player;
+with (oCharSelCursor){
+	if (player == pl || player < 0){
+		cursor_x = x;
+		cursor_y = y;
+	}
+}
+
 if(isGrabbed){
 	global.playerChar[asigndPlSlot] = 0;
 	
+	x = cursor_x;
+	y = cursor_y;
+	
 	if(cursor != noone && (cursor.player == player || cursor.player < 0)){
-		x = cursor.x;
-		y = cursor.y;
 		
-		if(slot != noone && global.keyJump3[asigndPlSlot]){
+		if(slot != noone && global.keyJump2[asigndPlSlot]){
 			if (player < 0) global.cpus--;
 			else global.players--;
 		}
@@ -22,7 +34,7 @@ if(isGrabbed){
 } else {
 	if(cursor != noone && (cursor.player == player || cursor.player < 0)){
 		global.playerChar[asigndPlSlot] = char;
-		if(slot != noone && global.keyJump3[asigndPlSlot]){
+		if(slot != noone && global.keyJump2[asigndPlSlot]){
 			if (player < 0) global.cpus++;
 			else global.players++;
 		}
