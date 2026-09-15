@@ -115,6 +115,7 @@
     {"id":{"name":"oCharSel","path":"objects/oCharSel/oCharSel.yy",},},
     {"id":{"name":"oCharSelCursor","path":"objects/oCharSelCursor/oCharSelCursor.yy",},},
     {"id":{"name":"oCharSlot","path":"objects/oCharSlot/oCharSlot.yy",},},
+    {"id":{"name":"oCharToken","path":"objects/oCharToken/oCharToken.yy",},},
     {"id":{"name":"oDoor","path":"objects/oDoor/oDoor.yy",},},
     {"id":{"name":"oHitbox","path":"objects/oHitbox/oHitbox.yy",},},
     {"id":{"name":"oHurtbox","path":"objects/oHurtbox/oHurtbox.yy",},},
