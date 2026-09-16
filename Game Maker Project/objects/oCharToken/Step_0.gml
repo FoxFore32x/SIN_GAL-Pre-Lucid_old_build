@@ -11,10 +11,13 @@ var cursor_x = 0;
 var cursor_y = 0;
 
 var pl = player;
+var keySel = false;
+var keyDec = false;
 with (oCharSelCursor){
-	if (player == pl || player < 0){
+	if (player == pl || pl < 0){
 		cursor_x = x;
 		cursor_y = y;
+		keySel = keySelect;
 	}
 }
 
@@ -24,17 +27,17 @@ if(isGrabbed){
 	x = cursor_x;
 	y = cursor_y;
 	
-	if(cursor != noone && (cursor.player == player || cursor.player < 0)){
+	if(cursor != noone){
 		
-		if(slot != noone && global.keyJump2[asigndPlSlot]){
+		if(slot != noone && keySel){
 			if (player < 0) global.cpus--;
 			else global.players--;
 		}
 	}
 } else {
-	if(cursor != noone && (cursor.player == player || cursor.player < 0)){
+	if(cursor != noone){
 		global.playerChar[asigndPlSlot] = char;
-		if(slot != noone && global.keyJump2[asigndPlSlot]){
+		if(slot != noone && keySel){
 			if (player < 0) global.cpus++;
 			else global.players++;
 		}

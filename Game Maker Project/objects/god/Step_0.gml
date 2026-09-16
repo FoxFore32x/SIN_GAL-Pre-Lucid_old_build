@@ -32,7 +32,7 @@ if(room != results && room != rm_menu && room != init && room != rm_charsel && r
 	}
 	
 	with(oPlayer){
-	    if(pause && !pauseHold){
+	    if(pause2){
 	        if(!god.isPaused){
 	            god.isPaused = true;
 	            global.plPause = player;

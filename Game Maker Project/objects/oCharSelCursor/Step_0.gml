@@ -4,13 +4,23 @@ yMov = (global.keyDown[player] - global.keyUp[player]) * spd;
 x += xMov;
 y += yMov;
 
+keySelect = global.keyJump2[player];
+keyDecline = global.keyLight2[player];
+
 var token = instance_place(x, y, oCharToken);
 
-if (global.keyJump2[player] && token != noone){
-	token.isGrabbed = !token.isGrabbed;
+if (keySelect && token != noone){
+	if (heldToken == noone){
+		heldToken = token;
+		token.isGrabbed = true;
+	}
+	else if (heldToken == token){
+		heldToken.isGrabbed = false;
+		heldToken = noone;
+	}
 }
 
-if (global.keyLight2[player])
+if (keyDecline)
 {
 	var pl = player;
 	with (oCharToken){
