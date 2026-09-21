@@ -22,7 +22,11 @@ repeat(abs(v)){
             y += sign(v) * god.gameSpeed;
         }
     }else if (check_below()){
-        y_collide();
+		if((ySpeed >= 2 || ySpeed <= -2) && (hitStun > 0 && onGround)){
+			if(ySpeed >= 4){
+                ySpeed = -4;
+            }
+		} else y_collide();
         break;
     }else{
         y += sign(v) * god.gameSpeed;

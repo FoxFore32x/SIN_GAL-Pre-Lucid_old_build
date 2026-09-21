@@ -183,27 +183,27 @@ function pl_characters(){
 						case attacks.side_ground:
 						case attacks.side_air:
 							hitOffX = 0;
-							hitOffY = -21;
-							hitWidth = 25;
-							hitHeight = 10;
+							hitOffY = -26;
+							hitWidth = 35;
+							hitHeight = 15;
 							hitDur = 3;
 						break;
 						
 						case attacks.up_ground:
 						case attacks.up_air:
 							hitOffX = -8;
-							hitOffY = -40;
-							hitWidth = 18;
-							hitHeight = 25;
+							hitOffY = -50;
+							hitWidth = 24;
+							hitHeight = 40;
 							hitDur = 3;
 						break;
 						
 						case attacks.down_ground:
 						case attacks.down_air:
-							hitOffX = 5;
+							hitOffX = -5;
 							hitOffY = -11;
-							hitWidth = 17;
-							hitHeight = 23;
+							hitWidth = 30;
+							hitHeight = 28;
 							hitDur = 3;
 						break;
 					}
@@ -438,27 +438,27 @@ function pl_characters(){
 						case attacks.side_ground:
 						case attacks.side_air:
 							hitOffX = 0;
-							hitOffY = -21;
-							hitWidth = 25;
-							hitHeight = 10;
+							hitOffY = -26;
+							hitWidth = 35;
+							hitHeight = 15;
 							hitDur = 3;
 						break;
 						
 						case attacks.up_ground:
 						case attacks.up_air:
 							hitOffX = -8;
-							hitOffY = -40;
-							hitWidth = 18;
-							hitHeight = 25;
+							hitOffY = -50;
+							hitWidth = 24;
+							hitHeight = 40;
 							hitDur = 3;
 						break;
 						
 						case attacks.down_ground:
 						case attacks.down_air:
-							hitOffX = 5;
+							hitOffX = -5;
 							hitOffY = -11;
-							hitWidth = 17;
-							hitHeight = 23;
+							hitWidth = 30;
+							hitHeight = 28;
 							hitDur = 3;
 						break;
 					}

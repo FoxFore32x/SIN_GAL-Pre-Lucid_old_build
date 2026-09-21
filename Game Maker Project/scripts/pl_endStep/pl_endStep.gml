@@ -149,7 +149,10 @@ function pl_endStep() {
         
 					if(!hb.owner.isDash){
 						if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
-			            else hb.owner.jabCnt++;
+			            else{
+							if(prevDam > hb.damage) hb.owner.jabLimit += 2;
+							hb.owner.jabCnt++;
+						}
 					}
             
 		            hb.owner.comboCnt++;
@@ -229,6 +232,7 @@ function pl_endStep() {
 		                break;
 		            }
 		            hb.owner.jabCnt = 0;
+					hb.owner.jabLimit = hb.owner.jabLimitDefault;
 		            hb.owner.hJabCnt = 0;
 		            hb.owner.canWallGrab = true;
 		            hb.owner.wallGrabTimer = hb.owner.wallGrabMax;

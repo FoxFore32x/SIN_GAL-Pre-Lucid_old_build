@@ -182,12 +182,13 @@ function pl_create() {
 	smallStAtJumpAct = false;
 
 	//Combo
+	jabLimitDefault= 2;
 	jabLimit= 2;
 	jabCnt= 0;
 	hJabLimit = 1;
 	hJabCnt = 0;
 	comboCnt= 0;
-	comboTimerLimit = 60;
+	comboTimerLimit = 180;
 	comboTimer= 0;
 	isCombing= false;
 	cxHit= 0;
