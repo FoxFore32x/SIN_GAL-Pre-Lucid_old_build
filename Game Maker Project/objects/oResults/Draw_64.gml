@@ -52,7 +52,7 @@ if(!global.arcadeMode){
 
 
     draw_text_transformed_colour(
-        130, 330, string_hash_to_newline("Press Start or 1 to 4\n(Keyboard) to exit to \nmenu"),
+        130, 330, string_hash_to_newline("Press Start or Enter\n(Keyboard) to exit to \nmenu"),
         0.3333, 0.3333, 0,
         c_white, c_white, c_white, c_white, 1
     );

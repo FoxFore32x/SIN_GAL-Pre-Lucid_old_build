@@ -188,7 +188,7 @@ function pl_create() {
 	hJabCnt = 0;
 	comboCnt= 0;
 	comboTimerLimit = 60;
-	comboTimer= 60;
+	comboTimer= 0;
 	isCombing= false;
 	cxHit= 0;
 	cyHit= 0;

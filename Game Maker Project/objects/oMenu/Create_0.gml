@@ -120,7 +120,7 @@ settVal[1, 1] = global.opTimer;
 settVal[1, 2] = global.volMusic;
 settVal[1, 3] = global.volSfx;
 
-settVal[2, 0] = 0;
+settVal[2, 0] = 1;
 settVal[2, 1] = scr_keyChar(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
 settVal[2, 2] = scr_keyChar(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
 settVal[2, 3] = scr_keyChar(oInput.keybindMap[$ "up" + string(playerPos)][0].key);

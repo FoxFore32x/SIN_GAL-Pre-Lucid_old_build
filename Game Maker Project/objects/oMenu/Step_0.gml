@@ -163,7 +163,9 @@ switch(menu_level){
 			case 0:
 				if (change != 0){
 					playerPos += change;
-					settVal[2, 0] += change;
+					if (playerPos < 1) playerPos = 4;
+					if (playerPos > 4) playerPos = 1;
+					settVal[2, 0] = playerPos;
 					settVal[2, 1] = scr_keyChar(oInput.keybindMap[$ "left" + string(playerPos)][0].key);
 					settVal[2, 2] = scr_keyChar(oInput.keybindMap[$ "right" + string(playerPos)][0].key);
 					settVal[2, 3] = scr_keyChar(oInput.keybindMap[$ "up" + string(playerPos)][0].key);

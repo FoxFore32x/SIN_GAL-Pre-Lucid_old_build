@@ -43,6 +43,7 @@ function spawnChars(_x, _y){
 		        p1[i].player = -(i + 1); // -1, -2, -3, -4
 		        p1[i].plId = ids;
 				p1[i].character = global.playerChar[ids];
+				if(global.currentMode == modes.training) p1[i].immobile = true;
 				with (p1[i]) {
 				    pl_setCharStats();
 				}

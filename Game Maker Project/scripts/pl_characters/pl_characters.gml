@@ -298,13 +298,6 @@ function pl_characters(){
 			        upSpriteA    = sTeoriUAttSA;
 			        downSpriteG  = sTeoriDAttSG;
 			        downSpriteA  = sTeoriDAttSA;
-					
-					if (currentState == states.attack){
-						
-						if(!smallStopDone) smallStop = true;
-						gravityActive = 0;
-					}
-					else gravityActive = 1;
 				
 					if((left || right) && (!down)) {
 						if(onGround) attOnGround = true;
@@ -313,7 +306,15 @@ function pl_characters(){
 					}
 					else attDirX = noone;
 					
+					if (currentState != states.attack) gravityActive = 1;
+					
 					if(!hasSAttWhJump){
+						
+						if (currentState == states.attack){
+						
+							if(!smallStopDone) smallStop = true;
+							gravityActive = 0;
+						}
 					
 						if(up) attDirY = -heavyDist[tired] * global.sprScale;
 						else if(down) attDirY = heavyDist[tired] * global.sprScale;
