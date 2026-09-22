@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"specialbox_create",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"specialbox_create",
+  "parent":{
+    "name":"hitboxes",
+    "path":"folders/Scripts/player/hitboxes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

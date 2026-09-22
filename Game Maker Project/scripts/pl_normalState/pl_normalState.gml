@@ -177,6 +177,7 @@ function pl_normalState() {
 		//attack
 		
 		if(spKeyBufferTimer){
+			spHasOneFrameAct = false;
 			chitTimer = spAttMax;
 			
 			currentState = states.spAtt;

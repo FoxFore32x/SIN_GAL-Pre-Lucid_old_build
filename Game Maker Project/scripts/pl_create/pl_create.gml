@@ -262,6 +262,7 @@ function pl_create() {
 	//attack
 	attackType = attacks.side_ground;
 	spAttMax = 100;
+	spHasOneFrameAct = false;
 
 	//hit
 	hit = false;

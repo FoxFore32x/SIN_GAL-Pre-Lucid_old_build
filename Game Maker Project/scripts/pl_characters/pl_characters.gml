@@ -5,6 +5,8 @@ function pl_characters(){
 	
 		case characters.teori:
 		
+			var _spbox = noone;
+		
 				//sword
 			fd_sword_side = frame_factory(2,3,12);
 			fd_sword_up   = frame_factory(2,3,12);
@@ -38,13 +40,32 @@ function pl_characters(){
 			weaponRun = sTeori_Run_Arms;
 			weaponJump = sTeori_Jump_Arms;
 			
-			switch(currentState){
-				case states.spAtt:
-					
-					
-					
-				break;
-			}
+			spAttMax = 50;
+			
+		    switch(currentState){
+		        case states.spAtt:
+
+		            if(!spHasOneFrameAct == false){
+		                _spbox = specialbox_create(
+		                    -2 * facing * global.sprScale,
+		                    -16 * global.sprScale,
+		                    26 * facing * global.sprScale,
+		                    10 * global.sprScale,
+		                    6,
+		                    false,
+		                    0,
+		                    0,
+		                    0,
+		                    0
+		                );
+
+		                spHasOneFrameAct = true;
+		            }
+
+		            if(_spbox != noone) _spbox.xScale++;
+
+		        break;
+		    }
 			
 			switch(weapon){
 			    case weapons.sword:
@@ -245,6 +266,8 @@ function pl_characters(){
 			weaponIdle = sLamb_Idle_Arms;
 			weaponRun = sLamb_Run_Arms;
 			weaponJump = sLamb_Jump_Arms;
+			
+			spAttMax = 50;
 		
 			switch(currentState){
 			
