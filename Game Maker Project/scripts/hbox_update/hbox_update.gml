@@ -19,7 +19,14 @@ function hbox_update() {
 	if(hitbox != -1){
 	    with(hitbox){
 	        x = owner.x + xOffset;
-	        y = owner.y + yOffset;    
+	        y = owner.y + yOffset;
+	    }
+	}
+	
+	if(spbox != -1){
+		with(spbox){
+	        x = owner.x + xOffset;
+	        y = owner.y + yOffset;
 	    }
 	}
 

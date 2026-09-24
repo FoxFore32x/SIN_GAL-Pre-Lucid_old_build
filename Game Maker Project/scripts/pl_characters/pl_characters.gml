@@ -5,8 +5,6 @@ function pl_characters(){
 	
 		case characters.teori:
 		
-			var _spbox = noone;
-		
 				//sword
 			fd_sword_side = frame_factory(2,3,12);
 			fd_sword_up   = frame_factory(2,3,12);
@@ -44,25 +42,24 @@ function pl_characters(){
 			
 		    switch(currentState){
 		        case states.spAtt:
-
-		            if(!spHasOneFrameAct == false){
-		                _spbox = specialbox_create(
-		                    -2 * facing * global.sprScale,
-		                    -16 * global.sprScale,
-		                    26 * facing * global.sprScale,
-		                    10 * global.sprScale,
-		                    6,
-		                    false,
-		                    0,
-		                    0,
-		                    0,
-		                    0
-		                );
-
-		                spHasOneFrameAct = true;
-		            }
-
-		            if(_spbox != noone) _spbox.xScale++;
+					
+					if(instance_exists(spbox)){
+						spbox.xScale += 3 * facing;
+						
+						var jumped = false;
+						with(spbox){
+							if (place_meeting(x, y, parentBlocker)){
+								jumped = true;
+							}
+						}
+						if (jumped){
+							xSpeed = spbox.xScale / 3;
+							xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
+							ySpeed = -20;
+							chitTimer = 1;
+						}
+					}
+					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, false, 0, 0, 0, 0);
 
 		        break;
 		    }

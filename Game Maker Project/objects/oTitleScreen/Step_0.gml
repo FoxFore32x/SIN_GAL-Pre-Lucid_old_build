@@ -56,6 +56,7 @@ if(creditTxtTimer > 0){
 }
 
 var btnJump = (jump2);
+var btnDecline = (global.keyLight2All);
 var start = (pause2);
 
 if (btnJump){
@@ -67,6 +68,10 @@ if (btnJump){
 	if (section < array_length(sectionTimeMax))
             sectionTime = sectionTimeMax[section];
 	global.credits += 1;
+}
+
+if (btnDecline){
+	debug = !debug;
 }
 
 if (global.credits >= 1 && start){

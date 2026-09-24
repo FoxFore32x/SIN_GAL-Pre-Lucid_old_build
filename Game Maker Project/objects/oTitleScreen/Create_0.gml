@@ -56,6 +56,8 @@ pauseHold = false;
 
 isVideoPlaying = false;
 
+debug = false;
+
 section = 0;
 sectionTimeMax[0] = 200;
 sectionTimeMax[1] = -1;

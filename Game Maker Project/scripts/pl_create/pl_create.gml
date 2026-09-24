@@ -272,6 +272,7 @@ function pl_create() {
 	hitBy = noone; //Obsolete
 	oHitBy = noone; //hitBy.owner for other funcs.
 	hitQueue = ds_list_create();
+	spbox = noone;
 	
 	//heavy att bar
 	tired = false;

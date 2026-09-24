@@ -32,5 +32,7 @@ draw_set_alpha(1);
 
 if(creditTxtTimer > 50) draw_text_transformed_colour(260,400,string_hash_to_newline(string_hash_to_newline("Credits: " + string(global.credits))), 0.2, 0.2, 0, _c2, _c2, _c2, _c2, 1);
 
-draw_set_font(FONT_builtin);
-draw_text_colour(450,32,string_hash_to_newline("fadeLevel = " + string(fadeLevel)), _c2, _c2, _c2, _c2, 1);
+if(debug){
+	draw_set_font(FONT_builtin);
+	draw_text_colour(450,32,string_hash_to_newline("fadeLevel = " + string(fadeLevel)), _c2, _c2, _c2, _c2, 1);
+}
