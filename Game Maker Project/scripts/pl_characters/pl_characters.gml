@@ -174,12 +174,12 @@ function pl_characters(){
 			        downAttS = 0;
         
 			        //Attack directions
-			        upAtX = 1.2;
-			        sideAtX = 1.2;
-			        downAtX = 1.2;
-			        upAtY = -3;
+			        upAtX = 1;
+			        sideAtX = 1;
+			        downAtX = 1;
+			        upAtY = -1.5;
 			        sideAtY = -1;
-			        downAtY = 2;
+			        downAtY = 1.5;
         
 			        upAtSX = 2;
 			        sideAtSX = 3;
@@ -431,12 +431,12 @@ function pl_characters(){
 			        downAttS = 0;
         
 			        //Attack directions
-			        upAtX = 1.2;
-			        sideAtX = 1.2;
-			        downAtX = 1.2;
-			        upAtY = -3;
+			        upAtX = 1;
+			        sideAtX = 1;
+			        downAtX = 1;
+			        upAtY = -1.5;
 			        sideAtY = -1;
-			        downAtY = 2;
+			        downAtY = 1.5;
         
 			        upAtSX = 2;
 			        sideAtSX = 3;

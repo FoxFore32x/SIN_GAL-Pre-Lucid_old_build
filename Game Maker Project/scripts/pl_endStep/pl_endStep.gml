@@ -275,9 +275,15 @@ function pl_endStep() {
 				else facing = -1;
 		        depth = hb.depth;
 		        hitStun += hb.hitStun;
-				if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 30 - (comboCnt * 2);
-				else if ((prevDam != 0) && (prevDam > hb.damage)) hitStun -= 70;
+				if((prevDam != 0) && (prevDam < hb.damage) && comboCnt > 1) hitStun += 30 - (comboCnt * 2);
+				else if ((prevDam != 0) && (prevDam > hb.damage) && comboCnt > 1) hitStun -= 30 + (comboCnt * 2);
 				prevDam = hb.damage;
+				if (!onGround && !hb.owner.onGround){
+					hb.owner.xSpeed = (x - hb.owner.x) / (10 + comboCnt);
+					hb.owner.ySpeed = (y - hb.owner.y) / (10 + comboCnt);
+				}
+				hb.owner.xSpeed = approach(hb.owner.xSpeed, 0, 0.5 * god.gameSpeed);
+				hb.owner.ySpeed = approach(hb.owner.ySpeed, 0, 0.5 * god.gameSpeed);
         
 		        currentState = states.tumble;
 			}

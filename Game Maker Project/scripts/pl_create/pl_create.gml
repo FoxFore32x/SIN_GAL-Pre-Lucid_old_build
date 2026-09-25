@@ -333,7 +333,7 @@ function pl_create() {
 	animSize = 1;
 
 	//weapons
-	weapon = weapons.sword;
+	weapon = weapons.spear;
 	weapon_stats();
 	
 	character = characters.teori;

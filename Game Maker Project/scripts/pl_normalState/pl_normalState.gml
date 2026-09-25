@@ -210,6 +210,7 @@ function pl_normalState() {
 			
 			play_sfx(sfxSwoosh, 1, 0);
     
+			pl_characters();
 		    weapon_stats();
     
 		    //grounded attacks
