@@ -105,6 +105,7 @@ function pl_endStep() {
 				}
 	            if (hp <= 0){
 	                if(dead == false){
+						hb.owner.comboCnt = 0;
 						if(player >= 0) global.players--;
 						else global.cpus--;
 	                    global.existentPl -= 1;
@@ -236,6 +237,7 @@ function pl_endStep() {
 		            hb.owner.hJabCnt = 0;
 		            hb.owner.canWallGrab = true;
 		            hb.owner.wallGrabTimer = hb.owner.wallGrabMax;
+					hb.owner.comboCnt = 0;
 		            freeze = freezeHLim;
 		            hb.owner.freeze = freezeHLim;
 		            hasTumbled = true;
@@ -275,15 +277,17 @@ function pl_endStep() {
 				else facing = -1;
 		        depth = hb.depth;
 		        hitStun += hb.hitStun;
-				if((prevDam != 0) && (prevDam < hb.damage) && comboCnt > 1) hitStun += 30 - (comboCnt * 2);
-				else if ((prevDam != 0) && (prevDam > hb.damage) && comboCnt > 1) hitStun -= 30 + (comboCnt * 2);
-				prevDam = hb.damage;
-				if (!onGround && !hb.owner.onGround){
-					hb.owner.xSpeed = (x - hb.owner.x) / (10 + comboCnt);
-					hb.owner.ySpeed = (y - hb.owner.y) / (10 + comboCnt);
+				if(!hb.obstacle){
+					if((prevDam != 0) && (prevDam < hb.damage) && hb.owner.comboCnt > 1) hitStun += 30 - (hb.owner.comboCnt * 2);
+					else if ((prevDam != 0) && (prevDam > hb.damage) && hb.owner.comboCnt > 1) hitStun -= 30 + (hb.owner.comboCnt * 2);
+					prevDam = hb.damage;
+					if (!onGround && !hb.owner.onGround){
+						hb.owner.xSpeed = (x - hb.owner.x) / (10 + hb.owner.comboCnt);
+						hb.owner.ySpeed = (y - hb.owner.y) / (10 + hb.owner.comboCnt);
+					}
+					hb.owner.xSpeed = approach(hb.owner.xSpeed, 0, 0.5 * god.gameSpeed);
+					hb.owner.ySpeed = approach(hb.owner.ySpeed, 0, 0.5 * god.gameSpeed);
 				}
-				hb.owner.xSpeed = approach(hb.owner.xSpeed, 0, 0.5 * god.gameSpeed);
-				hb.owner.ySpeed = approach(hb.owner.ySpeed, 0, 0.5 * god.gameSpeed);
         
 		        currentState = states.tumble;
 			}

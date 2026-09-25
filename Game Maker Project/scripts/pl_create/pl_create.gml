@@ -306,6 +306,9 @@ function pl_create() {
 	grabbed = false;
 	isPlayerGrabbed = false;
 	
+	//Specials
+	specialHasJumped = false;
+	
 	prevBgWall = noone;
 	otherPlayer = noone;
 

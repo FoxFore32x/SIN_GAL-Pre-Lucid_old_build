@@ -6,6 +6,7 @@ function setOnGround(argument0) {
 	    canWallGrab = true;
 	    isWallGrabbing = false;
 		hasSAttWhJump = false;
+		specialHasJumped = false;
 		tSpeed = 10 * (global.sprScale);
 		jPotent = 1;
 		smallStop = false;

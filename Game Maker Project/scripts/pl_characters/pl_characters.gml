@@ -55,7 +55,10 @@ function pl_characters(){
 						if (jumped){
 							xSpeed = spbox.xScale / 10;
 							xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
-							ySpeed = -20;
+							if(!specialHasJumped){
+								ySpeed = -20;
+								specialHasJumped = true;
+							}
 							chitTimer = 1;
 						}
 					}
