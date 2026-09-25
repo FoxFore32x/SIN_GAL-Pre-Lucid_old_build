@@ -275,7 +275,7 @@ function pl_endStep() {
 				else facing = -1;
 		        depth = hb.depth;
 		        hitStun += hb.hitStun;
-				if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 30;
+				if((prevDam != 0) && (prevDam < hb.damage)) hitStun += 30 - (comboCnt * 2);
 				else if ((prevDam != 0) && (prevDam > hb.damage)) hitStun -= 70;
 				prevDam = hb.damage;
         

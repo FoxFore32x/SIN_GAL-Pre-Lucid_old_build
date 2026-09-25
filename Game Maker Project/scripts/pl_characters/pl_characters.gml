@@ -44,7 +44,7 @@ function pl_characters(){
 		        case states.spAtt:
 					
 					if(instance_exists(spbox)){
-						spbox.xScale += 3 * facing;
+						spbox.xScale += 6 * facing;
 						
 						var jumped = false;
 						with(spbox){
@@ -53,7 +53,7 @@ function pl_characters(){
 							}
 						}
 						if (jumped){
-							xSpeed = spbox.xScale / 3;
+							xSpeed = spbox.xScale / 10;
 							xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
 							ySpeed = -20;
 							chitTimer = 1;
