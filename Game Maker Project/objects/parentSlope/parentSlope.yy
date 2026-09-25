@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"parentSlope",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"parentSlope",
   "overriddenProperties":[],
@@ -31,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprSlope",
-    "path":"sprites/sprSlope/sprSlope.yy",
+    "name":"sprSlope1",
+    "path":"sprites/sprSlope1/sprSlope1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

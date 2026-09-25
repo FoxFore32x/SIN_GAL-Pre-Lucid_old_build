@@ -43,17 +43,17 @@ function pl_characters(){
 		    switch(currentState){
 		        case states.spAtt:
 					
-					if(instance_exists(spbox)){
-						spbox.xScale += 6 * facing;
+					if(instance_exists(hitbox)){
+						hitbox.xScale += 6 * facing;
 						
 						var jumped = false;
-						with(spbox){
+						with(hitbox){
 							if (place_meeting(x, y, parentBlocker)){
 								jumped = true;
 							}
 						}
 						if (jumped){
-							xSpeed = spbox.xScale / 10;
+							xSpeed = hitbox.xScale / 10;
 							xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
 							if(!specialHasJumped){
 								ySpeed = -20;
@@ -270,7 +270,14 @@ function pl_characters(){
 			spAttMax = 50;
 		
 			switch(currentState){
-			
+				case states.spAtt:
+					
+					if(instance_exists(hitbox)){
+						xSpeed += 1 * facing;
+					}
+					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, true, 9 * facing * global.sprScale, -9, 100, 60);
+
+		        break;
 				case states.dash:
 					custDash = true;
 			

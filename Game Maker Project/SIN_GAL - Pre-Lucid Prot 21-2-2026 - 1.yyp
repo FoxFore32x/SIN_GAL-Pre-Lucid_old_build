@@ -347,6 +347,7 @@
     {"id":{"name":"sprPlayer_Tumble_Light","path":"sprites/sprPlayer_Tumble_Light/sprPlayer_Tumble_Light.yy",},},
     {"id":{"name":"sprPlayer_WallSlide","path":"sprites/sprPlayer_WallSlide/sprPlayer_WallSlide.yy",},},
     {"id":{"name":"sprSlope","path":"sprites/sprSlope/sprSlope.yy",},},
+    {"id":{"name":"sprSlope1","path":"sprites/sprSlope1/sprSlope1.yy",},},
     {"id":{"name":"sprSpear_Attack_Down_A","path":"sprites/sprSpear_Attack_Down_A/sprSpear_Attack_Down_A.yy",},},
     {"id":{"name":"sprSpear_Attack_Down_G","path":"sprites/sprSpear_Attack_Down_G/sprSpear_Attack_Down_G.yy",},},
     {"id":{"name":"sprSpear_Attack_Side_A","path":"sprites/sprSpear_Attack_Side_A/sprSpear_Attack_Side_A.yy",},},
