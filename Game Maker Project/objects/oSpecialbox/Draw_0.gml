@@ -1,2 +1,2 @@
 /// @description draw hitbox
-draw_sprite_ext(sprite_index,0,x,y,xScale,yScale,angle,c_orange,0.75)
+draw_sprite_ext(sprite_index,0,x,y,xScale,yScale,angle,c_orange,0.75);

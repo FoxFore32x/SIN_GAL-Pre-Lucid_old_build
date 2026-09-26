@@ -43,26 +43,51 @@ function pl_characters(){
 		    switch(currentState){
 		        case states.spAtt:
 					
-					if(instance_exists(hitbox)){
-						hitbox.xScale += 6 * facing;
+					if(instance_exists(spbox)){
+						spbox.xScale += 6 * facing;
 						
 						var jumped = false;
-						with(hitbox){
-							if (place_meeting(x, y, parentBlocker)){
-								jumped = true;
-							}
-						}
+						var wall = false;
+						var plId = id;
+					    with (spbox) {
+							
+					        if (place_meeting(x, y, parentBlocker)) {
+								wall = true;
+					            jumped = true;
+					        }
+
+						    var playerList = ds_list_create();
+						    var playerCount = instance_place_list(
+						        x,
+						        y,
+						        oPlayer,
+						        playerList,
+						        false
+						    );
+
+						    for (var i = 0; i < playerCount; i++) {
+
+						        var playerHit = playerList[| i];
+
+						        if (playerHit != plId) {
+						            jumped = true;
+						            break;
+						        }
+						    }
+
+						    ds_list_destroy(playerList);
+					    }
 						if (jumped){
-							xSpeed = hitbox.xScale / 10;
+							xSpeed = spbox.xScale / 10;
 							xSpeed = approach(xSpeed, 0, 0.5 * god.gameSpeed);
 							if(!specialHasJumped){
 								ySpeed = -20;
 								specialHasJumped = true;
 							}
-							chitTimer = 1;
+							if(wall) chitTimer = 1;
 						}
 					}
-					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, false, 0, 0, 0, 0);
+					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, true, 0, 0, 1, 60);
 
 		        break;
 		    }
@@ -272,10 +297,10 @@ function pl_characters(){
 			switch(currentState){
 				case states.spAtt:
 					
-					if(instance_exists(hitbox)){
-						xSpeed += 1 * facing;
+					if(instance_exists(spbox)){
+						if ((xSpeed < 20 && facing >= 0) || (xSpeed > -20 && facing < 0)) xSpeed += 1 * facing;
 					}
-					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, true, 9 * facing * global.sprScale, -9, 100, 60);
+					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, true, 4 * facing * global.sprScale, -4, 100, 60);
 
 		        break;
 				case states.dash:

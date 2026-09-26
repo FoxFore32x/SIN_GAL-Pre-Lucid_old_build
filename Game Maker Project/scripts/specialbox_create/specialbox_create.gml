@@ -28,5 +28,6 @@ function specialbox_create(argument0, argument1, argument2, argument3, argument4
 		_spbox.damage  = argument9; //damage dealt
 	}
 
-	hitbox = _spbox;
+	spbox = _spbox;
+	hitbox = spbox;
 }
