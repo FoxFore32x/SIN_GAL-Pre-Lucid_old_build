@@ -26,8 +26,8 @@ function specialbox_create(argument0, argument1, argument2, argument3, argument4
 		_spbox.yHit    = argument7; //vertical knock back
 		_spbox.hitStun = argument8; //hit stun duration
 		_spbox.damage  = argument9; //damage dealt
+		_spbox.obstacle = true;
 	}
 
 	spbox = _spbox;
-	hitbox = spbox;
 }

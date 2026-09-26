@@ -37,4 +37,4 @@ frameSpeed = 0;
 obstacle = true;
 dissapears = false;
 hitBoxSpawned = false;
-
+hasHit = false;

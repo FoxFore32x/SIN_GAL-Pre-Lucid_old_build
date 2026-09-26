@@ -38,7 +38,7 @@ function pl_characters(){
 			weaponRun = sTeori_Run_Arms;
 			weaponJump = sTeori_Jump_Arms;
 			
-			spAttMax = 50;
+			spAttMax = 40;
 			
 		    switch(currentState){
 		        case states.spAtt:
@@ -47,35 +47,12 @@ function pl_characters(){
 						spbox.xScale += 6 * facing;
 						
 						var jumped = false;
-						var wall = false;
-						var plId = id;
+						var _hasHit = hasHit;
 					    with (spbox) {
 							
-					        if (place_meeting(x, y, parentBlocker)) {
-								wall = true;
+					        if (place_meeting(x, y, parentBlocker) || _hasHit) {
 					            jumped = true;
 					        }
-
-						    var playerList = ds_list_create();
-						    var playerCount = instance_place_list(
-						        x,
-						        y,
-						        oPlayer,
-						        playerList,
-						        false
-						    );
-
-						    for (var i = 0; i < playerCount; i++) {
-
-						        var playerHit = playerList[| i];
-
-						        if (playerHit != plId) {
-						            jumped = true;
-						            break;
-						        }
-						    }
-
-						    ds_list_destroy(playerList);
 					    }
 						if (jumped){
 							xSpeed = spbox.xScale / 10;
@@ -84,10 +61,11 @@ function pl_characters(){
 								ySpeed = -20;
 								specialHasJumped = true;
 							}
-							if(wall) chitTimer = 1;
+							chitTimer = 1;
+							spbox.dur = 0;
 						}
 					}
-					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 10 * global.sprScale, 60, true, 0, 0, 1, 60);
+					else specialbox_create(-2 * facing * global.sprScale, -16 * global.sprScale, 26 * facing * global.sprScale, 14 * global.sprScale, 60, true, 0, 0, 1, 60);
 
 		        break;
 		    }
