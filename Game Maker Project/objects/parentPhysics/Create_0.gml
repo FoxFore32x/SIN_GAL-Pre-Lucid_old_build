@@ -6,9 +6,6 @@ gSpeed = gSpeedMax;
 hCounter = 0;
 vCounter = 0;
 
-coyoteHangTimer = 0;
-coyoteHangFrames = 0;
-
 //DEBUG CODE
 
 onGround = 0;
@@ -28,3 +25,6 @@ chitTimer=0;
 dt_left_timer=0;
 jabLimit = 0;
 hit = 0;
+isXColliding = false;
+isYColliding = false;
+coyoteJumpTimer = 0;

@@ -17,6 +17,7 @@ xHit = 15;
 yHit = -30;
 
 hitbox  = -1; //default hitbox variable
+spbox = -1;
 
 dur     = 0; //number of frames the hitbox is active
 hitStun = 0; //hit stun duration

@@ -114,6 +114,7 @@ if(room != results && room != rm_menu && room != init && room != rm_charsel && r
 		draw_text_colour(450,320, string_hash_to_newline("dt_left_timer = " + string(parentPhysics.dt_left_timer)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,336, string_hash_to_newline("jabLimit = " + string(parentPhysics.jabLimit)), _c1, _c1, _c1, _c1, 1);
 		draw_text_colour(450,352, string_hash_to_newline("xSpeed = " + string(parentPhysics.xSpeed)), _c1, _c1, _c1, _c1, 1);
+		draw_text_colour(450,368, string_hash_to_newline("coyoteJumpTimer = " + string(parentPhysics.coyoteJumpTimer)), _c1, _c1, _c1, _c1, 1);
 	}
 
 }

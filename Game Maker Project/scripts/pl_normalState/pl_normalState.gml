@@ -4,6 +4,7 @@ function pl_normalState() {
 	hasHit = false;
 	grabbed = false;
 	prevDam = 0;
+	
 	if (god.isPaused) exit;
 		if(left){
 		    xSpeed = approach(xSpeed,-mSpeed,aSpeed * god.gameSpeed);
@@ -17,6 +18,12 @@ function pl_normalState() {
 
 		if(down && (!left && !right)) isCrouching = true;
 		else isCrouching = false;
+		
+		if(onGround){
+			coyoteJumpTimer = coyoteJumpFrames;
+		} else {
+			if (coyoteJumpTimer > 0) coyoteJumpTimer -= 1 * god.gameSpeed;
+		}
 		
 		if(passTrough){
 			hangPassThroughTime = hangPassThroughTimeMax;

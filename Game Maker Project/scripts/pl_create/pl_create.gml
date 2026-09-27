@@ -164,7 +164,7 @@ function pl_create() {
 	hangPassThroughTime = 0;
 
 	//Jump Buffer Time
-	coyoteJumpFrames = 5;
+	coyoteJumpFrames = 10;
 	coyoteJumpTimer = 0;
 
 	initedChar = false;

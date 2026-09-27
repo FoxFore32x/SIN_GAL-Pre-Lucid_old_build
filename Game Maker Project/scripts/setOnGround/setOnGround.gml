@@ -11,9 +11,9 @@ function setOnGround(argument0) {
 		jPotent = 1;
 		smallStop = false;
 	    wallGrabTimer = -1;
-	    coyoteHangTimer = coyoteHangFrames
+	    coyoteHangTimer = coyoteHangFrames;
 	} else {
-	    if (canJump && !isDash) canJump = false;
+	    if (canJump && !isDash && coyoteJumpTimer <= 0) canJump = false;
 	    onGround = false;
 	    if(ySpeed < 0) coyoteHangTimer = 0;
 	}

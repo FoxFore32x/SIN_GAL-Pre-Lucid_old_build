@@ -12,42 +12,102 @@ v = round(vCounter);
 hCounter -= h;
 vCounter -= v;
 
-repeat(abs(v)){
+/*repeat(abs(v)){
     if(ySpeed <= 0){
-        var inst = instance_place(x, y + sign(v), parentBlocker);
-        if(inst != noone && is_blocking(inst)){
+        if(place_meeting(x,y+sign(v),parentBlocker)){
             y_collide();
             break;
         }else{
             y += sign(v) * god.gameSpeed;
         }
     }else if (check_below()){
-		if((ySpeed >= 2 || ySpeed <= -2) && (hitStun > 0 && onGround)){
-			if(ySpeed >= 4){
-                ySpeed = -4;
-            }
-		} else y_collide();
+        y_collide();
         break;
     }else{
         y += sign(v) * god.gameSpeed;
     }
 }
 
-repeat(abs(h)) {
-    var inst = instance_place(x + sign(h), y, parentBlocker);      
-    if(inst == noone || !is_blocking(inst)){
+repeat(abs(h)) {        
+    if(!place_meeting(x+sign(h),y,parentBlocker)){
         x += sign(h) * god.gameSpeed;
     }else{
-        if((xSpeed >= 2 || xSpeed <= -2) && hitStun > 0){
-            xSpeed = (abs(xSpeed) / (1.5 * facing));
-            if(xSpeed >= 4){
-                xSpeed = 4;
-            }
-            hitStun -= 30;
-            if(ySpeed >= 0) ySpeed = ySpeed * 1.75;
-        } else {
-            x_collide();
-        }
+        x_collide();
         break;
+    }
+}*/
+
+// X Movement and slopes
+if (h != 0){
+    var _dirX = sign(h);
+    // X Collision
+    if (place_meeting(x + h, y, parentBlocker)){
+        // Go up slopes
+        if (!place_meeting(x + h, y - abs(h) - 1, parentBlocker)){
+            while (place_meeting(x + h, y, parentBlocker)){
+                y -= _subPixel;
+            }
+        }
+
+        // Go down slopes
+        else if (!place_meeting(x + h, y + abs(h) + 1, parentBlocker)){
+            while (place_meeting(x + h, y, parentBlocker)){
+                y += _subPixel;
+            }
+        }
+
+        // Normal wall
+        else{
+            x_collide();
+            
+            // Don't move through the wall.
+            h = 0;
+            hCounter = 0;
+        }
+    }
+
+
+    // Go down slopes
+    if (h != 0 && ySpeed >= 0){
+        if (!place_meeting(x + h, y + 1, parentBlocker) && place_meeting(x + h, y + abs(h) + 1, parentBlocker)){
+            while (!place_meeting(x + h, y + _subPixel, parentBlocker)){
+                y += _subPixel;
+            }
+        }
+    }
+
+    // Actual X Movement
+    x += h * god.gameSpeed;
+}
+
+// Y Movement
+
+repeat(abs(v)){
+    var _dirY = sign(v);
+
+    // Moving Up
+
+    if (_dirY < 0){
+        if (place_meeting(x, y + _dirY, parentBlocker)){
+            y_collide();
+            break;
+        }
+
+        y += _dirY * god.gameSpeed;
+    }
+    // Moving Down
+    else{
+        // Check ground before moving
+        if (check_below()){
+            y_collide();
+            break;
+        }
+
+        if (place_meeting(x, y + _dirY, parentBlocker)){
+            y_collide();
+            break;
+        }
+
+        y += _dirY * god.gameSpeed;
     }
 }
