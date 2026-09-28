@@ -23,14 +23,17 @@ if (keySelect && token != noone){
 if (keyDecline)
 {
 	var pl = player;
+	var inst = noone;
 	with (oCharToken){
-		var slot = instance_place(x, y, oCharSlot);
 		if (player == pl){
+			var slot = instance_place(x, y, oCharSlot);
 			if(slot != noone){
 				if (player < 0) global.cpus--;
 				else global.players--;
 			}
+			inst = id;
 			isGrabbed = true;
 		}
 	}
+	if(inst != noone) heldToken = inst;
 }
