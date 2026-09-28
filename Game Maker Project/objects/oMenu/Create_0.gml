@@ -5,6 +5,7 @@ global.playerId[1] = 0;
 global.playerId[2] = 0;
 global.playerId[3] = 0;
 
+global.arcadeMode = false;
 global.arPlCreated = false;
 global.uLostLmao = false;
 
