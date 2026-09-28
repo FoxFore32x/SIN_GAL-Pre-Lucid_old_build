@@ -1,9 +1,19 @@
 // Los recursos de Script han cambiado para la v2.3.0 Consulta
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para más información
 function trigTrackerTrain(xChange, yChange, xPos, yPos){
-	if (!triggered && place_meeting(x, y, oPlayer))
-	{
-	    triggered = true;
+		// Train was deleted
+		if (inst != noone && !instance_exists(inst)) {
+			inst = noone;
+			triggered = false;
+		}
+
+		// Don't create another train while one is active
+		if (triggered)
+			return;
+
+		if (!place_meeting(x, y, oPlayer))
+			return;
+		
 	    var nearest = noone;
 		var nearestDist = room_width;
 
@@ -35,8 +45,6 @@ function trigTrackerTrain(xChange, yChange, xPos, yPos){
 		else
 			spawnY = player.y - 128;
 
-		createTrain(spawnX, spawnY, 0, 0, 0.5, 0.5, 0, 60, 200, 5, -30, true);
-	}
-	
-	if(!instance_exists(oTrain)) triggered = false;
+		inst = createTrain(spawnX, spawnY, 0, 0, 0.5, 0.5, 0, 60, 200, 5, -30, true);
+		triggered = true;
 }

@@ -19,5 +19,7 @@ selected = 0;
 trigger[0] = trigEnemies;
 trigger[1] = trigTrackerTrain;
 
+inst = noone;
+
 //additional properties
 triggered = false;
