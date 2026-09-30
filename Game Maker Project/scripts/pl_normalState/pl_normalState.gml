@@ -6,6 +6,7 @@ function pl_normalState() {
 	prevDam = 0;
 	
 	if (god.isPaused) exit;
+	
 		if(left){
 		    xSpeed = approach(xSpeed,-mSpeed,aSpeed * god.gameSpeed);
 		}else if(right){
@@ -61,7 +62,6 @@ function pl_normalState() {
 				if(!(upHold || downHold || leftHold || rightHold)){
 					parryDur = 0;
 					parryActive = false;
-					shield = 0;
 					hitbox_create(-2 * facing*(global.sprScale), -16*(global.sprScale), 26 * facing*(global.sprScale), 10*(global.sprScale), 6, grabDirX, grabDirY, grabStun, grabDam,false, true);
 				}
 				
@@ -191,7 +191,7 @@ function pl_normalState() {
 		}
 		
 		//change to the attack state and relevant subState based on direction and attack
-		if(lattKeyBuffered || hattKeyBuffered){
+		if((lattKeyBuffered || hattKeyBuffered) && shield <= 0){
 			
 			dashAnt = heavyDashStall[floor(abs(heavyBar - 3))];
 			

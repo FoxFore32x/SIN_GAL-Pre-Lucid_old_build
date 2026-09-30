@@ -147,7 +147,7 @@ function pl_create() {
 	dashYSpeed = 8 * global.sprScale;
 	parryHitStun = 25;
 	perParryHS = 60;
-	perParryTim = 5;
+	perParryTim = 8;
 	dashAntLimit = 5;
 	dashAnt = 5;
 	dashJCoolMax = 100;

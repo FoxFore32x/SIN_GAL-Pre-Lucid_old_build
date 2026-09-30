@@ -59,10 +59,12 @@ function pl_endStep() {
 	            god.shake  = true;
 	            freeze = freezeHLim;
                 
-	            if(parryDur >= perParryTim) hb.owner.hitStun = perParryHS;
+	            if(parryDur >= parryDurMax - perParryTim) hb.owner.hitStun = perParryHS;
 	            else hb.owner.hitStun = parryHitStun;
                 
 	            hb.owner.currentState = states.tumble;
+				
+				parryDur = 0;
             
 	            if(currentState == states.dash){
 	                xSpeed /= 1.3;
@@ -278,7 +280,7 @@ function pl_endStep() {
 		        depth = hb.depth;
 		        hitStun += hb.hitStun;
 				if(!hb.obstacle){
-					if((prevDam != 0) && (prevDam < hb.damage) && hb.owner.comboCnt > 1) hitStun += 30 - (hb.owner.comboCnt * 2);
+					if((prevDam != 0) && (prevDam < hb.damage) && hb.owner.comboCnt > 1) hitStun += 10 - (hb.owner.comboCnt * 2);
 					else if ((prevDam != 0) && (prevDam > hb.damage) && hb.owner.comboCnt > 1) hitStun -= 30 + (hb.owner.comboCnt * 2);
 					prevDam = hb.damage;
 					if (!onGround && !hb.owner.onGround){
