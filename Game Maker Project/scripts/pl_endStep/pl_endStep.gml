@@ -278,10 +278,11 @@ function pl_endStep() {
 				if(hb.owner.facing != 0) facing = hb.owner.facing * -1;
 				else facing = -1;
 		        depth = hb.depth;
-		        hitStun += hb.hitStun;
 				if(!hb.obstacle){
-					if((prevDam != 0) && (prevDam < hb.damage) && hb.owner.comboCnt > 1) hitStun += 10 - (hb.owner.comboCnt * 2);
-					else if ((prevDam != 0) && (prevDam > hb.damage) && hb.owner.comboCnt > 1) hitStun -= 30 + (hb.owner.comboCnt * 2);
+					/*if((prevDam != 0) && (prevDam < hb.damage) && hb.owner.comboCnt > 1) finalHitStun += 30 - (hb.owner.comboCnt * 2);
+					else if ((prevDam != 0) && (prevDam > hb.damage) && hb.owner.comboCnt > 1) finalHitStun -= 30 - (hb.owner.comboCnt * 2);*/
+					hitStun += hb.hitStun - (30 - (hb.owner.comboCnt * 2));
+					
 					prevDam = hb.damage;
 					if (!onGround && !hb.owner.onGround){
 						hb.owner.xSpeed = (x - hb.owner.x) / (10 + hb.owner.comboCnt);
@@ -289,6 +290,8 @@ function pl_endStep() {
 					}
 					hb.owner.xSpeed = approach(hb.owner.xSpeed, 0, 0.5 * god.gameSpeed);
 					hb.owner.ySpeed = approach(hb.owner.ySpeed, 0, 0.5 * god.gameSpeed);
+				}else {
+					hitStun += hb.hitStun;
 				}
         
 		        currentState = states.tumble;

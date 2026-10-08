@@ -28,3 +28,5 @@ hit = 0;
 isXColliding = false;
 isYColliding = false;
 coyoteJumpTimer = 0;
+hasSAttWhJump = false;
+smallStAtJumpAct = false;

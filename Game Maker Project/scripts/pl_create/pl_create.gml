@@ -180,6 +180,7 @@ function pl_create() {
 	hasSAttWhJump = false;
 	smallStAtJump = false;
 	smallStAtJumpAct = false;
+	canDoStAgain = false;
 
 	//Combo
 	jabLimitDefault= 2;
