@@ -183,10 +183,11 @@ function pl_create() {
 	canDoStAgain = false;
 
 	//Combo
-	jabLimitDefault= 2;
+	jabLimitDefault= 3;
 	jabLimit= 2;
 	jabCnt= 0;
-	hJabLimit = 1;
+	hJabLimit = 2;
+	hJabLimitDefault = 2;
 	hJabCnt = 0;
 	comboCnt= 0;
 	comboTimerLimit = 180;

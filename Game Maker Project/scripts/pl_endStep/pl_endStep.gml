@@ -114,8 +114,8 @@ function pl_endStep() {
 	                    global.winId[global.winnerVar] = plId + 1;
 	                    global.winnerVar++;
                     
-	                    if(global.existentPl <= 1 && !hb.obstacle && instance_exists(oHitBy))
-	                    global.winId[global.winnerVar] = oHitBy.plId + 1;
+	                    if(global.existentPl <= 1 && !hb.obstacle && instance_exists(hb.owner))
+	                    global.winId[global.winnerVar] = hb.owner.plId + 1;
 	                }
 	                dead = true;
 	            }
@@ -151,9 +151,19 @@ function pl_endStep() {
 		            hb.comboGranted = true;
         
 					if(!hb.owner.isDash){
-						if(hb.owner.weapon == weapons.sword) hb.owner.hJabCnt++;
-			            else{
-							if(prevDam > hb.damage) hb.owner.jabLimit += 2;
+						if(hb.owner.weapon == weapons.sword) {
+							if(prevDam < 20){
+								hb.owner.jabCnt = 0;
+								hb.owner.jabLimit = hb.owner.jabLimitDefault;
+							}
+							if(prevDam < hb.damage) hb.owner.hJabLimit += 1;
+							hb.owner.hJabCnt++;
+						} else {
+							if(prevDam > 15){
+								hb.owner.hJabCnt = 0;
+								hb.owner.hJabLimit = hb.owner.hJabLimitDefault;
+							}
+							if(prevDam > hb.damage) hb.owner.jabLimit += 1;
 							hb.owner.jabCnt++;
 						}
 					}
@@ -189,7 +199,7 @@ function pl_endStep() {
         
 		        if((hb.owner.jabCnt > hb.owner.jabLimit) 
 		        || (hb.owner.hJabCnt > hb.owner.hJabLimit)
-				|| (hb.owner.hJabCnt > 0 && hb.owner.jabCnt > 0 && hb.owner.weapon == weapons.sword)
+				/*|| (hb.owner.hJabCnt > 0 && hb.owner.jabCnt > 0 && hb.owner.weapon == weapons.sword)*/
 		        || halfCombo == true){
 		            switch(hb.owner.subState){
 		                case attacks.up_ground:
@@ -236,6 +246,7 @@ function pl_endStep() {
 		            }
 		            hb.owner.jabCnt = 0;
 					hb.owner.jabLimit = hb.owner.jabLimitDefault;
+					hb.owner.hJabLimit = hb.owner.hJabLimitDefault;
 		            hb.owner.hJabCnt = 0;
 		            hb.owner.canWallGrab = true;
 		            hb.owner.wallGrabTimer = hb.owner.wallGrabMax;
@@ -312,7 +323,7 @@ function pl_endStep() {
 	        if (!instance_exists(hb.owner)) continue;
 	        oHitBy = hb.owner;
 			
-			oHitBy.isPlayerGrabbed = true;
+			hb.owner.isPlayerGrabbed = true;
 			
 			//if(oHitBy.grabDur == oHitBy.grabDur / 2){
 			

@@ -80,7 +80,7 @@ function pl_characters(){
 			        downSpriteG  = sTeoriDAttSG;
 			        downSpriteA  = sTeoriDAttSA;
 					
-					if((left || right) && (!down)) {
+					if((leftDouble || rightDouble || upDouble) && (left || right) && (!down)) {
 						attDirX = heavyDist[tired] * global.sprScale * facing;
 					}
 					else attDirX = noone;
@@ -88,7 +88,7 @@ function pl_characters(){
 					smallStAtJump = true;
 					if(!hasSAttWhJump){
 						
-						if(up){
+						if((upDouble) && up){
 							attDirY = -heavyDist[tired] * global.sprScale;
 						}
 						else attDirY = -1.51 * global.sprScale;
@@ -332,7 +332,7 @@ function pl_characters(){
 			        downSpriteG  = sTeoriDAttSG;
 			        downSpriteA  = sTeoriDAttSA;
 				
-					if((left || right) && (!down)) {
+					if((leftDouble || rightDouble) && (left || right) && (!down)) {
 						if(onGround) attOnGround = true;
 						else attOnGround = false;
 						attDirX = heavyDist[tired] * global.sprScale * facing;
@@ -349,8 +349,8 @@ function pl_characters(){
 							gravityActive = 0;
 						}
 					
-						if(up) attDirY = -heavyDist[tired] * global.sprScale;
-						else if(down) attDirY = heavyDist[tired] * global.sprScale;
+						if(up && upDouble) attDirY = -heavyDist[tired] * global.sprScale;
+						else if(down && downDouble) attDirY = heavyDist[tired] * global.sprScale;
 						else attDirY = noone;
 						
 						if (currentState == states.attack && chitTimer == 1){

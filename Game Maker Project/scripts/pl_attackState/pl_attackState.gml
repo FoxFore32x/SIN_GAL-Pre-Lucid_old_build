@@ -68,6 +68,15 @@ function pl_attackState() {
 		} else {
 		    chitTimer = 0;
 		}
+		
+		dt_left_timer = 0;
+		dt_right_timer = 0;
+		dt_up_timer = 0;
+		dt_down_timer = 0;
+		leftDouble  = false;
+		rightDouble = false;
+		upDouble    = false;
+		downDouble  = false;
 
 		//reset to normal state when the attack animation ends
 		if(/*animation_end() ||*/ chitTimer == 0){

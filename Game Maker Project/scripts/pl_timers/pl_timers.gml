@@ -17,7 +17,9 @@ function pl_timers(){
 		isCombing = false;
 		comboCnt = 0;
 		jabCnt = 0;
+		hJabCnt = 0;
 		jabLimit = jabLimitDefault;
+		hJabLimit = hJabLimitDefault;
 	}
 	
 	if(heavyBar < heavyBarMax){

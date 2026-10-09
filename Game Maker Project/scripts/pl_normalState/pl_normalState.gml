@@ -179,7 +179,7 @@ function pl_normalState() {
 		//jump code
 		jump_control();
 
-		if((up || down) && (jabCnt > (jabLimit - 3))) halfCombo = true;
+		//if((up || down) && (jabCnt > (jabLimit - 3))) halfCombo = true;
 
 		//attack
 		
@@ -203,14 +203,6 @@ function pl_normalState() {
 		        lattKeyBufferTimer = 0;
 		    } else if(((leftDouble || rightDouble || upDouble || downDouble) && lattKeyBuffered)|| hattKeyBuffered){
 		        weapon = weapons.sword;
-				dt_left_timer = 0;
-				dt_right_timer = 0;
-				dt_up_timer = 0;
-				dt_down_timer = 0;
-				leftDouble  = false;
-				rightDouble = false;
-				upDouble    = false;
-				downDouble  = false;
 		        hattKeyBuffered = 0;
 		        hattKeyBufferTimer = 0;
 		    }
