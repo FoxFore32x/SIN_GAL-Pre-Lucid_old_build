@@ -202,7 +202,7 @@ function pl_normalState() {
 		        weapon = weapons.dagger;
 		        lattKeyBuffered = 0;
 		        lattKeyBufferTimer = 0;
-		    } else if(((leftDouble || rightDouble || upDouble || downDouble) && lattKeyBuffered)|| hattKeyBuffered){
+		    } else if(hattKeyBuffered){
 		        weapon = weapons.sword;
 		        hattKeyBuffered = 0;
 		        hattKeyBufferTimer = 0;
@@ -276,7 +276,7 @@ function pl_normalState() {
 		//dash
 
 	
-		/*if((/*(leftDouble || rightDouble || upDouble || downDouble) || (dashKeyBuffered)) && dashCanCldn <= 0){
+		if((/*(leftDouble || rightDouble || upDouble || downDouble) ||*/ (dashKeyBuffered)) && dashCanCldn <= 0){
 
 		    dashKeyBuffered = 0;
 		    dashKeyBufferTimer = 0;
@@ -298,7 +298,6 @@ function pl_normalState() {
 		        currentState = states.dash;
 		    }
 		}
-*/
 
 
 

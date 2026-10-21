@@ -17,13 +17,13 @@ function pl_attackState() {
 		}
 		if (smallStAtJump){
 			if(!smallStAtJumpAct){
-				if(attDirX != noone) xSpeed = attDirX;
-				if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;
+				/*if(attDirX != noone) xSpeed = attDirX;
+				if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;*/
 				smallStAtJumpAct = true;
 			}
 		} else {
-			if(attDirX != noone) xSpeed = attDirX;
-			if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;
+			/*if(attDirX != noone) xSpeed = attDirX;
+			if(attDirY != noone && !hasSAttWhJump) ySpeed = attDirY;*/
 		}
 
 		if(onGround){

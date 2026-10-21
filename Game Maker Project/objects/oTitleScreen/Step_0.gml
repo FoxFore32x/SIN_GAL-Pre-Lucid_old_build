@@ -8,7 +8,12 @@ switch(section){
 	_vidDur = video_get_duration();
 	_vidStatus = video_get_status();
 	
-	if(!isVideoPlaying){
+	if(os_type == os_switch){
+		vidCheck = (shaders_are_supported() && shader_is_compiled(shdVideo));
+	} else vidCheck = true;
+	
+	if(!isVideoPlaying && vidCheck){
+		if(os_type == os_switch)  video_sampler = shader_get_sampler_index(shdVideo, "v_chroma");
 		video = video_open("jojo480.mp4");
 		video_enable_loop(false);
 		if (_vidStatus == video_status_playing) isVideoPlaying = true;

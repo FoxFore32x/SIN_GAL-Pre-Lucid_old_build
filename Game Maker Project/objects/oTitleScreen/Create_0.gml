@@ -72,3 +72,7 @@ _vidDur = -1;
 _vidStatus = -1;
 _videoData = -1;
 _videoStatus = -1;
+vidCheck = false;
+video_sampler = 0;
+video_width = 640;
+video_height = 480;
