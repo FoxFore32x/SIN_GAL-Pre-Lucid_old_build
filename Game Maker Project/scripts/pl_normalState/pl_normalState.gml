@@ -156,6 +156,7 @@ function pl_normalState() {
 		if (jumpKeyBuffered && canJump && !passTrough) {
 		    jumpKeyBuffered = 0;
 		    jumpKeyBufferTimer = 0;
+			coyoteJumpTimer = 0;
 		    canWallGrab = false;
 		    isWallGrabbing = false;
 		    ySpeed = jPower * jPotent;

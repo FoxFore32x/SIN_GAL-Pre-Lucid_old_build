@@ -21,16 +21,16 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("left1", 0, gp_padl));
 			addKeybind(new BindGPB("right1", 0, gp_padr));
 			
-			addKeybind(new BindGPA("up1", 0, gp_axislv, -0.6));
-			addKeybind(new BindGPA("down1", 0, gp_axislv, 0.6));
+			addKeybind(new BindGPA("up1", 0, gp_axislv, -0.45));
+			addKeybind(new BindGPA("down1", 0, gp_axislv, 0.45));
 			addKeybind(new BindGPA("left1", 0, gp_axislh, -0.6));
 			addKeybind(new BindGPA("right1", 0, gp_axislh, 0.6));
 			
 			addKeybind(new BindGPB("jump1", 0, gp_face1));
-			addKeybind(new BindGPB("dash1", 0, gp_shoulderr));
-			addKeybind(new BindGPB("dash1", 0, gp_shoulderrb));
-			addKeybind(new BindGPB("block1", 0, gp_shoulderl));
-			addKeybind(new BindGPB("block1", 0, gp_shoulderlb));
+			addKeybind(new BindGPB("dash1", 0, gp_shoulderl));
+			addKeybind(new BindGPB("dash1", 0, gp_shoulderlb));
+			addKeybind(new BindGPB("block1", 0, gp_shoulderr));
+			addKeybind(new BindGPB("block1", 0, gp_shoulderrb));
 			addKeybind(new BindGPB("light1", 0, gp_face3));
 			addKeybind(new BindGPB("strong1", 0, gp_face4));
 			addKeybind(new BindGPB("special1", 0, gp_face2));
@@ -55,16 +55,16 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("left2", 1, gp_padl));
 			addKeybind(new BindGPB("right2", 1, gp_padr));
 			
-			addKeybind(new BindGPA("up2", 1, gp_axislv, -0.6));
-			addKeybind(new BindGPA("down2", 1, gp_axislv, 0.6));
+			addKeybind(new BindGPA("up2", 1, gp_axislv, -0.45));
+			addKeybind(new BindGPA("down2", 1, gp_axislv, 0.45));
 			addKeybind(new BindGPA("left2", 1, gp_axislh, -0.6));
 			addKeybind(new BindGPA("right2", 1, gp_axislh, 0.6));
 			
 			addKeybind(new BindGPB("jump2", 1, gp_face1));
-			addKeybind(new BindGPB("dash2", 1, gp_shoulderr));
-			addKeybind(new BindGPB("dash2", 1, gp_shoulderrb));
-			addKeybind(new BindGPB("block2", 1, gp_shoulderl));
-			addKeybind(new BindGPB("block2", 1, gp_shoulderlb));
+			addKeybind(new BindGPB("dash2", 1, gp_shoulderl));
+			addKeybind(new BindGPB("dash2", 1, gp_shoulderlb));
+			addKeybind(new BindGPB("block2", 1, gp_shoulderr));
+			addKeybind(new BindGPB("block2", 1, gp_shoulderrb));
 			addKeybind(new BindGPB("light2", 1, gp_face3));
 			addKeybind(new BindGPB("strong2", 1, gp_face4));
 			addKeybind(new BindGPB("special2", 1, gp_face2));
@@ -89,16 +89,16 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("left3", 2, gp_padl));
 			addKeybind(new BindGPB("right3", 2, gp_padr));
 			
-			addKeybind(new BindGPA("up3", 2, gp_axislv, -0.6));
-			addKeybind(new BindGPA("down3", 2, gp_axislv, 0.6));
+			addKeybind(new BindGPA("up3", 2, gp_axislv, -0.45));
+			addKeybind(new BindGPA("down3", 2, gp_axislv, 0.45));
 			addKeybind(new BindGPA("left3", 2, gp_axislh, -0.6));
 			addKeybind(new BindGPA("right3", 2, gp_axislh, 0.6));
 			
 			addKeybind(new BindGPB("jump3", 2, gp_face1));
-			addKeybind(new BindGPB("dash3", 2, gp_shoulderr));
-			addKeybind(new BindGPB("dash3", 2, gp_shoulderrb));
-			addKeybind(new BindGPB("block3", 2, gp_shoulderl));
-			addKeybind(new BindGPB("block3", 2, gp_shoulderlb));
+			addKeybind(new BindGPB("dash3", 2, gp_shoulderl));
+			addKeybind(new BindGPB("dash3", 2, gp_shoulderlb));
+			addKeybind(new BindGPB("block3", 2, gp_shoulderr));
+			addKeybind(new BindGPB("block3", 2, gp_shoulderrb));
 			addKeybind(new BindGPB("light3", 2, gp_face3));
 			addKeybind(new BindGPB("strong3", 2, gp_face4));
 			addKeybind(new BindGPB("special3", 2, gp_face2));
@@ -123,16 +123,16 @@ function initialize_Keybinds(){
 			addKeybind(new BindGPB("left4", 3, gp_padl));
 			addKeybind(new BindGPB("right4", 3, gp_padr));
 			
-			addKeybind(new BindGPA("up4", 3, gp_axislv, -0.6));
-			addKeybind(new BindGPA("down4", 3, gp_axislv, 0.6));
+			addKeybind(new BindGPA("up4", 3, gp_axislv, -0.45));
+			addKeybind(new BindGPA("down4", 3, gp_axislv, 0.45));
 			addKeybind(new BindGPA("left4", 3, gp_axislh, -0.6));
 			addKeybind(new BindGPA("right4", 3, gp_axislh, 0.6));
 			
 			addKeybind(new BindGPB("jump4", 3, gp_face1));
-			addKeybind(new BindGPB("dash4", 3, gp_shoulderr));
-			addKeybind(new BindGPB("dash4", 3, gp_shoulderrb));
-			addKeybind(new BindGPB("block4", 3, gp_shoulderl));
-			addKeybind(new BindGPB("block4", 3, gp_shoulderlb));
+			addKeybind(new BindGPB("dash4", 3, gp_shoulderl));
+			addKeybind(new BindGPB("dash4", 3, gp_shoulderlb));
+			addKeybind(new BindGPB("block4", 3, gp_shoulderr));
+			addKeybind(new BindGPB("block4", 3, gp_shoulderrb));
 			addKeybind(new BindGPB("light4", 3, gp_face3));
 			addKeybind(new BindGPB("strong4", 3, gp_face4));
 			addKeybind(new BindGPB("special4", 3, gp_face2));
