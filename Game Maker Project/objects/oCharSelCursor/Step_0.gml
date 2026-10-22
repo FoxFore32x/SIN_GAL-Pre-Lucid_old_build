@@ -25,7 +25,7 @@ if (keyDecline)
 	var pl = player;
 	var inst = noone;
 	with (oCharToken){
-		if (player == pl){
+		if (player == pl && isGrabbed == false){
 			var slot = instance_place(x, y, oCharSlot);
 			if(slot != noone){
 				if (player < 0) global.cpus--;
