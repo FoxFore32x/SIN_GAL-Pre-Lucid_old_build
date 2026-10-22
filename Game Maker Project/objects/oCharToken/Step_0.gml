@@ -18,6 +18,27 @@ with (oCharSelCursor){
 		cursor_x = x;
 		cursor_y = y;
 		keySel = keySelect;
+		keyDec = keyDecline;
+	}
+}
+
+selected = !isGrabbed;
+
+if (cursor != noone && slot != noone) {
+    if (keySel) {
+        if (isGrabbed) {
+            if (player < 0) global.cpus -= 1;
+            else global.players -= 1;
+        } else {
+            if (player < 0) global.cpus += 1;
+            else global.players += 1;
+        }
+    }
+	else if (keyDec){
+		if (isGrabbed) {
+			if (player < 0) global.cpus -= 1;
+			else global.players -= 1;
+		}
 	}
 }
 
@@ -26,22 +47,8 @@ if(isGrabbed){
 	
 	x = cursor_x;
 	y = cursor_y;
-	
-	if(cursor != noone){
-		
-		if(slot != noone && keySel){
-			if (player < 0) global.cpus--;
-			else global.players--;
-		}
-	}
 } else {
-	if(cursor != noone){
-		global.playerChar[asigndPlSlot] = char;
-		if(slot != noone && keySel){
-			if (player < 0) global.cpus++;
-			else global.players++;
-		}
-	}
+	if(cursor != noone) global.playerChar[asigndPlSlot] = char;
 }
 
 if(global.currentMode == modes.story || global.currentMode == modes.challenge){

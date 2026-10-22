@@ -3,6 +3,7 @@ asigndPlSlot = -1;
 char = -1;
 isGrabbed = false;
 canStart = false;
+selected = false;
 
 charImg[0] = sCharselNobody;
 charImg[1] = sTeoriRender1;

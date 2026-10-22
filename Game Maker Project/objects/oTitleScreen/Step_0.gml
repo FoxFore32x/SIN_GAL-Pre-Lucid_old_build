@@ -1,6 +1,7 @@
 switch(section){
 	case 0:
 		if(room != rm_titleScreen){
+			instance_destroy(oHurtbox);
 			instance_destroy(oPlayer);
 			audio_stop_all();
 			room_goto(rm_titleScreen);
@@ -43,7 +44,7 @@ switch(section){
 			global.uLostLmao = false;
 			global.arPlWon = false;
 
-			global.cpus = irandom_range(1, 4);
+			global.cpus = irandom_range(1, 3);
 			global.existentPl = global.cpus;
 			for(var i = 0; i < global.cpus; i++){
 				global.playerChar[i] = irandom_range(1, 3);
