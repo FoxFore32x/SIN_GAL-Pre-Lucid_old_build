@@ -24,5 +24,12 @@ function initInGameMode(modeId){
 			global.opTimer = false;
 			room_goto(rm_battle);
 		break;
+		
+		case modes.demo:
+			global.arcadeMode = false;
+			global.opHp = false;
+			global.opTimer = false;
+			room_goto(rm_battle);
+		break;
 	}
 }

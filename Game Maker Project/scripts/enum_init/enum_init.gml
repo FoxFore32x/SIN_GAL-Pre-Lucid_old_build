@@ -42,7 +42,8 @@ function enum_init() {
 		story,
 		challenge,
 		vs,
-		training
+		training,
+		demo
 	}
 
 }

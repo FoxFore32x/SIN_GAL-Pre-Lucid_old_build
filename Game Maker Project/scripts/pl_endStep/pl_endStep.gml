@@ -281,10 +281,10 @@ function pl_endStep() {
 			} else {
 				y --;
 				
-				xSpeed = hb.xHit;
+				xSpeed += hb.xHit / 2;
         
-		        if(!downGroundHit) ySpeed = hb.yHit;
-		        else ySpeed = -4;
+		        if(!downGroundHit) ySpeed += hb.yHit * 1.5;
+		        else ySpeed += -4;
         
 				if(hb.owner.facing != 0) facing = hb.owner.facing * -1;
 				else facing = -1;

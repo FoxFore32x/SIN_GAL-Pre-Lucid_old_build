@@ -1,6 +1,10 @@
 switch(section){
 	case 0:
-		
+		if(room != rm_titleScreen){
+			instance_destroy(oPlayer);
+			audio_stop_all();
+			room_goto(rm_titleScreen);
+		}
 	break;
 	case 1:
 
@@ -9,11 +13,11 @@ switch(section){
 	_vidStatus = video_get_status();
 	
 	if(os_type == os_switch){
-		vidCheck = (shaders_are_supported() && shader_is_compiled(shdVideo));
+		vidCheck = (shaders_are_supported() && shader_is_compiled(shdSwitchVideo));
 	} else vidCheck = true;
 	
 	if(!isVideoPlaying && vidCheck){
-		if(os_type == os_switch)  video_sampler = shader_get_sampler_index(shdVideo, "v_chroma");
+		if(os_type == os_switch)  video_sampler = shader_get_sampler_index(shdSwitchVideo, "v_chroma");
 		video = video_open("jojo480.mp4");
 		video_enable_loop(false);
 		if (_vidStatus == video_status_playing) isVideoPlaying = true;
@@ -28,7 +32,26 @@ switch(section){
 	
 	break;
 	case 3:
-	
+		if(room != rm_battle){
+			global.playerId[0] = 0;
+			global.playerId[1] = 0;
+			global.playerId[2] = 0;
+			global.playerId[3] = 0;
+
+			global.arcadeMode = false;
+			global.arPlCreated = false;
+			global.uLostLmao = false;
+			global.arPlWon = false;
+
+			global.cpus = irandom_range(1, 4);
+			global.existentPl = global.cpus;
+			for(var i = 0; i < global.cpus; i++){
+				global.playerChar[i] = irandom_range(1, 3);
+			}
+			global.currentMode = modes.demo;
+			initInGameMode(global.currentMode);
+			//room_goto(rm_battle);
+		}
 	break;
 }
 
@@ -72,6 +95,10 @@ if (btnJump){
 	section = 2;
 	if (section < array_length(sectionTimeMax))
             sectionTime = sectionTimeMax[section];
+	if(room != rm_titleScreen){
+		audio_stop_all();
+		room_goto(rm_titleScreen);
+	}
 	global.credits += 1;
 }
 
@@ -82,5 +109,6 @@ if (btnDecline){
 if (global.credits >= 1 && start){
 	global.credits -= 1;
 	play_sfx(sfxPlayerStart, 0, 0);
+	instance_destroy();
 	room_goto(rm_menu);
 }

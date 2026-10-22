@@ -9,6 +9,10 @@ global.arcadeMode = false;
 global.arPlCreated = false;
 global.uLostLmao = false;
 
+for(var i = 0; i < global.cpus; i++){
+	global.playerChar[i] = 0;
+}
+		
 global.players = 0;
 global.cpus = 0;
 
