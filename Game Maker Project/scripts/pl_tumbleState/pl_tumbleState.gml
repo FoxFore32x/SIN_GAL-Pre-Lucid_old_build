@@ -32,6 +32,8 @@ function pl_tumbleState() {
 	            invFrames = 20;
 	        }
 	        unTumbled = false;
+			xHit = 0;
+			yHit = 0;
 	        state_reset();
 	    }
 	}

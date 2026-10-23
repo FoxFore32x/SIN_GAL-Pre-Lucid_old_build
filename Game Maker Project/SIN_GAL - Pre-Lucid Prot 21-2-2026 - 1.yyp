@@ -94,6 +94,7 @@
     {"link":"io.gamemaker.gm_filter_colour_balance-1.0.0","name":"io.gamemaker.gm_filter_colour_balance-1.0.0","path":"io.gamemaker.gm_filter_colour_balance-1.0.0.yyp",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"chicken.mp4","CopyToMask":-1,"filePath":"datafiles","name":"chicken.mp4","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"jojo480.mp4","CopyToMask":-1,"filePath":"datafiles","name":"jojo480.mp4","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,

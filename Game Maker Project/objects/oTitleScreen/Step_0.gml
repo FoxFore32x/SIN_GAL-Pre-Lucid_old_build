@@ -19,7 +19,7 @@ switch(section){
 	
 	if(!isVideoPlaying && vidCheck){
 		if(os_type == os_switch)  video_sampler = shader_get_sampler_index(shdSwitchVideo, "v_chroma");
-		video = video_open("jojo480.mp4");
+		video = video_open("chicken.mp4");
 		video_enable_loop(false);
 		if (_vidStatus == video_status_playing) isVideoPlaying = true;
 	}
@@ -34,6 +34,7 @@ switch(section){
 	break;
 	case 3:
 		if(room != rm_battle){
+			audio_stop_sound(sndWinScreen);
 			global.playerId[0] = 0;
 			global.playerId[1] = 0;
 			global.playerId[2] = 0;

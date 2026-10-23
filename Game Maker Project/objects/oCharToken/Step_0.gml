@@ -1,5 +1,6 @@
 var slot = instance_place(x, y, oCharSlot);
 if(slot != noone) char = slot.character;
+else char = 0;
 
 if (global.keyAny[asigndPlSlot]){
 	player = asigndPlSlot;
@@ -29,26 +30,26 @@ if (cursor != noone && slot != noone) {
         if (isGrabbed) {
             if (player < 0) global.cpus -= 1;
             else global.players -= 1;
+			global.playerChar[asigndPlSlot] = 0;
+			isSelected = false;
         } else {
             if (player < 0) global.cpus += 1;
             else global.players += 1;
+			global.playerChar[asigndPlSlot] = char;
+			isSelected = true;
         }
     }
-	else if (keyDec){
-		if (isGrabbed) {
-			if (player < 0) global.cpus -= 1;
-			else global.players -= 1;
-		}
-	}
 }
 
 if(isGrabbed){
-	global.playerChar[asigndPlSlot] = 0;
-	
 	x = cursor_x;
 	y = cursor_y;
-} else {
-	if(cursor != noone) global.playerChar[asigndPlSlot] = char;
+}
+
+if(keyDec && global.playerChar[asigndPlSlot] > 0){
+	if (player < 0) global.cpus -= 1;
+	else global.players -= 1;
+	global.playerChar[asigndPlSlot] = 0;
 }
 
 if(global.currentMode == modes.story || global.currentMode == modes.challenge){
