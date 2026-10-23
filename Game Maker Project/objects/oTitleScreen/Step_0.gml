@@ -98,6 +98,8 @@ if (btnJump){
 	if (section < array_length(sectionTimeMax))
             sectionTime = sectionTimeMax[section];
 	if(room != rm_titleScreen){
+		instance_destroy(oHurtbox);
+		instance_destroy(oPlayer);
 		audio_stop_all();
 		room_goto(rm_titleScreen);
 	}
@@ -109,6 +111,11 @@ if (btnDecline){
 }
 
 if (global.credits >= 1 && start){
+	video_close();
+	isVideoPlaying = false;
+	audio_stop_all();
+	instance_destroy(oHurtbox);
+	instance_destroy(oPlayer);
 	global.credits -= 1;
 	play_sfx(sfxPlayerStart, 0, 0);
 	instance_destroy();
